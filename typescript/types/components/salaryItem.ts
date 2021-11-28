@@ -6,6 +6,12 @@ export interface ISalaryItem {
     date: Date;
 }
 
-export interface ASalaryItem {
-    data: ISalaryItem
+export interface IASalaryItem {
+    item: ISalaryItem,
+    isAdmin?: boolean,
+}
+
+export interface Vacancies {
+    vacncies: any[],
+    isAdmin?: boolean,
 }

@@ -1,0 +1,72 @@
+
+// $primaryColor: #0051e9
+// $primaryColor: #7d5fff
+
+// $primaryColor: #0080e9
+$primaryColor: rgb(0, 21, 212, .85)
+
+.filtration::-webkit-scrollbar
+    display: none
+
+.filtration
+    padding: 1rem 1rem 1rem 1rem
+    white-space: nowrap
+    // overflow: scroll
+    position: relative
+
+    .filtrationRow
+        overflow-x: scroll
+
+        &::-webkit-scrollbar
+            display: none
+            
+    .technologies
+        overflow-x: scroll
+        scroll-direction: horizontal
+
+        &::-webkit-scrollbar
+            display: none
+
+    .seniority
+        overflow: scroll
+
+        &::-webkit-scrollbar
+            display: none
+
+    &::after
+        content: ""
+        display: block
+        position: absolute
+        height: 100%
+        width: 10%
+        top: 0
+        right: 0
+        background: -webkit-gradient(linear, right top, left top, color-stop(1, rgba(0, 0, 0, 0)), color-stop(0, rgba(255, 255, 255, 1)))
+
+    .filtrationItem
+        font-family: 'Roboto', sans-serif
+        font-size: .9rem 
+        padding: .5rem 1rem
+        margin: .5rem .7rem .5rem 0
+        border-radius: 1000px
+        border: solid 2px $primaryColor
+        background-color: white
+        color: $primaryColor
+        cursor: pointer
+
+    .submitFiltation
+        font-family: markGeoCaps
+        background-color: $primaryColor
+        color: white
+        border-radius: 9999px
+        border: none
+        padding: .6rem 1rem
+        margin: .5rem 0rem
+        cursor: pointer
+        
+
+    .active
+        background-color: $primaryColor
+        color: white
+        
+        // outline: solid 1px black

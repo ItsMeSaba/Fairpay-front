@@ -1,41 +1,92 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap')
 
+.outlineOne
+    position: absolute  
+    transform: scale(.5)
+    transform-origin: left top  
+    left: -10%
+    z-index: -1
+    
 .salaryItem
-    font-family: 'Nunito', sans-serif
     display: grid
     grid-template-columns: 1fr 3fr 1fr
     align-items: center
-    width: 70%
-    max-width: 800px
-    padding: 1rem 2rem
+    width: 80%
+    max-width: 900px
+    padding: 2.5rem 2rem
     margin: auto
-    margin-bottom: 3rem
-    box-shadow: grey 0 0 5px
+    // margin-bottom: 3rem
+    // border-top: solid 1px rgb(190, 190, 190)
+    // box-shadow: grey 0 0 5px
     border-radius: 5px
     text-align: left    
 
     .left 
         display: flex
         align-items: center
+        justify-content: center
 
         .companyImage
-            // width: 100px
-            // height: 100%
-            border-radius: 6px
+            display: flex
+            align-items: center
+
+            img
+                border-radius: 10px
+                // border-radius: 1000px
+                min-width: 100px
 
     .center
-        padding: 0 0 0 3rem
+        padding: 0 0 0 2.5rem
+        
+
+        .bottom
+            // padding: 1rem 0 00
+            // overflow: break
+            // width: 500px
+            // display: grid
+            // grid-template-columns: repeat(5, minmax())
+            line-height: 2.2rem
+
+            span
+                word-break: break-all
+                font-size: .9rem
+                margin: 0 .5rem 0 0
+                
+                border: solid 1.5px rgba(40, 40, 40, 1)
+                border-radius: 1000px
+                padding: .2rem .75rem
+
+        h2
+            line-height: 3rem
 
     .right
         padding: 0 0 0 3rem
 
         .salary
-            background: linear-gradient(to right, #fc4a1a, #f7b733)
             text-align: center
-            color: white
+            // color: white
             padding: 10px 0
             border-radius: 30px
+            font-size: 1.2rem
+            color: rgb(20, 20, 20)
 
         *
             padding: 0rem 0
 
+
+@media only screen and (max-width: 769px)
+    .salaryItem
+        padding: 2.5rem 0rem
+        width: 95%
+
+        .left 
+
+            .companyImage
+
+                img
+                    min-width: 30px
+        
+        .center
+            padding: 0 0 0 1.5rem
+
+        .right
+            padding: 0 0 0 .5rem

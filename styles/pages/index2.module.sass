@@ -1,0 +1,263 @@
+$manPosition: -200%
+// $secondContainerColor: #f1f2f6
+$secondContainerColor: white
+// $secondContainerColor: #f7f1e3
+	
+@mixin container($height: 100vh)
+	display: grid
+	grid-template-columns: 1fr 1.2fr
+	align-items: center
+	height: $height
+	justify-content: center
+	position: relative
+
+	.left
+		position: relative
+		display: flex
+		height: 100%
+		text-align: center
+		align-items: center
+
+
+@mixin wave($color: white)
+	position: absolute
+	bottom: -2px
+	left: 0
+	width: 100%
+	overflow: hidden
+	line-height: 0
+	transform: rotate(180deg)
+	border-bottom: 1px white
+
+	svg
+		
+		.shapeFill
+			fill: $color
+
+
+@mixin blob($top: initial, $bottom: initial, $left: initial, $right: initial, $scale: 1)
+	width: 30rem
+	top: $top 
+	left: $left 
+	right: $right 
+	bottom: $bottom 
+	position: absolute
+	opacity: .2
+	transform-origin: top left
+	transform: scale($scale)
+
+
+@mixin manAvatar($scale: 1)
+	bottom: 0
+	position: absolute
+	transform-origin: bottom 
+	transform: scale($scale)
+
+.indexPage
+	text-align: center
+
+	.containerOne
+		@include container(87vh)
+		color: white
+		background: #ED213A
+		background: -webkit-linear-gradient(to left, #93291E, #ED213A)
+		background: linear-gradient(to left, #FF324B, #ED213A)
+		// z-index: 1
+
+		.avatar
+			@include manAvatar()
+			// position: absolute
+			// bottom: 0
+			// transform-origin: bottom 
+			transform: translateY(100%) scale(.85)
+			animation: animateMan 2.5s forwards ease-in-out
+			animation-delay: .5s
+
+		.blobOne
+			// width: 30rem
+			// top: 0rem
+			// left: 0rem
+			// position: absolute
+			// opacity: .2
+			// transform-origin: top left
+			// transform: scale(.8)
+			// // transform: rotate(50deg)
+			@include blob($left: 0, $top: -10%, $scale: .9)
+
+		.blobTwo
+			@include blob($right: 0, $bottom: 0)
+			// width: 30rem
+			// bottom: 0rem
+			// right: 0rem
+			// position: absolute
+			// opacity: .2
+			// transform-origin: bottom right
+			// transform: scale(1.5)	
+			// // transform: rotate(50deg)
+
+		.waveOne
+			@include wave()
+		
+			svg
+				position: relative
+				display: block
+				width: calc(100% + 1.3px)
+				height: 140px
+
+				.shapeFill
+					fill: $secondContainerColor
+
+		h1	
+			font-size: 4rem
+			text-align: left
+			line-height: 5.5rem
+			margin: auto
+			z-index: 10
+			text-shadow: 2px 2px 2px black
+			width: fit-content
+			// position: relative
+			// left: -300px
+			animation: animateText 2s forwards
+			font-weight: bold
+
+			span
+				font-size: 8rem
+				position: relative
+				left: -350px
+				animation: animateText 3s forwards
+	
+	.containerTwo
+		@include container
+		background-color: $secondContainerColor
+		color: #2f3640
+		// padding: 5REM 
+
+		.left	
+			position: relative
+			display: flex
+			justify-content: center
+
+			.avatar
+				@include manAvatar()
+				// margin: auto
+				// position: absolute
+				// bottom: 0
+				// left: 0
+				// width: 100%
+				// transform-origin: bottom 
+				// transform: scale(1)
+				padding: 0 0 0 7rem
+
+		.right
+
+			h1
+				// display: block
+				position: relative
+				font-size: 2.5rem
+				font-weight: bold
+				z-index: 10
+				// text-shadow: 1px 1px 1px black
+			
+			.blob
+				position: absolute
+				right: 50%
+				bottom: -30%
+				transform: scale(1)
+				z-index: 0
+
+		.waveTwo 
+			@include wave()
+			// position: absolute
+			// bottom: -2px
+			// left: 0
+			// width: 100%
+			// overflow: hidden
+			// line-height: 0
+			// transform: rotate(180deg)
+
+			svg 
+				position: relative
+				display: block
+				width: calc(100% + 0px)
+				height: 155px
+				
+				.shapeFill 
+					fill: rgb(48, 90, 204)
+	
+	
+	.containerThree
+		@include container
+		background-color: rgb(48, 90, 204)
+		color: white
+
+		.right
+
+			.avatar
+				width: 80%
+				margin: auto
+				padding: 1rem 0 0 0
+				// transform: scale(.7)
+
+		.left	
+			position: relative
+			display: flex
+			justify-content: center
+			text-align: left
+			padding: 5rem
+			
+			.avatar
+				margin: auto
+				// position: absolute
+				bottom: 0
+				left: 0
+				width: 100%
+				padding: 0 0 0 7rem
+				transform-origin: bottom 
+				transform: scale(1)
+
+		h1
+			font-weight: bold
+			font-size: 2.5rem
+
+
+
+	.latestSalaries 
+		position: relative
+		background-color: white
+		z-index: 10
+
+		.header
+			padding: 6rem 0 3rem 0
+
+
+@keyframes animateMan
+	from
+		transform: translateY(100%)
+
+	to
+		transform: translateY(0) scale(.85)
+
+
+@keyframes animateText
+	to
+		left: 0px
+
+
+@media only screen and (max-width: 769px)
+	.indexPage
+
+		.container
+			grid-template-columns: 1fr
+			height: 80vh
+
+			h1
+				// font-size: 3rem
+				padding: 0 0 10rem 0
+
+			.man
+				transform: scale(.95)
+
+			.wave
+
+				svg
+					width: calc(100% + 240px)

@@ -1,0 +1,96 @@
+import vabako from "public/images/companies/vabako.png"
+import scandiweb from "public/images/companies/scandiweb.png"
+import neollet from "public/images/companies/neollet.png"
+import awarmoesakartveloshi from "public/images/companies/awarmoesakartveloshi.jpg"
+import unipay from "public/images/companies/unipay.png"
+import gulf from "public/images/companies/gulf.png"
+import bits63 from "public/images/companies/bits63.jpg"
+import georgiatechtbilisi from "public/images/companies/georgiatechtbilisi.png"
+import appidea from "public/images/companies/appidea.png"
+import vendoo from "public/images/companies/vendoo.png"
+import lemondo from "public/images/companies/lemondo.png"
+import sakartvelosmelioracia from "public/images/companies/sakartvelosmelioracia.png"
+import dexfinity from "public/images/companies/dexfinity.png"
+import irao from "public/images/companies/irao.jpg"
+import nlycdev from "public/images/companies/nlycdev.jpg"
+import linton from "public/images/companies/linton.png"
+import dinespace from "public/images/companies/dinespace.jpg"
+import coachnow from "public/images/companies/coachnow.jpg"
+import helixnebulacapital from "public/images/companies/helixnebulacapital.jpg"
+import exadel from "public/images/companies/exadel.png"
+import tazetech from "public/images/companies/tazetech.png"
+import exactpro from "public/images/companies/exactpro.png"
+import smartweb from "public/images/companies/smartweb.png"
+import twino from "public/images/companies/twino.png"
+import edutechgeo from "public/images/companies/edutechgeo.png"
+import { ValidCompanyNames } from "types"
+
+class CompanyImageData {
+    names: string[];
+    image: StaticImageData;
+
+    constructor(names: string[], image: StaticImageData) {
+        this.names = names;
+        this.image = image;
+    }
+}
+
+const companyImageNames = {
+    vabako: new CompanyImageData(["ვაბაკო"], vabako),
+    scandiweb: new CompanyImageData(["Scandiweb"], scandiweb),
+    neollet: new CompanyImageData(["ნეოლეთი"], neollet),
+    awarmoesakartveloshi: new CompanyImageData(["აწარმოე საქართველოში"], awarmoesakartveloshi),
+    unipay: new CompanyImageData(["unipay", "უნიფეი"], unipay),
+    gulf: new CompanyImageData(["Gulf Georgia"], gulf),
+    appidea: new CompanyImageData(["Appidea.com", "appidea"], appidea),
+    "63bits": new CompanyImageData(["63BITS"], bits63),
+    georgiatechtbilisi: new CompanyImageData(["Georgia Tech Tbilisi"], georgiatechtbilisi),
+    vendoo: new CompanyImageData(["Vendoo"], vendoo),
+    lemondo: new CompanyImageData(["Lemondo"], lemondo),
+    sakartvelosmelioracia: new CompanyImageData(["საქართველოს მელიორაცია"], sakartvelosmelioracia),
+    dexfinity: new CompanyImageData(["Dexfinity"], dexfinity),
+    irao: new CompanyImageData(["IRAO"], irao),
+    nlycdev: new CompanyImageData(["nlyc.dev"], nlycdev),
+    linton: new CompanyImageData(["Linton Group"], linton),
+    dinespace: new CompanyImageData(["Dinespace"], dinespace),
+    coachnow: new CompanyImageData(["CoachNow"], coachnow),
+    helixnebulacapital: new CompanyImageData(["Helix Nebula Capital"], helixnebulacapital),
+    exadel: new CompanyImageData(["Exadel Georgia", "Exadel"], exadel),
+    tazetech: new CompanyImageData(["TAZE Technologies"], tazetech),
+    exactpro: new CompanyImageData(["Exactpro"], exactpro),
+    smartweb: new CompanyImageData(["smartweb"], smartweb),
+    twino: new CompanyImageData(["ტვინო"], twino),
+    edutechgeo: new CompanyImageData(["საგანმანათლებლო ტექნოლოგიები საქართველო"], edutechgeo),
+};
+
+export const companyImages2: Record<ValidCompanyNames, StaticImageData> = {
+    ვაბაკო: vabako,
+    Scandiweb: scandiweb,
+    Neollet: neollet,
+    "აწარმოე საქართველოში": awarmoesakartveloshi,
+    UniPAY: unipay,
+    Gulf: gulf,
+    Appidea: appidea,
+    "63BITS": bits63,
+    "Georgia Tech Tbilisi": georgiatechtbilisi,
+    Vendoo: vendoo,
+    Lemondo: lemondo,
+    "საქართველოს მელიორაცია": sakartvelosmelioracia,
+    Dexfinity: dexfinity,
+    IRAO: irao,
+    NLYC: nlycdev,
+    "Linton Group": linton,
+    Dinespace: dinespace,
+    CoachNow: coachnow,
+    "Helix Nebula Capital": helixnebulacapital,
+    Exadel: exadel,
+    "TAZE Technologies": tazetech,
+    Exactpro: exactpro,
+    "Smart Web": smartweb,
+    Twino: twino,
+    "საგანმანათლებლო ტექნოლოგიები საქართველო": edutechgeo,
+}
+
+
+
+export default companyImageNames;
