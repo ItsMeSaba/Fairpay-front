@@ -9,28 +9,33 @@ import { getCompanyImage } from "functions/companies/images/getCompanyImage";
 
 interface Args {
     companies: Companies
+    openSalaryPopup: () => void
+    openReviewPopup: () => void
 }
 
 export function DisplayCompanies(args: Args) {
-    const { companies } = args;
+    const { companies, openReviewPopup, openSalaryPopup } = args;
 
     return (
         <div className={style.companies}>
             {
                 companies.map((company, index) => {
-                    return <DisplayCompany company={company} key={index} />
+                    return <DisplayCompany company={company} key={index} openReviewPopup={openReviewPopup} openSalaryPopup={openSalaryPopup} />
                 })
             }
         </div>
     )
 }
 
-interface displayCompany {
+interface DisplayCompany {
     company: Company
+    openSalaryPopup: () => void
+    openReviewPopup: () => void
 }
 
-function DisplayCompany(args: displayCompany) {
+function DisplayCompany(args: DisplayCompany) {
     const { name } = args.company;
+    const { openSalaryPopup, openReviewPopup } = args;
     // const imageImport = require(`public/images/companies/${name}`).default; 
     const image = getCompanyImage(name as ValidCompanyNames);
 
@@ -65,9 +70,11 @@ function DisplayCompany(args: displayCompany) {
 
                 
                 <div className={style.buttons}>
-                    <Button text={"ანაზღაურება"} />
+                    {/* <Button text={"ანაზღაურება"} /> */}
 
-                    <Button text={"შეფასება"} />
+                    {/* <Button text={"შეფასება"} /> */}
+                    <button className={style.button} onClick={openSalaryPopup}>ანაზღაურება</button>
+                    <button className={style.button} onClick={openReviewPopup}>შეფასება</button>
                 </div>
             </div>
         </div>

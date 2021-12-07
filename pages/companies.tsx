@@ -6,6 +6,9 @@ import { DisplayCompanies } from "components/displayCompanies";
 import blob from "public/images/blob1.svg"
 import axios from "axios";
 import { Companies } from "types";
+import SubmitSalary from "components/popups/submitSalary";
+import SubmitReview from "components/popups/submitReview";
+import { useState } from "react";
 
 
 interface Args {
@@ -13,15 +16,17 @@ interface Args {
 }
 
 export default function CompaniesPage({ companies }: Args) {
+    const [salaryPopup, setSalaryPopup] = useState(true);
+    const [reviewPopup, setReviewPopup] = useState(false);
+
     return (
         <div className={style.page}>
             <Header />
 
-            {/* <div className={style.blob}>
-                <Image src={blob} alt="blob"></Image>
-            </div> */}
+            { salaryPopup && <SubmitSalary close={() => setSalaryPopup(false)} /> }
+            { reviewPopup && <SubmitReview close={() => setReviewPopup(false)} /> }
 
-            <DisplayCompanies companies={companies} />
+            <DisplayCompanies companies={companies} openSalaryPopup={() => setSalaryPopup(true)} openReviewPopup={() => setReviewPopup(true)} />
         </div>
     )
 }

@@ -1,0 +1,137 @@
+
+@mixin flexCenter()
+    display: flex
+    align-items: center
+    justify-content: center
+
+
+.submitReview
+    @include flexCenter()
+    position: fixed
+    overflow: hidden
+    left: 0
+    top: 0 
+    width: 100vw
+    height: 100vh
+    background-color: rgb(0, 0, 0, .8)
+    z-index: 100
+
+    .container
+        border-radius: 5px
+        // padding: 0 4rem
+        max-width: 1300px
+        // padding: 2rem 0
+        width: 90vw
+        background-color: white
+        box-shadow: 0 0 25px black
+        // display: flex
+        display: grid
+        // padding: 2rem 0
+        grid-template-columns: 1fr 1.5fr
+        // height: 570px
+        max-height: 700px
+        height: 95vh
+
+        
+        .left
+            // padding: 1rem 2rem
+            display: flex
+            align-items: center
+            justify-content: center
+            // background-color: rgb(235, 247, 66)
+            background-color: rgb(218, 203, 77)
+            position: relative
+            border-radius: 5px 0 0 5px 
+
+            .avatar
+                position: absolute
+                bottom: 0
+                left: 1rem
+                width: 75%
+                left: 12%
+                // padding: 0 0 0 1rem
+                display: flex
+                // height: 90%
+
+                img
+                    // position: absolute
+                    // bottom: 0
+
+        .right
+            padding: 2rem 2rem
+            overflow-y: scroll 
+
+            &::-webkit-scrollbar
+                width: 10px
+
+            &::-webkit-scrollbar-track 
+                background: rgb(255, 255, 255)
+            
+            &::-webkit-scrollbar-thumb
+                background: rgb(150, 150, 150)  
+                border-radius: 1000px  
+
+            input
+                padding: 0rem .6rem
+                margin: .5rem 0
+                height: 2.5rem
+                font-size: 1rem
+                border: none
+                // border: solid 1px rgb(190, 190, 190)
+                // background-color: rgb(220, 220, 220, .1)
+                background-color: #fafafa
+                color: #535347
+                // font-weight: 
+                box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 30%)
+                // box-shadow: inset 0 0 3px rgb(0, 0, 0, .5)
+                outline: none
+                border-radius: 5px
+                letter-spacing: .5px
+
+            .rating
+                display: flex
+                align-items: center
+                // justify-content: space-around
+
+                .ratingNumber
+                    font-size: 1.2rem
+                    padding: 0 0 5px 1rem
+
+            .reviewText
+                margin: 1rem 0
+                
+                textarea
+                    padding: 1rem
+                    outline: none
+                    resize: none
+                    // font-family: 'Roboto', sans-serif 
+                    font-family: markGeoCaps 
+                    letter-spacing: 1px
+                    border-radius: 5px
+                    border: solid 1px rgb(0, 0, 0, .2)
+                    box-shadow: inset 0px 0px 6px 0px rgb(0 0 0 / 20%)
+
+                    &::-webkit-scrollbar
+                        width: 10px
+ 
+                    &::-webkit-scrollbar-track 
+                        background: rgb(255, 255, 255)
+                    
+                    &::-webkit-scrollbar-thumb
+                        background: rgb(230, 230, 230)
+            
+            .submit
+                display: block
+                padding: .8rem 4rem
+                // margin: auto
+                margin: 2rem auto 1rem auto
+                background-color: #4272d7
+                // background-color: #4272d7
+                color: white
+                border: none
+                border-radius: 10px
+                letter-spacing: .5px
+                font-size: 1rem
+                cursor: pointer
+                        
+                    

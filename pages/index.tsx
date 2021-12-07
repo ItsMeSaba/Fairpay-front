@@ -31,6 +31,8 @@ import laptop2 from "../public/images/laptop2.png"
 import browser from "../public/images/browser.png"
 import woman3 from "../public/images/woman3.png"
 import blob13 from "../public/images/blob13.svg"
+import autoCompleteTechnology from "functions/autocomplete/autoCompleteTechnology";
+import autoCompletePosition from "functions/autocomplete/autoCompletePosition";
 
 interface Args {
 	vacancies: any[]
@@ -39,6 +41,16 @@ interface Args {
 export default function Index(args: Args) {
 	// const { vacancies } = args;
 	const vacancies = dummyVacanies;
+
+	console.log(autoCompleteTechnology("J"))
+	console.log(autoCompleteTechnology("G"))
+	console.log(autoCompleteTechnology("c"))
+	console.log(autoCompleteTechnology("R"))
+	
+	console.log(autoCompletePosition("F"))
+	console.log(autoCompletePosition("B"))
+	console.log(autoCompletePosition("F"))
+	
 
  	return (
 		<div className={style.indexPage}>
