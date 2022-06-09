@@ -1,0 +1,58 @@
+.search
+    display: flex
+    column-gap: 5px
+    align-items: center
+    width: 280px
+    margin: auto
+    background-color: rgb(80, 80, 80, .1)
+    border-radius: 5px
+    padding: .4rem .6rem
+    position: relative
+
+    .searchIcon
+        display: flex
+        align-items: center
+
+    .inputContainer
+        display: flex
+        align-items: center
+
+        input
+            background-color: transparent
+            border: none        
+            outline: none
+    
+    datalist
+        padding: .7rem 0
+        position: absolute
+        // padding: 0 10px 0 15px
+        left: 0
+        top: 50px
+        z-index: 5
+        background-color: white
+        border-radius: 5px
+        box-shadow: 0 0 5px rgb(0, 0, 0, .6)
+        width: 100%
+
+        .searchItem
+            cursor: pointer
+            display: grid
+            grid-template-columns: 1fr 3fr
+            align-items: center
+            // flex-direction: 
+            padding: .6rem 1rem
+            // width: 100%
+
+            p
+                padding: 0 0 0 .5rem
+                // font-size: .9rem
+            // a
+            //     width: 100%
+
+            .companyImage
+                border-radius: 7    px
+                overflow: hidden
+                width: 50px
+                height: 50px
+
+    

@@ -3,41 +3,49 @@
     align-items: center
     justify-content: center
     
+// General input style
 @mixin input()
-    // padding: .7rem .6rem
     padding: 0rem .6rem
-    margin: .5rem 0
+    margin: 0
     height: 2.5rem
     font-size: 1rem
     border: none
-    // border: solid 1px rgb(190, 190, 190)
-    // background-color: rgb(220, 220, 220, .1)
     background-color: #fafafa
     color: #535347
-    // font-weight: 
     box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 30%)
-    // box-shadow: inset 0 0 3px rgb(0, 0, 0, .5)
     outline: none
     border-radius: 5px
     letter-spacing: .5px
     
-@mixin seniorityInput($bgColor: initial, $borderRadius: 0 0 0 0, $padding: 0) 
+// Select input style
+@mixin selectInput($bgColor: initial, $borderRadius: 0 0 0 0, $padding: 0) 
     background-color: $bgColor
     border: none
     box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 30%)
     outline: none
-    // border-radius: 0 5px 5px 0
     border-radius: $borderRadius
-    // font-weight: bold
     font-size: .9rem
     font-family: 'Roboto', sans-serif
     color: rgb(100, 100, 100)
     height: 2.5rem
-    // height: 0.5rem
-    // padding: .6rem 1rem
     padding: $padding
 
+// Div containing label and input
+@mixin inputBlock()
+    display: flex
+    flex-direction: column
+    width: 240px
+    justify-content: center
+    // align-items: center
+    margin: .8rem auto    
 
+    label
+        font-size: .9rem
+        margin: 0 0 .5rem 0
+
+    input
+        @include input()
+    
 
 
 .submitSalary
@@ -53,50 +61,34 @@
 
     .container
         border-radius: 5px
-        // padding: 0 4rem
         max-width: 1100px
-        // padding: 2rem 0
         width: 90vw
         background-color: white
         box-shadow: 0 0 25px black
-        // display: flex
         display: grid
-        // padding: 2rem 0
         grid-template-columns: 1fr 1.5fr
         height: 500px
+        padding: 0
 
-        .left
-            // padding: 1rem 2rem
-            display: flex
-            align-items: center
-            justify-content: center
-            // background-color: rgb(238, 255, 0)
-            // background-color: rgb(0, 225, 255)
+        .avatar
             background-color: rgb(48, 238, 143)
-            position: relative
+            display: flex
+            align-items: end
+            justify-content: center
             border-radius: 5px 0 0 5px 
-            // padding: 5rem 0
+            padding: 0 1rem
 
-            .avatar
-                position: absolute
-                bottom: 0
-                left: 1rem
-                width: 80%
-                left: 5%
-                // padding: 0 0 0 1rem
-                display: flex
-                // height: 90%
+            img
+                min-width: 250px
+                width: 350px
 
-                img
-                    // position: absolute
-                    // bottom: 0
-
-        .right
+        // .inputs
+        .inputsDiv
             padding: 1rem 3rem
-            // display: flex
-            // align-items: center
-            // justify-content: center
-            // flex-direction: column
+
+            .error
+                padding: 1.3rem 0 0 1.2rem
+                color: #ff000d
 
             h1
                 text-align: center
@@ -115,47 +107,58 @@
                 letter-spacing: .5px
                 font-size: 1rem
                 cursor: pointer
-        
+
             .fields
                 display: grid
                 grid-template-columns: 1fr 1fr
                 justify-content: space-around
-                padding: 1rem 0 0 0
+                // padding: 1rem 0 0 0
                 width: 100%
-        
-               
-                .inputBlock
-                    display: flex
-                    flex-direction: column
-                    width: 240px
-                    justify-content: center
-                    // align-items: center
-                    margin: .8rem auto                
+                
 
-                    label
-                        font-size: .9rem
+                .seniorityInputBlock         
+                    @include inputBlock()
 
-                    input
-                        @include input()
+                    select
+                        @include selectInput($bgColor: #fafafa, $borderRadius: 5px, $padding: .6rem 1rem)
+                
                 
                 .salaryInputBlock
+                    @include inputBlock()
 
-                    .inputs
+                    .salaryInputWithCurrency
                         display: flex
                         align-items: center
-                        height: 100%
-                        display: block-inline
+                        // height: 100%
+                        // display: block-inline
 
                         input
                             border-radius: 5px 0 0 5px
 
                         select
-                            @include seniorityInput($borderRadius: 0 5px 5px 0, $padding: 0 .2rem)
-
-                
-                .seniorityInputBlock         
+                            @include selectInput($borderRadius: 0 5px 5px 0, $padding: 0 .2rem)
+                            
 
 
-                    select
-                        @include seniorityInput($bgColor: #fafafa, $borderRadius: 5px, $padding: .6rem 1rem)
 
+@media screen and (max-width: 768px)
+    .submitSalary
+        .container
+            grid-template-columns: 1fr
+            height: auto
+            max-height: 100vh
+            overflow: auto
+            // padding: 2rem 1rem
+
+            .avatar
+                // display: none
+                order: 2
+                // padding: 0 20%
+                padding: 1rem .5rem 0 .5rem
+                img
+                    width: 200px
+
+
+            .inputsDiv
+                order: 1
+                padding: 2rem 1.5rem

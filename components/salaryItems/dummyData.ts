@@ -3,7 +3,7 @@ import { Vacancies } from "types";
 
 const dummyData: Vacancies  = [
     {
-        company: "საქართველოს ბანკი",
+        company: "UniPAY",
         position: "ვებ დეველოპერი",
         salary: "2500",
         currency: "usd",
@@ -13,7 +13,7 @@ const dummyData: Vacancies  = [
         technologies: ["React", "NodeJs", "Vue", "Java"]
     },
     {
-        company: "საქართველოს ბანკი",
+        company: "UniPAY",
         position: "ვებ დეველოპერი",
         salary: "4000",
         currency: "gel",
@@ -23,7 +23,7 @@ const dummyData: Vacancies  = [
         technologies: ["React", "NodeJs", "Vue"]
     },
     {
-        company: "საქართველოს ბანკი",
+        company: "UniPAY",
         position: "ვებ დეველოპერი",
         salary: "3000",
         currency: "eur",
@@ -33,7 +33,7 @@ const dummyData: Vacancies  = [
         technologies: ["React", "NodeJs", "Vue"]
     },
     {
-        company: "საქართველოს ბანკი",
+        company: "UniPAY",
         position: "ვებ დეველოპერი",
         salary: "2800",
         currency: "gel",
@@ -43,7 +43,7 @@ const dummyData: Vacancies  = [
         technologies: ["React", "NodeJs", "Vue"]
     },
     {
-        company: "საქართველოს ბანკი",
+        company: "UniPAY",
         position: "ვებ დეველოპერი",
         salary: "2800",
         currency: "gel",
@@ -53,7 +53,7 @@ const dummyData: Vacancies  = [
         technologies: ["React", "NodeJs", "Vue"]
     },
     {
-        company: "საქართველოს ბანკი",
+        company: "UniPAY",
         position: "ვებ დეველოპერი",
         salary: "2800",
         currency: "gel",
@@ -63,7 +63,7 @@ const dummyData: Vacancies  = [
         technologies: ["React", "NodeJs", "Vue", "Typescript", "Typescript", "Typescript"]
     },
     {
-        company: "საქართველოს ბანკი",
+        company: "UniPAY",
         position: "ვებ დეველოპერი",
         salary: "2800",
         currency: "gel",

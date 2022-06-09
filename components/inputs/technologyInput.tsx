@@ -28,21 +28,19 @@ export default function TechnologyInput(args: Args) {
         setInputValue("");
     }
 
-    const shouldDisplayList = inputValue.length > 0 && isFocused
- 
-    console.log("shouldDisplayList", shouldDisplayList, inputValue.length, isFocused);
-    
+    const displayList = inputValue.length > 0 && isFocused  ? "block" : "none";
+
     return (
         <div className={style.technologyInputContainer}>
             <label htmlFor="companyInput">ტექნოლოგიები</label>
 
-            <div id="companyInput" className={`${style.listBlock}`} onClick={() => inputRef.current?.focus()}>
-                { state.map(technology => <span key={technology} onClick={() => setState(technologies => technologies.filter(tech => tech !== technology))}>{technology}</span>) }
+            <div id="companyInput" className={style.technologyList} onClick={() => inputRef.current?.focus()}>
+                { state.map(technology => <span className={style.technologyPill} key={technology} onClick={() => setState(technologies => technologies.filter(tech => tech !== technology))}>{technology}</span>) }
 
                 <div className={style.inputBlock}>
                     <input ref={inputRef} autoComplete="off" value={inputValue} id="companyInput" list="companyInput" onChange={handleInput} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} />
 
-                    <datalist id="companyInput" style={{ display: shouldDisplayList ? "block" : "none" }}>
+                    <datalist id="companyInput" style={{ display: displayList }}>
                         { technologies.map(technology => !state.includes(technology) ? <option onMouseDownCapture={() => handleAddingTechnology(technology)} data-title={technology} key={technology} style={{ padding: ".5rem 1rem" }}>{ technology }</option> : null) }
                     </datalist>
                 </div>

@@ -1,0 +1,45 @@
+
+.authPopup
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background-color: rgb(0, 0, 0, .8)
+    z-index: 10
+    display: flex
+    align-items: center
+    justify-content: center
+
+    .container
+        width: 90%
+        max-width: 800px
+        background-color: white
+        padding: 1rem 2rem
+
+        .logOut
+            padding: .75rem 1.2rem
+            border-radius: 10px
+            border: none
+            cursor: pointer
+            color: white
+            background: rgb(29, 89, 255)
+            font-family: markGeoCaps
+
+        .buttons
+            display: flex
+            align-items: center
+            justify-content: space-between
+                
+            div
+                font-size: 1.3rem
+
+@media (max-width: 765px)
+    .authPopup
+        
+        .container
+
+            .buttons
+
+                // div
+                //     font-size: .2rem

@@ -12,11 +12,18 @@ $secondContainerColor: white
 	position: relative
 
 	.left
-		position: relative
+		// position: relative
 		display: flex
 		height: 100%
 		text-align: center
 		align-items: center
+	
+	// .right
+	// 	position: relative
+	// 	display: flex
+	// 	height: 100%
+	// 	text-align: center
+	// 	align-items: center
 
 
 @mixin wave($color: white)
@@ -65,35 +72,24 @@ $secondContainerColor: white
 		// z-index: 1
 
 		.avatar
-			@include manAvatar()
-			// position: absolute
-			// bottom: 0
-			// transform-origin: bottom 
-			transform: translateY(100%) scale(.85)
-			animation: animateMan 2.5s forwards ease-in-out
-			animation-delay: .5s
+			// @include manAvatar()
+			// transform: translateY(100%) scale(.85)
+			// animation: animateMan 2.5s forwards ease-in-out
+			// animation-delay: .5s
+			display: flex
+			width: 100%
+			height: 100%
+			align-items: end
+			justify-content: center
+			
+			img
+				width: 650px
 
 		.blobOne
-			// width: 30rem
-			// top: 0rem
-			// left: 0rem
-			// position: absolute
-			// opacity: .2
-			// transform-origin: top left
-			// transform: scale(.8)
-			// // transform: rotate(50deg)
 			@include blob($left: 0, $top: -10%, $scale: .9)
 
 		.blobTwo
 			@include blob($right: 0, $bottom: 0)
-			// width: 30rem
-			// bottom: 0rem
-			// right: 0rem
-			// position: absolute
-			// opacity: .2
-			// transform-origin: bottom right
-			// transform: scale(1.5)	
-			// // transform: rotate(50deg)
 
 		.waveOne
 			@include wave()
@@ -132,21 +128,29 @@ $secondContainerColor: white
 		color: #2f3640
 		// padding: 5REM 
 
-		.left	
-			position: relative
-			display: flex
-			justify-content: center
+		// .left	
+		// 	position: relative
+		// 	display: flex
+		// 	justify-content: center
 
-			.avatar
-				@include manAvatar()
-				// margin: auto
-				// position: absolute
-				// bottom: 0
-				// left: 0
-				// width: 100%
-				// transform-origin: bottom 
-				// transform: scale(1)
-				padding: 0 0 0 7rem
+		.avatar
+			// @include manAvatar()
+			// // margin: auto
+			// // position: absolute
+			// // bottom: 0
+			// // left: 0
+			// // width: 100%
+			// // transform-origin: bottom 
+			// // transform: scale(1)
+			// padding: 0 0 0 7rem
+			display: flex
+			width: 100%
+			height: 100%
+			align-items: end
+			justify-content: center
+			
+			img
+				width: 650px
 
 		.right
 
@@ -179,7 +183,7 @@ $secondContainerColor: white
 				position: relative
 				display: block
 				width: calc(100% + 0px)
-				height: 155px
+				height: 105px
 				
 				.shapeFill 
 					fill: rgb(48, 90, 204)
@@ -244,20 +248,46 @@ $secondContainerColor: white
 
 
 @media only screen and (max-width: 769px)
+	@keyframes animateMan
+		from
+			transform: translateY(100%)
+
+		to
+			transform: translateY(0) scale(.95)
+
+
 	.indexPage
 
-		.container
+		.containerOne, .containerTwo, .containerThree
 			grid-template-columns: 1fr
-			height: 80vh
+			grid-template-rows: 1fr 1.5fr
 
-			h1
-				// font-size: 3rem
-				padding: 0 0 10rem 0
-
-			.man
-				transform: scale(.95)
-
-			.wave
+			.waveOne
+				// display: none
 
 				svg
-					width: calc(100% + 240px)
+					width: calc(100% + 143.3px)
+					height: 87px
+
+		.containerOne
+
+			// .right
+			.avatar
+				display: flex
+
+
+		.containerTwo
+			.left
+				order: 2
+
+			.avatar
+				display: flex
+				padding: 2rem 1rem 0 2rem
+				order: 1
+
+			.waveTwo
+				// display: none
+
+				svg
+					width: calc(100% + 143.3px)
+					height: 87px

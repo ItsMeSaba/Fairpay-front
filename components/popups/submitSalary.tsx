@@ -9,19 +9,27 @@ import CompanyInput from "components/inputs/companyInput"
 import { Dispatch, SetStateAction, useState } from "react"
 import TechnologyInput from "components/inputs/technologyInput"
 import axios from "axios"
+import { SubmitSalarySchema } from "joiSchemas"
+import { SalaryInput } from "components/inputs/salaryInput"
+import { SeniorityInput } from "components/inputs/seniorityInput"
+import { useSession } from "next-auth/react"
+import to from "await-to-js"
 
 interface Args {
-    close: () => void
+    close: () => void,
+    presetCompany: string | null
 }
 
 export default function SubmitSalary(args: Args) {
-    const { close } = args;
+    const { close, presetCompany } = args;
     const [position, setPosition] = useState("");
-    const [company, setCompany] = useState("");
+    const [company, setCompany] = useState(presetCompany ?? "");
     const [technologies, setTechnologies] = useState<string[]>([]);
     const [seniority, setSeniority] = useState("");
-    const [salary, setSalary] = useState(0);
-    const [currency, setCurrency] = useState(0);
+    const [salary, setSalary] = useState("");
+    const [currency, setCurrency] = useState("gel");
+    const [error, setError] = useState("");
+    const { data: userData } = useSession();
 
     function handleClosing(e: any) {
         if(e.target !== e.currentTarget) return;
@@ -30,130 +38,57 @@ export default function SubmitSalary(args: Args) {
     }
 
     async function upload() {
-        await axios.post("http://localhost:5000/api/userVacancy", {
+        if (!userData?.user.userId) return setError("You must be logged in to submit a review");
+
+        const dataToUpload = {
             technologies,
             company,
             position,
             seniority,
             salary,
-        })
+            currency,
+            userId: userData?.user.userId,
+        }
+        
+        const { error: validationError, value } = SubmitSalarySchema.validate(dataToUpload);
+
+        if (validationError) return setError(validationError.message);
+
+        const [error, response] = await to(axios.post("http://localhost:7000/api/vacancies", value));
+
+        if (error) return setError(error.response.data.message);
 
         close();
-    }
+    }   
 
     return (
         <div className={style.submitSalary} onClick={handleClosing}>
             <div className={style.container}>
                     {/* <h1>ანაზღაურების დამატება</h1> */}
 
-                    <div className={style.left}>
-                        <div className={style.avatar}>
-                            <Image src={moneyMan3} quality={100} alt="money" />
-                        </div> 
-                    </div>
+                    <div className={style.avatar}>
+                        <Image src={moneyMan3} quality={100} alt="money" />
+                    </div> 
 
 
-                    <div className={style.right}>
+                    <div className={style.inputsDiv}>
                         <div className={style.fields}>
-                            {/* <Input name="პოზიცია" />
-                            <Input name="კომპანია" /> */}
-                            <PositionInput displayLabel={true} state={position} setState={setPosition} customStyle={{ padding: "0 1.3rem" }}/>
+                            <CompanyInput displayLabel state={company} setState={setCompany} />
 
-                            <CompanyInput state={company} setState={setCompany} customStyle={{ padding: "0 1.3rem" }} />
+                            <PositionInput displayLabel state={position} setState={setPosition} />
 
                             <SeniorityInput setSeniority={setSeniority} />
-                            {/* <Input name="გამოცდილება" /> */}
                             
-                            {/* <Input name="ანაზღაურება" type="number" /> */}
-                            {/* <SalaryInput /> */}
-                            {/* <div className={style.salaryInput}>
-                                
-                                <select name="cars" id="cars">
-                                    <option value="gel">₾</option>
-                                    <option value="usd">$</option>
-                                    <option value="eur">€</option>
-                                </select>
-                            </div> */}
-                            <SalaryInput />
+                            <SalaryInput salary={salary} setSalary={setSalary} setCurrency={setCurrency} />
 
-                            
                             <TechnologyInput state={technologies} setState={setTechnologies} />
                         </div>
 
-                        {/* <Submit /> */}
+                        { error && <h5 className={style.error}>{ error }</h5> }
                         
                         <button className={style.submit} onClick={upload}>დამატება</button>
                     </div>
                 </div>
         </div>
-    )
-}
-
-interface InputArgs {
-    name: string
-    type?: "text" | "number"
-}
-
-// function Input(args: InputArgs) {
-//     const { name, type } = args;
-
-//     return (
-//         // <div className={style.inputBlock}>
-//         //     <label htmlFor="input">{ name }</label>
-            
-//         //     <input type={type ?? "text"} id="input"/>
-//         // </div>
-//         <PositionInput />
-//     )
-// }
-
-
-function SalaryInput() {
-    return (
-        <div className={`${style.inputBlock} ${style.salaryInputBlock}`}>
-            <label htmlFor="input">ანაზღაურება</label>
-            
-            <div className={style.inputs}>
-                <input autoComplete="off" type="number" id="input"/>
-
-                <select name="cars" id="cars">
-                    <option value="gel">₾</option>
-                    <option value="usd">$</option>
-                    <option value="eur">€</option>
-                </select>
-            </div>
-        </div>
-    )
-}
-
-interface SeniorityInputArgs { 
-    setSeniority: Dispatch<SetStateAction<string>> 
-}
-
-function SeniorityInput(args: SeniorityInputArgs) {
-    const { setSeniority } = args;
-
-    return (
-        // <div className={`${style.inputBlock} ${style.seniorityInputBlock}`}>
-        <div className={`${style.inputBlock} ${style.seniorityInputBlock}`}>
-        {/* // <div className={`inputBlock ${style.seniorityInputBlock}`}> */}
-            <label htmlFor="input">გამოცდილება</label>
-            
-            <div className={style.inputs}>                
-                <select onChange={e => setSeniority(e.target.value)} className={`${style.inputBlock}`} name="cars" id="cars">
-                    <option value="intern">Intern</option>
-                    <option value="junior">Junior</option>
-                    <option value="middle">Middle</option>
-                    <option value="senior">Senior</option>
-                    <option value="lead">Lead</option>
-                </select>
-            </div>
-        </div>
-    )
-}
-
-function Submit() {
-    return (
-        <button className={style.submit}>დამატება</button>
     )
 }

@@ -6,21 +6,25 @@ import WorkRoundedIcon from '@mui/icons-material/WorkRounded';
 import Button from "./buttons/button";
 import { Companies, Company, ValidCompanyNames } from "types";
 import { getCompanyImage } from "functions/companies/images/getCompanyImage";
+import Link from 'next/link'
+import { MouseEvent, useContext } from "react";
+import { useSession } from "next-auth/react";
+import { GlobalContext } from "context";
 
-interface Args {
+interface DisplayCompanies {
     companies: Companies
-    openSalaryPopup: () => void
-    openReviewPopup: () => void
+    openSalaryPopup: (company: string) => void
+    openReviewPopup: (company: string) => void
 }
 
-export function DisplayCompanies(args: Args) {
+export function DisplayCompanies(args: DisplayCompanies) {
     const { companies, openReviewPopup, openSalaryPopup } = args;
 
     return (
         <div className={style.companies}>
             {
                 companies.map((company, index) => {
-                    return <DisplayCompany company={company} key={index} openReviewPopup={openReviewPopup} openSalaryPopup={openSalaryPopup} />
+                    return <DisplayCompany company={company} key={index} openReviewPopup={() => openReviewPopup(company.name)} openSalaryPopup={() => openSalaryPopup(company.name)} />
                 })
             }
         </div>
@@ -34,49 +38,77 @@ interface DisplayCompany {
 }
 
 function DisplayCompany(args: DisplayCompany) {
-    const { name } = args.company;
+    const { name, urlName, _id, reviewCount, vacancyCount, sumOfRatings } = args.company;
     const { openSalaryPopup, openReviewPopup } = args;
-    // const imageImport = require(`public/images/companies/${name}`).default; 
     const image = getCompanyImage(name as ValidCompanyNames);
+    const { openAuthPopup } = useContext(GlobalContext);
+    const { status } = useSession();
+
+    function clickWithoutPropogation(e: MouseEvent, callback: ((...args: any[]) => any)) {
+        callback();
+        e.stopPropagation();
+    }
+    
+
+    const reviewsExist = sumOfRatings > 0 && reviewCount > 0;
+    const calculatedReview = reviewsExist ? sumOfRatings/reviewCount/20 : 0;
+
 
     return (
-        <div className={style.company}>
-            <div className={style.top}>
-                <div className={style.companyImage}>
-                    <Image quality={100} src={image} alt={name} />
+        <Link href={`/companies/${urlName}`}>
+            <div className={style.company}>
+                <div className={style.top}>
+                    <div className={style.companyImage}>
+                        <Image quality={50} src={image} alt={name} />
+                    </div>
+                </div>
+
+                <div className={style.bottom}>
+                    <h2 className={style.companyName}>{ name }</h2>
+
+                    <div className={style.companyData}>
+                        <span>
+                            <div className={style.vacancyIcon}>
+                                <WorkRoundedIcon />
+                            </div>
+
+                            { vacancyCount } ვაკანსია
+                        </span>
+
+                        <span>
+                            <div className={style.startIcon}>
+                                <StarRoundedIcon /> 
+                            </div>
+
+                            { calculatedReview.toFixed(1) }/5 ({ reviewCount })
+                        </span>
+                    </div>
+
+                    
+                    <div className={style.buttons}>
+                        {/* <Button text={"ანაზღაურება"} /> */}
+
+                        {/* <Button text={"შეფასება"} /> */}
+                        <button 
+                            style={{ transform: "translate('-100%')" }} 
+                            title="ანაზღაურების დამატება" 
+                            className={style.button} 
+                            onClick={e => clickWithoutPropogation(e, status !== "authenticated" ? openAuthPopup : openSalaryPopup)}
+                        >
+                            ანაზღაურება
+                        </button>
+
+                        <button 
+                            style={{ transform: "translate('-100%')" }} 
+                            title="შეფასების დამატება" 
+                            className={style.button} 
+                            onClick={e => clickWithoutPropogation(e, status !== "authenticated" ?  openAuthPopup : openReviewPopup)}
+                        >
+                            შეფასება
+                        </button>
+                    </div>
                 </div>
             </div>
-
-            <div className={style.bottom}>
-                <h2 className={style.companyName}>{ name }</h2>
-
-                <div className={style.companyData}>
-                    <span>
-                        <div className={style.vacancyIcon}>
-                            <WorkRoundedIcon />
-                        </div>
-
-                        36 ვაკანსია
-                    </span>
-
-                    <span>
-                        <div className={style.startIcon}>
-                            <StarRoundedIcon /> 
-                        </div>
-
-                        4.5/5
-                    </span>
-                </div>
-
-                
-                <div className={style.buttons}>
-                    {/* <Button text={"ანაზღაურება"} /> */}
-
-                    {/* <Button text={"შეფასება"} /> */}
-                    <button className={style.button} onClick={openSalaryPopup}>ანაზღაურება</button>
-                    <button className={style.button} onClick={openReviewPopup}>შეფასება</button>
-                </div>
-            </div>
-        </div>
+        </Link>
     );
 }

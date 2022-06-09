@@ -15,24 +15,15 @@ import blob2 from "../public/images/blob7.png"
 import axios from "axios";
 import { Vacancies } from "types";
 import { dummyVacanies } from "data/dummyVacancies";
-import workPlace from "../public/images/workPlace.png"
-import review from "../public/images/review.png"
-import workMan from "../public/images/workMan.png"
-import workMan2 from "../public/images/workMan2.png"
-import woman from "../public/images/woman.png"
-import woman2 from "../public/images/woman2.png"
-import man2 from "../public/images/man2.png"
-import man3 from "../public/images/man3.png"
-import man4 from "../public/images/man4.png"
-import man4test from "../public/images/man4test.png"
-import waveOne from "../public/images/waveOne.svg"
-import laptop from "../public/images/laptop.png"
-import laptop2 from "../public/images/laptop2.png"
-import browser from "../public/images/browser.png"
+import man4test from "../public/images/man4test2.png"
 import woman3 from "../public/images/woman3.png"
 import blob13 from "../public/images/blob13.svg"
 import autoCompleteTechnology from "functions/autocomplete/autoCompleteTechnology";
 import autoCompletePosition from "functions/autocomplete/autoCompletePosition";
+import { signIn, signOut, useSession } from "next-auth/react"
+import AuthPopup from "components/popups/authPopup";
+import { useState } from "react";
+
 
 interface Args {
 	vacancies: any[]
@@ -40,24 +31,17 @@ interface Args {
 
 export default function Index(args: Args) {
 	// const { vacancies } = args;
+	const [displayAuthPopup, setDisplayAuthPopup] = useState(false);
+	const { data: session, status } = useSession()
+
 	const vacancies = dummyVacanies;
 
-	console.log(autoCompleteTechnology("J"))
-	console.log(autoCompleteTechnology("G"))
-	console.log(autoCompleteTechnology("c"))
-	console.log(autoCompleteTechnology("R"))
-	
-	console.log(autoCompletePosition("F"))
-	console.log(autoCompletePosition("B"))
-	console.log(autoCompletePosition("F"))
-	
+	console.log("USER ------->", session?.user, status);
 
  	return (
 		<div className={style.indexPage}>
-			<Header />
-
 			<div className={style.containerOne}>
-				<div className="left">
+				<div className={style.left}>
 					<div className={style.blobOne}>
 						<Image quality="100" src={blob1} alt="blob" />
 					</div>
@@ -69,10 +53,8 @@ export default function Index(args: Args) {
 					<h1>იცოდე შენი<br /><span>ფასი</span></h1>
 				</div>
 
-				<div className="right">
-					<div className={style.avatar}>
-						<Image quality="100" src={bussinesMan} alt="bussinesMan" />
-					</div>
+				<div className={style.avatar}>
+					<Image quality="100" src={bussinesMan} alt="bussinesMan" />
 				</div>
 
 				<div className={style.waveOne}>
@@ -88,18 +70,12 @@ export default function Index(args: Args) {
 				</div> */}
 			</div>
 
-			{/* <div className={style.latestSalaries}>
-				<h1 className={style.header}>უახლესი მონაცემები</h1>
-
-				<SalaryItems vacancies={vacancies} />
-			</div> */}
-
 			<div className={style.containerTwo}>
-				<div className={style.left}>
-					<div className={style.avatar}>
-						<Image quality={100} src={man4test} alt="workPlace" />
-					</div>
+				{/* <div className={style.left}> */}
+				<div className={style.avatar}>
+					<Image quality={100} src={man4test} alt="workPlace" />
 				</div>
+				{/* </div> */}
 
 				<div className={style.right}>
 					<h1>განასხვავე კომპანიები</h1>

@@ -15,7 +15,7 @@ interface Args {
 }
 
 export function SalaryItem(args: Args) {
-    const { company, salary, position, date, currency, technologies } = args.vacancy;
+    const { company, salary, position, date, currency, technologies, seniority } = args.vacancy;
     // const companyImage = getCompanyImagePath(company);
     const companyImage = getCompanyImage(company as ValidCompanyNames);
     // const companyImage = require(`${imagePath}`).default;
@@ -33,12 +33,12 @@ export function SalaryItem(args: Args) {
             <div className={style.center}>
                 <div className="upper">
                     <p>{ company }</p>
-                    <h2>{ position }</h2>
+                    <h2>{ position } { seniority ? `(${seniority})` : "" }</h2>
                     <h5>{ (new Date(date)).toLocaleDateString() }</h5>
                     {/* <h5>{ date?.toLocaleDateString() }</h5> */}
                 </div>
 
-                <br />
+                {/* <br /> */}
                 
                 <div className={style.bottom}>
                     <DisplayTechnologies technologies={technologies} />
@@ -60,7 +60,7 @@ function DisplayTechnologies(args: DisplayTechnologiesArgs) {
     const { technologies } = args;
 
     return (
-        <div className="technologies">
+        <div className={style.technologies}>
             {
                 technologies.map((technology, index) => {
                     return technology.trim().length > 0 ? <span key={index}>{ technology }</span> : false;

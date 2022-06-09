@@ -1,4 +1,4 @@
-import { ObjectId } from "mongoose";
+import mongoose, { ObjectId } from "mongoose";
 
 export interface Vacancy {
     salary: string,
@@ -14,8 +14,23 @@ export interface Vacancy {
 
 export type Vacancies = Vacancy[];
 
+export interface IReview {
+    _id: string,
+    rating: number,
+    positiveReview: string,
+    negativeReview: string,
+    position: string,
+    userReaction?: "like" | "dislike" | null,
+    likeDislikeDifference: number,
+}
+
 export interface Company {
-    name: string
+    _id: mongoose.Types.ObjectId
+    name: string,
+    urlName: string,
+    vacancyCount: number,
+    reviewCount: number,
+    sumOfRatings: number,
 }
 
 export type Companies = Company[];
@@ -52,3 +67,4 @@ export type ValidCompanyNames =
     "Smart Web" |
     "Twino" |
     "საგანმანათლებლო ტექნოლოგიები საქართველო"
+

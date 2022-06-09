@@ -33,33 +33,41 @@
         height: 95vh
 
         
-        .left
-            // padding: 1rem 2rem
-            display: flex
-            align-items: center
-            justify-content: center
+        // .left
+        //     // padding: 1rem 2rem
+        //     display: flex
+        //     align-items: center
+        //     justify-content: center
             // background-color: rgb(235, 247, 66)
+        //     position: relative
+        //     border-radius: 5px 0 0 5px 
+
+        .avatar
+            // position: absolute
+            // bottom: 0
+            // left: 1rem
+            // width: 75%
+            // left: 12%
+            // padding: 0 0 0 1rem
+            display: flex
             background-color: rgb(218, 203, 77)
-            position: relative
-            border-radius: 5px 0 0 5px 
+            align-items: end
+            justify-content: center
+            // height: 90%
 
-            .avatar
-                position: absolute
-                bottom: 0
-                left: 1rem
-                width: 75%
-                left: 12%
-                // padding: 0 0 0 1rem
-                display: flex
-                // height: 90%
-
-                img
-                    // position: absolute
-                    // bottom: 0
+            img
+                // display: block
+                width: 400px
+                // position: absolute
+                // bottom: 0
 
         .right
             padding: 2rem 2rem
             overflow-y: scroll 
+
+            .error
+                padding: 1.3rem 0 0 1.2rem
+                color: #ff000d
 
             &::-webkit-scrollbar
                 width: 10px
@@ -87,6 +95,10 @@
                 outline: none
                 border-radius: 5px
                 letter-spacing: .5px
+
+            .inputsBlock
+                display: flex
+                
 
             .rating
                 display: flex
@@ -135,3 +147,32 @@
                 cursor: pointer
                         
                     
+
+@media screen and (max-width: 768px)
+    .submitReview
+        .container
+            grid-template-columns: 1fr
+            height: auto
+            max-height: 100vh
+            overflow: auto
+            // padding: .5rem 0rem
+
+            textarea
+                width: 100%
+
+            .avatar
+                display: none
+
+            .right
+                padding: 1rem 1.5rem 
+
+                .stars
+                    svg
+                        width: 30px
+
+                .rating
+                    .ratingNumber
+                        padding: 0 0 1px 1rem
+                
+                .inputsBlock
+                    flex-direction: column

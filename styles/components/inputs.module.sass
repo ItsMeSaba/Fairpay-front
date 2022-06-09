@@ -1,70 +1,176 @@
 
-@mixin input()
+@mixin block()
+    display: flex
+    flex-direction: column
+    align-items: left
+    justify-content: center
+    padding: .5rem 0
+    position: relative
+
+// Style for generalt input
+@mixin input($width: 15rem, $borderRadius: 5px)
     // padding: .7rem .6rem
     padding: 0rem .6rem
     margin: .5rem 0
     height: 2.5rem
     font-size: 1rem
     border: none
-    width: 15rem
+    width: $width
     background-color: #fafafa
     color: #535347
     box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 30%)
     outline: none
-    border-radius: 5px
+    border-radius: $borderRadius
     letter-spacing: .5px
 
-.inputContainer
-    padding: 0 2rem 0 0
-    position: relative
-    // display: flex
-    // flex-direction: column
+// Style for input type Select 
+@mixin selectTypeInput($borderRadius: 5px, $padding: 0, $width: 3rem) 
+    background-color: #fafafa
+    border: none
+    box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 30%)
+    outline: none
+    border-radius: $borderRadius
+    font-size: .9rem
+    font-family: 'Roboto', sans-serif
+    color: rgb(100, 100, 100)
+    height: 2.5rem
+    // padding: $padding
+    padding: 0rem .4rem
+    width: $width
+
+@mixin label()
+    margin: 0 0 .5rem 0
+    
+@mixin datalist()
+    box-shadow: inset 0 0 3px rgb(0, 0, 0, .3)
+    border-radius: 5px
+    display: block
+    position: absolute
+    width: calc(100% - 2rem)
+    background-color: white
+    margin: auto
+    padding: .5rem 0
+    cursor: pointer
+    // transform: translateY(80px)
+    transform: translateY(100%)
+    z-index: 10
+    
+    option
+        text-overflow: ellipsis
+        overflow: hidden
+        white-space: nowrap
+        font-size: .9rem
+        padding: .5rem 1rem    
+
+
+// .inputContainer
+//     padding: 0 2rem 0 0
+//     position: relative
+
+    
+//     input
+//         @include input()
+//         display: block
+//         // width: 100%  
+
+//     label 
+//         padding: .2rem 0
+
+//     datalist
+//         box-shadow: inset 0 0 3px rgb(0, 0, 0, .3)
+//         border-radius: 5px
+//         display: block
+//         position: absolute
+//         width: calc(100% - 2rem)
+//         background-color: white
+//         margin: auto
+//         padding: .5rem 0
+//         cursor: pointer
+//         // overflow: hidden
+        
+//         option
+//             text-overflow: ellipsis
+//             overflow: hidden
+//             white-space: nowrap
+//             font-size: .9rem
+//             padding: .5rem 1rem
+
+.salaryInputBlock
+    @include block()
+
+
+    label
+        @include label()
+        
+    select
+        @include selectTypeInput($borderRadius: 0 5px 5px 0, $width: 4rem)
+
+    input
+        @include input($width: 11rem, $borderRadius: 5px 0 0 5px)
+        margin: 0
+        
+.companyInputBlock
+    @include block()
+
+    label
+        @include label()
+        
 
     input
         @include input()
-        display: block
-        // width: 100%  
-
-    label 
-        padding: .2rem 0
+        margin: 0
 
     datalist
-        box-shadow: inset 0 0 3px rgb(0, 0, 0, .3)
-        border-radius: 5px
-        display: block
-        position: absolute
-        width: calc(100% - 2rem)
-        background-color: white
-        margin: auto
-        padding: .5rem 0
-        cursor: pointer
-        // overflow: hidden
+        @include datalist()
+
+.positionInputBlock
+    @include block()
+
+    label
+        @include label()
         
-        option
-            text-overflow: ellipsis
-            overflow: hidden
-            white-space: nowrap
-            font-size: .9rem
-            padding: .5rem 1rem
+
+    input
+        @include input()
+        margin: 0
+
+    datalist
+        @include datalist()
+
+
+.seniorityInputBlock
+    @include block()
+
+    label
+        @include label()
+        
+
+    input
+        @include input()
+        margin: 0
+
+    datalist
+        @include datalist()
+    
+    select
+        @include selectTypeInput($width: 15rem)
+
+
 
 .technologyInputContainer
     grid-column: 1 / -1
-    margin: 0 0 0 1.3rem
+    margin: 0 0 0 0
 
-    .listBlock
+    .technologyList
         box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 30%)
         border-radius: 5px
         line-height: 1.5rem
         display: flex
         padding: .75rem .5rem
         margin: .5rem 0 0 0
-        // overflow-wrap: break-word 
-        // flex-wrap: wrap
-        // overflow-wrap: break-word
-        // word-break: break-word
+        flex-wrap: wrap
 
-
-        span
+        .technologyPill
             font-size: .8rem
             padding: 0rem .5rem        
             border: solid 1px rgb(0, 0, 0, .5)
@@ -77,14 +183,9 @@
             display: flex
             align-items: center
             position: relative
-            // flex-direction: column
-            // width: fit-content
-            // width: max-content
-            // min-width: 2rem
 
             input
                 outline: none
-                // width: 80%
                 width: 80px
                 border: none
                 margin: 0 .3rem
@@ -92,12 +193,17 @@
             datalist
                 background-color: white
                 position: absolute
-                box-shadow: inset 0 0 3px rgb(0 0 0 / 30%)
-                border-radius: 10px
+                box-shadow: inset 0 0 2px rgb(0 0 0 / 30%)
+                border-radius: 3px
                 margin: 1rem 0 0 0
-                // bottom: -400%
-                transform: translateY(60%)
-                
+                transform: translateY(60%)                
 
                 option
                     cursor: pointer
+
+
+@media screen and (max-width: 768px)
+    @mixin input()
+        // padding: 0
+        
+    

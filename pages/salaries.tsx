@@ -9,7 +9,7 @@ export default function Salaries() {
 
     return (
         <div className="salaries">    
-            <Header />
+            {/* <Header /> */}
 
             <Filtration setSalaries={setVacancies} />
             

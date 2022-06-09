@@ -1,0 +1,85 @@
+
+.reviews
+    // background-color: rgb(160, 160, 160, .1)
+    padding: 3rem 0
+    display: flex
+    justify-content: center
+    flex-direction: column
+    align-items: center
+    row-gap: 2rem
+    // text-align: ce
+
+    .review
+        background-color: white
+        width: 70%
+        max-width: 1000px
+        padding: 2rem
+        border-radius: 5px
+        box-shadow: 0 0 10px rgb(0, 0, 0, .2)
+        // box-shadow: inset 0 0 3px rgb(0, 0, 0, .3)
+        font-size: 1.1rem
+
+        & > *
+            padding: 1rem 0
+
+        .user
+            padding: 1rem 0
+            display: flex
+
+            .left
+                display: flex
+                align-items: center
+                // width: 4rem
+                padding: 0 .9rem 0 0
+
+                svg
+                    color: rgb(150, 150, 150)
+                    // padding: 0 0 .2rem 0
+                    // margin: 0 0 0 1rem
+                    width: 4.5rem
+                    height: 4.5rem
+
+            .right
+                display: flex
+                // align-items: center
+                justify-content: center
+                flex-direction: column
+
+                .rating
+                    // padding: 0 0 1rem 0
+                    display: flex
+                    align-items: center
+                    column-gap: .4rem
+                    padding: .2rem 0 0 0
+
+                    .stars
+                        
+
+                    .number
+                        padding: 0 0 .15rem 0
+                        font-size: 1.2rem
+
+        .positiveReview
+            color: rgb(0, 170, 0)
+        
+        .negativeReview
+            color: rgb(201, 0, 0)
+
+
+@media only screen and (max-width: 769px)
+    .reviews
+
+        .review
+            width: 90%
+
+            .user
+
+                .right
+
+                    .rating
+
+                        .stars
+
+                            svg
+                                width: 18px
+                                height: 18px

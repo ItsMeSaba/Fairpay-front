@@ -2,21 +2,39 @@
     font-size: 1rem
     background-color: white    
     height: 12vh
-    display: flex
+    display: grid
+    grid-template-columns: 1fr 4fr 1fr
     align-items: center
     justify-content: space-between
     padding: 0rem 3rem
     // box-shadow: 1px 1px 5px rgb(0, 0, 0, .3)
+
+    .websiteName
+        padding: 0 0 0 0
+        display: flex
+        justify-content: left
+        font-size: 1.3rem
+
+    .links
+        justify-content: right
 
     ul
         display: flex
         align-items: center
 
         li
-            padding: 0 0 0 3.5rem
+            padding: 0 0 0 1.8rem
+            font-size: .92rem
             cursor: pointer
+            display: flex
+            align-items: center
 
-@media only screen and (max-width: 769px)
+    // .searchDiv   
+            
+    .burgerButton
+        display: none
+
+@media only screen and (max-width: 769px)   
     .header 
         padding: 0rem 2rem
         height: 9vh
@@ -24,3 +42,14 @@
         ul
             li
                 padding: 0 0 0 2.5rem
+
+        .links
+            display: none
+        
+        .searchDiv
+            display: none
+        
+        .burgerButton
+            display: flex
+            justify-content: end
+            grid-column: 3

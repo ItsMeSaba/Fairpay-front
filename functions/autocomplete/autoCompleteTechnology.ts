@@ -15,7 +15,7 @@
 //     "Kotlin": ["Kotlin"],
 //     "P"
 // }
-const technologies = ["C#", "Javascript", "Kotlin", "Java", "Python", "Swift", "Go", "Laravel", "Node", "React", "Angular", "Vue", "HTML/CSS", "C", "C++", "Ruby", "Rust", "Typescript", "MySQL", "MongoDB", "PosgreSQL", "PHP", "CouchDB", "Firebase", "Ruby", "Ruby on Rails", "Symfony", "Asp.net", "Django", "Express", "Spring", "Flask", "jQuery", "Bootstrap"];
+const technologies = ["C#", "Javascript", "Kotlin", "Java", "Python", "Swift", "Go", "Laravel", "Node", "React", "Angular", "Vue", "HTML/CSS", "C", "C++", "Rust", "Typescript", "MySQL", "MongoDB", "PosgreSQL", "PHP", "CouchDB", "Firebase", "Ruby", "Ruby on Rails", "Symfony", "Asp.net", "Django", "Express", "Spring", "Flask", "jQuery", "Bootstrap"];
 
 export default function autoCompleteTechnology(userInput: string) {
     // const sanitizedInput = userInput.replace(/[\\\/\*\?]/g, "");
