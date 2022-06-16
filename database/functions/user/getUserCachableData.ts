@@ -18,7 +18,7 @@ export default async function cacheUserData(userId: string | null) {
     }
     
     console.log("Data isnot frech, fetching new data");
-    const newData = await axios.post("http://localhost:7000/api/users/getUserCachableData", { userId });
+    const newData = await axios.post(`${process.env.API_ENDPOINT}/api/users/getUserCachableData`, { userId });
 
     localStorage.setItem("userData", JSON.stringify({
         user: newData.data,
