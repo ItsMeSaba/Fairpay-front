@@ -4,7 +4,7 @@ import Image from "next/image"
 import bgImage from "../public/images/bg3.jpg"
 import Link from 'next/link'
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
-import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import { useSession } from "next-auth/react";
 import MenuIcon from '@mui/icons-material/Menu';
 import { Search } from "./search";
@@ -23,7 +23,8 @@ export function Header(args: Args) {
             <header className={style.header}>
                 <div className={style.websiteName}>
                     <Link href="/">
-                        TechSalaries
+                        Fairpay
+                        {/* <Image src={fairpay}/> */}
                     </Link>
                 </div>
 
@@ -49,7 +50,7 @@ export function Header(args: Args) {
                         </Link>
                     </li> */}
                     <li onClick={openAuth}>
-                        <AccountCircleRoundedIcon fontSize="medium" style={{ fill: status === "authenticated" ? "green" : "red" }} />
+                        <PersonOutlineIcon fontSize="medium" style={{ fill: status === "authenticated" ? "green" : "red" }} />
                     </li>
                 </ul>
 

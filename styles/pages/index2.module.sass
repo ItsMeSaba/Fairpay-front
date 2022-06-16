@@ -83,7 +83,7 @@ $secondContainerColor: white
 			justify-content: center
 			
 			img
-				width: 650px
+				width: 700px
 
 		.blobOne
 			@include blob($left: 0, $top: -10%, $scale: .9)
@@ -150,17 +150,23 @@ $secondContainerColor: white
 			justify-content: center
 			
 			img
-				width: 650px
+				width: 600px
 
 		.right
 
-			h1
-				// display: block
+			h1, h2, h3
+				padding: 0 2rem 0 0
 				position: relative
-				font-size: 2.5rem
-				font-weight: bold
+				// font-size: 2.5rem
+				// font-weight: bold
 				z-index: 10
 				// text-shadow: 1px 1px 1px black
+
+			p
+				padding: 0 2rem 0 0
+				font-size: 1.6rem
+				line-height: 3rem
+			
 			
 			.blob
 				position: absolute
@@ -197,10 +203,12 @@ $secondContainerColor: white
 		.right
 
 			.avatar
-				width: 80%
+				width: 70%
 				margin: auto
 				padding: 1rem 0 0 0
 				// transform: scale(.7)
+
+
 
 		.left	
 			position: relative
@@ -208,6 +216,11 @@ $secondContainerColor: white
 			justify-content: center
 			text-align: left
 			padding: 5rem
+
+
+			p
+				font-size: 1.6rem
+				line-height: 3rem
 			
 			.avatar
 				margin: auto
@@ -218,6 +231,12 @@ $secondContainerColor: white
 				padding: 0 0 0 7rem
 				transform-origin: bottom 
 				transform: scale(1)
+
+				// img
+				// 	width: 300px
+
+				// p
+				// 	font-size: 1.5rem
 
 		h1
 			font-weight: bold

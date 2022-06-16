@@ -12,7 +12,7 @@ export default function SubmitFiltration(args: SubmitFiltrationArgs) {
     const { toggledFilters, setVacancies } = args;
 
     async function filter() {
-    const filteredVacancies = await fetchVanacies(toggledFilters);
+    const filteredVacancies = await fetchVanacies(toggledFilters as any);
 
         setVacancies(filteredVacancies);
     }

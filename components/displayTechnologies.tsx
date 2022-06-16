@@ -1,4 +1,4 @@
-import technologies from "data/technologies"
+// import technologies from "data/technologies"
 import style from "styles/components/displayTechnologies.module.sass"
 
 export default function DisplayTechnologies() {

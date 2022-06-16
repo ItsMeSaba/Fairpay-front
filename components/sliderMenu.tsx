@@ -2,6 +2,8 @@ import style from 'styles/components/sliderMenu.module.sass';
 import Link from 'next/link';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import CloseIcon from '@mui/icons-material/Close';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import { useSession } from 'next-auth/react';
 
 interface Args {
     closeSlider: (...args: any) => any
@@ -11,7 +13,7 @@ interface Args {
 
 export function SliderMenu(args: Args) {
     const { closeSlider, openSlider, openAuthPopup } = args;
-
+    const { data: session, status } = useSession();
     const translate = openSlider ? "translateX(0)" : "translateX(100%)";
 
     return (
@@ -19,7 +21,8 @@ export function SliderMenu(args: Args) {
             <div className={style.top}>
                 {/* <AccountCircleRoundedIcon fontSize="medium" style={{ fill: status === "authenticated" ? "green" : "red" }} /> */}
                 <div onClick={openAuthPopup}>
-                    <AccountCircleRoundedIcon fontSize="large" />
+                    {/* <AccountCircleRoundedIcon fontSize="large" /> */}
+                    <PersonOutlineIcon fontSize="large" style={{ fill: status === "authenticated" ? "green" : "red" }} />
                 </div>
 
                 <div onClick={closeSlider}> 

@@ -1,6 +1,6 @@
 import style from "styles/components/search.module.sass"
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import technologies from "data/technologies";
+// import technologies from "data/technologies";
 import { useRef, useState } from "react";
 import { suggestCompanyBySearch } from "database/functions/company/fetchCompany";
 import Link from "next/link";
@@ -18,7 +18,7 @@ export function Search() {
 
         const companies = await suggestCompanyBySearch(input);
 
-        const tehnologies = technologies.filter(technology => technology.name.toLowerCase().startsWith(input.toLowerCase()));
+        // const tehnologies = technologies.filter(technology => technology.name.toLowerCase().startsWith(input.toLowerCase()));
 
         // setResults([...companies?.map(company => company.name)]);
         setResults(companies);
@@ -62,7 +62,7 @@ function SearchResultItem(args: SearchResultItemArgs) {
         <Link href={`/companies/${companyUrlName}`}>
             <div className={style.searchItem}>
                 <div className={style.companyImage}>
-                    <Image quality={30} src={companyImage} />
+                    <Image quality={10} src={companyImage} />
                 </div>
 
                 {/* <p><Link href={companyUrlName}>{companyName}</Link></p> */}

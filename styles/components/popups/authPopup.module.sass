@@ -10,12 +10,16 @@
     display: flex
     align-items: center
     justify-content: center
+    z-index: 100
 
     .container
         width: 90%
         max-width: 800px
         background-color: white
         padding: 1rem 2rem
+
+        .important
+            font-weight: 600
 
         .logOut
             padding: .75rem 1.2rem
@@ -30,9 +34,16 @@
             display: flex
             align-items: center
             justify-content: space-between
-                
+
+            button
+                margin: 0 !important
+                box-shadow: none !important    
+                border: solid 1px rgb(0, 0, 0, .2) !important
+
+
+
             div
-                font-size: 1.3rem
+                // font-size: 1.3rem
 
 @media (max-width: 765px)
     .authPopup

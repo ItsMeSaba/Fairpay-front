@@ -1,28 +1,30 @@
-import { Header } from "../components/header";
-import { SalaryItem } from "../components/salaryItems/salaryItem";
+// import { Header } from "../components/header";
+// import { SalaryItem } from "../components/salaryItems/salaryItem";
 // import style from "styles/pages/index.module.sass"
 import style from "styles/pages/index2.module.sass"
 import Image from "next/image"
 // import data from "../public/dummyData"
-import { SalaryItems } from "components/salaryItems/salaryItems";
-import svg from "../public/images/statisticsMan.svg"
-import svg2 from "../public/images/statisticsMan2.svg"
-import waves from "../public/images/waves.svg"
+// import { SalaryItems } from "components/salaryItems/salaryItems";
+// import svg from "../public/images/statisticsMan.svg"
+// import svg2 from "../public/images/statisticsMan2.svg"
+// import waves from "../public/images/waves.svg"
 import bussinesMan from "../public/images/bussinesMan.png"
 import blob1 from "../public/images/blob12.svg"
 import blob3 from "../public/images/blob11.svg"
-import blob2 from "../public/images/blob7.png"
-import axios from "axios";
-import { Vacancies } from "types";
+// import blob2 from "../public/images/blob7.png"
+// import axios from "axios";
+// import { Vacancies } from "types";
 import { dummyVacanies } from "data/dummyVacancies";
 import man4test from "../public/images/man4test2.png"
 import woman3 from "../public/images/woman3.png"
-import blob13 from "../public/images/blob13.svg"
-import autoCompleteTechnology from "functions/autocomplete/autoCompleteTechnology";
-import autoCompletePosition from "functions/autocomplete/autoCompletePosition";
-import { signIn, signOut, useSession } from "next-auth/react"
-import AuthPopup from "components/popups/authPopup";
+// import blob13 from "../public/images/blob13.svg"
+// import autoCompleteTechnology from "functions/autocomplete/autoCompleteTechnology";
+// import autoCompletePosition from "functions/autocomplete/autoCompletePosition";
+import { useSession } from "next-auth/react"
+// import AuthPopup from "components/popups/authPopup";
 import { useState } from "react";
+import TestModeInfo from "components/testModeInfo"
+// import DataCountDisplay from "components/dataCountDisplay";
 
 
 interface Args {
@@ -43,18 +45,20 @@ export default function Index(args: Args) {
 			<div className={style.containerOne}>
 				<div className={style.left}>
 					<div className={style.blobOne}>
-						<Image quality="100" src={blob1} alt="blob" />
+						<Image quality={50} src={blob1} alt="blob" />
 					</div>
 
 					<div className={style.blobTwo}>
-						<Image quality="100" src={blob3} alt="blob" />
+						<Image quality={50} src={blob3} alt="blob" />
 					</div>
 
 					<h1>იცოდე შენი<br /><span>ფასი</span></h1>
 				</div>
 
 				<div className={style.avatar}>
-					<Image quality="100" src={bussinesMan} alt="bussinesMan" />
+					{/* Illustration is taken from https://icons8.com/illustrations/style--business-3d */}
+
+					<Image quality={100} src={bussinesMan} alt="https://icons8.com/illustrations/style--business-3d" />
 				</div>
 
 				<div className={style.waveOne}>
@@ -70,15 +74,20 @@ export default function Index(args: Args) {
 				</div> */}
 			</div>
 
+			{/* <DataCountDisplay /> */}
+
 			<div className={style.containerTwo}>
 				{/* <div className={style.left}> */}
 				<div className={style.avatar}>
-					<Image quality={100} src={man4test} alt="workPlace" />
+
+					{/* Illustration is taken from https://icons8.com/illustrations/style--business-3d */}
+					<Image quality={100} src={man4test} alt="https://icons8.com/illustrations/style--business-3d" />
 				</div>
 				{/* </div> */}
 
 				<div className={style.right}>
-					<h1>განასხვავე კომპანიები</h1>
+					{/* <h1>განასხვავე კომპანიები</h1> */}
+					<p>Fairpay ეხმარება დეველოპერებს გაიგონ რომელი კომპანია სთავაზობს უკეთეს პირობებს</p>
 				</div>
 
 				<div className={style.waveTwo}>
@@ -90,12 +99,15 @@ export default function Index(args: Args) {
 
 			<div className={style.containerThree}>
 				<div className={style.left}>
-					<h1>გაიგე რომელი ტექნოლოგიებია ყველაზე მოთხოვნადი</h1>
+					{/* <h1>გაიგე რომელი ტექნოლოგიებია ყველაზე მოთხოვნადი</h1> */}
+
+					<p>Fairpay საშუალებას აძლევს დეველოპერებს დააფიქსირონ საკუთარი აზრი კომპანიის შესახებ</p>
 				</div>
 
 				<div className={style.right}>
 					<div className={style.avatar}>
-						<Image quality={100} src={woman3} alt="workPlace" />
+						{/* Illustration is taken from https://icons8.com/illustrations/style--business-3d */}
+						<Image quality={100} src={woman3} alt="https://icons8.com/illustrations/style--business-3d" />
 					</div>
 				</div>
 			</div>

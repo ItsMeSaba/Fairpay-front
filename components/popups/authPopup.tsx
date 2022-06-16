@@ -20,9 +20,11 @@ export default function AuthPopup(args: Args) {
     return (
         <div className={style.authPopup} onClick={handleClosing}>
             <div className={style.container}>
-                <h2>აუთენთიკაცია</h2>
+                <h2>ავტორიზაცია</h2>
                 <br />
-                <h4>ანონიმურობა დაცულია, პირადი ინფორმაცია არ გამოიყენება საიტზე</h4>
+                <h4 className={style.important}>ანონიმურობა დაცულია.</h4>
+                <br />
+                <h4 className={style.important}>პირადი ინფორმაცია, რომელიც შიძლება პირის იდენტიფიცირებისთვის იქნას გამოყენებული, როგორიცაა: სახელი, გვარი, იმეილი, სოციალური ქსელი არ გამოიყენება.</h4>
                 <br />
                 <br />
 
@@ -30,9 +32,15 @@ export default function AuthPopup(args: Args) {
 
                 { status === "unauthenticated" && 
                     <div className={style.buttons}>
-                        <FacebookLoginButton onClick={() => signIn("facebook")} style={{ width: "400px", boxShadow: "0 0 3px black" }} />
+                        <FacebookLoginButton 
+                            onClick={() => signIn("facebook")} 
+                            style={{ width: "400px", boxShadow: "0 0 3px black" }} 
+                        />
 
-                        <GoogleLoginButton onClick={() => signIn("google")} style={{ width: "400px", boxShadow: "0 0 3px black" }} />
+                        {/* <GoogleLoginButton 
+                            onClick={() => signIn("google")} 
+                            style={{ width: "400px", boxShadow: "0 0 3px black" }} 
+                        /> */}
                     </div>
                 }
             </div>

@@ -5,9 +5,9 @@ import { Header } from 'components/header'
 import { useEffect, useState } from 'react';
 import AuthPopup from 'components/popups/authPopup';
 import { SliderMenu } from 'components/sliderMenu';
-import { createContext } from 'react';
 import { GlobalContext } from 'context';
 import cacheUserData from 'database/functions/user/getUserCachableData';
+import TestModeInfo from 'components/testModeInfo';
 // import { SliderMenu } from 'components/sliderMenu';
 
 // function MyApp({ Component, pageProps }: AppProps) {
@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 			<GlobalContext.Provider value={{
 				openAuthPopup: () => setDisplayAuthPopup(true)
 			}}>
-				
+				<TestModeInfo />
 				<Header openAuth={() => setDisplayAuthPopup(true)} openSliderMenu={() => setOpenSliderMenu(true)} />
 
 				<SliderMenu openAuthPopup={() => setDisplayAuthPopup(true)} closeSlider={() => setOpenSliderMenu(false)} openSlider={openSliderMenu} />

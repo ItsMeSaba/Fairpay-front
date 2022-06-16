@@ -59,7 +59,7 @@ function DisplayCompany(args: DisplayCompany) {
             <div className={style.company}>
                 <div className={style.top}>
                     <div className={style.companyImage}>
-                        <Image quality={50} src={image} alt={name} />
+                        <Image quality={30} src={image} alt={name} />
                     </div>
                 </div>
 

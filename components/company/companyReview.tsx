@@ -54,7 +54,8 @@ export default function CompanyReviews(args: Args) {
     return (
         // <SalaryItems vacancies={vacancies} />
         <div>
-            <Reviews reviews={reviews as IReview[]} />
+            {/* <Reviews reviews={reviews as IReview[]} /> */}
+            <Reviews reviews={reviews as any} />
 
             { areReviewsLeft.current && <LoadMoreButton cb={() => fetch(false)} /> }
         </div>

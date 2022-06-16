@@ -66,7 +66,8 @@ export default function SubmitReview(args: Args) {
         <div className={style.submitReview} onClick={handleClosing}>
             <div className={style.container}>
                 <div className={style.avatar}>
-                    <Image src={reviewLady3} alt="reviewLady" /> 
+                    {/* Illustration is taken from https://icons8.com/illustrations/style--business-3d */}
+                    <Image src={reviewLady3} alt="https://icons8.com/illustrations/style--business-3d" /> 
                 </div>
 
                 <div className={style.right}>
@@ -89,11 +90,11 @@ export default function SubmitReview(args: Args) {
                     </div>
 
                     <div className={style.reviewText}>
-                        <textarea value={positiveReview} onChange={e => setPositiveReview(e.target.value)} name="" id="" cols={80} rows={11} placeholder="დადებითი"></textarea>
+                        <textarea value={positiveReview} onChange={e => setPositiveReview(e.target.value)} name="" id="" cols={80} rows={9} placeholder="დადებითი"></textarea>
                     </div>
 
                     <div className={style.reviewText}>
-                        <textarea value={negativeReview} onChange={e => setNegativeReview(e.target.value)} name="" id="" cols={80} rows={11} placeholder="უარყოფითი"></textarea>
+                        <textarea value={negativeReview} onChange={e => setNegativeReview(e.target.value)} name="" id="" cols={80} rows={9} placeholder="უარყოფითი"></textarea>
                     </div>
 
                     { error && <h5 className={style.error}>{ error }</h5> }
