@@ -19,7 +19,8 @@ export default async function fetchVanaciesByCompanyId(companyId: string, option
     
     console.log("Fetching from server");
 
-    const response = await axios.get(`/${process.env.API_ENDPOINT}/api/vacancies/companyId/${companyId}`, {
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/vacancies/companyId/${companyId}`, {
+    // const response = await axios.get(`http://localhost:7000/api/vacancies/companyId/${companyId}`, {
         params: {
             limit: options?.limit ?? null,
             skip: options?.skip ?? null,

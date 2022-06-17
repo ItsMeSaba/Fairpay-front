@@ -22,7 +22,7 @@ export default NextAuth({
 				token.profileId = crypto.createHash("sha256").update(profile.id as string).digest("hex");
 				console.log("profileId");
 				
-				await axios.post(`/${process.env.API_ENDPOINT}/api/users/initialize`, { userId: token.profileId });
+				await axios.post(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/users/initialize`, { userId: token.profileId });
 				return token;
 			}
 			
