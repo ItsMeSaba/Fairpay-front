@@ -98,7 +98,7 @@ export default function CompaniesPage(args: Args) {
 
 export async function getStaticProps() {
 	const response = await axios.get<Companies>(
-		`${process.env.API_ENDPOINT}/api/companies`
+		`/${process.env.API_ENDPOINT}/api/companies`
 	);
 
 	return {

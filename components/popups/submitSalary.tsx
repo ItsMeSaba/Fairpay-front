@@ -54,7 +54,7 @@ export default function SubmitSalary(args: Args) {
 
         if (validationError) return setError(validationError.message);
 
-        const [error, response] = await to(axios.post(`${process.env.API_ENDPOINT}/api/vacancies`, value));
+        const [error, response] = await to(axios.post(`/${process.env.API_ENDPOINT}/api/vacancies`, value));
 
         if (error) return setError(error.response.data.message);
 

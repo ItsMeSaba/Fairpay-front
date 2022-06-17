@@ -9,7 +9,7 @@ interface Response {
 export default async function recordReaction(userId: string, reviewId: string, reaction: string) {
     console.log("_----", userId, reviewId, reaction);
 
-    const result = await axios.patch<Response>(`${process.env.API_ENDPOINT}/api/reviews/react`, {
+    const result = await axios.patch<Response>(`/${process.env.API_ENDPOINT}/api/reviews/react`, {
         userId,
         reviewId,
         reaction

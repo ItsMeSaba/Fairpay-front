@@ -18,7 +18,7 @@ export default async function fetchUserLikesAndDislikes(userId: string | null | 
 
     // if (cached) return JSON.parse(cached); 
 
-    const userLikesAndDislikes = await axios.post<UserLikesAndDislikes>(`${process.env.API_ENDPOINT}/api/users/getUserLikesAndDislikes`, { userId });
+    const userLikesAndDislikes = await axios.post<UserLikesAndDislikes>(`/${process.env.API_ENDPOINT}/api/users/getUserLikesAndDislikes`, { userId });
 
     // LDs stands for "likes and dislikes"
     // localStorage.setItem("LDs", JSON.stringify(userLikesAndDislikes.data));
