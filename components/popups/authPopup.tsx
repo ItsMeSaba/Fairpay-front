@@ -24,6 +24,7 @@ export default function AuthPopup(args: Args) {
                 <br />
                 <h4 className={style.important}>ანონიმურობა დაცულია.</h4>
                 <br />
+                {/* IMPORTANT */}
                 <h4 className={style.important}>პირადი ინფორმაცია, რომელიც შიძლება პირის იდენტიფიცირებისთვის იქნას გამოყენებული, როგორიცაა: სახელი, გვარი, იმეილი, სოციალური ქსელი არ გამოიყენება.</h4>
                 <br />
                 <br />
