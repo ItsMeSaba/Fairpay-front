@@ -8,16 +8,13 @@ export default async function cacheUserData(userId: string | null) {
     const userData = localStorage.getItem("userData");
     
     if (userData) {
-        console.log("User data found in cache");
         const parsedData = JSON.parse(userData);
         
         if (isFreshData(parsedData.timeStamp)) {
-            console.log("DATA IS FRESH")
             return parsedData;
         }
     }
     
-    console.log("Data isnot frech, fetching new data");
     const newData = await axios.post(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/users/getUserCachableData`, { userId });
 
     localStorage.setItem("userData", JSON.stringify({
