@@ -14,13 +14,9 @@ export default NextAuth({
   	],
   	callbacks: {
 		async jwt ({ token, user, account, profile, isNewUser }) {
-			console.log("JWT WENT ======>")
 			
 			if (profile) {
-				console.log("JWT WENT BUT USER NOT AUTH ======>")
-				console.log("profileId");
 				token.profileId = crypto.createHash("sha256").update(profile.id as string).digest("hex");
-				console.log("profileId");
 				
 				await axios.post(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/users/initialize`, { userId: token.profileId });
 				return token;
@@ -31,8 +27,8 @@ export default NextAuth({
 		},
 
     	async session({ session, token, user }) {
-			console.log("SESSION FUNCTION WENT ----->")
-			if (session) session.user = { userId: token.profileId };
+           
+			  if (session) session.user = { userId: token.profileId };
 			
 			return Promise.resolve(session);
     	},
