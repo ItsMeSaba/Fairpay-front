@@ -57,7 +57,7 @@ export default function SubmitReview(args: Args) {
 
         const [error, response] = await to(axios.post(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/reviews`, validatedData));
 
-        if (error) return setError(error.response.data.message);
+        if (error) return setError((error as any).response.data.message);
 
         close();
     }

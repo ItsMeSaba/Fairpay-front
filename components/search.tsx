@@ -12,7 +12,7 @@ interface Args {
     width?: string
 }
 
-export function Search(args: Args) {
+export default function Search(args: Args) {
     const [results, setResults] = useState<string[]>([]);
     const [isFocused, setIsFocused] = useState(false);
     const { width } = args;

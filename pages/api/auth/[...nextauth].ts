@@ -1,8 +1,6 @@
-import NextAuth, { Session, User } from "next-auth"
-import { JWT } from "next-auth/jwt"
+import NextAuth from "next-auth"
 import FacebookProvider from "next-auth/providers/facebook"
 import crypto from "crypto"
-import bcrypt from "bcrypt"
 import axios from "axios"
 
 export default NextAuth({
