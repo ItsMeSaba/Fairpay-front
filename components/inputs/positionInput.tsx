@@ -9,10 +9,11 @@ interface Args {
     displayLabel?: boolean
     customStyle?: CSSProperties
     className?: string
+    isRequired?: boolean
 }
 
 export default function PositionInput(args: Args) {
-    const { state, setState, displayLabel, customStyle, className } = args;
+    const { state, setState, displayLabel, customStyle, className, isRequired } = args;
 
     const [positions, setPositions] = useState<string[]>([]);
     const [isFocused, setFocused] = useState(false);
@@ -35,7 +36,7 @@ export default function PositionInput(args: Args) {
             <input 
                 autoComplete="off" 
                 id="positionInput" 
-                placeholder={!displayLabel ? "პოზიცია" : ""} 
+                placeholder={!displayLabel ? `პოზიცია ${isRequired ? "" : "(არასავალდებულო)"}`: ""} 
                 list="positionInput" 
                 value={state} 
                 onChange={handleInput} 

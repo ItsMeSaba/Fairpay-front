@@ -38,7 +38,7 @@ export default function AddCompanyPopup(args: Args) {
 
                     <Input label="კომპანიის სახელი" setState={setCompanyName}/>
                 
-                    <Input label="კომპანიის საიტი (Optional)" setState={setCompanyWebsite}/>
+                    <Input label="კომპანიის საიტი (არასავალდებულო)" setState={setCompanyWebsite}/>
                 </div>
 
                 <button onClick={upload}>დამატება</button>

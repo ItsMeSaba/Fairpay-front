@@ -4,6 +4,7 @@ import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import CloseIcon from '@mui/icons-material/Close';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import { useSession } from 'next-auth/react';
+import { Search } from './search';
 
 interface Args {
     closeSlider: (...args: any) => any
@@ -29,6 +30,8 @@ export function SliderMenu(args: Args) {
                     <CloseIcon fontSize="large" />
                 </div>
             </div>
+
+            <Search width="100%" />
 
             <ul className={style.links}> 
                 {/* <li>

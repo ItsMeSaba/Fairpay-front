@@ -42,13 +42,17 @@ export default function CompaniesPage(args: Args) {
 	const [salaryPopup, setSalaryPopup] = useState(popupData());
 	const [reviewPopup, setReviewPopup] = useState(popupData());
 	const [addCompanyPopup, setAddCompanyPopup] = useState(false);
+	const [displayLoadMore, setDisplayLoadMore] = useState(true);
 	const { data: session, status } = useSession()
 	const documentsToSkip = useRef(10);
 
 	async function loadMore() {
 		const newCompanies = await fetchCompanies(documentsToSkip.current);
 
-		if (newCompanies.length === 0) return false;
+		if (newCompanies.length === 0) {
+			setDisplayLoadMore(false);
+			return false;
+		}
 
 		documentsToSkip.current += newCompanies.length;
 		setCompanies(companies => [...companies, ...newCompanies]);
@@ -91,7 +95,7 @@ export default function CompaniesPage(args: Args) {
 
 			{/* <button className={style.loadMoreButton} onClick={loadMore}>მეტი</button> */}
 
-			<LoadMoreButton cb={loadMore} />
+			{ displayLoadMore && <LoadMoreButton cb={loadMore} /> }
 		</div>
   	);
 }

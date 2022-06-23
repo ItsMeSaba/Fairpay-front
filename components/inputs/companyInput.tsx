@@ -38,6 +38,7 @@ export default function CompanyInput(args: Args) {
                 onChange={handleInput} 
                 onFocus={() => setFocused(true)} 
                 onBlur={() => setFocused(false)} 
+                disabled={true}
             />
 
             <datalist id="companyInput" style={{ display: displayList }}>

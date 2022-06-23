@@ -1,23 +1,34 @@
 
 .companies
     padding: 0rem 1.5rem
+    // padding: 0 3%
+    // width: 97%
+    // margin: auto
     display: grid
     grid-template-columns: repeat(3, 1fr)
     text-align: center
 
     .company
         background-color: white
-        margin: 2rem 1.3rem
+        margin: 2rem 1.5rem
         // background-color: rgb(230, 230, 230, .4)
         border: solid 1px rgb(210, 210, 210)
         padding: 3rem 1rem
         border-radius: 5px
         // box-shadow: 0px 20px 20px rgb(0, 0, 0, .15)
         transition: .5s box-shadow ease-in-out
+        transition: .2s ease-in-out
+        cursor: pointer
+
+        &:hover
+            transform-origin: center
+            transform: scale(1.01)
+            box-shadow: 0 0 20px rgb(0, 0, 0, .07)
 
         .top
 
             .companyImage
+                font-size: 1rem
                 max-width: 150px
                 margin: auto
                 // display: flex
@@ -39,12 +50,15 @@
                 display: grid
                 grid-template-columns: 1fr 1fr
 
+
                 .startIcon
                     display: flex
                     align-items: center
                     justify-content: center
                     // color: rgb(240, 240, 89)
-                    color: gold
+                    // color: gold
+                    // color: #f7c10e
+                    color: #e6b000
                     padding: 0 .4rem 0 0
 
                 .vacancyIcon
@@ -82,3 +96,13 @@
 @media only screen and (max-width: 769px)
     .companies
         grid-template-columns: repeat(1, 1fr)
+        padding: 0rem 1rem
+
+        .company
+            margin: 2rem 1rem
+
+            .bottom
+
+                .companyData
+                    // font-size: 1.3rem
+

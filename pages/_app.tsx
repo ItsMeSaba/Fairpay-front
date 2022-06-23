@@ -8,6 +8,7 @@ import { SliderMenu } from 'components/sliderMenu';
 import { GlobalContext } from 'context';
 import cacheUserData from 'database/functions/user/getUserCachableData';
 import TestModeInfo from 'components/testModeInfo';
+import Head from "next/head"
 // import { SliderMenu } from 'components/sliderMenu';
 
 // function MyApp({ Component, pageProps }: AppProps) {
@@ -26,10 +27,17 @@ function MyApp({ Component, pageProps }: AppProps) {
 	}, [userData])
 
   	return (
-	    // <SessionProvider session={pageProps.session} refetchInterval={5 * 60}>
+		<>
+			<Head>
+				<title>Fairpay</title>
+				<meta property="og:title" content="My page title" key="title" />
+			</Head>
+			
+			{/* // <SessionProvider session={pageProps.session} refetchInterval={5 * 60}> */}
 			<GlobalContext.Provider value={{
 				openAuthPopup: () => setDisplayAuthPopup(true)
 			}}>
+				
 				<TestModeInfo />
 				<Header openAuth={() => setDisplayAuthPopup(true)} openSliderMenu={() => setOpenSliderMenu(true)} />
 
@@ -38,7 +46,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 				<Component {...pageProps} openAuthPopup={() => setDisplayAuthPopup(true)} />
 			</GlobalContext.Provider>
-		// </SessionProvider>
+			{/* // </SessionProvider> */}
+		</>
   	)	
 }
 

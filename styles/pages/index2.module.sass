@@ -72,15 +72,12 @@ $secondContainerColor: white
 		// z-index: 1
 
 		.avatar
-			// @include manAvatar()
-			// transform: translateY(100%) scale(.85)
-			// animation: animateMan 2.5s forwards ease-in-out
-			// animation-delay: .5s
 			display: flex
 			width: 100%
 			height: 100%
 			align-items: end
 			justify-content: center
+			margin: auto
 			
 			img
 				width: 700px
@@ -126,23 +123,8 @@ $secondContainerColor: white
 		@include container
 		background-color: $secondContainerColor
 		color: #2f3640
-		// padding: 5REM 
-
-		// .left	
-		// 	position: relative
-		// 	display: flex
-		// 	justify-content: center
 
 		.avatar
-			// @include manAvatar()
-			// // margin: auto
-			// // position: absolute
-			// // bottom: 0
-			// // left: 0
-			// // width: 100%
-			// // transform-origin: bottom 
-			// // transform: scale(1)
-			// padding: 0 0 0 7rem
 			display: flex
 			width: 100%
 			height: 100%
@@ -289,8 +271,16 @@ $secondContainerColor: white
 					height: 87px
 
 		.containerOne
+			.avatar
+				width: 90%
 
-			// .right
+			h1
+				font-size: 2.5rem
+
+				span
+					font-size: 7rem
+					
+
 			.avatar
 				display: flex
 
@@ -299,9 +289,13 @@ $secondContainerColor: white
 			.left
 				order: 2
 
+			.right
+				p
+					padding: 0 1rem
+			
 			.avatar
 				display: flex
-				padding: 2rem 1rem 0 2rem
+				padding: 0rem 2rem
 				order: 1
 
 			.waveTwo
@@ -310,3 +304,20 @@ $secondContainerColor: white
 				svg
 					width: calc(100% + 143.3px)
 					height: 87px
+
+		.containerThree
+
+			.left
+				padding: 0
+
+				p
+					text-align: center
+					// margin: auto
+					// padding: 2rem 1.5rem 
+			
+					
+			.right
+
+				.avatar
+					width: 90%
+

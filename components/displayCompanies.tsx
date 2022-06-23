@@ -1,8 +1,10 @@
 import companiesList from "data/companies";
 import Image from "next/image"
 import style from "styles/components/displayCompanies.module.sass"
-import StarRoundedIcon from '@mui/icons-material/StarRounded';
-import WorkRoundedIcon from '@mui/icons-material/WorkRounded';
+// import StarRoundedIcon from '@mui/icons-material/StarRounded';
+import StarRoundedIcon from '@mui/icons-material/StarBorderRounded';
+// import WorkRoundedIcon from '@mui/icons-material/WorkRounded';
+import WorkRoundedIcon from '@mui/icons-material/WorkOutlineRounded';
 import Button from "./buttons/button";
 import { Companies, Company, ValidCompanyNames } from "types";
 import { getCompanyImage } from "functions/companies/images/getCompanyImage";
@@ -69,18 +71,19 @@ function DisplayCompany(args: DisplayCompany) {
                     <div className={style.companyData}>
                         <span>
                             <div className={style.vacancyIcon}>
+                                {/* <WorkRoundedIcon fontSize="small" /> */}
                                 <WorkRoundedIcon />
                             </div>
 
-                            { vacancyCount } ვაკანსია
+                            <p>{ vacancyCount } ვაკანსია</p>
                         </span>
 
                         <span>
                             <div className={style.startIcon}>
-                                <StarRoundedIcon /> 
+                                <StarRoundedIcon fontSize="medium" /> 
                             </div>
 
-                            { calculatedReview.toFixed(1) }/5 ({ reviewCount })
+                            <p>{ calculatedReview.toFixed(1) }/5 ({ reviewCount })</p>
                         </span>
                     </div>
 

@@ -8,10 +8,14 @@ import Image from "next/image";
 import { getCompanyImage } from "functions/companies/images/getCompanyImage";
 import { ValidCompanyNames } from "types";
 
-export function Search() {
+interface Args {
+    width?: string
+}
+
+export function Search(args: Args) {
     const [results, setResults] = useState<string[]>([]);
     const [isFocused, setIsFocused] = useState(false);
-
+    const { width } = args;
 
     async function search(input: string) {
         if (input.length === 0) return setResults([]);
@@ -29,7 +33,7 @@ export function Search() {
     console.log("results", results);
 
     return (
-        <div className={style.search}>
+        <div className={style.search} style={{ width }}>
             <div className={style.searchIcon}>
                 <SearchRoundedIcon />
             </div>
