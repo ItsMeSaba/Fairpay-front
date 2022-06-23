@@ -14,7 +14,6 @@ import blob3 from "../public/images/blob11.svg"
 // import blob2 from "../public/images/blob7.png"
 // import axios from "axios";
 // import { Vacancies } from "types";
-import { dummyVacanies } from "data/dummyVacancies";
 import man4test from "../public/images/man4test2.png"
 import woman3 from "../public/images/woman3.png"
 // import blob13 from "../public/images/blob13.svg"
@@ -23,7 +22,6 @@ import woman3 from "../public/images/woman3.png"
 import { useSession } from "next-auth/react"
 // import AuthPopup from "components/popups/authPopup";
 import { useState } from "react";
-import TestModeInfo from "components/testModeInfo"
 // import DataCountDisplay from "components/dataCountDisplay";
 
 
@@ -35,8 +33,6 @@ export default function Index(args: Args) {
 	// const { vacancies } = args;
 	const [displayAuthPopup, setDisplayAuthPopup] = useState(false);
 	const { data: session, status } = useSession()
-
-	const vacancies = dummyVacanies;
 
 	console.log("USER ------->", session?.user, status);
 

@@ -7,7 +7,7 @@ import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import { useSession } from "next-auth/react";
 import MenuIcon from '@mui/icons-material/Menu';
-import { Search } from "./search";
+import Search from "./search";
 
 interface Args {
     openAuth: (...args: any) => any

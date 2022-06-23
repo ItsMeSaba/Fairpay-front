@@ -1,18 +1,12 @@
-import { Header } from "components/header";
 // import { companies } from "data/companies";
 import style from "styles/pages/companies.module.sass";
-import Image from "next/image";
 import { DisplayCompanies } from "components/displayCompanies";
-import blob from "public/images/blob1.svg";
 import axios from "axios";
 import { Companies } from "types";
 import SubmitSalary from "components/popups/submitSalary";
 import SubmitReview from "components/popups/submitReview";
 import { useRef, useState } from "react";
-import AuthPopup from "components/popups/authPopup";
 import { useSession } from "next-auth/react";
-import { useContext } from 'react';
-import { GlobalContext } from "context";
 import { fetchCompanies } from "database/functions/company/fetchCompany";
 import LoadMoreButton from "components/buttons/loadMore";
 import AddCompanyPopup from "components/popups/addCompany";
@@ -37,7 +31,7 @@ interface Args {
 }
 
 export default function CompaniesPage(args: Args) {
-	const { companies: fetchedCompanies, openAuthPopup }	= args;
+	const { companies: fetchedCompanies } = args;
 	const [companies, setCompanies] = useState(fetchedCompanies);
 	const [salaryPopup, setSalaryPopup] = useState(popupData());
 	const [reviewPopup, setReviewPopup] = useState(popupData());
@@ -104,6 +98,8 @@ export async function getStaticProps() {
 	const response = await axios.get<Companies>(
 		`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/companies`
 	);
+
+	// console.log("response", response.data)
 
 	return {
 		props: {

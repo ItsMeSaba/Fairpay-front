@@ -25,15 +25,19 @@ function MyApp({ Component, pageProps }: AppProps) {
 			cacheUserData(userData.user.userId);
 		}
 	}, [userData])
-
+	
+	{/* <Head>
+		<title>Fairpay</title>
+		<meta property="og:title" content="My page title" key="title" />
+	</Head> */}
+	
   	return (
 		<>
 			<Head>
 				<title>Fairpay</title>
 				<meta property="og:title" content="My page title" key="title" />
-			</Head>
-			
-			{/* // <SessionProvider session={pageProps.session} refetchInterval={5 * 60}> */}
+			</Head> 
+
 			<GlobalContext.Provider value={{
 				openAuthPopup: () => setDisplayAuthPopup(true)
 			}}>
@@ -46,7 +50,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 				<Component {...pageProps} openAuthPopup={() => setDisplayAuthPopup(true)} />
 			</GlobalContext.Provider>
-			{/* // </SessionProvider> */}
 		</>
   	)	
 }
