@@ -26,11 +26,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 			cacheUserData(userData.user.userId);
 		}
 	}, [userData])
-	
-	{/* <Head>
-		<title>Fairpay</title>
-		<meta property="og:title" content="My page title" key="title" />
-	</Head> */}
+
 	
   	return (
 		<>
