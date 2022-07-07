@@ -3,33 +3,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap')
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap')
 
-@font-face
-	font-family: notoGeorgian
-	src: url("../public/fonts/NotoSerifGeorgian.ttf")
+// This one looks norm 
+@import url("//cdn.web-fonts.ge/fonts/bpg-square-banner-2013/css/bpg-square-banner-2013.min.css")
 
-@font-face 
-	font-family: markGeoCaps
-	src: url("../public/fonts/MarkGEOCAPS.woff")
 
-@font-face 
-	font-family: markGeoCaps
-	font-weight: bold
-	src: url("../public/fonts/MarkGeoCapsBold.woff2")
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700;800;900&display=swap')
+	
+// @font-face
+// 	font-family: notoGeorgian
+// 	src: url("../public/fonts/NotoSerifGeorgian.ttf")
+
+// @font-face 
+// 	font-family: 'Noto Sans Georgian', sans-serif
+// 	src: url("../public/fonts/'Noto Sans Georgian', sans-serif.woff")
+
+// @font-face 
+// 	font-family: 'Noto Sans Georgian', sans-serif
+// 	font-weight: bold
+// 	src: url("../public/fonts/'Noto Sans Georgian', sans-serifBold.woff2")
 
 
 *
 	padding: 0
 	margin: 0
 	box-sizing: border-box
+	// font-family: "BPG Square Banner 2013", sans-serif !important
+	// font-family: 'Noto Sans Georgian', sans-serif
+
+button
+	font-family: 'Noto Sans Georgian', sans-serif !important
+	font-size: .8rem
+
 
 html,
 body 
 	// font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif
 	// font-family: "BPG Banner", sans-serif
 	// font-family: notoGeorgian
-	font-family: markGeoCaps
+	font-family: 'Noto Sans Georgian', sans-serif
 	color: #3d3d3d
 	overflow-x: hidden
+	font-size: 17px
 
 	&::-webkit-scrollbar
 		display: none
@@ -48,6 +62,10 @@ img
 	display: block
 	// z-index: 0
 
+.fullHeightContainer
+	min-height: 100vh
+	display: grid
+	grid-template-rows: min-content auto min-content
 
 @media only screen and (max-width: 769px)
 	html

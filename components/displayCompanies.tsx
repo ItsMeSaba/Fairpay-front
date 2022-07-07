@@ -9,7 +9,7 @@ import Button from "./buttons/button";
 import { Companies, Company, ValidCompanyNames } from "types";
 import { getCompanyImage } from "functions/companies/images/getCompanyImage";
 import Link from 'next/link'
-import { MouseEvent, useContext } from "react";
+import { MouseEvent, useContext, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { GlobalContext } from "context";
 
@@ -40,7 +40,7 @@ interface DisplayCompany {
 }
 
 function DisplayCompany(args: DisplayCompany) {
-    const { name, urlName, _id, reviewCount, vacancyCount, sumOfRatings } = args.company;
+    const { name, urlName, _id, reviewCount, vacancyCount, sumOfRatings, color } = args.company;
     const { openSalaryPopup, openReviewPopup } = args;
     const image = getCompanyImage(name as ValidCompanyNames);
     const { openAuthPopup } = useContext(GlobalContext);
@@ -58,7 +58,7 @@ function DisplayCompany(args: DisplayCompany) {
 
     return (
         <Link href={`/companies/${urlName}`}>
-            <div className={style.company}>
+            <div className={style.company} style={{ borderTop: `solid 5px #${color ?? "gray"}`  }}>
                 <div className={style.top}>
                     <div className={style.companyImage}>
                         <Image quality={30} src={image} alt={name} />

@@ -23,6 +23,8 @@ import exactpro from "public/images/companies/exactpro.png"
 import smartweb from "public/images/companies/smartweb.png"
 import twino from "public/images/companies/twino.png"
 import edutechgeo from "public/images/companies/edutechgeo.png"
+import tbcBank from "public/images/companies/tbc.png"
+import bog from "public/images/companies/bog.png"
 import { ValidCompanyNames } from "types"
 
 class CompanyImageData {
@@ -61,6 +63,7 @@ const companyImageNames = {
     smartweb: new CompanyImageData(["smartweb"], smartweb),
     twino: new CompanyImageData(["ტვინო"], twino),
     edutechgeo: new CompanyImageData(["საგანმანათლებლო ტექნოლოგიები საქართველო"], edutechgeo),
+    tbcbank: new CompanyImageData(["TBC bank"], tbcBank),
 };
 
 export const companyImages2: Record<ValidCompanyNames, StaticImageData> = {
@@ -89,6 +92,8 @@ export const companyImages2: Record<ValidCompanyNames, StaticImageData> = {
     "Smart Web": smartweb,
     Twino: twino,
     "საგანმანათლებლო ტექნოლოგიები საქართველო": edutechgeo,
+    "TBC Bank": tbcBank,
+    "Bank Of Georgia": bog,
 }
 
 

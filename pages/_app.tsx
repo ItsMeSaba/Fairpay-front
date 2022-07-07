@@ -9,6 +9,7 @@ import { GlobalContext } from 'context';
 import cacheUserData from 'database/functions/user/getUserCachableData';
 import TestModeInfo from 'components/testModeInfo';
 import Head from "next/head"
+import Footer from 'components/footer';
 // import { SliderMenu } from 'components/sliderMenu';
 
 // function MyApp({ Component, pageProps }: AppProps) {
@@ -43,12 +44,17 @@ function MyApp({ Component, pageProps }: AppProps) {
 			}}>
 				
 				<TestModeInfo />
-				<Header openAuth={() => setDisplayAuthPopup(true)} openSliderMenu={() => setOpenSliderMenu(true)} />
 
-				<SliderMenu openAuthPopup={() => setDisplayAuthPopup(true)} closeSlider={() => setOpenSliderMenu(false)} openSlider={openSliderMenu} />
-				{ displayAuthPopup && <AuthPopup closeAuth={() => setDisplayAuthPopup(false)} /> }
+				<div className="fullHeightContainer">
+					<Header openAuth={() => setDisplayAuthPopup(true)} openSliderMenu={() => setOpenSliderMenu(true)} />
 
-				<Component {...pageProps} openAuthPopup={() => setDisplayAuthPopup(true)} />
+					<SliderMenu openAuthPopup={() => setDisplayAuthPopup(true)} closeSlider={() => setOpenSliderMenu(false)} openSlider={openSliderMenu} />
+					{ displayAuthPopup && <AuthPopup closeAuth={() => setDisplayAuthPopup(false)} /> }
+
+					<Component {...pageProps} openAuthPopup={() => setDisplayAuthPopup(true)} />
+
+					<Footer />
+				</div>
 			</GlobalContext.Provider>
 		</>
   	)	

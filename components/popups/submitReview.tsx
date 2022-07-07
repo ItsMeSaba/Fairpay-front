@@ -86,7 +86,7 @@ export default function SubmitReview(args: Args) {
                     <div className={style.inputsBlock}>
                         <CompanyInput setState={setCompany} state={company} />
 
-                        <PositionInput setState={setPosition} state={position} className={style.positionInput} />
+                        <PositionInput setState={setPosition} state={position} className={style.positionInput} customStyle={{ marginLeft: "1.5rem" }} />
                     </div>
 
                     <div className={style.reviewText}>

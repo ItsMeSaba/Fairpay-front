@@ -5,7 +5,7 @@ import ReactionPanel from "components/reactionPanel/reactionPanel";
 import mongoose from "mongoose";
 import { IReview } from "types";
 import LoadMoreButton from "components/buttons/loadMore";
-
+import AccountCircleRoundedIcon from '@mui/icons-material/PersonOutline'
 interface ReviewsArgs {
     reviews: IReview[]
 }
@@ -40,7 +40,9 @@ function Review(args: ReviewArgs) {
         <div className={style.review}>
             <div className={style.user}>
                 <div className={style.left}>
-                    <UserIcon fontSize="large" />
+                    {/* <UserIcon fontSize="large" /> */}
+                    <AccountCircleRoundedIcon fontSize="medium" />
+                    
                 </div>
 
                 <div className={style.right}>
