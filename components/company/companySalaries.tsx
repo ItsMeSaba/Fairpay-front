@@ -15,6 +15,7 @@ export default function CompanySalaries(args: Args) {
     const skip = useRef(0);
     const isFirstRun = useRef(true);
     const areSalariesLeft = useRef(true);
+    const isFirstFetchDone = useRef(false);
 
     async function fetch(reset = false) {
         const vacancies = await fetchVanacies(companyId, { skip: skip.current });
@@ -22,14 +23,15 @@ export default function CompanySalaries(args: Args) {
         if (vacancies.length === 0) areSalariesLeft.current = false;
         else skip.current += vacancies.length;
 
+        if (!isFirstFetchDone.current) isFirstFetchDone.current = true;
+        
         setVacancies(currentVacancies => reset ? vacancies : [...currentVacancies, ...vacancies]);
     }
 
     useEffect(() => {
+        isFirstFetchDone.current = false;
         isFirstRun.current = true;
         areSalariesLeft.current = true;
-
-        console.log("USE EFFECT [companyId] --------------------->");
 
         skip.current = 0;
         
@@ -38,9 +40,11 @@ export default function CompanySalaries(args: Args) {
 
     return (
         <div className="div">
-            <SalaryItems vacancies={vacancies} />
+            { vacancies.length > 0 && <SalaryItems vacancies={vacancies} />}
 
             { areSalariesLeft.current && <LoadMoreButton cb={() => fetch(false)} /> }
+
+            { vacancies.length === 0 && isFirstFetchDone.current && <h1 style={{ textAlign: "center", padding: "4rem 0" }}>ვაკასიები არ მოიძებნა</h1> }
         </div>
     )
 }

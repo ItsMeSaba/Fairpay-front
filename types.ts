@@ -1,4 +1,4 @@
-import mongoose, { ObjectId } from "mongoose";
+import mongoose, { ObjectId, Types } from "mongoose";
 
 export interface Vacancy {
     salary: string,
@@ -68,3 +68,14 @@ export type ValidCompanyNames =
     "Twino" |
     "საგანმანათლებლო ტექნოლოგიები საქართველო"
 
+export class PopupData {
+    display: boolean;
+    companyName: string;
+    companyId: Types.ObjectId;
+
+    constructor(display = false, companyName = "", companyId = new Types.ObjectId()) {
+        this.display = display; 
+        this.companyName = companyName; 
+        this.companyId = companyId; 
+    }
+}

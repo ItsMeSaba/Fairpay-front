@@ -28,6 +28,7 @@ export default function CompanyReviews(args: Args) {
     const skip = useRef(0);
     const isFirstRun = useRef(true);
     const areReviewsLeft = useRef(true);
+    const isFirstFetchDone = useRef(false);
 
     async function fetch(reset = false) {
         let reviews = await fetchReviews(companyId, skip.current);
@@ -37,10 +38,13 @@ export default function CompanyReviews(args: Args) {
 
         const reviewsWithUserReaction = reviews.length > 0 ? await addUserReactionField(reviews, userData?.user.userId) : [];
 
+        if (!isFirstFetchDone.current) isFirstFetchDone.current = true;
+
         setReviews(reviews => reset ? reviewsWithUserReaction : [...reviews, ...reviewsWithUserReaction])
     }
 
     useEffect(() => {
+        isFirstFetchDone.current = false;
         isFirstRun.current = true;
         areReviewsLeft.current = true;
 
@@ -55,9 +59,11 @@ export default function CompanyReviews(args: Args) {
         // <SalaryItems vacancies={vacancies} />
         <div>
             {/* <Reviews reviews={reviews as IReview[]} /> */}
-            <Reviews reviews={reviews as any} />
+            { reviews.length > 0 && <Reviews reviews={reviews as any} /> }
 
             { areReviewsLeft.current && <LoadMoreButton cb={() => fetch(false)} /> }
+
+            { reviews.length === 0 && isFirstFetchDone.current && <h1 style={{ textAlign: "center", padding: "4rem 0" }}>შეფასებები არ მოიძებნა</h1> }
         </div>
     )
 }

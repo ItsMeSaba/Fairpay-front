@@ -1,4 +1,5 @@
 import addCompanyRequest from "database/functions/company/addCompanyRequest";
+import { SubmitCompanyRequestSchema } from "joiSchemas";
 import { Dispatch, SetStateAction, useState } from "react";
 import style from "styles/components/popups/addCompanyPopup.module.sass";
 
@@ -10,9 +11,16 @@ export default function AddCompanyPopup(args: Args) {
     const { closePopup } = args;
     const [companyName, setCompanyName] = useState("");
     const [companyWebsite, setCompanyWebsite] = useState("");
+    const [error, setError] = useState("");
 
     async function upload() {
-        // console.log("uploading", companyName, companyWebsite);
+        const { error: validationError, value: validationResult } = SubmitCompanyRequestSchema.validate({
+            companyName,
+            companyWebsite,
+        });
+
+        if (validationError) return setError(validationError.message);  
+
         addCompanyRequest(companyName, companyWebsite);
 
         closePopup();
@@ -31,6 +39,8 @@ export default function AddCompanyPopup(args: Args) {
 
                 <h2>დაამატეთ კომპანია</h2>
 
+                <h4>კომპანია დაემატება ვალიდაციის შემდეგ</h4>
+
                 <div className={style.inputs}>
                     {/* <input type="text" />
 
@@ -40,6 +50,10 @@ export default function AddCompanyPopup(args: Args) {
                 
                     <Input label="კომპანიის საიტი (არასავალდებულო)" setState={setCompanyWebsite}/>
                 </div>
+
+                {  error && <h5 style={{ color: "red" }}>{ error }</h5> }
+
+                <br />
 
                 <button onClick={upload}>დამატება</button>
             </div>

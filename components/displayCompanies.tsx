@@ -12,11 +12,14 @@ import Link from 'next/link'
 import { MouseEvent, useContext, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { GlobalContext } from "context";
+import { Types } from "mongoose";
+import AddSalaryButton from "./buttons/AddSalaryButton";
+import AddReviewButton from "./buttons/AddReviewButton";
 
 interface DisplayCompanies {
     companies: Companies
-    openSalaryPopup: (company: string) => void
-    openReviewPopup: (company: string) => void
+    openSalaryPopup: (company: string, companyId: Types.ObjectId) => void
+    openReviewPopup: (company: string, companyId: Types.ObjectId) => void
 }
 
 export function DisplayCompanies(args: DisplayCompanies) {
@@ -26,7 +29,12 @@ export function DisplayCompanies(args: DisplayCompanies) {
         <div className={style.companies}>
             {
                 companies.map((company, index) => {
-                    return <DisplayCompany company={company} key={index} openReviewPopup={() => openReviewPopup(company.name)} openSalaryPopup={() => openSalaryPopup(company.name)} />
+                    return <DisplayCompany 
+                            company={company} 
+                            key={index} 
+                            openReviewPopup={() => openReviewPopup(company.name, company._id)} 
+                            openSalaryPopup={() => openSalaryPopup(company.name, company._id)} 
+                        />
                 })
             }
         </div>
@@ -92,23 +100,25 @@ function DisplayCompany(args: DisplayCompany) {
                         {/* <Button text={"ანაზღაურება"} /> */}
 
                         {/* <Button text={"შეფასება"} /> */}
-                        <button 
+                        {/* <button 
                             style={{ transform: "translate('-100%')" }} 
                             title="ანაზღაურების დამატება" 
                             className={style.button} 
                             onClick={e => clickWithoutPropogation(e, status !== "authenticated" ? openAuthPopup : openSalaryPopup)}
                         >
                             ანაზღაურება
-                        </button>
+                        </button> */}
+                        <AddSalaryButton companyId={_id} companyName={name} />
 
-                        <button 
+                        <AddReviewButton companyId={_id} companyName={name} />
+                        {/* <button 
                             style={{ transform: "translate('-100%')" }} 
                             title="შეფასების დამატება" 
                             className={style.button} 
                             onClick={e => clickWithoutPropogation(e, status !== "authenticated" ?  openAuthPopup : openReviewPopup)}
                         >
                             შეფასება
-                        </button>
+                        </button> */}
                     </div>
                 </div>
             </div>

@@ -12,6 +12,8 @@ import mongoose from "mongoose";
 import { fetchCompany, fetchCompanyByUrlName } from "database/functions/company/fetchCompany";
 import { getCompanyImage } from "functions/companies/images/getCompanyImage";
 import { ValidCompanyNames } from "types";
+import AddSalaryButton from "components/buttons/AddSalaryButton";
+import AddReviewButton from "components/buttons/AddReviewButton";
 
 export default function Company() {
     const [companyData, setCompanyData] = useState<any>(null);
@@ -50,7 +52,7 @@ export default function Company() {
 
                     <div className={style.center}>
                         <h1>{companyData?.name}</h1>
-
+        
                         <div className={style.buttons}>
                             <div
                                 className={`${style.salariesCount} ${display === "salaries" ? style.active : ""}`}
@@ -67,16 +69,26 @@ export default function Company() {
                         </div>
                     </div>
 
-                    <div className={style.right}></div>
+                    {/* <div className={style.right}></div> */}
                 </div>
             </div>
 
-            {display === "salaries" && (
-                <CompanySalaries companyId={companyData._id} />
-            )}
-            {display === "reviews" && (
-                <CompanyReviews companyId={companyData._id} />
-            )}
+
+            <div className={style.bottom}>
+                <div className={style.addDataButtons}>
+                    <AddSalaryButton companyName={companyData.name} companyId={companyData._id} displayLongName={true} />
+                    <AddReviewButton companyName={companyData.name} companyId={companyData._id} displayLongName={true} />
+                </div>
+
+
+                {display === "salaries" && (
+                    <CompanySalaries companyId={companyData._id} />
+                )}
+
+                {display === "reviews" && (
+                    <CompanyReviews companyId={companyData._id} />
+                )}
+            </div>
         </div>
     );
 }

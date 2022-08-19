@@ -5,22 +5,25 @@ import axios from "axios";
 import { Companies } from "types";
 import SubmitSalary from "components/popups/submitSalary";
 import SubmitReview from "components/popups/submitReview";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import { fetchCompanies } from "database/functions/company/fetchCompany";
 import LoadMoreButton from "components/buttons/loadMore";
 import AddCompanyPopup from "components/popups/addCompany";
+import { GlobalContext } from "context";
+import { Types } from "mongoose";
 
 interface PopupData {
 	presetCompany: string | null;
-	shouDisplay: boolean;
+	display: boolean;
 }
 
 const popupData = (
 	display = false,
-	presetCompany: string | null = null
+	presetCompany: string | null = null,
+	
 ): PopupData => ({
-	shouDisplay: display,
+	display: display,
 	presetCompany: presetCompany,
 });
 
@@ -39,6 +42,7 @@ export default function CompaniesPage(args: Args) {
 	const [displayLoadMore, setDisplayLoadMore] = useState(true);
 	const { data: session, status } = useSession()
 	const documentsToSkip = useRef(10);
+	const { openReviewPopup, openSalaryPopup } = useContext(GlobalContext);
 
 	async function loadMore() {
 		const newCompanies = await fetchCompanies(documentsToSkip.current);
@@ -59,7 +63,7 @@ export default function CompaniesPage(args: Args) {
 					<AddCompanyPopup closePopup={() => setAddCompanyPopup(false)} />
 			}
 
-			{
+			{/* {
 				salaryPopup.shouDisplay &&
 					<SubmitSalary
 						presetCompany={salaryPopup.presetCompany}
@@ -73,17 +77,18 @@ export default function CompaniesPage(args: Args) {
 						presetCompany={reviewPopup.presetCompany}
 						close={() => setReviewPopup(popupData())}
 					/>
-			}
+			} */}
 
 			<button className={style.addCompanyButton} onClick={() => setAddCompanyPopup(true)}>კომპანიის დამატება</button>
 
 			<DisplayCompanies
 				companies={companies}
-				openSalaryPopup={(company: string) =>
-					setSalaryPopup(popupData(true, company))
+				openSalaryPopup={(companyName: string, companyId: Types.ObjectId) =>
+					// setSalaryPopup(popupData(true, company))
+					openSalaryPopup(companyName, companyId)
 				}
-				openReviewPopup={(company: string) =>
-					setReviewPopup(popupData(true, company))
+				openReviewPopup={(companyName: string, companyId: Types.ObjectId) =>
+					openReviewPopup(companyName, companyId)
 				}
 			/>
 

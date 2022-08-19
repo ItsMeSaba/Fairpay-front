@@ -63,7 +63,7 @@ export default function ReactionPanel(args: Args) {
 
                 
                 <ThumbDownRoundedIcon 
-                    color={currentUserReaction === "dislike" ? "primary" : "disabled"}
+                    color={currentUserReaction === "dislike" ? "error" : "disabled"}
                     onClick={() => handleClick(currentUserReaction === "dislike" ? "undislike" : "dislike")}
                 />
             </div>

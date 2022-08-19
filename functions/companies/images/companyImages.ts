@@ -8,6 +8,7 @@ import bits63 from "public/images/companies/bits63.jpg"
 import georgiatechtbilisi from "public/images/companies/georgiatechtbilisi.png"
 import appidea from "public/images/companies/appidea.png"
 import vendoo from "public/images/companies/vendoo.png"
+import oodnev from "public/images/companies/oodnev.png"
 import lemondo from "public/images/companies/lemondo.png"
 import sakartvelosmelioracia from "public/images/companies/sakartvelosmelioracia.png"
 import dexfinity from "public/images/companies/dexfinity.png"
@@ -25,6 +26,15 @@ import twino from "public/images/companies/twino.png"
 import edutechgeo from "public/images/companies/edutechgeo.png"
 import tbcBank from "public/images/companies/tbc.png"
 import bog from "public/images/companies/bog.png"
+import libertybank from "public/images/companies/liberty.png"
+import citypay from "public/images/companies/citypay.jpg"
+import crocobet from "public/images/companies/crocobet.png"
+import pulsarai from "public/images/companies/pulsarai.png"
+import qarva from "public/images/companies/qarva.png"
+import altexsoft from "public/images/companies/altexsoft.png"
+import space from "public/images/companies/space.png"
+import epam from "public/images/companies/epam2.png"
+import flatrock from "public/images/companies/flatrock.png"
 import { ValidCompanyNames } from "types"
 
 class CompanyImageData {
@@ -94,6 +104,16 @@ export const companyImages2: Record<ValidCompanyNames, StaticImageData> = {
     "საგანმანათლებლო ტექნოლოგიები საქართველო": edutechgeo,
     "TBC Bank": tbcBank,
     "Bank Of Georgia": bog,
+    "Liberty Bank": libertybank,
+    "CityPay": citypay,
+    "Crocobet": crocobet,
+    "Pulsar AI": pulsarai,
+    "AltexSoft": altexsoft,
+    "Qarva": qarva,
+    "Space": space,
+    "Epam": epam,
+    "Flat Rock Technology": flatrock,
+    "oodneV": oodnev
 }
 
 

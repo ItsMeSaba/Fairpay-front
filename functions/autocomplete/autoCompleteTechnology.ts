@@ -15,16 +15,26 @@
 //     "Kotlin": ["Kotlin"],
 //     "P"
 // }
-const technologies = ["C#", "Javascript", "Kotlin", "Java", "Python", "Swift", "Go", "Laravel", "Node", "React", "Angular", "Vue", "HTML/CSS", "C", "C++", "Rust", "Typescript", "MySQL", "MongoDB", "PosgreSQL", "PHP", "CouchDB", "Firebase", "Ruby", "Ruby on Rails", "Symfony", "Asp.net", "Django", "Express", "Spring", "Flask", "jQuery", "Bootstrap"];
+const technologies = ["C#", "Javascript", "Kotlin", "Java", "Python", "Swift", "Go", "Laravel", "Node", "React", "Angular", "Vue", "HTML/CSS", "C", "C++", "Rust", "Typescript", "MySQL", "MongoDB", "PosgreSQL", "PHP", "CouchDB", "Firebase", "Ruby", "Ruby on Rails", "Symfony", "Asp.net", "Django", "Express", "Spring", "Flask", "jQuery", "Bootstrap", "Tailwind CSS", "Dart", "R", "Objective-C", "Perl", "NextJs", "Nestjs", "Assembly"];
 
-export default function autoCompleteTechnology(userInput: string) {
-    // const sanitizedInput = userInput.replace(/[\\\/\*\?]/g, "");
+interface Options {
+    limit?: number;
+}
 
-    // if (sanitizedInput.length === 0) return [];
+export default function autoCompleteTechnology(userInput: string, options?: Options) {
+    const sanitizedInput = userInput.replace(/[\\\/\*\?]/g, "");
 
-    // const regex = new RegExp(`^${sanitizedInput}`, "i");
+    if (sanitizedInput.length === 0) return [];
 
-    // return technologies.filter(technology => regex.test(technology));
+    const regex = new RegExp(`^${sanitizedInput}`, "i");
 
-    return technologies.filter(technology => technology.toLowerCase().startsWith(userInput.toLowerCase()))
+    const results = [];
+
+    for (let i = 0; i < technologies.length; i++) {
+        if (regex.test(technologies[i])) results.push(technologies[i]);
+
+        if (results.length === (options?.limit ?? 3)) break;
+    }
+
+    return results;
 }

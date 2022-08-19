@@ -46,11 +46,40 @@ export function SalaryItem(args: Args) {
             </div>
 
             <div className={style.right}>
-                <span className={style.salary}>{ salary }</span> {getCurreny(currency as Currency)}
+                <span className={style.salary}>{ salary } - { salary + 300 }</span> {getCurreny(currency as Currency)}
             </div>
         </div>
     )
 }   
+
+export function SalaryItemWithoutCompany(args: Args) {
+    const { company, salary, position, date, currency, technologies, seniority } = args.vacancy;
+
+    return (
+        <div className={style.salaryItemWithoutCompany}>
+            <div className={style.left}>
+                <div className={style.top}>
+                    <h2>{ position } { seniority ? `(${seniority})` : "" }</h2>
+                    <h5>{ (new Date(date)).toLocaleDateString() }</h5>
+                    {/* <h5>{ date?.toLocaleDateString() }</h5> */}
+                </div>
+
+                {/* <br /> */}
+                
+                <div className={style.bottom}>
+                    <DisplayTechnologies technologies={technologies} />
+                </div>
+            </div>
+
+            <div className={style.right}>
+                <span className={style.salary}>{ salary } - { salary + 300 }</span> {getCurreny(currency as Currency)}
+            </div>
+        </div>
+    )
+}
+
+
+/////////////////////////////
 
 interface DisplayTechnologiesArgs {
     technologies: string[]

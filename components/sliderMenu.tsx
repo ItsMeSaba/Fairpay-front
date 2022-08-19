@@ -5,6 +5,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import { useSession } from 'next-auth/react';
 import Search from './search';
+import clickWithoutPropogation from 'functions/utils/clickWithoutPropogation';
 
 interface Args {
     closeSlider: (...args: any) => any
@@ -18,40 +19,30 @@ export function SliderMenu(args: Args) {
     const translate = openSlider ? "translateX(0)" : "translateX(100%)";
 
     return (
-        <div className={style.sliderMenu} style={{ transform: translate }}>
-            <div className={style.top}>
-                {/* <AccountCircleRoundedIcon fontSize="medium" style={{ fill: status === "authenticated" ? "green" : "red" }} /> */}
-                <div onClick={openAuthPopup}>
-                    {/* <AccountCircleRoundedIcon fontSize="large" /> */}
-                    <PersonOutlineIcon fontSize="large" style={{ fill: status === "authenticated" ? "green" : "red" }} />
+        // <div className={style.container} style={{ transform: translate }} onClick={e => clickWithoutPropogation(e, closeSlider)}>
+        <div className={style.container} style={{ transform: translate }}>
+            {/* <div className={style.sliderMenu} style={{ transform: translate }}> */}
+            <div className={style.sliderMenu} onClick={() => null} >
+                <div className={style.top}>
+                    <div onClick={openAuthPopup}>
+                        <PersonOutlineIcon fontSize="large" style={{ fill: status === "authenticated" ? "green" : "red" }} />
+                    </div>
+
+                    <div onClick={closeSlider}> 
+                        <CloseIcon fontSize="large" />
+                    </div>
                 </div>
 
-                <div onClick={closeSlider}> 
-                    <CloseIcon fontSize="large" />
-                </div>
+                <Search width="100%" />
+
+                <ul className={style.links}> 
+                    <li onMouseUpCapture={closeSlider}>       
+                        <Link href="/companies" >
+                            კომპანიები
+                        </Link>
+                    </li>
+                </ul>
             </div>
-
-            <Search width="100%" />
-
-            <ul className={style.links}> 
-                {/* <li>
-                    <Link href="/salaries">
-                        ხელფასები
-                    </Link>
-                </li> */}
-                <li>       
-                    <Link href="/companies">
-                        კომპანიები
-                    </Link>
-                </li>
-                {/* <li>       
-                    <Link href="/technologies">
-                        ტექნოლოგიები
-                    </Link>
-                </li> */}
-                {/* <li>
-                </li> */}
-            </ul>
         </div>
     )
 }

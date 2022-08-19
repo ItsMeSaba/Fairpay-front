@@ -14,19 +14,21 @@ import CompanyInput from "components/inputs/companyInput"
 import { SubmitReviewSchema } from "joiSchemas"
 import { useSession } from "next-auth/react"
 import to from "await-to-js"
+import { Types } from "mongoose"
 
 interface Args {
     close: () => void,
-    presetCompany: string | null
+    companyName: string | null,
+    companyId: Types.ObjectId,
 }
 
 export default function SubmitReview(args: Args) {
-    const { close, presetCompany } = args; 
+    const { close, companyName } = args; 
     const [rating, setRating] = useState(0);
     const [positiveReview, setPositiveReview] = useState("");
     const [negativeReview, setNegativeReview] = useState("");
     const [position, setPosition] = useState("");
-    const [company, setCompany] = useState(presetCompany ?? "");
+    const [company, setCompany] = useState(companyName ?? "");
     const [error, setError] = useState("");
     const { data: userData } = useSession();
 
@@ -79,14 +81,14 @@ export default function SubmitReview(args: Args) {
                             className={style.stars}
                         />
 
-                        <span className={style.ratingNumber}>{rating/20}/5</span>
+                        <span className={style.ratingNumber}>{rating/20}/5 (სავალდებულო)</span>
                     </div>
 
                     {/* <input type="text" placeholder="პოზიცია" /> */}
                     <div className={style.inputsBlock}>
                         <CompanyInput setState={setCompany} state={company} />
 
-                        <PositionInput setState={setPosition} state={position} className={style.positionInput} customStyle={{ marginLeft: "1.5rem" }} />
+                        <PositionInput setState={setPosition} state={position} className={style.positionInput} customStyle={{ marginLeft: window.innerWidth < 768 ? "0" : "1.5rem" }} />
                     </div>
 
                     <div className={style.reviewText}>

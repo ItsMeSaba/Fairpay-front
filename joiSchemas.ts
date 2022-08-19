@@ -2,11 +2,16 @@ import Joi from "joi";
 
 
 export const SubmitSalarySchema = Joi.object({
-    company: Joi
-        .string()
+    companyId: Joi
+        // .string()
+        // .required()
+        // .messages({
+        //     "string.empty": "კომპანია სავალდებულოა"
+        // }),
+        .any()
         .required()
         .messages({
-            "string.empty": "კომპანია სავალდებულოა"
+            "any.empty": "კომპანიის მოძებნის დროს მოხდა შეცდომა"
         }),
     
     position: Joi
@@ -81,4 +86,17 @@ export const SubmitReviewSchema = Joi.object({
     
     userId: Joi
         .string(),
+})
+
+export const SubmitCompanyRequestSchema = Joi.object({
+    companyName: Joi
+        .string()
+        .required()
+        .messages({
+            "string.empty": "კომპანიის სახელი სავალდებულოა" 
+        }),
+
+    companyWebsite: Joi
+        .string()
+        .allow(""),
 })

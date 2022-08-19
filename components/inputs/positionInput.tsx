@@ -23,7 +23,9 @@ export default function PositionInput(args: Args) {
 
         if (event.target.value.length === 0) return setPositions([]);
 
-        // setPositions([...autoCompletePosition(event.target.value), ...autoCompleteTechnology(event.target.value)]);
+        const results = []
+
+        // setPositions([...autoCompletePosition(event.target.value), ...autoCompleteTechnology(event.target.value, { limit: 3 })]);
         setPositions(autoCompletePosition(event.target.value));
     }
 
@@ -45,7 +47,8 @@ export default function PositionInput(args: Args) {
             />
 
             <datalist id="positionInput" style={{ display: displayList }}>
-                { positions.map(position => <option onMouseDownCapture={() => setState(`${position} Developer`)} key={position}>{ position } Developer</option>) }
+                {/* { positions.map(position => <option onMouseDownCapture={() => setState(`${position} Developer`)} key={position}>{ position } Developer</option>) } */}
+                { positions.map(position => <option onMouseDownCapture={() => setState(position)} key={position}>{ position }</option>) }
             </datalist>
         </div>
     )

@@ -19,7 +19,7 @@ export function SeniorityInput(args: SeniorityInputArgs) {
                     <option value="junior">Junior</option>
                     <option value="middle">Middle</option>
                     <option value="senior">Senior</option>
-                    <option value="lead">Lead</option>
+                    {/* <option value="lead">Lead</option> */}
                 </select>
             {/* </div> */}
         </div>

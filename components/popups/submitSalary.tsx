@@ -14,14 +14,16 @@ import { SalaryInput } from "components/inputs/salaryInput"
 import { SeniorityInput } from "components/inputs/seniorityInput"
 import { useSession } from "next-auth/react"
 import to from "await-to-js"
+import { Types } from "mongoose"
 
 interface Args {
     close: () => void,
-    presetCompany: string | null
+    companyName: string | null,
+    companyId: Types.ObjectId,
 }
 
 export default function SubmitSalary(args: Args) {
-    const { close, presetCompany } = args;
+    const { close, companyName: presetCompany, companyId } = args;
     const [position, setPosition] = useState("");
     const [company, setCompany] = useState(presetCompany ?? "");
     const [technologies, setTechnologies] = useState<string[]>([]);
@@ -33,7 +35,7 @@ export default function SubmitSalary(args: Args) {
 
     function handleClosing(e: any) {
         if(e.target !== e.currentTarget) return;
-        
+            
         close();
     }
 
@@ -42,7 +44,7 @@ export default function SubmitSalary(args: Args) {
 
         const dataToUpload = {
             technologies,
-            company,
+            companyId,
             position,
             seniority,
             salary,
@@ -73,6 +75,10 @@ export default function SubmitSalary(args: Args) {
 
 
                     <div className={style.inputsDiv}>
+                        <h5>ანაზღაურების ხარჯზე პირის ვაინაობის დადგენის გართულების მიზნით ანაზღაურება წარმოდგენილი იქნება დიაპაზონის სახით</h5>
+
+                        <br />
+
                         <div className={style.fields}>
                             <CompanyInput displayLabel state={company} setState={setCompany} />
 
