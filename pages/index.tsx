@@ -1,28 +1,13 @@
-// import { Header } from "../components/header";
-// import { SalaryItem } from "../components/salaryItems/salaryItem";
-// import style from "styles/pages/index.module.sass"
 import style from "styles/pages/index2.module.sass"
 import Image from "next/image"
-// import data from "../public/dummyData"
-// import { SalaryItems } from "components/salaryItems/salaryItems";
-// import svg from "../public/images/statisticsMan.svg"
-// import svg2 from "../public/images/statisticsMan2.svg"
-// import waves from "../public/images/waves.svg"
 import bussinesMan from "../public/images/bussinesMan.png"
 import blob1 from "../public/images/blob12.svg"
 import blob3 from "../public/images/blob11.svg"
-// import blob2 from "../public/images/blob7.png"
-// import axios from "axios";
-// import { Vacancies } from "types";
 import man4test from "../public/images/man4test2.png"
 import woman3 from "../public/images/woman3.png"
-// import blob13 from "../public/images/blob13.svg"
-// import autoCompleteTechnology from "functions/autocomplete/autoCompleteTechnology";
-// import autoCompletePosition from "functions/autocomplete/autoCompletePosition";
-import { useSession } from "next-auth/react"
-// import AuthPopup from "components/popups/authPopup";
-import { useState } from "react";
-// import DataCountDisplay from "components/dataCountDisplay";
+import { useEffect, useState } from "react";
+import axios from "axios"
+import useCheckAuth from "hooks/useCheckAuth"
 
 
 interface Args {
@@ -30,11 +15,10 @@ interface Args {
 }
 
 export default function Index(args: Args) {
-	// const { vacancies } = args;
 	const [displayAuthPopup, setDisplayAuthPopup] = useState(false);
-	const { data: session, status } = useSession()
+	// const { user, status } = useCheckAuth();
 
-	console.log("USER ------->", session?.user, status);
+	// console.log("USER ------->", user?.id);
 
  	return (
 		<div className={style.indexPage}>

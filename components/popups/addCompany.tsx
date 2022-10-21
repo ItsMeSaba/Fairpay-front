@@ -39,7 +39,7 @@ export default function AddCompanyPopup(args: Args) {
 
                 <h2>დაამატეთ კომპანია</h2>
 
-                <h4>კომპანია დაემატება ვალიდაციის შემდეგ</h4>
+                <h4>კომპანია დაემატება ვალიდაციის შემდეგ. სავარაუდო ლოდინის დრო 3დან 24 საათმდე</h4>
 
                 <div className={style.inputs}>
                     {/* <input type="text" />

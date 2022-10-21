@@ -1,9 +1,10 @@
 import { GlobalContext } from "context";
 import clickWithoutPropogation from "functions/utils/clickWithoutPropogation";
+import useCheckAuth from "hooks/useCheckAuth";
 import { Types } from "mongoose";
-import { useSession } from "next-auth/react";
 import { useContext } from "react";
 import style from "styles/components/buttons/buttons.module.sass"
+
 
 interface Props {
     companyName: string,
@@ -14,8 +15,9 @@ interface Props {
 export default function AddReviewButton(props: Props) {
     const { companyId, companyName, displayLongName } = props;
 
-    const { status } = useSession();
-    const { openAuthPopup, openReviewPopup } = useContext(GlobalContext);
+    // const { status } = useCheckAuth();
+    const { openAuthPopup, openReviewPopup, authData } = useContext(GlobalContext);
+    const { status } = authData;
 
     return (
         <button 

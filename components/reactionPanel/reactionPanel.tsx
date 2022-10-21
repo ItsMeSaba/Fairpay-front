@@ -1,10 +1,10 @@
 import ThumbUpRoundedIcon from '@mui/icons-material/ThumbUpRounded';
 import ThumbDownRoundedIcon from '@mui/icons-material/ThumbDownRounded';
 import style from "styles/components/reactionPanel.module.sass"
-import { useSession } from 'next-auth/react';
 import { useContext, useState } from 'react';
 import { GlobalContext } from 'context';
 import recordReaction from "../../database/functions/reviews/recordReaction"
+import useCheckAuth from 'hooks/useCheckAuth';
 
 interface Args {
     userReaction: "like" | "dislike" | null,
@@ -16,15 +16,16 @@ export default function ReactionPanel(args: Args) {
     const { userReaction, reviewId, likeDislikeDifference } = args;
     const [currentUserReaction, setCurrentUserReaction] = useState<"like" | "dislike" | null>(userReaction);
     const [currentLikeDislikeDifference, setCurrentLikeDislikeDifference] = useState(likeDislikeDifference);
-    const { data: userData, status } = useSession();
-    const { openAuthPopup } = useContext(GlobalContext);
+    // const { user } = useCheckAuth();
+    const { openAuthPopup, authData } = useContext(GlobalContext);
+    const { user } = authData;
 
     async function handleClick(reaction: "like" | "dislike" | "unlike" | "undislike") {
         console.log("handleClick", reaction);
 
-        if (!userData?.user.userId) return openAuthPopup();
+        if (!user?.id) return openAuthPopup();
 
-        const result = await recordReaction(userData.user.userId, reviewId, reaction);
+        const result = await recordReaction(user.id, reviewId, reaction);
 
         if (result.success) {
             setCurrentLikeDislikeDifference(result.finalLikeDislikeDifference as number);

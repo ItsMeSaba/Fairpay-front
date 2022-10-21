@@ -31,6 +31,7 @@ export interface Company {
     vacancyCount: number,
     reviewCount: number,
     sumOfRatings: number,
+    documentsCount: number,
 }
 
 export type Companies = Company[];
@@ -40,6 +41,16 @@ export type Currency = "gel" | "usd" | "eur"
 export type FilterTypes = "technologies" | "seniorities" | "companies"
 
 export type ToggledFilters = Record<FilterTypes, string[]>
+
+export type AuthData = {
+    user: null,
+    status: "loading" | "unauthenticated"
+} | {
+    user: {
+        id: string,
+    }
+    status: "authenticated"
+}
 
 export type ValidCompanyNames = 
     "ვაბაკო" |

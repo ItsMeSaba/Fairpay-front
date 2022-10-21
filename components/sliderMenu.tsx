@@ -3,9 +3,11 @@ import Link from 'next/link';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import CloseIcon from '@mui/icons-material/Close';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
-import { useSession } from 'next-auth/react';
 import Search from './search';
 import clickWithoutPropogation from 'functions/utils/clickWithoutPropogation';
+import useCheckAuth from 'hooks/useCheckAuth';
+import { useContext } from "react"
+import { GlobalContext } from 'context';
 
 interface Args {
     closeSlider: (...args: any) => any
@@ -15,7 +17,8 @@ interface Args {
 
 export function SliderMenu(args: Args) {
     const { closeSlider, openSlider, openAuthPopup } = args;
-    const { data: session, status } = useSession();
+    // const { status } = useCheckAuth();
+    const { status } = useContext(GlobalContext).authData;
     const translate = openSlider ? "translateX(0)" : "translateX(100%)";
 
     return (

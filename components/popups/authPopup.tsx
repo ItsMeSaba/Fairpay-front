@@ -1,7 +1,10 @@
 import style from "styles/components/popups/authPopup.module.sass"
 import { FacebookLoginButton, GoogleLoginButton } from "react-social-login-buttons";
-import { Dispatch, SetStateAction } from "react";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { Dispatch, SetStateAction, useContext } from "react";
+import useCheckAuth from "hooks/useCheckAuth";
+import axios from "axios";
+import { rememberCurrentPage } from "functions/sessionStorage/rememberCurrentPage";
+import { GlobalContext } from "context";
 
 interface Args {
     closeAuth: (...args: any) => any
@@ -9,7 +12,8 @@ interface Args {
 
 export default function AuthPopup(args: Args) {
     const { closeAuth } = args;
-    const { status } = useSession();
+    // const { status } = useCheckAuth();
+    const { status } = useContext(GlobalContext).authData;
 
     function handleClosing(e: any) {
         if(e.target !== e.currentTarget) return;
@@ -17,6 +21,18 @@ export default function AuthPopup(args: Args) {
         closeAuth();
     }
 
+    async function logout() {
+        const res = await axios.post("http://localhost:7000/api/users/auth/dc", false, { withCredentials: true });
+
+        if (res.status === 200) location.reload();
+    }
+
+    function login() {
+        rememberCurrentPage();
+
+        location.replace("http://localhost:7000/api/users/auth/facebook");
+    }
+    
     return (
         <div className={style.authPopup} onClick={handleClosing}>
             <div className={style.container}>
@@ -29,14 +45,19 @@ export default function AuthPopup(args: Args) {
                 <br />
                 <br />
 
-                { status === "authenticated" && <button className={style.logOut} onClick={() => signOut()}>გასვლა</button> }
+                {/* { status === "authenticated" && <button className={style.logOut} onClick={() => signOut()}>გასვლა</button> } */}
+                { status === "authenticated" && <button className={style.logOut} onClick={logout}>გასვლა</button> }
 
                 { status === "unauthenticated" && 
                     <div className={style.buttons}>
-                        <FacebookLoginButton 
-                            onClick={() => signIn("facebook")} 
-                            style={{ width: "400px", boxShadow: "0 0 3px black" }} 
-                        />
+                        {/* <a href="http://localhost:7000/api/users/auth/facebook" onClick={rememberCurrentPage}> */}
+                        <div onClick={login}>
+                            <FacebookLoginButton
+                                // onClick={() => signIn("facebook")}
+                                style={{ width: "400px", boxShadow: "0 0 3px black" }} 
+                            />
+                        </div>
+                        {/* </a> */}
 
                         {/* <GoogleLoginButton 
                             onClick={() => signIn("google")} 

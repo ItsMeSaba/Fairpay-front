@@ -1,7 +1,7 @@
 import { GlobalContext } from "context";
 import clickWithoutPropogation from "functions/utils/clickWithoutPropogation";
+import useCheckAuth from "hooks/useCheckAuth";
 import { Types } from "mongoose";
-import { useSession } from "next-auth/react";
 import { CSSProperties, useContext } from "react";
 import style from "styles/components/buttons/buttons.module.sass"
 
@@ -15,8 +15,9 @@ interface Props {
 export default function AddSalaryButton(props: Props) {
     const { companyId, companyName, customStyle, displayLongName } = props;
 
-    const { status } = useSession();
-    const { openAuthPopup, openSalaryPopup } = useContext(GlobalContext);
+    // const { status } = useCheckAuth();
+    const { openAuthPopup, openSalaryPopup, authData } = useContext(GlobalContext);
+    const { status } = authData;
 
     return (
         <button 

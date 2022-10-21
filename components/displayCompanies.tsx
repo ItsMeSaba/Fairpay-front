@@ -9,12 +9,13 @@ import Button from "./buttons/button";
 import { Companies, Company, ValidCompanyNames } from "types";
 import { getCompanyImage } from "functions/companies/images/getCompanyImage";
 import Link from 'next/link'
-import { MouseEvent, useContext, useEffect } from "react";
-import { useSession } from "next-auth/react";
+import { MouseEvent, useContext, useMemo } from "react";
 import { GlobalContext } from "context";
 import { Types } from "mongoose";
 import AddSalaryButton from "./buttons/AddSalaryButton";
 import AddReviewButton from "./buttons/AddReviewButton";
+import { rememberCurrentPage } from "functions/sessionStorage/rememberCurrentPage";
+// import useMemo from "react";
 
 interface DisplayCompanies {
     companies: Companies
@@ -24,14 +25,17 @@ interface DisplayCompanies {
 
 export function DisplayCompanies(args: DisplayCompanies) {
     const { companies, openReviewPopup, openSalaryPopup } = args;
+    const sortedCompanies = useMemo(() => companies.sort((a, b) => b.documentsCount - a.documentsCount), [companies.length]);
+    // console.log(companies[0])
 
     return (
         <div className={style.companies}>
             {
-                companies.map((company, index) => {
+                // companies.map((company, index) => {
+                sortedCompanies.map((company, index) => {
                     return <DisplayCompany 
                             company={company} 
-                            key={index} 
+                            key={String(company._id)} 
                             openReviewPopup={() => openReviewPopup(company.name, company._id)} 
                             openSalaryPopup={() => openSalaryPopup(company.name, company._id)} 
                         />
@@ -52,7 +56,6 @@ function DisplayCompany(args: DisplayCompany) {
     const { openSalaryPopup, openReviewPopup } = args;
     const image = getCompanyImage(name as ValidCompanyNames);
     const { openAuthPopup } = useContext(GlobalContext);
-    const { status } = useSession();
 
     function clickWithoutPropogation(e: MouseEvent, callback: ((...args: any[]) => any)) {
         callback();
@@ -65,63 +68,45 @@ function DisplayCompany(args: DisplayCompany) {
 
 
     return (
-        <Link href={`/companies/${urlName}`}>
-            <div className={style.company} style={{ borderTop: `solid 5px #${color ?? "gray"}`  }}>
-                <div className={style.top}>
-                    <div className={style.companyImage}>
-                        <Image quality={30} src={image} alt={name} />
+        <div className="holder" onClick={rememberCurrentPage}>
+            <Link href={`/companies/${urlName}`}>
+                <div className={style.company} style={{ borderTop: `solid 5px #${color ?? "gray"}`  }}>
+                    <div className={style.top}>
+                        <div className={style.companyImage}>
+                            <Image quality={30} src={image} alt={name} />
+                        </div>
+                    </div>
+
+                    <div className={style.bottom}>
+                        <h2 className={style.companyName}>{ name }</h2>
+
+                        <div className={style.companyData}>
+                            <span>
+                                <div className={style.vacancyIcon}>
+                                    <WorkRoundedIcon />
+                                </div>
+
+                                <p>{ vacancyCount } ვაკანსია</p>
+                            </span>
+
+                            <span>
+                                <div className={style.startIcon}>
+                                    <StarRoundedIcon fontSize="medium" /> 
+                                </div>
+
+                                <p>{ calculatedReview.toFixed(1) }/5 ({ reviewCount })</p>
+                            </span>
+                        </div>
+
+                        
+                        <div className={style.buttons}>
+                            <AddSalaryButton companyId={_id} companyName={name} />
+
+                            <AddReviewButton companyId={_id} companyName={name} />
+                        </div>
                     </div>
                 </div>
-
-                <div className={style.bottom}>
-                    <h2 className={style.companyName}>{ name }</h2>
-
-                    <div className={style.companyData}>
-                        <span>
-                            <div className={style.vacancyIcon}>
-                                {/* <WorkRoundedIcon fontSize="small" /> */}
-                                <WorkRoundedIcon />
-                            </div>
-
-                            <p>{ vacancyCount } ვაკანსია</p>
-                        </span>
-
-                        <span>
-                            <div className={style.startIcon}>
-                                <StarRoundedIcon fontSize="medium" /> 
-                            </div>
-
-                            <p>{ calculatedReview.toFixed(1) }/5 ({ reviewCount })</p>
-                        </span>
-                    </div>
-
-                    
-                    <div className={style.buttons}>
-                        {/* <Button text={"ანაზღაურება"} /> */}
-
-                        {/* <Button text={"შეფასება"} /> */}
-                        {/* <button 
-                            style={{ transform: "translate('-100%')" }} 
-                            title="ანაზღაურების დამატება" 
-                            className={style.button} 
-                            onClick={e => clickWithoutPropogation(e, status !== "authenticated" ? openAuthPopup : openSalaryPopup)}
-                        >
-                            ანაზღაურება
-                        </button> */}
-                        <AddSalaryButton companyId={_id} companyName={name} />
-
-                        <AddReviewButton companyId={_id} companyName={name} />
-                        {/* <button 
-                            style={{ transform: "translate('-100%')" }} 
-                            title="შეფასების დამატება" 
-                            className={style.button} 
-                            onClick={e => clickWithoutPropogation(e, status !== "authenticated" ?  openAuthPopup : openReviewPopup)}
-                        >
-                            შეფასება
-                        </button> */}
-                    </div>
-                </div>
-            </div>
-        </Link>
+            </Link>
+        </div>
     );
 }

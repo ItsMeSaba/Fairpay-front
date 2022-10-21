@@ -1,6 +1,9 @@
 import axios from "axios";
 
-
+/**
+ * Caches user related data like:
+ * Liked and Disliked reviews
+ */
 export default async function cacheUserData(userId: string | null) {
     console.log("Caching user data", userId);
     if (!userId) return false;

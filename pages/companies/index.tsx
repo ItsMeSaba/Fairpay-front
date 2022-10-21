@@ -5,13 +5,18 @@ import axios from "axios";
 import { Companies } from "types";
 import SubmitSalary from "components/popups/submitSalary";
 import SubmitReview from "components/popups/submitReview";
-import { useContext, useRef, useState } from "react";
-import { useSession } from "next-auth/react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { fetchCompanies } from "database/functions/company/fetchCompany";
 import LoadMoreButton from "components/buttons/loadMore";
 import AddCompanyPopup from "components/popups/addCompany";
 import { GlobalContext } from "context";
 import { Types } from "mongoose";
+import scrollIfNeededAndRemovePreviousPage from "functions/sessionStorage/checkForScroll";
+import getCompanies from "functions/companies/getCompanies";
+import getCachedCompanies from "functions/localStorage/getCachedCompanies";
+import isTimestampValid from "functions/utils/isTimestampValid";
+import companiesArrayToOject from "functions/companies/companiesArrayToObject";
+import deleteCachedCompanies from "functions/localStorage/deleteCachedCompanies";
 
 interface PopupData {
 	presetCompany: string | null;
@@ -35,27 +40,64 @@ interface Args {
 
 export default function CompaniesPage(args: Args) {
 	const { companies: fetchedCompanies } = args;
-	const [companies, setCompanies] = useState(fetchedCompanies);
+	const [companies, setCompanies] = useState(companiesArrayToOject(fetchedCompanies));
 	const [salaryPopup, setSalaryPopup] = useState(popupData());
 	const [reviewPopup, setReviewPopup] = useState(popupData());
 	const [addCompanyPopup, setAddCompanyPopup] = useState(false);
 	const [displayLoadMore, setDisplayLoadMore] = useState(true);
-	const { data: session, status } = useSession()
-	const documentsToSkip = useRef(10);
+	// const documentsToSkip = useRef(companies.length);
+	const documentsToSkip = useRef(Object.values(companies).length);
+	const isAlreadyLoadedFromCache = useRef(false);
+
 	const { openReviewPopup, openSalaryPopup } = useContext(GlobalContext);
 
-	async function loadMore() {
-		const newCompanies = await fetchCompanies(documentsToSkip.current);
+	const companiesCount = Object.values(companies).length;
 
-		if (newCompanies.length === 0) {
+	async function loadCompanies() {
+		// const newCompanies = await fetchCompanies(documentsToSkip.current);
+		// const newCompanies = await getCompanies(documentsToSkip.current);
+		const newCompanies = await getCompanies(documentsToSkip.current);
+
+		if (Object.values(newCompanies).length === 0) {
 			setDisplayLoadMore(false);
 			return false;
 		}
 
-		documentsToSkip.current += newCompanies.length;
-		setCompanies(companies => [...companies, ...newCompanies]);
+		// documentsToSkip.current += newCompanies.length;
+		documentsToSkip.current += Object.values(newCompanies).length;
+		// setCompanies(companies => [...companies, ...newCompanies]);
+		setCompanies(companies => ({ ...companies, ...newCompanies }) );
 	}
 
+	useEffect(() => {
+		console.log("RUNNING EFFECT OF SCROLL BLYAT")
+		
+		
+		if (!isAlreadyLoadedFromCache.current) {
+			const cachedCompanies = getCachedCompanies();
+
+			// if (cachedCompanies && isTimestampValid(cachedCompanies.timestamp, "3h")) {
+			// 	setCompanies(companies => ({ ...companies, ...cachedCompanies.companies }));
+			// 	documentsToSkip.current +=  Object.values(cachedCompanies.companies).length;
+			// 	isAlreadyLoadedFromCache.current = true;
+			// }
+			
+			if (cachedCompanies) {
+				if (isTimestampValid(cachedCompanies.timestamp, "3h")) {
+					setCompanies(companies => ({ ...cachedCompanies.companies, ...companies }));
+					
+					documentsToSkip.current +=  Object.values(cachedCompanies.companies).length;
+					
+					isAlreadyLoadedFromCache.current = true;
+				} else deleteCachedCompanies();
+			}
+		}
+		
+		setTimeout(() => scrollIfNeededAndRemovePreviousPage(), 100)
+	}, [companiesCount]);
+
+
+	console.log("COMPANIES", companies);
 	return (
 		<div className={style.page}>
 			{
@@ -63,28 +105,12 @@ export default function CompaniesPage(args: Args) {
 					<AddCompanyPopup closePopup={() => setAddCompanyPopup(false)} />
 			}
 
-			{/* {
-				salaryPopup.shouDisplay &&
-					<SubmitSalary
-						presetCompany={salaryPopup.presetCompany}
-						close={() => setSalaryPopup(popupData())}
-					/>
-			}
-
-			{
-				reviewPopup.shouDisplay &&
-					<SubmitReview
-						presetCompany={reviewPopup.presetCompany}
-						close={() => setReviewPopup(popupData())}
-					/>
-			} */}
 
 			<button className={style.addCompanyButton} onClick={() => setAddCompanyPopup(true)}>კომპანიის დამატება</button>
 
 			<DisplayCompanies
-				companies={companies}
+				companies={Object.values(companies)}
 				openSalaryPopup={(companyName: string, companyId: Types.ObjectId) =>
-					// setSalaryPopup(popupData(true, company))
 					openSalaryPopup(companyName, companyId)
 				}
 				openReviewPopup={(companyName: string, companyId: Types.ObjectId) =>
@@ -92,9 +118,7 @@ export default function CompaniesPage(args: Args) {
 				}
 			/>
 
-			{/* <button className={style.loadMoreButton} onClick={loadMore}>მეტი</button> */}
-
-			{ displayLoadMore && <LoadMoreButton cb={loadMore} /> }
+			{ displayLoadMore && <LoadMoreButton cb={loadCompanies} /> }
 		</div>
   	);
 }
@@ -103,9 +127,7 @@ export async function getStaticProps() {
 	const response = await axios.get<Companies>(
 		`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/companies`
 	);
-
-	// console.log("response", response.data)
-
+	console.log("getStaticProps running on companies list");
 	return {
 		props: {
 			companies: response.data,

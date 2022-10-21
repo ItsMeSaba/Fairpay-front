@@ -1,6 +1,6 @@
 import '../styles/globals.sass'
 import type { AppProps } from 'next/app'
-import { SessionProvider, useSession } from 'next-auth/react'
+import { SessionProvider } from 'next-auth/react'
 import { Header } from 'components/header'
 import { useEffect, useState } from 'react';
 import AuthPopup from 'components/popups/authPopup';
@@ -14,6 +14,7 @@ import SubmitSalary from 'components/popups/submitSalary';
 import SubmitReview from 'components/popups/submitReview';
 import { PopupData } from 'types';
 import { Types } from 'mongoose';
+import useCheckAuth from 'hooks/useCheckAuth';
 
 
 
@@ -22,28 +23,31 @@ function MyApp({ Component, pageProps }: AppProps) {
 	const [salaryPopup, setSalaryPopup] = useState(new PopupData());
 	const [reviewPopup, setReviewPopup] = useState(new PopupData());
 	const [openSliderMenu, setOpenSliderMenu] = useState(false);
-	const { data: userData } = useSession();
+	const authData = useCheckAuth();
 
 	useEffect(() => {
-		console.log("USEREFFECT RAN", userData?.user);
-		if (userData?.user) {
-			console.log("CACHE HAPPENED")
-			cacheUserData(userData.user.userId);
-		}
-	}, [userData])
+		const { user } = authData;
 
-	console.log("SOME DATA ->", salaryPopup, reviewPopup)
+		console.log("USEREFFECT RAN", user?.id);
+		if (user?.id) {
+			console.log("CACHE HAPPENED")
+			cacheUserData(user.id);
+		}
+	}, [authData?.user?.id])
+
+	console.log("SOME DATA -0000000000000>", authData)
   	return (
 		<>
 			<Head>
 				<title>Fairpay</title>
-				<meta property="og:title" content="My page title" key="title" />
+				<meta property="og:title" content="Fairpay" key="title" />
 			</Head> 
-
+			
 			<GlobalContext.Provider value={{
 				openAuthPopup: () => setDisplayAuthPopup(true),
 				openReviewPopup: (companyName: string, companyId: Types.ObjectId) => setReviewPopup(new PopupData(true, companyName, companyId)),
 				openSalaryPopup: (companyName: string, companyId: Types.ObjectId) => setSalaryPopup(new PopupData(true, companyName, companyId)),
+				authData
 			}}>
 				
 				<TestModeInfo />
@@ -70,9 +74,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 function MyAppWrapper(props: AppProps) {
 	return (
-		<SessionProvider session={props.pageProps.session} refetchInterval={5 * 60}>
-			<MyApp {...props} />
-		</SessionProvider>
+		// <SessionProvider session={props.pageProps.session} refetchInterval={5 * 60}>
+		<MyApp {...props} />
+		// </SessionProvider>
 	)
 }
 

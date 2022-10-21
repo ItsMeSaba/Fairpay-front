@@ -12,9 +12,9 @@ import axios from "axios"
 import { SubmitSalarySchema } from "joiSchemas"
 import { SalaryInput } from "components/inputs/salaryInput"
 import { SeniorityInput } from "components/inputs/seniorityInput"
-import { useSession } from "next-auth/react"
 import to from "await-to-js"
 import { Types } from "mongoose"
+import useCheckAuth from "hooks/useCheckAuth"
 
 interface Args {
     close: () => void,
@@ -31,7 +31,7 @@ export default function SubmitSalary(args: Args) {
     const [salary, setSalary] = useState("");
     const [currency, setCurrency] = useState("gel");
     const [error, setError] = useState("");
-    const { data: userData } = useSession();
+    const { user } = useCheckAuth();
 
     function handleClosing(e: any) {
         if(e.target !== e.currentTarget) return;
@@ -40,7 +40,7 @@ export default function SubmitSalary(args: Args) {
     }
 
     async function upload() {
-        if (!userData?.user.userId) return setError("You must be logged in to submit a review");
+        if (!user?.id) return setError("You must be logged in to submit a review");
 
         const dataToUpload = {
             technologies,
@@ -49,7 +49,7 @@ export default function SubmitSalary(args: Args) {
             seniority,
             salary,
             currency,
-            userId: userData?.user.userId,
+            userId: user.id,
         }
         
         const { error: validationError, value } = SubmitSalarySchema.validate(dataToUpload);

@@ -5,10 +5,11 @@ import bgImage from "../public/images/bg3.jpg"
 import Link from 'next/link'
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
-import { useSession } from "next-auth/react";
 import MenuIcon from '@mui/icons-material/Menu';
 import Search from "./search";
-
+import useCheckAuth from "hooks/useCheckAuth";
+import { GlobalContext } from "context";
+import { useContext} from "react";
 interface Args {
     openAuth: (...args: any) => any
     openSliderMenu: (...args: any) => any
@@ -16,7 +17,10 @@ interface Args {
 
 export function Header(args: Args) {
     const { openAuth, openSliderMenu } = args;
-    const { data: session, status } = useSession()
+    // const { user, status } = useCheckAuth();
+    const { status } = useContext(GlobalContext).authData;
+
+    console.log("STATUS =========", status)
 
     return (
         <>
@@ -34,21 +38,12 @@ export function Header(args: Args) {
 
 
                 <ul className={style.links}> 
-                    {/* <li>
-                        <Link href="/salaries">
-                            ხელფასები  
-                        </Link>
-                    </li> */}
                     <li>       
                         <Link href="/companies">
                             კომპანიები
                         </Link>
                     </li>
-                    {/* <li>       
-                        <Link href="/technologies">
-                            ტექნოლოგიებიx`
-                        </Link>
-                    </li> */}
+
                     <li onClick={openAuth}>
                         <PersonOutlineIcon fontSize="medium" style={{ fill: status === "authenticated" ? "green" : "red" }} />
                     </li>

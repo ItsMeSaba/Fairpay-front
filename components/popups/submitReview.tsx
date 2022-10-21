@@ -12,9 +12,11 @@ import axios from "axios"
 import TechnologyInput from "components/inputs/technologyInput"
 import CompanyInput from "components/inputs/companyInput"
 import { SubmitReviewSchema } from "joiSchemas"
-import { useSession } from "next-auth/react"
 import to from "await-to-js"
 import { Types } from "mongoose"
+import useCheckAuth from "hooks/useCheckAuth"
+import { GlobalContext } from "context"
+import { useContext } from 'react'
 
 interface Args {
     close: () => void,
@@ -30,9 +32,10 @@ export default function SubmitReview(args: Args) {
     const [position, setPosition] = useState("");
     const [company, setCompany] = useState(companyName ?? "");
     const [error, setError] = useState("");
-    const { data: userData } = useSession();
+    // const { user } = useCheckAuth();
+    const { user } = useContext(GlobalContext).authData;
 
-    console.log("userData?.user.profileId", userData?.user.userId);
+    console.log("userData?.user.profileId", user?.id);
 
     function handleClosing(e: any) {
         if(e.target !== e.currentTarget) return;
@@ -41,7 +44,7 @@ export default function SubmitReview(args: Args) {
     }   
 
     async function upload() {
-        if (!userData?.user.userId) return setError("You must be logged in to submit a review");
+        if (!user?.id) return setError("You must be logged in to submit a review");
 
         const dataToUpload = {
             rating,
@@ -49,7 +52,7 @@ export default function SubmitReview(args: Args) {
             negativeReview,
             position,
             company,
-            userId: userData.user.userId,
+            userId: user.id,
         }
     
         const { error: validationError, value: validatedData } = SubmitReviewSchema.validate(dataToUpload);
