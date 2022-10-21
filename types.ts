@@ -32,6 +32,7 @@ export interface Company {
     reviewCount: number,
     sumOfRatings: number,
     documentsCount: number,
+    color?: string,
 }
 
 export type Companies = Company[];

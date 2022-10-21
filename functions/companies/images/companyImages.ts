@@ -35,6 +35,12 @@ import altexsoft from "public/images/companies/altexsoft.png"
 import space from "public/images/companies/space.png"
 import epam from "public/images/companies/epam2.png"
 import flatrock from "public/images/companies/flatrock.png"
+import optioai from "public/images/companies/optioai.jpeg"
+import spinom from "public/images/companies/spinom.png"
+import tnet from "public/images/companies/tnet.png"
+import credo from "public/images/companies/credo.png"
+import sajaroreestri from "public/images/companies/sajaroreestri.jpg"
+
 import { ValidCompanyNames } from "types"
 
 class CompanyImageData {
@@ -46,6 +52,55 @@ class CompanyImageData {
         this.image = image;
     }
 }
+
+
+
+export const companyImages2: Record<ValidCompanyNames, StaticImageData> = {
+    ვაბაკო: vabako,
+    Scandiweb: scandiweb,
+    Neollet: neollet,
+    "აწარმოე საქართველოში": awarmoesakartveloshi,
+    UniPAY: unipay,
+    Gulf: gulf,
+    Appidea: appidea,
+    "63BITS": bits63,
+    "Georgia Tech Tbilisi": georgiatechtbilisi,
+    Vendoo: vendoo,
+    Lemondo: lemondo,
+    "საქართველოს მელიორაცია": sakartvelosmelioracia,
+    Dexfinity: dexfinity,
+    IRAO: irao,
+    NLYC: nlycdev,
+    "Linton Group": linton,
+    Dinespace: dinespace,
+    CoachNow: coachnow,
+    "Helix Nebula Capital": helixnebulacapital,
+    Exadel: exadel,
+    "TAZE Technologies": tazetech,
+    Exactpro: exactpro,
+    "Smart Web": smartweb,
+    Twino: twino,
+    "საგანმანათლებლო ტექნოლოგიები საქართველო": edutechgeo,
+    "საჯარო რეესტრის ეროვნული სააგენტო": sajaroreestri,
+    "TBC Bank": tbcBank,
+    "Bank Of Georgia": bog,
+    "Liberty Bank": libertybank,
+    "CityPay": citypay,
+    "Crocobet": crocobet,
+    "Pulsar AI": pulsarai,
+    "AltexSoft": altexsoft,
+    "Qarva": qarva,
+    "Space": space,
+    "Epam": epam,
+    "Flat Rock Technology": flatrock,
+    "oodneV": oodnev,
+    "Optio.Ai": optioai,
+    "Spinom Digital": spinom,
+    "TNET": tnet,
+    "Credo Bank": credo,
+}
+
+
 
 const companyImageNames = {
     vabako: new CompanyImageData(["ვაბაკო"], vabako),
@@ -75,47 +130,6 @@ const companyImageNames = {
     edutechgeo: new CompanyImageData(["საგანმანათლებლო ტექნოლოგიები საქართველო"], edutechgeo),
     tbcbank: new CompanyImageData(["TBC bank"], tbcBank),
 };
-
-export const companyImages2: Record<ValidCompanyNames, StaticImageData> = {
-    ვაბაკო: vabako,
-    Scandiweb: scandiweb,
-    Neollet: neollet,
-    "აწარმოე საქართველოში": awarmoesakartveloshi,
-    UniPAY: unipay,
-    Gulf: gulf,
-    Appidea: appidea,
-    "63BITS": bits63,
-    "Georgia Tech Tbilisi": georgiatechtbilisi,
-    Vendoo: vendoo,
-    Lemondo: lemondo,
-    "საქართველოს მელიორაცია": sakartvelosmelioracia,
-    Dexfinity: dexfinity,
-    IRAO: irao,
-    NLYC: nlycdev,
-    "Linton Group": linton,
-    Dinespace: dinespace,
-    CoachNow: coachnow,
-    "Helix Nebula Capital": helixnebulacapital,
-    Exadel: exadel,
-    "TAZE Technologies": tazetech,
-    Exactpro: exactpro,
-    "Smart Web": smartweb,
-    Twino: twino,
-    "საგანმანათლებლო ტექნოლოგიები საქართველო": edutechgeo,
-    "TBC Bank": tbcBank,
-    "Bank Of Georgia": bog,
-    "Liberty Bank": libertybank,
-    "CityPay": citypay,
-    "Crocobet": crocobet,
-    "Pulsar AI": pulsarai,
-    "AltexSoft": altexsoft,
-    "Qarva": qarva,
-    "Space": space,
-    "Epam": epam,
-    "Flat Rock Technology": flatrock,
-    "oodneV": oodnev
-}
-
 
 
 export default companyImageNames;
