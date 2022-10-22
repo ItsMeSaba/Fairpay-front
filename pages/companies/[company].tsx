@@ -29,7 +29,6 @@ export default function Company() {
 
         (async () => {
 
-            console.log("companyUrlName", companyUrlName)
             const company = await getCompanyData(companyUrlName as string);
 
             setCompanyData(company);
@@ -94,10 +93,7 @@ export default function Company() {
 }
 
 async function getCompanyData(companyUrlName: string) {
-    console.log("companyUrlName", companyUrlName);
     const company = await fetchCompanyByUrlName(companyUrlName as string);
-    
-    console.log("company", company);
-    
+        
     return company;
 }

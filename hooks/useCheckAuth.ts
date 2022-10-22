@@ -59,12 +59,9 @@ export default function useCheckAuth() {
     const isAlreadyFetching = useRef(false);
 
     useEffect(() => {
-        console.log("useCheckAuth", data);
         if (data.status === "loading" || !isAlreadyFetching.current) {
-            console.log("Fetching from jwt");
 
             (async () => {
-                console.log("SENDING REQ TOCHECK")
                 isAlreadyFetching.current = true;
 
                 const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/users/auth/cu`, false, { withCredentials: true });

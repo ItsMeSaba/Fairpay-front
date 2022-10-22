@@ -7,8 +7,6 @@ import { useEffect } from "react"
 export default function Co() {
     const router = useRouter();
 
-    console.log(router.query);
-
     useEffect(() => {
         (async () => {
             if (!router.query.tk) return false;

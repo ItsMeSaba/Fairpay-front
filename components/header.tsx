@@ -20,8 +20,6 @@ export function Header(args: Args) {
     // const { user, status } = useCheckAuth();
     const { status } = useContext(GlobalContext).authData;
 
-    console.log("STATUS =========", status)
-
     return (
         <>
             <header className={style.header}>

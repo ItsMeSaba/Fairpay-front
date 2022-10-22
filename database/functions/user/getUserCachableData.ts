@@ -5,7 +5,6 @@ import axios from "axios";
  * Liked and Disliked reviews
  */
 export default async function cacheUserData(userId: string | null) {
-    console.log("Caching user data", userId);
     if (!userId) return false;
 
     const userData = localStorage.getItem("userData");

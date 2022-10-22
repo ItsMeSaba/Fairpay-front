@@ -20,7 +20,6 @@ export default NextAuth({
 				return token;
 			}
 			
-			console.log("JWT END")
 			return token
 		},
 

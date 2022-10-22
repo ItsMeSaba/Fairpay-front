@@ -70,9 +70,6 @@ export default function CompaniesPage(args: Args) {
 	}
 
 	useEffect(() => {
-		console.log("RUNNING EFFECT OF SCROLL BLYAT")
-		
-		
 		if (!isAlreadyLoadedFromCache.current) {
 			const cachedCompanies = getCachedCompanies();
 
@@ -97,7 +94,6 @@ export default function CompaniesPage(args: Args) {
 	}, [companiesCount]);
 
 
-	console.log("COMPANIES", companies);
 	return (
 		<div className={style.page}>
 			{
@@ -127,7 +123,7 @@ export async function getStaticProps() {
 	const response = await axios.get<Companies>(
 		`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/companies`
 	);
-	console.log("getStaticProps running on companies list");
+
 	return {
 		props: {
 			companies: response.data,

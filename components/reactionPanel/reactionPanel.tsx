@@ -21,8 +21,6 @@ export default function ReactionPanel(args: Args) {
     const { user } = authData;
 
     async function handleClick(reaction: "like" | "dislike" | "unlike" | "undislike") {
-        console.log("handleClick", reaction);
-
         if (!user?.id) return openAuthPopup();
 
         const result = await recordReaction(user.id, reviewId, reaction);
@@ -33,8 +31,6 @@ export default function ReactionPanel(args: Args) {
         }   
     }
 
-
-    console.log("ReactionPanel", currentLikeDislikeDifference   );
     return (
         <div className={style.reactionPanel}>
             {/* <div className={style.like}>

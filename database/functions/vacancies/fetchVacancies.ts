@@ -12,12 +12,9 @@ export default async function fetchVanaciesByCompanyId(companyId: string, option
         const parsedData = JSON.parse(cachedData);
         
         if (isFreshData(parsedData.timestamp)) {
-            console.log("Fetched from cache");
             return parsedData.vacancies;
         }
     }
-    
-    console.log("Fetching from server");
 
     const response = await axios.get(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/vacancies/companyId/${companyId}`, {
     // const response = await axios.get(`http://localhost:7000/api/vacancies/companyId/${companyId}`, {

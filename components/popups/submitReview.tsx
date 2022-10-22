@@ -35,8 +35,6 @@ export default function SubmitReview(args: Args) {
     // const { user } = useCheckAuth();
     const { user } = useContext(GlobalContext).authData;
 
-    console.log("userData?.user.profileId", user?.id);
-
     function handleClosing(e: any) {
         if(e.target !== e.currentTarget) return;
         

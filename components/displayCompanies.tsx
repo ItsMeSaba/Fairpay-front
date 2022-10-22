@@ -26,7 +26,6 @@ interface DisplayCompanies {
 export function DisplayCompanies(args: DisplayCompanies) {
     const { companies, openReviewPopup, openSalaryPopup } = args;
     const sortedCompanies = useMemo(() => companies.sort((a, b) => b.documentsCount - a.documentsCount), [companies.length]);
-    // console.log(companies[0])
 
     return (
         <div className={style.companies}>

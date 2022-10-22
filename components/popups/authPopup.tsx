@@ -22,7 +22,7 @@ export default function AuthPopup(args: Args) {
     }
 
     async function logout() {
-        const res = await axios.post("http://localhost:7000/api/users/auth/dc", false, { withCredentials: true });
+        const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/users/auth/dc`, false, { withCredentials: true });
 
         if (res.status === 200) location.reload();
     }
@@ -30,7 +30,7 @@ export default function AuthPopup(args: Args) {
     function login() {
         rememberCurrentPage();
 
-        location.replace("http://localhost:7000/api/users/auth/facebook");
+        location.replace(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/users/auth/facebook`);
     }
     
     return (

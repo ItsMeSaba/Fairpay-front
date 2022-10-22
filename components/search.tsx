@@ -18,8 +18,6 @@ export default function Search(args: Args) {
     const { width } = args;
     const divRef = useRef<any>();
 
-    console.log("RENENDERED IOBANI VROT")
-
     async function search(input: string) {
         if (input.length === 0) return setResults([]);
 

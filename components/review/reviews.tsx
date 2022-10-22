@@ -35,7 +35,6 @@ interface ReviewArgs {
 function Review(args: ReviewArgs) {
     let { rating, positiveReview, negativeReview, position, _id, userReaction, likeDislikeDifference } = args.review;
 
-    console.log("Review", args.review);
     return (
         <div className={style.review}>
             <div className={style.user}>

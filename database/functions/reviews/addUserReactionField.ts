@@ -9,8 +9,6 @@ export default async function addUserReactionField(reviews: any[], userId?: stri
 
     const userLikesAndDislikes = await fetchUserLikesAndDislikes(userId);
 
-    console.log("userLikesAndDislikes", userLikesAndDislikes);
-
     return reviews.map(review => {
         if (userLikesAndDislikes.likedReviews.includes(review._id)) {
             review.userReaction = "like";

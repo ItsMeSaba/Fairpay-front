@@ -50,8 +50,6 @@ export default function CompanyReviews(args: Args) {
         isFirstRun.current = true;
         areReviewsLeft.current = true;
 
-        console.log("USE EFFECT [companyId] --------------------->");
-
         skip.current = 0;
         
         fetch(isFirstRun.current);

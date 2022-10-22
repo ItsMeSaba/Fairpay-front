@@ -11,7 +11,6 @@ export default function isTimestampValid(previousTimestamp: number, allowedPasse
     const allowedTime = getTimestampFromString(allowedPassedTime);
     const currentTimestamp = Date.now();
 
-    console.log(previousTimestamp, allowedTime, currentTimestamp)
     return previousTimestamp + allowedTime > currentTimestamp;
 }
 

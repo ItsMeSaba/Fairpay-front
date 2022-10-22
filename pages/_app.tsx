@@ -28,14 +28,11 @@ function MyApp({ Component, pageProps }: AppProps) {
 	useEffect(() => {
 		const { user } = authData;
 
-		console.log("USEREFFECT RAN", user?.id);
 		if (user?.id) {
-			console.log("CACHE HAPPENED")
 			cacheUserData(user.id);
 		}
 	}, [authData?.user?.id])
 
-	console.log("SOME DATA -0000000000000>", authData)
   	return (
 		<>
 			<Head>
