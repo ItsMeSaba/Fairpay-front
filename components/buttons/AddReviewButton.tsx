@@ -4,16 +4,17 @@ import useCheckAuth from "hooks/useCheckAuth";
 import { Types } from "mongoose";
 import { useContext } from "react";
 import style from "styles/components/buttons/buttons.module.sass"
-
+import { CSSProperties } from "react";
 
 interface Props {
     companyName: string,
     companyId: Types.ObjectId,
-    displayLongName?: boolean
+    displayLongName?: boolean,
+    customStyle?: CSSProperties,
 }
 
 export default function AddReviewButton(props: Props) {
-    const { companyId, companyName, displayLongName } = props;
+    const { companyId, companyName, displayLongName, customStyle } = props;
 
     // const { status } = useCheckAuth();
     const { openAuthPopup, openReviewPopup, authData } = useContext(GlobalContext);
@@ -21,7 +22,7 @@ export default function AddReviewButton(props: Props) {
 
     return (
         <button 
-            style={{ transform: "translate('-100%')" }} 
+            style={{ transform: "translate('-100%')", ...customStyle }} 
             title="შეფასება დამატება" 
             className={style.blueButton} 
             onClick={e => clickWithoutPropogation(e, status !== "authenticated" ? openAuthPopup : () => openReviewPopup(companyName, companyId))}

@@ -1,10 +1,11 @@
+import { IReview } from "types";
 import fetchUserLikesAndDislikes from "../user/getUserLikesAndDislikes";
 
 
 /**
  * @returns Array of reviews with field for user reaction 
  */
-export default async function addUserReactionField(reviews: any[], userId?: string) {
+export default async function addUserReactionField(reviews: IReview[], userId?: string) {
     if (!userId) return reviews;
 
     const userLikesAndDislikes = await fetchUserLikesAndDislikes(userId);

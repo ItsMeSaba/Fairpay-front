@@ -25,7 +25,7 @@ interface Args {
 }
 
 export default function SubmitReview(args: Args) {
-    const { close, companyName } = args; 
+    const { close, companyName, companyId } = args; 
     const [rating, setRating] = useState(0);
     const [positiveReview, setPositiveReview] = useState("");
     const [negativeReview, setNegativeReview] = useState("");
@@ -42,15 +42,15 @@ export default function SubmitReview(args: Args) {
     }   
 
     async function upload() {
-        if (!user?.id) return setError("You must be logged in to submit a review");
+        if (!user?.id) return setError("ავტორიზაციის გავლა არ დაფიქსირებულა");
 
         const dataToUpload = {
             rating,
             positiveReview,
             negativeReview,
             position,
-            company,
             userId: user.id,
+            companyId
         }
     
         const { error: validationError, value: validatedData } = SubmitReviewSchema.validate(dataToUpload);

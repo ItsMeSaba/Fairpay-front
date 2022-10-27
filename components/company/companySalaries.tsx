@@ -1,7 +1,9 @@
 import LoadMoreButton from "components/buttons/loadMore";
 import dummyData from "components/salaryItems/dummyData";
 import { SalaryItems } from "components/salaryItems/salaryItems";
-import fetchVanacies from "database/functions/vacancies/fetchVacancies";
+import fetchVanacies from "database/functions/vacancies/fetchVacanciesByCompanyId";
+import cacheVacancies from "functions/localStorage/vacancies/cacheVacancies";
+import getCachedVacancies from "functions/localStorage/vacancies/getCachedVacancies";
 import mongoose from "mongoose";
 import { useEffect, useRef, useState } from "react";
 
@@ -16,16 +18,34 @@ export default function CompanySalaries(args: Args) {
     const isFirstRun = useRef(true);
     const areSalariesLeft = useRef(true);
     const isFirstFetchDone = useRef(false);
+    const loadedFromCache = useRef(false);
 
     async function fetch(reset = false) {
-        const vacancies = await fetchVanacies(companyId, { skip: skip.current });
-        
-        if (vacancies.length === 0) areSalariesLeft.current = false;
-        else skip.current += vacancies.length;
+        // const vacancies = await fetchVanacies(companyId, { skip: skip.current });
+        // const newVacancies = await fetchVanacies(companyId, { dateOfLastVacancy: vacancies[vacancies.length-1]?.date });
+        if (!loadedFromCache.current) {
+            const cachedVacancies = getCachedVacancies(companyId);
 
+            loadedFromCache.current = true;
+            if (cachedVacancies) {
+                console.log("LOADED FROM CACHE LOL")
+
+                return setVacancies(currentVacancies => reset ? cachedVacancies.vacancies : [...currentVacancies, ...cachedVacancies.vacancies]);
+            }
+        }
+ 
+        console.log("vacancies[vacancies.length-1]?.date", vacancies[vacancies.length-1]?.date);
+        const fetchedVacancies = await fetchVanacies(companyId, { dateOfLastVacancy: vacancies[vacancies.length-1]?.date });
+        
+        if (fetchedVacancies.length === 0) areSalariesLeft.current = false;
+        else {
+            skip.current += fetchedVacancies.length;
+            cacheVacancies(companyId, fetchedVacancies);
+        }
+        
         if (!isFirstFetchDone.current) isFirstFetchDone.current = true;
         
-        setVacancies(currentVacancies => reset ? vacancies : [...currentVacancies, ...vacancies]);
+        setVacancies(currentVacancies => reset ? fetchedVacancies : [...currentVacancies, ...fetchedVacancies]);
     }
 
     useEffect(() => {
@@ -39,12 +59,28 @@ export default function CompanySalaries(args: Args) {
     }, [companyId])
 
     return (
-        <div className="div">
+        <div style={{ padding: "1rem 0" }}>
             { vacancies.length > 0 && <SalaryItems vacancies={vacancies} />}
 
             { areSalariesLeft.current && <LoadMoreButton cb={() => fetch(false)} /> }
 
-            { vacancies.length === 0 && isFirstFetchDone.current && <h1 style={{ textAlign: "center", padding: "4rem 0" }}>ვაკასიები არ მოიძებნა</h1> }
+            { vacancies.length === 0 && isFirstFetchDone.current && 
+                <h1 
+                    style={{
+                        color:"white", 
+                        textAlign: "center", 
+                        padding: "15rem 0", 
+                        textShadow: `
+                            0.04em 0 black,
+                            0 0.04em black,
+                            -0.04em 0 black,
+                            0 -0.04em black
+                        `
+                    }}
+                >
+                    ვაკანსიები არ მოიძებნა
+                </h1>
+            }
         </div>
     )
 }

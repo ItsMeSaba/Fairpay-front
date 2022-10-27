@@ -1,4 +1,4 @@
-import fetchVanacies from "database/functions/vacancies/fetchVacancies";
+import fetchVanacies from "database/functions/vacancies/fetchVacanciesByCompanyId";
 import { Dispatch, SetStateAction } from "react";
 import style from "styles/components/filtration.module.sass"
 import { ToggledFilters } from "types"

@@ -9,11 +9,12 @@ interface Props {
     companyName: string,
     companyId: Types.ObjectId,
     customStyle?: CSSProperties,
-    displayLongName?: boolean
+    displayLongName?: boolean,
+    buttonColor?: string,
 }
 
 export default function AddSalaryButton(props: Props) {
-    const { companyId, companyName, customStyle, displayLongName } = props;
+    const { companyId, companyName, customStyle, displayLongName, buttonColor } = props;
 
     // const { status } = useCheckAuth();
     const { openAuthPopup, openSalaryPopup, authData } = useContext(GlobalContext);

@@ -2,7 +2,7 @@ import style from "styles/components/filtration.module.sass"
 import ScrollContainer from 'react-indiana-drag-scroll'
 import { Dispatch, SetStateAction, useCallback, useRef, useState } from "react";
 import axios from "axios";
-import fetchVanacies from "database/functions/vacancies/fetchVacancies";
+import fetchVanacies from "database/functions/vacancies/fetchVacanciesByCompanyId";
 import { FiltrationItem } from "./buttons/filtration/filtrationItem";
 import SubmitFiltration from "./buttons/filtration/submitFiltation";
 import { FilterTypes, ToggledFilters } from "types";

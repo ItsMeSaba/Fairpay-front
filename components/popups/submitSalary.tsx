@@ -19,7 +19,7 @@ import useCheckAuth from "hooks/useCheckAuth"
 interface Args {
     close: () => void,
     companyName: string | null,
-    companyId: Types.ObjectId,
+    companyId: string,
 }
 
 export default function SubmitSalary(args: Args) {
@@ -40,7 +40,7 @@ export default function SubmitSalary(args: Args) {
     }
 
     async function upload() {
-        if (!user?.id) return setError("You must be logged in to submit a review");
+        if (!user?.id) return setError("ავტორიზაციის გავლა არ დაფიქსირებულა");
 
         const dataToUpload = {
             technologies,
@@ -52,6 +52,7 @@ export default function SubmitSalary(args: Args) {
             userId: user.id,
         }
         
+        console.log("currency", currency)
         const { error: validationError, value } = SubmitSalarySchema.validate(dataToUpload);
 
         if (validationError) return setError(validationError.message);

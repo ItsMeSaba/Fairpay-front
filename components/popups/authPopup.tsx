@@ -5,6 +5,8 @@ import useCheckAuth from "hooks/useCheckAuth";
 import axios from "axios";
 import { rememberCurrentPage } from "functions/sessionStorage/rememberCurrentPage";
 import { GlobalContext } from "context";
+import loadingGif from "../../public/images/loading.gif"
+import Image from "next/image";
 
 interface Args {
     closeAuth: (...args: any) => any
@@ -29,7 +31,7 @@ export default function AuthPopup(args: Args) {
 
     function login() {
         rememberCurrentPage();
-
+        console.log("process.env.NEXT_PUBLIC_API_ENDPOINT", process.env.NEXT_PUBLIC_API_ENDPOINT)
         location.replace(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/users/auth/facebook`);
     }
     
@@ -48,7 +50,7 @@ export default function AuthPopup(args: Args) {
                 {/* { status === "authenticated" && <button className={style.logOut} onClick={() => signOut()}>გასვლა</button> } */}
                 { status === "authenticated" && <button className={style.logOut} onClick={logout}>გასვლა</button> }
 
-                { status === "unauthenticated" && 
+                { status === "unauthenticated" &&
                     <div className={style.buttons}>
                         {/* <a href="http://localhost:7000/api/users/auth/facebook" onClick={rememberCurrentPage}> */}
                         <div onClick={login}>
@@ -63,6 +65,12 @@ export default function AuthPopup(args: Args) {
                             onClick={() => signIn("google")} 
                             style={{ width: "400px", boxShadow: "0 0 3px black" }} 
                         /> */}
+                    </div>
+                }
+
+                { status === "loading" && 
+                    <div className={style.buttons} style={{ maxWidth: "90px" }}>
+                        <Image src={loadingGif} alt="Gif" />
                     </div>
                 }
             </div>

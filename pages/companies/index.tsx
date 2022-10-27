@@ -73,12 +73,6 @@ export default function CompaniesPage(args: Args) {
 		if (!isAlreadyLoadedFromCache.current) {
 			const cachedCompanies = getCachedCompanies();
 
-			// if (cachedCompanies && isTimestampValid(cachedCompanies.timestamp, "3h")) {
-			// 	setCompanies(companies => ({ ...companies, ...cachedCompanies.companies }));
-			// 	documentsToSkip.current +=  Object.values(cachedCompanies.companies).length;
-			// 	isAlreadyLoadedFromCache.current = true;
-			// }
-			
 			if (cachedCompanies) {
 				if (isTimestampValid(cachedCompanies.timestamp, "3h")) {
 					setCompanies(companies => ({ ...cachedCompanies.companies, ...companies }));
@@ -114,7 +108,7 @@ export default function CompaniesPage(args: Args) {
 				}
 			/>
 
-			{ displayLoadMore && <LoadMoreButton cb={loadCompanies} /> }
+			{ displayLoadMore && <LoadMoreButton cb={loadCompanies} buttonColor={"rgb(255,255,255)"} /> }
 		</div>
   	);
 }
