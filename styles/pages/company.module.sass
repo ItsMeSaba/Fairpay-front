@@ -52,6 +52,37 @@
 
             *:first-child
                 margin: 0 1rem 0 0
+
+        .wave1
+            width: 100%
+
+        .upperWave
+            top: 0
+            left: 0
+            width: 100%
+            overflow: hidden
+            line-height: 0
+            position: relative,
+
+            svg
+                top: 0
+                position: relative,
+                display: block,
+                width: calc(120% + 1.3px),
+                height: 156px,
+
+        .bottomWave
+            top: 0
+            left: 0
+            width: 100%
+            overflow: hidden
+            line-height: 0
+
+            svg
+                position: relative
+                display: block
+                width: calc(176% + 1.3px)
+                height: 156px
     
 @media only screen and (max-width: 769px)
     .page
@@ -95,3 +126,18 @@
 
                 *:first-child
                     margin: 0
+            
+            .upperWave
+                margin: 3rem 0 0 0
+
+                svg
+                    width: calc(150% + 1.3px),
+                    height: 70px,
+
+                    path
+
+            .bottomWave
+
+                svg
+                    width: calc(196% + 1.3px)
+                    height: 90px

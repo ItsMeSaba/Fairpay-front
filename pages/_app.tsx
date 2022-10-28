@@ -59,6 +59,11 @@ function MyApp({ Component, pageProps }: AppProps) {
 					{ salaryPopup.display && <SubmitSalary companyId={salaryPopup.companyId} companyName={salaryPopup.companyName} close={() => setSalaryPopup(new PopupData())} /> }
 
 					{ reviewPopup.display && <SubmitReview companyId={reviewPopup.companyId} companyName={reviewPopup.companyName} close={() => setReviewPopup(new PopupData())} /> }
+					
+					{/* <div className="test" style={{ transform: `translateY(${reviewPopup.display ? "0" : "-100vh"})`, opacity: reviewPopup.display ? 1 : 0 }}>
+						<SubmitReview companyId={reviewPopup.companyId} companyName={reviewPopup.companyName} close={() => setReviewPopup(new PopupData())} />
+					</div> */}
+					
 
 					<Component {...pageProps} openAuthPopup={() => setDisplayAuthPopup(true)} />
 

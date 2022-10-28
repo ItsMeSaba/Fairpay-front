@@ -64,8 +64,9 @@ function Review(args: ReviewArgs) {
 
             </div>
 
-            <p className={style.positiveReview}>{ positiveReview }</p>
-            <p className={style.negativeReview}>{ negativeReview }</p>
+            { positiveReview.length > 0 && <p className={style.positiveReview}>{ positiveReview }</p> }
+
+            { negativeReview.length > 0 && <p className={style.negativeReview}>{ negativeReview }</p> }
             
             {/* ??? */}
             <ReactionPanel reviewId={_id} userReaction={userReaction as "like" | "dislike"} likeDislikeDifference={likeDislikeDifference} />

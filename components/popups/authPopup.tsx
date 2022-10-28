@@ -56,7 +56,7 @@ export default function AuthPopup(args: Args) {
                         <div onClick={login}>
                             <FacebookLoginButton
                                 // onClick={() => signIn("facebook")}
-                                style={{ width: "400px", boxShadow: "0 0 3px black" }} 
+                                style={{ maxWidth: "400px", width: "100%", padding: "0 30px", boxShadow: "0 0 3px black" }} 
                             />
                         </div>
                         {/* </a> */}
