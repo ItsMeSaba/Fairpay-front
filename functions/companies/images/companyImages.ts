@@ -40,6 +40,17 @@ import spinom from "public/images/companies/spinom.png"
 import tnet from "public/images/companies/tnet.png"
 import credo from "public/images/companies/credo.png"
 import sajaroreestri from "public/images/companies/sajaroreestri.jpg"
+import azry from "public/images/companies/azry.png"
+import omedia from "public/images/companies/omedia.png"
+import redberry from "public/images/companies/redberry.png"
+import sweeftdigital from "public/images/companies/sweeftdigital.png"
+import websense from "public/images/companies/websense.jpg"
+import noxtton from "public/images/companies/noxtton.png"
+import gegidze from "public/images/companies/gegidze.jpg"
+import lavapi from "public/images/companies/lavapi.jpg"
+import betlive from "public/images/companies/betlive.png"
+import pasha from "public/images/companies/pasha.png"
+import payze from "public/images/companies/payze.png"
 
 import { ValidCompanyNames } from "types"
 
@@ -78,7 +89,7 @@ export const companyImages2: Record<ValidCompanyNames, StaticImageData> = {
     Exadel: exadel,
     "TAZE Technologies": tazetech,
     Exactpro: exactpro,
-    "Smart Web": smartweb,
+    "SmartWeb": smartweb,
     Twino: twino,
     "საგანმანათლებლო ტექნოლოგიები საქართველო": edutechgeo,
     "საჯარო რეესტრის ეროვნული სააგენტო": sajaroreestri,
@@ -98,6 +109,17 @@ export const companyImages2: Record<ValidCompanyNames, StaticImageData> = {
     "Spinom Digital": spinom,
     "TNET": tnet,
     "Credo Bank": credo,
+    "AzRy": azry,
+    "Omedia": omedia,
+    "REDBERRY": redberry,
+    "Sweeft Digital": sweeftdigital,
+    "Websense": websense,
+    "Noxtton": noxtton,
+    "Gegidze • გეგიძე": gegidze,
+    "LavaPi": lavapi,
+    "Betlive": betlive,
+    "Pasha Bank": pasha,
+    "Payze": payze,
 }
 
 
