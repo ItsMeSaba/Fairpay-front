@@ -70,15 +70,15 @@ export default function CompanySalaries(args: Args) {
                         color:"white", 
                         textAlign: "center", 
                         padding: "15rem 0", 
-                        textShadow: `
-                            0.04em 0 black,
-                            0 0.04em black,
-                            -0.04em 0 black,
-                            0 -0.04em black
-                        `
+                        // textShadow: `
+                        //     0.04em 0 black,
+                        //     0 0.04em black,
+                        //     -0.04em 0 black,
+                        //     0 -0.04em black
+                        // `
                     }}
                 >
-                    ვაკანსიები არ მოიძებნა
+                    ანაზღაურებები არ მოიძებნა
                 </h1>
             }
         </div>

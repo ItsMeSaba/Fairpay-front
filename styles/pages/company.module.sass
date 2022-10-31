@@ -44,14 +44,23 @@
         // width: 90%
         margin: auto
 
-        .addDataButtons
-            width: 90%
-            max-width: 900px
-            padding: 2.5rem 2rem
-            margin: auto
+        .addDataButtonsPlaceHolder
+            display: grid
+            grid-template-columns: 1fr 4fr
+            padding: 0 6%
+            justify-items: flex-start
 
-            *:first-child
-                margin: 0 1rem 0 0
+            .addDataButtons
+                // width: 90%
+                max-width: 900px
+                padding: 2.5rem 3rem
+                // margin: auto
+
+                *
+                    border-radius: 50px
+
+                *:first-child
+                    margin: 0 .5rem 0 0
 
         .wave1
             width: 100%

@@ -19,12 +19,12 @@ export function SalaryItems(args: Args) {
                 color: "white",
                 textAlign: "center", 
                 margin: "2rem 0",
-                textShadow: `
-                    0.03em 0 black,
-                    0 0.03em black,
-                    -0.03em 0 black,
-                    0 -0.03em black
-                `
+                // textShadow: `
+                //     0.03em 0 black,
+                //     0 0.03em black,
+                //     -0.03em 0 black,
+                //     0 -0.03em black
+                // `
             }}>
                 ინფორმაცია წარმოდგენილია ინდივიდუალური თვიური ანაზღაურებების სახით
             </p>

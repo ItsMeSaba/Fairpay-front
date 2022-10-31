@@ -43,7 +43,7 @@ export default function AuthPopup(args: Args) {
                 <h4 className={style.important}>ანონიმურობა დაცულია.</h4>
                 <br />
                 {/* IMPORTANT */}
-                <h4 className={style.important}>პირადი ინფორმაცია, რომელიც შიძლება პირის იდენტიფიცირებისთვის იქნას გამოყენებული, როგორიცაა: სახელი, გვარი, იმეილი, სოციალური ქსელის მისამართი არ გამოიყენება.</h4>
+                <h4 className={style.important}>პირადი ინფორმაცია, რომელიც შეიძლება პირის იდენტიფიცირებისთვის იქნას გამოყენებული, როგორიცაა: სახელი, გვარი, იმეილი, სოციალური ქსელის მისამართი არ გამოიყენება.</h4>
                 <br />
                 <br />
 
@@ -56,7 +56,7 @@ export default function AuthPopup(args: Args) {
                         <div onClick={login}>
                             <FacebookLoginButton
                                 // onClick={() => signIn("facebook")}
-                                style={{ maxWidth: "400px", width: "100%", padding: "0 30px", boxShadow: "0 0 3px black" }} 
+                                style={{ maxWidth: "400px", width: "100%", padding: "0 50px", borderRadius: "30px" }} 
                             />
                         </div>
                         {/* </a> */}

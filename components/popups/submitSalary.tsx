@@ -52,7 +52,6 @@ export default function SubmitSalary(args: Args) {
             userId: user.id,
         }
         
-        console.log("currency", currency)
         const { error: validationError, value } = SubmitSalarySchema.validate(dataToUpload);
 
         if (validationError) return setError(validationError.message);

@@ -5,7 +5,7 @@ import reviewLady3 from "public/images/reviewLady3.png"
 import Image from "next/image"
 // import StarRatings from 'react-star-ratings';
 import roundedStar from "public/images/roundedStar.svg"
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { Rating } from 'react-simple-star-rating'
 import PositionInput from "../inputs/positionInput"
 import axios from "axios"
@@ -17,6 +17,7 @@ import { Types } from "mongoose"
 import useCheckAuth from "hooks/useCheckAuth"
 import { GlobalContext } from "context"
 import { useContext } from 'react'
+import getRatingText from "functions/reviews/getRatingText"
 
 interface Args {
     close: () => void,
@@ -34,6 +35,7 @@ export default function SubmitReview(args: Args) {
     const [error, setError] = useState("");
     // const { user } = useCheckAuth();
     const { user } = useContext(GlobalContext).authData;
+    const ratingData = useMemo(() => getRatingText(rating), [rating]);
 
     function handleClosing(e: any) {
         if(e.target !== e.currentTarget) return;
@@ -78,12 +80,18 @@ export default function SubmitReview(args: Args) {
                         <Rating
                             onClick={setRating}
                             ratingValue={rating}
-                            allowHalfIcon={true}
+                            // allowHalfIcon={true}
                             className={style.stars}
                         />
 
                         <span className={style.ratingNumber}>{rating/20}/5 (სავალდებულო)</span>
                     </div>
+
+                    { ratingData &&
+                        <div>
+                            <p style={{ padding: "0 0 0 .5rem", color: ratingData.color }}>{ ratingData.text }</p>
+                        </div>
+                    }
 
                     {/* <input type="text" placeholder="პოზიცია" /> */}
                     <div className={style.inputsBlock}>
