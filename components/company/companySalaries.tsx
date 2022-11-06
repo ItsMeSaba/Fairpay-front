@@ -52,6 +52,7 @@ export default function CompanySalaries(args: Args) {
         isFirstFetchDone.current = false;
         isFirstRun.current = true;
         areSalariesLeft.current = true;
+        loadedFromCache.current = false;
 
         skip.current = 0;
         
