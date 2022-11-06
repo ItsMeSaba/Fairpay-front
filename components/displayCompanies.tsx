@@ -85,7 +85,7 @@ function DisplayCompany(args: DisplayCompany) {
                                     <WorkRoundedIcon />
                                 </div>
 
-                                <p>{ vacancyCount } ვაკანსია</p>
+                                <p>{ vacancyCount } ანაზღ.</p>
                             </span>
 
                             <span>

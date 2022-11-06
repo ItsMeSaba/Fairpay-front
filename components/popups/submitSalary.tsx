@@ -15,6 +15,7 @@ import { SeniorityInput } from "components/inputs/seniorityInput"
 import to from "await-to-js"
 import { Types } from "mongoose"
 import useCheckAuth from "hooks/useCheckAuth"
+import successToast from "functions/toasts/successToast"
 
 interface Args {
     close: () => void,
@@ -60,6 +61,7 @@ export default function SubmitSalary(args: Args) {
 
         if (error) return setError((error as any).response.data.message);
 
+        successToast("ანაზღაურება დამატებულია")
         close();
     }   
 

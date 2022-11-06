@@ -15,7 +15,8 @@ import SubmitReview from 'components/popups/submitReview';
 import { PopupData } from 'types';
 import { Types } from 'mongoose';
 import useCheckAuth from 'hooks/useCheckAuth';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -46,6 +47,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 				openSalaryPopup: (companyName: string, companyId: Types.ObjectId) => setSalaryPopup(new PopupData(true, companyName, companyId)),
 				authData
 			}}>
+				<ToastContainer />
 				
 				<TestModeInfo />
 

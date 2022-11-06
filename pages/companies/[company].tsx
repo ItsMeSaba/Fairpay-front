@@ -59,7 +59,7 @@ export default function Company() {
                                 className={`${style.salariesCount} ${display === "salaries" ? style.active : ""}`}
                                 onClick={() => setDsiplay("salaries")}
                             >
-                                { companyData.vacancyCount } ხელფასი
+                                { companyData.vacancyCount } ანაზღაურება
                             </div>
                             <div
                                 className={`${style.ratingsCount} ${display === "reviews" ? style.active : ""}`}

@@ -1,4 +1,5 @@
 import addCompanyRequest from "database/functions/company/addCompanyRequest";
+import successToast from "functions/toasts/successToast";
 import { SubmitCompanyRequestSchema } from "joiSchemas";
 import { Dispatch, SetStateAction, useState } from "react";
 import style from "styles/components/popups/addCompanyPopup.module.sass";
@@ -23,6 +24,7 @@ export default function AddCompanyPopup(args: Args) {
 
         addCompanyRequest(companyName, companyWebsite);
 
+        successToast("კომპანიის მოთხოვნა მიღებულია")
         closePopup();
     }
     

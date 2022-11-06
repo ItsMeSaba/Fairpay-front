@@ -18,6 +18,8 @@ import useCheckAuth from "hooks/useCheckAuth"
 import { GlobalContext } from "context"
 import { useContext } from 'react'
 import getRatingText from "functions/reviews/getRatingText"
+import { toast } from "react-toastify"
+import successToast from "functions/toasts/successToast"
 
 interface Args {
     close: () => void,
@@ -64,6 +66,7 @@ export default function SubmitReview(args: Args) {
 
         if (error) return setError((error as any).response.data.message);
 
+        successToast("რევიუ დამატებულია");
         close();
     }
 
