@@ -23,6 +23,7 @@ export default function CompanySalaries(args: Args) {
     async function fetch(reset = false) {
         // const vacancies = await fetchVanacies(companyId, { skip: skip.current });
         // const newVacancies = await fetchVanacies(companyId, { dateOfLastVacancy: vacancies[vacancies.length-1]?.date });
+        console.log("companyId", companyId);
         if (!loadedFromCache.current) {
             const cachedVacancies = getCachedVacancies(companyId);
 
@@ -35,7 +36,7 @@ export default function CompanySalaries(args: Args) {
         }
  
         console.log("vacancies[vacancies.length-1]?.date", vacancies[vacancies.length-1]?.date);
-        const fetchedVacancies = await fetchVanacies(companyId, { dateOfLastVacancy: vacancies[vacancies.length-1]?.date });
+        const fetchedVacancies = await fetchVanacies(companyId, { dateOfLastVacancy: reset ? null : vacancies[vacancies.length-1]?.date });
         
         if (fetchedVacancies.length === 0) areSalariesLeft.current = false;
         else {
