@@ -31,7 +31,7 @@ export default function AuthPopup(args: Args) {
 
     function login() {
         rememberCurrentPage();
-        console.log("process.env.NEXT_PUBLIC_API_ENDPOINT", process.env.NEXT_PUBLIC_API_ENDPOINT)
+
         location.replace(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/users/auth/facebook`);
     }
     

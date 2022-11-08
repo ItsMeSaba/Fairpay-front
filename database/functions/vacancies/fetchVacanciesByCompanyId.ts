@@ -22,8 +22,6 @@ export default async function fetchVanaciesByCompanyId(companyId: string, option
         }
     });
 
-    console.log("response.data?.[0].companyId", response.data?.[0]?.companyId, typeof response.data?.[0]?.companyId);
-
     // "cv-" stands for "company vacancies"
     return response.data;
 }
