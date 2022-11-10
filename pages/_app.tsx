@@ -101,5 +101,4 @@ function MyAppWrapper(props: AppProps) {
 	)
 }
 
-// export default MyApp
 export default MyAppWrapper	 
