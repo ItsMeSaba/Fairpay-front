@@ -28,6 +28,8 @@ export function Header(args: Args) {
                         Fairpay
                         {/* <Image src={fairpay}/> */}
                     </Link>
+
+                    <h6>Tech</h6>
                 </div>
 
                 <div className={style.searchDiv}>

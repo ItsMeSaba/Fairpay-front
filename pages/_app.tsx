@@ -16,8 +16,8 @@ import { PopupData } from 'types';
 import { Types } from 'mongoose';
 import useCheckAuth from 'hooks/useCheckAuth';
 import { ToastContainer } from 'react-toastify';
+import Script from 'next/script';
 import 'react-toastify/dist/ReactToastify.css';
-
 
 function MyApp({ Component, pageProps }: AppProps) {
 	const [displayAuthPopup, setDisplayAuthPopup] = useState(false);
@@ -36,6 +36,23 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   	return (
 		<>
+			<Script strategy="lazyOnload" src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`} />
+
+			<Script strategy="lazyOnload">
+				{`
+				var host = window.location.hostname;
+				if(host != "localhost")
+				{
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){dataLayer.push(arguments);}
+					gtag('js', new Date());
+					gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+						page_path: window.location.pathname,
+					});
+				}
+				`}
+			</Script>
+
 			<Head>
 				<title>Fairpay</title>
 				<meta property="og:title" content="Fairpay" key="title" />
