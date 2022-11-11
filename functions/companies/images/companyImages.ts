@@ -51,6 +51,9 @@ import lavapi from "public/images/companies/lavapi.jpg"
 import betlive from "public/images/companies/betlive.png"
 import pasha from "public/images/companies/pasha.png"
 import payze from "public/images/companies/payze.png"
+import theneo from "public/images/companies/theneo.jpg"
+import lineate from "public/images/companies/lineate.png"
+import cactussoft from "public/images/companies/cactussoft.png"
 
 import { ValidCompanyNames } from "types"
 
@@ -120,6 +123,9 @@ export const companyImages2: Record<ValidCompanyNames, StaticImageData> = {
     "Betlive": betlive,
     "Pasha Bank": pasha,
     "Payze": payze,
+    "Theneo": theneo,
+    "Lineate": lineate,
+    "CactusSoft": cactussoft,
 }
 
 
