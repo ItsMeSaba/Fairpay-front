@@ -53,7 +53,7 @@ export default function AuthPopup(args: Args) {
                 { status === "unauthenticated" &&
                     <div className={style.buttons}>
                         {/* <a href="http://localhost:7000/api/users/auth/facebook" onClick={rememberCurrentPage}> */}
-                        <div onClick={login}>
+                        <div className={style.facebookButton} onClick={login}>
                             <FacebookLoginButton
                                 // onClick={() => signIn("facebook")}
                                 style={{ maxWidth: "400px", width: "100%", padding: "0 50px", borderRadius: "30px" }} 
