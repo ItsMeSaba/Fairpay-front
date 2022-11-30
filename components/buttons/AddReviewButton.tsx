@@ -22,7 +22,7 @@ export default function AddReviewButton(props: Props) {
 
     return (
         <button 
-            style={{ transform: "translate('-100%')", ...customStyle }} 
+            style={{ transform: "translate('-100%')", maxWidth: displayLongName ? "1000px" : "250px", ...customStyle }} 
             title="შეფასება დამატება" 
             className={style.blueButton} 
             onClick={e => clickWithoutPropogation(e, status !== "authenticated" ? openAuthPopup : () => openReviewPopup(companyName, companyId))}

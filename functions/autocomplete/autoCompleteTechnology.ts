@@ -15,7 +15,7 @@
 //     "Kotlin": ["Kotlin"],
 //     "P"
 // }
-const technologies = ["C#", "Javascript", "Kotlin", "Java", "Python", "Swift", "Go", "Laravel", "Node", "React", "Angular", "Vue", "HTML/CSS", "C", "C++", "Rust", "Typescript", "MySQL", "MongoDB", "PosgreSQL", "PHP", "CouchDB", "Firebase", "Ruby", "Ruby on Rails", "Symfony", "Asp.net", "Django", "Express", "Spring", "Flask", "jQuery", "Bootstrap", "Tailwind CSS", "Dart", "R", "Objective-C", "Perl", "NextJs", "Nestjs", "Assembly"];
+const technologies = ["C#", "Javascript", "Kotlin", "Java", "Python", "Swift", "Go", "Laravel", "Node", "React", "Angular", "Vue", "HTML/CSS", "C", "C++", "Rust", "Typescript", "MySQL", "MongoDB", "PostgreSQL", "PHP", "CouchDB", "Firebase", "Ruby", "Ruby on Rails", "Symfony", "Django", "Express", "Spring", "Flask", "jQuery", "Bootstrap", "Tailwind CSS", "Dart", "R", "Objective-C", "Perl", "NextJs", "Nestjs", "Assembly", "Redis", "VBA", "MATLAB", "Bash/Shell", "SQLite", "MariaDB", "Microsoft SQL", "Firestore", "DynamoDB", "AWS", "Google Cloud", "Microsoft Azure", "Heroku", "DigitalOcean", "ASP.NET Core", "ASP.NET", "Svelte", "Blazor", "NuxtJs", "Drupal", ".NET", ".NET Core", "Flutter", "React Native", "Xamarin", "Docker", "Kubernetes", "Unity"];
 
 interface Options {
     limit?: number;

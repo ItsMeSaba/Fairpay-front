@@ -2,7 +2,7 @@
 
 export default function DataUsage() {
     return (
-        <div className="container" style={{ textAlign: "center", padding: "2rem 3rem" }}>
+        <div className="container" style={{ textAlign: "center", padding: "2rem 3rem", fontSize: "1rem" }}>
             <br />
             <br />
 

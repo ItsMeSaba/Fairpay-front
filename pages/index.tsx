@@ -3,6 +3,8 @@ import Image from "next/image"
 import bussinesMan from "../public/images/bussinesMan.png"
 // import blob1 from "../public/images/blob12.svg"
 import blob1 from "../public/images/TestBlob.svg"
+import blob4 from "../public/images/TestBlob3.svg"
+import blob2 from "../public/images/TestBlob2.svg"
 import blob3 from "../public/images/blob11.svg"
 import man4test from "../public/images/man4test2.png"
 import woman3 from "../public/images/woman3.png"
@@ -40,7 +42,8 @@ export default function Index(args: Args) {
 					</div>
 
 					<div className={style.blobTwo}>
-						<Image quality={50} src={blob3} alt="blob" />
+						{/* <Image quality={50} src={blob3} alt="blob" /> */}
+						<Image quality={50} src={blob4} alt="blob" />
 					</div>
 
 					<h1>იცოდე შენი<br /><span>ფასი</span></h1>
@@ -64,9 +67,10 @@ export default function Index(args: Args) {
 			<div className={style.containerTwo}>
 			 	<div className={style.right}>
 			 		{/* <p>Fairpay ეხმარება დეველოპერებს გაიგონ რომელი კომპანია სთავაზობს უკეთეს პირობებს</p> */}
-					<h3 className={style.miniHeader}>ანაზღაურება</h3>
+					<h3 className={style.miniHeader}>რა არის Fairpay?</h3>
+					{/* <h3 className={style.miniHeader}>?</h3> */}
 
-			 		<p>იპოვე კომპანია რომელიც შესაფერისად დააფასებს შენს ცოდნას და უნარებს</p>
+			 		<p>Fairpay არის პლატფორმა რომლის დახმარებითაც Tech სფეროში დასაქმებულ ადამიანებს საშუალება ეძლევათ ერთმანეთს გაუზიარონ კომპანიასთან თანამშრომლობის გამოცდილება</p>
 
 					<div className={style.line2}>
 						<Image quality={100} src={line2} alt="https://icons8.com/illustrations/style--business-3d" />
@@ -89,20 +93,20 @@ export default function Index(args: Args) {
 
 
 			<div className={style.containerThree}>
-				<div className={style.right}>
+				{/* <div className={style.right}> */}
 					<div className={style.avatar}>
 						{/* Illustration is taken from https://icons8.com/illustrations/style--business-3d */}
 						{/* <Image quality={100} src={woman3} alt="https://icons8.com/illustrations/style--business-3d" /> */}
 						<Image quality={100} src={yellowWoman2} alt="https://icons8.com/illustrations/style--business-3d" />
 					</div>
 
-				</div>
+				{/* </div> */}
 				
 				<div className={style.left}>
 					{/* <p>Fairpay საშუალებას აძლევს დეველოპერებს დააფიქსირონ საკუთარი აზრი კომპანიის შესახებ</p> */}
-					<h3 className={style.miniHeader}>რეიტინგი</h3>
+					<h3 className={style.miniHeader}>რისი გაზიარება შემიძლია სხვებისთვის?</h3>
 
-					<p>გაიგე რომელი კომპანიები სთავაზობენ დასაქმებულებს საუკეთესო გარემოს</p>
+					<p>როგორც პოზიტიური და ნეგატიური გამოცდილებების, ასევე ანაზღაურების.</p>
 					
 					<div className={style.line1}>
 						<Image quality={100} src={line1} alt="https://icons8.com/illustrations/style--business-3d" />
@@ -121,7 +125,7 @@ export default function Index(args: Args) {
 				<div className={style.right}>
 					<h3 className={style.miniHeader}>განვითარება</h3>
 
-					<p>ამ ეტპაზე Fairpay განკუთვნილია მხოლოდ დეველოპერთათვის. წარმატების შემთხვევაში პრიორიტეტებში რჩება სხვა დარგების ინტეგრირება</p>
+					<p>ამ ეტპაზე Fairpay განკუთვნილია მხოლოდ დეველოპერებისთვის/პროგრამისტებისთვის. წარმატების შემთხვევაში პრიორიტეტებში რჩება სხვა დარგების ინტეგრირება</p>
 				</div>
 			</div>
 

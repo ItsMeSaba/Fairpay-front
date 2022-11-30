@@ -78,11 +78,13 @@ $secondContainerColor: white
 
 @keyframes animateBlobTwo
 	from
-		transform: translateY(15%) 
+		transform: translate(-10%, 10%) 
 		rotate: -10deg
+		// rotate: -5deg
 	to
 		rotate: 0deg
-		transform: translateY(5%) 
+		// rotate: -15deg
+		transform: translate(-10%, 0%) 
 
 @keyframes animateThirdAvatar
 	from
@@ -127,7 +129,8 @@ $secondContainerColor: white
 			animation: animateBlobOne 7s infinite alternate ease-in-out
 
 		.blobTwo
-			@include blob($right: 0, $bottom: 0)
+			// @include blob($right: 0, $bottom: 0)
+			@include blob($right: 0, $bottom: 0, $scale: 2)
 			animation: animateBlobTwo 4s infinite alternate ease-in-out
 
 		.waveOne
@@ -178,7 +181,7 @@ $secondContainerColor: white
 			justify-content: center
 			
 			img
-				width: 600px
+				width: 35rem
 
 		.right
 			font-family: "BPG Mrgvlovani Caps", sans-serif
@@ -196,13 +199,16 @@ $secondContainerColor: white
 
 			.line2
 				position: absolute
-				top: 60%
+				top: 75%
 				left: -30%
 				rotate: 20deg
 				right: -20%
 				z-index: 1
+				opacity: .7
 
 			.miniHeader
+				font-size: 1.6rem
+				margin: 0 0 2rem 0
 				position: relative
 				z-index: 3				
 
@@ -213,7 +219,7 @@ $secondContainerColor: white
 					bottom: 0
 					display: block
 					content: ""
-					height: 18px
+					height: 19px
 					width: 100%
 					left: 15px
 					// background: #ED213A  /* fallback for old browsers */
@@ -229,6 +235,7 @@ $secondContainerColor: white
 				// text-shadow: 1px 1px 1px black
 
 			p
+				// text-align: justify
 				z-index: 5
 				position: relative
 				padding: 0 2rem 0 0
@@ -270,15 +277,17 @@ $secondContainerColor: white
 
 		.right
 
-			.avatar
-				// animation: animateThirdAvatar 4s infinite alternate ease-in-out
-				width: 70%
-				margin: auto
-				padding: 1rem 0 0 0
-				// position: relative
-				// transform: scale(.7)
-				z-index: 5
+		.avatar
+			// animation: animateThirdAvatar 4s infinite alternate ease-in-out
+			// width: 70%
+			margin: auto
+			padding: 1rem 0 0 0
+			// position: relative
+			// transform: scale(.7)
+			z-index: 5
 
+			img
+				width: 38rem
 
 		.left
 			font-family: "BPG Mrgvlovani Caps", sans-serif
@@ -296,8 +305,10 @@ $secondContainerColor: white
 				rotate: 90deg
 				right: -20%
 				z-index: 1
+				opacity: .7
 
 			.miniHeader
+				font-size: 1.3rem
 				position: relative
 				z-index: 3				
 
@@ -319,19 +330,7 @@ $secondContainerColor: white
 				font-size: 1.6rem
 				line-height: 3rem
 				z-index: 2
-			
-			.avatar
-				margin: auto
-				// position: absolute
-				bottom: 0
-				left: 0
-				width: 100%
-				padding: 0 0 0 7rem
-				transform-origin: bottom 
-				transform: scale(1)
 
-				// img
-				// 	width: 300px
 
 				// p
 				// 	font-size: 1.5rem
@@ -376,6 +375,7 @@ $secondContainerColor: white
 				right: -20%
 
 			.miniHeader
+				font-size: 1.3rem
 				position: relative
 				z-index: 3				
 
@@ -534,6 +534,41 @@ $secondContainerColor: white
 				padding: 2.5rem
 
 
+@media only screen and (min-width: 2540px) 
+	//For 4K Displays (Ultra HD)
+	.indexPage
+
+		.containerThree
+
+			// .right
+			.avatar
+
+				img
+					width: 1000px
+			
+			.left
+
+				.line1
+					scale: 2
+					right: 0
+	
+		.containerTwo
+
+			.line2
+				left: 15% !important
+				scale: 2
+
+			.avatar
+				
+				img
+					width: 1000px
+
+		.containerOne
+
+			.avatar
+				
+				img
+					width: 1200px
 
 
 

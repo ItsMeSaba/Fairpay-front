@@ -16,6 +16,7 @@
     height: 100vh
     background-color: rgb(0, 0, 0, .8)
     z-index: 100
+    font-size: 1rem
 
     .container
         border-radius: 20px
@@ -178,3 +179,31 @@
                 
                 .inputsBlock
                     flex-direction: column
+
+                    
+@media screen and (min-width: 2550px)
+    .submitReview
+        
+        .container
+            max-width: 1800px
+            max-height: 1100px
+
+            .avatar
+
+                img
+                    width: 550px
+
+            .right
+
+                .rating
+                    
+                    .stars
+                        
+                        svg
+                            width: 60px
+                            height: 60px
+
+                .reviewText
+                    
+                    textarea
+                        font-size: .75rem
