@@ -56,7 +56,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 			<Head>
 				<title>Fairpay</title>
 				<meta property="og:title" content="Fairpay" key="title" />
-				<meta property="og:image" content="https://ibb.co/0VSgntz" />
+				<meta property="og:image" content="https://i.ibb.co/gFp5rVc/Test-Banner.png" />
 				<meta name="keywords" content="დეველოპერი, პროგრამისტი, ანაზღაურება, ხელფასი" />
 			</Head> 
 			
