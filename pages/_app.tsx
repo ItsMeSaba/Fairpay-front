@@ -55,10 +55,11 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 			<Head>
 				<title>Fairpay</title>
-				<meta property="og:title" content="Fairpay" key="title" />
+				<meta property="og:title" content="Fairpay - იცოდე შენი ფასი" key="title" />
 				{/* <meta property="og:image" content="https://i.ibb.co/gFp5rVc/Test-Banner.png" /> */}
 				<meta property="og:image" content="https://i.ibb.co/n33vRd2/Test-Banner.png" />
 				<meta name="keywords" content="დეველოპერი, პროგრამისტი, ანაზღაურება, ხელფასი" />
+				<meta name="description" content="Fairpay არის პლატფორმა რომლის დახმარებითაც Tech სფეროში დასაქმებულ ადამიანებს საშუალება ეძლევათ ერთმანეთს გაუზიარონ კომპანიასთან თანამშრომლობის გამოცდილება"/>
 			</Head> 
 			
 			<GlobalContext.Provider value={{

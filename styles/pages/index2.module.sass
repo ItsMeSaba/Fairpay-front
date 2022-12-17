@@ -184,7 +184,7 @@ $secondContainerColor: white
 				width: 35rem
 
 		.right
-			font-family: "BPG Mrgvlovani Caps", sans-serif
+			// font-family: "BPG Mrgvlovani Caps", sans-serif
 			// position: relative
 			// text-align: left
 			// display: flex
@@ -208,7 +208,7 @@ $secondContainerColor: white
 
 			.miniHeader
 				font-size: 1.6rem
-				margin: 0 0 2rem 0
+				margin: 0 0 1rem 0
 				position: relative
 				z-index: 3				
 
@@ -219,9 +219,11 @@ $secondContainerColor: white
 					bottom: 0
 					display: block
 					content: ""
-					height: 19px
+					height: 1rem
+					top: 60%
 					width: 100%
-					left: 15px
+					left: .9rem
+					border-radius: .2rem
 					// background: #ED213A  /* fallback for old browsers */
 					background: linear-gradient(to right, #ED4C6744, #a55eea44) /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
@@ -290,7 +292,7 @@ $secondContainerColor: white
 				width: 38rem
 
 		.left
-			font-family: "BPG Mrgvlovani Caps", sans-serif
+			// font-family: "BPG Mrgvlovani Caps", sans-serif
 			position: relative
 			display: flex
 			flex-direction: column
@@ -308,7 +310,8 @@ $secondContainerColor: white
 				opacity: .7
 
 			.miniHeader
-				font-size: 1.3rem
+				font-size: 1.4rem
+				margin: 0 0 1rem 0
 				position: relative
 				z-index: 3				
 
@@ -320,9 +323,11 @@ $secondContainerColor: white
 					bottom: 0
 					display: block
 					content: ""
-					height: 18px
+					height: 1rem
+					top: 60%
 					width: 100%
-					left: 15px
+					left: .9rem
+					border-radius: .2rem
 					// background: #ED213A  /* fallback for old browsers */
 					background: linear-gradient(to right, #ED4C6744, #a55eea44) /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
@@ -358,7 +363,7 @@ $secondContainerColor: white
 
 
 		.right
-			font-family: "BPG Mrgvlovani Caps", sans-serif
+			// font-family: "BPG Mrgvlovani Caps", sans-serif
 			position: relative
 			display: flex
 			flex-direction: column
@@ -375,7 +380,8 @@ $secondContainerColor: white
 				right: -20%
 
 			.miniHeader
-				font-size: 1.3rem
+				font-size: 1.4rem
+				margin: 0 0 1rem 0
 				position: relative
 				z-index: 3				
 
@@ -387,9 +393,11 @@ $secondContainerColor: white
 					bottom: 0
 					display: block
 					content: ""
-					height: 18px
+					height: 1rem
+					top: 60%
 					width: 100%
-					left: 15px
+					left: .9rem
+					border-radius: .2rem
 					// background: #ED213A  /* fallback for old browsers */
 					background: linear-gradient(to right, #ED4C6744, #a55eea44) /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
@@ -479,6 +487,7 @@ $secondContainerColor: white
 
 
 		.containerTwo
+			margin: 5rem 0 0 0
 			padding: 0
 
 			.left
@@ -506,6 +515,7 @@ $secondContainerColor: white
 					height: 87px
 
 		.containerThree
+			margin: 10rem 0 0 0
 
 			.left
 				order: 1
@@ -514,10 +524,17 @@ $secondContainerColor: white
 				.line1
 					display: none
 
+				.miniHeader
+					// font-size: 1.4rem
+
+					&::after
+						top: 80%
+						width: 70%
+
 				p
 					// padding: 2rem
 					
-			.right
+			.avatar
 				order: 2
 
 				.avatar

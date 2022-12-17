@@ -70,7 +70,7 @@ export default function Index(args: Args) {
 					<h3 className={style.miniHeader}>რა არის Fairpay?</h3>
 					{/* <h3 className={style.miniHeader}>?</h3> */}
 
-			 		<p>Fairpay არის პლატფორმა რომლის დახმარებითაც Tech სფეროში დასაქმებულ ადამიანებს საშუალება ეძლევათ ერთმანეთს გაუზიარონ კომპანიასთან თანამშრომლობის გამოცდილება</p>
+			 		<p>Fairpay არის პლატფორმა რომლის დახმარებითაც Tech სფეროში დასაქმებული ადამიანები ერთმანეთს უზიარებენ კომპანიასთან თანამშრომლობის გამოცდილებას</p>
 
 					<div className={style.line2}>
 						<Image quality={100} src={line2} alt="https://icons8.com/illustrations/style--business-3d" />
