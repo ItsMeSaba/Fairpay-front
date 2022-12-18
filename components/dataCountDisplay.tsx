@@ -15,7 +15,7 @@ export default function DataCountDisplay() {
                     <LocalAtmIcon fontSize="large" />
                 </div> */}
 
-                <h1>30+</h1>
+                <p>30+</p>
                 
                 <p>ხელფასის მონაცემი</p>
             </div>
@@ -25,7 +25,7 @@ export default function DataCountDisplay() {
                     <RateReviewIcon fontSize="large" />
                 </div>
                  */}
-                <h1>0+</h1>
+                <p>0+</p>
 
                 <p>შეფასება</p>
             </div>

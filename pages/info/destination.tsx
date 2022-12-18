@@ -11,11 +11,6 @@ export default function Destionation() {
 
             <p>გამოავლინოს პრობლემური კომპანიები და უბიძგოს გამოსწორებისკენ</p>
 
-
-
-            <h1></h1>
-
-
             <style jsx>{`
                 .container * {
                     padding: 1rem 0;

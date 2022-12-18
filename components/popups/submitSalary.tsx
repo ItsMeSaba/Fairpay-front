@@ -68,8 +68,6 @@ export default function SubmitSalary(args: Args) {
     return (
         <div className={style.submitSalary} onClick={handleClosing}>
             <div className={style.container}>
-                    {/* <h1>ანაზღაურების დამატება</h1> */}
-
                     <div className={style.avatar}>
                         {/* Illustration is taken from https://icons8.com/illustrations/style--business-3d */}
                         <Image src={moneyMan3} quality={100} alt="https://icons8.com/illustrations/style--business-3d" />

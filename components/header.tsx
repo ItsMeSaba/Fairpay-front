@@ -25,8 +25,9 @@ export function Header(args: Args) {
             <header className={style.header}>
                 <div className={style.websiteName}>
                     <Link href="/">
-                        Fairpay
-                        {/* <Image src={fairpay}/> */}
+                        <h1>
+                            Fairpay
+                        </h1>
                     </Link>
 
                     <h6>Tech</h6>
