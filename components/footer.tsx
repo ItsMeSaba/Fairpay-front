@@ -1,6 +1,7 @@
 import style from "styles/components/footer.module.sass"
 import Link from "next/link"
-
+import Image from "next/image"
+import UA from "../public/images/UA.png"
 
 export default function Footer() {
     return (
@@ -21,6 +22,12 @@ export default function Footer() {
             </div>
 
             <a className={style.deleteRequest} target="_blank" rel="noreferrer" href="https://mail.google.com/mail/?view=cm&fs=1&to=fairpay.ge@gmail.com&su=ინფორმაციის წაშლა">დაკავშირება წაშლის მოთხოვნასთან დაკავშირებით</a>
+        
+            <div className={style.Ukraine}>
+                <p>Fairpay stands with Ukraine</p>
+
+                <Image width="40px" height="40px" src={UA} />
+            </div>
         </div>
     )
 }

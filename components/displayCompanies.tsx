@@ -69,7 +69,7 @@ function DisplayCompany(args: DisplayCompany) {
     return (
         <div className="holder" onClick={rememberCurrentPage}>
             <Link href={`/companies/${urlName}`}>
-                <div className={style.company} style={{ borderTop: `solid 12px #${color ?? "a4b0be"}`  }}>
+                <div className={style.company} style={{ borderTop: `solid 12px #${color ?? "a4b0be"}` }}>
                     <div className={style.top}>
                         <div className={style.companyImage}>
                             <Image quality={30} src={image} alt={name} />

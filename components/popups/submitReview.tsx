@@ -104,11 +104,11 @@ export default function SubmitReview(args: Args) {
                     </div>
 
                     <div className={style.reviewText}>
-                        <textarea value={positiveReview} onChange={e => setPositiveReview(e.target.value)} name="" id="" cols={80} rows={9} placeholder="დადებითი (არასავალდებულო)"></textarea>
+                        <textarea value={positiveReview} onChange={e => setPositiveReview(e.target.value)} name="" id="" cols={70} rows={9} placeholder="დადებითი (არასავალდებულო)"></textarea>
                     </div>
 
                     <div className={style.reviewText}>
-                        <textarea value={negativeReview} onChange={e => setNegativeReview(e.target.value)} name="" id="" cols={80} rows={9} placeholder="უარყოფითი (არასავალდებულო)"></textarea>
+                        <textarea value={negativeReview} onChange={e => setNegativeReview(e.target.value)} name="" id="" cols={70} rows={9} placeholder="უარყოფითი (არასავალდებულო)"></textarea>
                     </div>
 
                     { error && <h5 className={style.error}>{ error }</h5> }

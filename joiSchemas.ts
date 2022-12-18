@@ -215,7 +215,7 @@ export const SubmitReviewSchema = Joi.object({
         .messages({
             "any.required": "შეფასება სავალდებულოა",
             "number.base": "პოზიცია სავალდებულოა",
-            "number.min": "მინიმალური რეიტინგი 0.5-ია",
+            "number.min": "მინიმალური რეიტინგი 1-ია",
             "number.max": "შეფასება 5ზე მეტი ვერ იქნება",
         }),
 

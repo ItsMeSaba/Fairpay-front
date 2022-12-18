@@ -46,7 +46,7 @@ export function SalaryItem(args: Args) {
             </div>
 
             <div className={style.right}>
-                <span className={style.salary}>{ salary } - { salary + 300 }</span> {getCurreny(currency as Currency)}
+                <span className={style.salary}>{ salary } - { salary + 500 }</span> {getCurreny(currency as Currency)}
             </div>
         </div>
     )
@@ -72,7 +72,7 @@ export function SalaryItemWithoutCompany(args: Args) {
             </div>
 
             <div className={style.right}>
-                <span className={style.salary}>{ salary } - { salary + 300 }</span> {getCurreny(currency as Currency)}
+                <span className={style.salary}>{ salary } - { salary + 500 }</span> {getCurreny(currency as Currency)}
             </div>
         </div>
     )
