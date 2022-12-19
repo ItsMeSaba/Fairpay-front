@@ -18,6 +18,7 @@ import useCheckAuth from 'hooks/useCheckAuth';
 import { ToastContainer } from 'react-toastify';
 import Script from 'next/script';
 import 'react-toastify/dist/ReactToastify.css';
+import CookieDisclaimer from 'components/cookieDisclaimer';
 
 function MyApp({ Component, pageProps }: AppProps) {
 	const [displayAuthPopup, setDisplayAuthPopup] = useState(false);
@@ -71,6 +72,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 				<ToastContainer />
 				
 				<TestModeInfo />
+
+				<CookieDisclaimer />
 
 				<div className="fullHeightContainer">
 					<Header openAuth={() => setDisplayAuthPopup(true)} openSliderMenu={() => setOpenSliderMenu(true)} />

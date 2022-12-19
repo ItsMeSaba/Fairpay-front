@@ -50,8 +50,8 @@ export default function Index(args: Args) {
 				</div>
 
 				<div className={style.avatar}>
-					{/* Illustration is taken from https://icons8.com/illustrations/style--business-3d */}
 
+					{/* Thanks To https://icons8.com/illustrations/style--business-3d */}
 					<Image quality={100} src={bussinesMan} alt="https://icons8.com/illustrations/style--business-3d" />
 					{/* <Image quality={100} src={TestBoy} alt="https://icons8.com/illustrations/style--business-3d" /> */}
 					{/* <Image quality={100} src={boySitting} alt="https://icons8.com/illustrations/style--business-3d" /> */}
@@ -79,7 +79,7 @@ export default function Index(args: Args) {
 
 			 	<div className={style.avatar}>
 
-			 		{/* Illustration is taken from https://icons8.com/illustrations/style--business-3d */}
+			 		{/* Thanks To https://icons8.com/illustrations/style--business-3d */}
 			 		<Image quality={100} src={yellowMan} alt="https://icons8.com/illustrations/style--business-3d" />
 			 	</div>
 
@@ -95,8 +95,7 @@ export default function Index(args: Args) {
 			<div className={style.containerThree}>
 				{/* <div className={style.right}> */}
 					<div className={style.avatar}>
-						{/* Illustration is taken from https://icons8.com/illustrations/style--business-3d */}
-						{/* <Image quality={100} src={woman3} alt="https://icons8.com/illustrations/style--business-3d" /> */}
+						{/* Thanks To https://icons8.com/illustrations/style--business-3d */}
 						<Image quality={100} src={yellowWoman2} alt="https://icons8.com/illustrations/style--business-3d" />
 					</div>
 
@@ -118,6 +117,7 @@ export default function Index(args: Args) {
 			<div className={style.containerFour}>
 				<div className={style.left}>
 					<div className={style.avatar}>
+						{/* Thanks To https://icons8.com/illustrations/style--3d-business */}
 						<Image quality={100} src={monitor} alt="https://icons8.com/illustrations/style--business-3d" />
 					</div>
 				</div>
