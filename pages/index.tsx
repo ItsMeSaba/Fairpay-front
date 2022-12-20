@@ -1,60 +1,40 @@
 import style from "styles/pages/index2.module.sass"
 import Image from "next/image"
-import bussinesMan from "../public/images/bussinesMan.png"
+import bussinesMan from "images/bussinesMan.png"
+import yellowMan from "images/yellowMan.png"
 // import blob1 from "../public/images/blob12.svg"
-import blob1 from "../public/images/TestBlob.svg"
-import blob4 from "../public/images/TestBlob3.svg"
-import blob2 from "../public/images/TestBlob2.svg"
-import blob3 from "../public/images/blob11.svg"
-import man4test from "../public/images/man4test2.png"
-import woman3 from "../public/images/woman3.png"
-import { useEffect, useState } from "react";
-import axios from "axios"
-import useCheckAuth from "hooks/useCheckAuth"
-import womanTest from "public/images/womanTest.png"
-import TestBoy from "public/images/TestBoy.png"
-import boySitting from "public/images/boySitting.png"
-import yellowWoman from "public/images/yellowWoman.png"
-import yellowWoman2 from "public/images/yellowWoman2.png"
-import yellowMan from "public/images/yellowMan.png"
+import blobOne from "/images/blobOne.svg"
+import blobTwo from "/images/blobTwo.svg"
+import yellowWoman from "images/yellowWoman.png"
 import line1 from "public/images/line1.svg"
 // import line2 from "public/images/line2.svg"
 import line2 from "public/images/line3.svg"
-import monitor from "public/images/monitor.png"
+import monitor from "images/monitor.png"
 
 interface Args {
 	vacancies: any[]
 }
 
 export default function Index(args: Args) {
-	// const [displayAuthPopup, setDisplayAuthPopup] = useState(false);
-	// const { user, status } = useCheckAuth();
 
-	// console.log("USER ------->", user?.id);
-
- 	return (
+	return (
 		<div className={style.indexPage}>
 
 			<div className={style.containerOne}>
 				<div className={style.left}>
 					<div className={style.blobOne}>
-						<Image quality={50} src={blob1} alt="blob" />
+						<Image quality={50} src={blobOne} alt="blob" />
 					</div>
 
 					<div className={style.blobTwo}>
-						{/* <Image quality={50} src={blob3} alt="blob" /> */}
-						<Image quality={50} src={blob4} alt="blob" />
+						<Image quality={50} src={blobTwo} alt="blob" />
 					</div>
 
 					<h1>იცოდე შენი<br /><span>ფასი</span></h1>
 				</div>
 
 				<div className={style.avatar}>
-
-					{/* Thanks To https://icons8.com/illustrations/style--business-3d */}
 					<Image quality={100} src={bussinesMan} alt="https://icons8.com/illustrations/style--business-3d" />
-					{/* <Image quality={100} src={TestBoy} alt="https://icons8.com/illustrations/style--business-3d" /> */}
-					{/* <Image quality={100} src={boySitting} alt="https://icons8.com/illustrations/style--business-3d" /> */}
 				</div>
 
 				<div className={style.waveOne}>
@@ -66,9 +46,7 @@ export default function Index(args: Args) {
 
 			<div className={style.containerTwo}>
 			 	<div className={style.right}>
-			 		{/* <p>Fairpay ეხმარება დეველოპერებს გაიგონ რომელი კომპანია სთავაზობს უკეთეს პირობებს</p> */}
 					<h3 className={style.miniHeader}>რა არის Fairpay?</h3>
-					{/* <h3 className={style.miniHeader}>?</h3> */}
 
 			 		<p>Fairpay არის პლატფორმა რომლის დახმარებითაც Tech სფეროში დასაქმებული ადამიანები ერთმანეთს უზიარებენ კომპანიასთან თანამშრომლობის გამოცდილებას</p>
 
@@ -78,28 +56,18 @@ export default function Index(args: Args) {
 			 	</div>
 
 			 	<div className={style.avatar}>
-
 			 		{/* Thanks To https://icons8.com/illustrations/style--business-3d */}
 			 		<Image quality={100} src={yellowMan} alt="https://icons8.com/illustrations/style--business-3d" />
 			 	</div>
-
-
-			 	{/* <div className={style.waveTwo}>
-			 		<svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-			 			<path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className={style.shapeFill}></path>
-			 		</svg>
-				</div> */}
 			</div>
 
 
 			<div className={style.containerThree}>
-				{/* <div className={style.right}> */}
-					<div className={style.avatar}>
-						{/* Thanks To https://icons8.com/illustrations/style--business-3d */}
-						<Image quality={100} src={yellowWoman2} alt="https://icons8.com/illustrations/style--business-3d" />
-					</div>
+				<div className={style.avatar}>
+					{/* Thanks To https://icons8.com/illustrations/style--business-3d */}
+					<Image quality={100} src={yellowWoman} alt="https://icons8.com/illustrations/style--business-3d" />
+				</div>
 
-				{/* </div> */}
 				
 				<div className={style.left}>
 					{/* <p>Fairpay საშუალებას აძლევს დეველოპერებს დააფიქსირონ საკუთარი აზრი კომპანიის შესახებ</p> */}
