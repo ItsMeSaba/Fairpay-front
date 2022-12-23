@@ -17,7 +17,7 @@ import getCachedCompanies from "functions/localStorage/getCachedCompanies";
 import isTimestampValid from "functions/utils/isTimestampValid";
 import companiesArrayToOject from "functions/companies/companiesArrayToObject";
 import deleteCachedCompanies from "functions/localStorage/deleteCachedCompanies";
-
+import Head from "next/head"
 interface PopupData {
 	presetCompany: string | null;
 	display: boolean;
@@ -90,6 +90,10 @@ export default function CompaniesPage(args: Args) {
 
 	return (
 		<div className={style.page}>
+			<Head>
+				<title>Companies</title>
+			</Head>
+
 			{
 				addCompanyPopup &&
 					<AddCompanyPopup closePopup={() => setAddCompanyPopup(false)} />

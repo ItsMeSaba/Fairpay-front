@@ -1,8 +1,6 @@
 
 import style from "styles/components/submitSalary.module.sass"
-import moneyMan from "public/images/moneyMan.png"
-import moneyMan2 from "public/images/moneyMan2.png"
-import moneyMan3 from "public/images/moneyMan3.png"
+import moneyMan3 from "images/moneyWoman.png"
 import Image from "next/image"
 import PositionInput from "components/inputs/positionInput"
 import CompanyInput from "components/inputs/companyInput"

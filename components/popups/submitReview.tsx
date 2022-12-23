@@ -1,10 +1,7 @@
 import style from "styles/components/submitReview.module.sass"
-import reviewLady from "public/images/reviewLady.png"
-import reviewLady2 from "public/images/reviewLady2.png"
-import reviewLady3 from "public/images/reviewLady3.png"
+import reviewLady3 from "images/coffeWoman.png"
 import Image from "next/image"
 // import StarRatings from 'react-star-ratings';
-import roundedStar from "public/images/roundedStar.svg"
 import { useEffect, useMemo, useState } from "react"
 import { Rating } from 'react-simple-star-rating'
 import PositionInput from "../inputs/positionInput"
