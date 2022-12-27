@@ -15,7 +15,7 @@ interface Args {
 	vacancies: any[]
 }
 
-export default function Index(args: Args) {
+export default function Index() {
 
 	return (
 		<div className={style.indexPage}>
@@ -100,6 +100,12 @@ export default function Index(args: Args) {
 		</div>
   	)
 }
+
+export async function getStaticProps() {
+	return {
+	  props: {}, // will be passed to the page component as props
+	}
+  }
 
 {/* <DataCountDisplay /> */}
 // export async function getStaticProps() {
