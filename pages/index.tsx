@@ -73,7 +73,7 @@ export default function Index() {
 					{/* <p>Fairpay საშუალებას აძლევს დეველოპერებს დააფიქსირონ საკუთარი აზრი კომპანიის შესახებ</p> */}
 					<h3 className={style.miniHeader}>რისი გაზიარება შემიძლია სხვებისთვის?</h3>
 
-					<p>როგორც პოზიტიური და ნეგატიური გამოცდილებების, ასევე ანაზღაურების.</p>
+					<p>როგორც პოზიტიური და ნეგატიური შთაბეჭდილებების, ასევე ანაზღაურების.</p>
 					
 					<div className={style.line1}>
 						<Image quality={100} src={line1} alt="https://icons8.com/illustrations/style--business-3d" />
