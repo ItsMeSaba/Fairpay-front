@@ -9,9 +9,10 @@ export default function Co() {
 
     useEffect(() => {
         (async () => {
-            if (!router.query.tk) return false;
+            if (!router.query.code) return false;
             
-            const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/users/auth/gud`, { tk: router.query.tk }, { withCredentials: true });
+            // const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/users/auth/gud`, { tk: router.query.tk }, { withCredentials: true });
+            const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/users/getUserIdFromCode`, { code: router.query.code }, { withCredentials: true });
             
             const previousPage = getPreviousRememberedPage();
 

@@ -59,14 +59,10 @@ export default function AuthPopup(args: Args) {
                                 style={{ maxWidth: "400px", width: "100%", padding: "0 50px", borderRadius: "30px" }} 
                             />
                         </div>
-                        {/* </a> */}
-
-                        {/* <GoogleLoginButton 
-                            onClick={() => signIn("google")} 
-                            style={{ width: "400px", boxShadow: "0 0 3px black" }} 
-                        /> */}
                     </div>
                 }
+
+                {/* <div className="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div> */}
 
                 { status === "loading" && 
                     <div className={style.buttons} style={{ maxWidth: "90px" }}>
