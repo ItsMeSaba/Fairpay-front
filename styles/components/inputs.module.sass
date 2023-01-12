@@ -18,29 +18,32 @@
     width: $width
     background-color: #fafafa
     color: #535347
-    box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 30%)
+    box-shadow: inset 0px 0 2px 0px rgb(0 0 0 / 30%)
     outline: none
     border-radius: $borderRadius
     letter-spacing: .5px
+
+    @media screen and ( min-width: 1023px ) and ( max-width:  1440px )
+        // width: calc(#{$width} - 1rem)
 
 // Style for input type Select 
 @mixin selectTypeInput($borderRadius: 5px, $padding: 0, $width: 3rem) 
     background-color: #fafafa
     border: none
-    box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 30%)
+    box-shadow: inset 0px 0px 2px 0px rgb(0 0 0 / 30%)
     outline: none
     border-radius: $borderRadius
     font-size: .9rem
     font-family: 'Roboto', sans-serif
     color: rgb(100, 100, 100)
-    height: 2.5rem
+    height: 2.54rem
     // padding: $padding
     padding: 0rem .4rem
     width: $width
 
-    // @media (max-width: 768px)
-    //     height: 2.54rem
-
+    @media screen and (min-width: 2550px)
+        option
+            font-size: .6rem
 
 @mixin label()
     margin: 0 0 .5rem 0
@@ -161,6 +164,10 @@
     select
         @include selectTypeInput($width: 15rem)
 
+        // @media screen and ( min-width: 1023px ) and ( max-width: 1440px )
+        //     @include selectTypeInput($width: 14rem)
+
+
 
 
 .technologyInputContainer
@@ -169,7 +176,7 @@
     font-size: 1rem
 
     .technologyList
-        box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 30%)
+        box-shadow: inset 0px 0 3px 0px rgb(0 0 0 / 30%)
         border-radius: 5px
         line-height: 1.5rem
         display: flex

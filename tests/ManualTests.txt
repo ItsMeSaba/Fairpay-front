@@ -1,0 +1,83 @@
+
+
+· DEV
+    
+    · Authentication
+
+        ✓ Works with my main account
+            ✓ Cookie is successfully retrieved
+        
+
+    · Submit Salary
+        
+        · Validation
+            · Position Field
+                ✓ Is Required Works
+                ✓ Minimum length is checked (inlucding spaces)
+                
+            · Experience
+                ✓ Is Required Works
+
+            · Salary
+                ✓ Is Required Works
+            
+            · Technologies
+                ✓ Is Required Works
+
+            . Passed Period of 30 Days
+                ✓ Works
+    
+        · UI
+            · Mobiles
+                · Inputs
+                    ? Looks Normal but Needs Work on Heights + Refactoring
+
+            · Tablets
+                · Inputs
+                    ? Looks Normal but Needs Work on Heights + Refactoring
+
+            · Small Laptops
+                · Inputs
+                    ? Looks Normal but Needs Work on Heights + Refactoring
+
+            · 4K
+                · Inputs
+                    ? Looks Normal but Needs Work on Heights + Refactoring
+
+    · Submit Review
+        
+        · Validation
+            · Rating
+                ✓ Minimum of One Start rating is checked
+            
+            · Passed Period of 30 Days
+                ✓ Works
+
+            · Position
+                ✓ Isn't Necessary
+            
+            · Positive Review
+                ✓ Isn't Necessary
+                ✓ Maximum of 2500 Symbols
+
+            · Negative Review
+                ✓ Isn't Necessary
+                ✓ Maximum of 2500 Symbols
+
+        · UI
+            · Mobiles
+                · Inputs
+                    ? Looks Normal but Needs Work on Heights + Refactoring
+
+            · Tablets
+                · Inputs
+                    ? Looks Normal but Needs Work on Heights + Refactoring
+
+            · Small Laptops
+                · Inputs
+                    ? Looks Normal but Needs Work on Heights + Refactoring
+
+            · 4K
+                · Inputs
+                    ? Looks Normal but Needs Work on Heights + Refactoring
+     

@@ -1,0 +1,36 @@
+
+
+Validation
+    Position Field
+        ✓ Is Required Works
+        ✓ Minimum length is checked
+        ✓ Spaces are trimmed
+        
+    Experience
+        ✓ Is Required Works
+
+    Salary
+        ✓ Is Required Works
+    
+    Technologies
+        ✓ Is Required Works
+
+    Passed Period of 30 Days From Previous Submition
+        ✓ Works
+
+UI
+    Mobiles
+        Inputs
+            ? Looks Normal but Needs Work on Heights + Refactoring
+
+    Tablets
+        Inputs
+            ? Looks Normal but Needs Work on Heights + Refactoring
+
+    Small Laptops
+        Inputs
+            ? Looks Normal but Needs Work on Heights + Refactoring
+
+    4K
+        Inputs
+            ? Looks Normal but Needs Work on Heights + Refactoring

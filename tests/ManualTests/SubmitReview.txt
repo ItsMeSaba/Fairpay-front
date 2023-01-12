@@ -1,0 +1,38 @@
+
+
+Validation
+    Rating
+        ✓ Minimum of One Start rating is checked
+    
+    Passed Period of 30 Days
+        ✓ Works
+
+    Position
+        ✓ Isn't Necessary
+    
+    Positive Review
+        ✓ Isn't Necessary
+        ✓ Maximum of 2500 Symbols
+
+    Negative Review
+        ✓ Isn't Necessary
+        ✓ Maximum of 2500 Symbols
+
+UI
+    Needs Refactoring
+
+    Mobiles
+        Inputs
+            ? Looks Normal but Needs Work on Heights
+
+    Tablets
+        Inputs
+            ? Looks Normal but Needs Work on Heights
+
+    Small Laptops
+        Inputs
+            ? Looks Normal but Needs Work on Heights
+
+    4K
+        Inputs
+            ? Looks Normal but Needs Work on Heights
