@@ -1,14 +1,8 @@
-
-@mixin flexCenter()
-    display: flex
-    align-items: center
-    justify-content: center
-
+@use 'styles/variables.sass'
 
 .submitReview
-    @include flexCenter()
+    @include variables.FlexCenter
     position: fixed
-    // position: relative
     overflow: hidden
     left: 0
     top: 0 
@@ -21,52 +15,59 @@
     .container
         border-radius: 20px
         overflow: hidden
-        // padding: 0 4rem
         max-width: 1300px
-        // padding: 2rem 0
         width: 90vw
         background-color: white
         box-shadow: 0 0 25px black
-        // display: flex
         display: grid
-        // padding: 2rem 0
         grid-template-columns: 1fr 1.5fr
-        // height: 570px
         max-height: 850px
         height: 95vh
 
-        
-        // .left
-        //     // padding: 1rem 2rem
-        //     display: flex
-        //     align-items: center
-        //     justify-content: center
-            // background-color: rgb(235, 247, 66)
-        //     position: relative
-        //     border-radius: 5px 0 0 5px 
+        @include variables.Device($min: variables.$fourK)
+            max-width: 1800px
+            max-height: 1300px
+
+        @include variables.Device($max: variables.$largeLaptop)
+            width: 98vw
+
+        @include variables.Device($max: variables.$tablet)
+            grid-template-columns: 1fr
+            height: auto
+            max-height: 100vh
+            overflow: auto
 
         .avatar
-            // position: absolute
-            // bottom: 0
-            // left: 1rem
-            // width: 75%
-            // left: 12%
-            // padding: 0 0 0 1rem
             display: flex
             background-color: rgb(218, 203, 77)
             align-items: end
             justify-content: center
-            // height: 90%
+
+            @include variables.Device($max: variables.$tablet)
+                display: none
 
             img
-                // display: block
                 width: 400px
-                // position: absolute
-                // bottom: 0
+
+                @include variables.Device($min: variables.$fourK)
+                    width: 550px
 
         .right
             padding: 2rem 2rem
-            overflow-y: scroll 
+            overflow-y: scroll
+
+            @include variables.Device($max: variables.$tablet)
+                padding: 1rem 1.5rem
+
+            .stars
+                svg
+
+                    @include variables.Device($min: variables.$fourK)
+                        width: 60px
+                        height: 60px
+
+                    @include variables.Device($max: variables.$tablet)
+                        width: 30px
 
             .error
                 padding: 1.3rem 0 0 1.2rem
@@ -88,29 +89,29 @@
                 height: 2.5rem
                 font-size: 1rem
                 border: none
-                // border: solid 1px rgb(190, 190, 190)
-                // background-color: rgb(220, 220, 220, .1)
                 background-color: #fafafa
                 color: #535347
-                // font-weight: 
                 box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 30%)
-                // box-shadow: inset 0 0 3px rgb(0, 0, 0, .5)
                 outline: none
                 border-radius: 5px
                 letter-spacing: .5px
 
             .inputsBlock
                 display: flex
-                
+
+                @include variables.Device($max: variables.$tablet)
+                    flex-direction: column
 
             .rating
                 display: flex
                 align-items: center
-                // justify-content: space-around
 
                 .ratingNumber
                     font-size: 1.2rem
                     padding: 0 0 5px 1rem
+
+                    @include variables.Device($max: variables.$tablet)
+                        padding: 0 0 1px 1rem
 
             .reviewText
                 margin: 1rem 0
@@ -120,7 +121,6 @@
                     padding: 1rem
                     outline: none
                     resize: none
-                    // font-family: 'Roboto', sans-serif 
                     font-family: 'Noto Sans Georgian', sans-serif 
                     letter-spacing: 1px
                     border-radius: .5rem
@@ -128,6 +128,9 @@
                     width: 100%
                     box-shadow: 0px 0px 2px 0 rgb(0 0 0 / 20%) inset
 
+                    @include variables.Device($min: variables.$fourK)
+                        font-size: .9rem
+                    
                     &::-webkit-scrollbar
                         width: 10px
  
@@ -140,10 +143,8 @@
             .submit
                 display: block
                 padding: .8rem 4rem
-                // margin: auto
                 margin: 2rem auto 1rem auto
                 background-color: #4272d7
-                // background-color: #4272d7
                 color: white
                 border: none
                 border-radius: 10px
@@ -153,66 +154,65 @@
                         
                     
 
-@media screen and (max-width: 768px)
-    .submitReview
-        .container
-            grid-template-columns: 1fr
-            height: auto
-            max-height: 100vh
-            overflow: auto
-            // padding: .5rem 0rem
+// @media screen and (max-width: 768px)
+//     .submitReview
+//         .container
+//             // grid-template-columns: 1fr
+//             // height: auto
+//             // max-height: 100vh
+//             // overflow: auto
 
-            textarea
-                width: 100%
+//             // textarea
+//             //     width: 100%
 
-            .avatar
-                display: none
+//             // .avatar
+//             //     display: none
 
-            .right
-                padding: 1rem 1.5rem 
+//             // .right
+//             //     padding: 1rem 1.5rem 
 
-                .stars
-                    svg
-                        width: 30px
+//                 // .stars
+//                 //     svg
+//                 //         width: 30px
 
-                .rating
-                    .ratingNumber
-                        padding: 0 0 1px 1rem
+//                 // .rating
+//                 //     .ratingNumber
+//                 //         padding: 0 0 1px 1rem
                 
-                .inputsBlock
-                    flex-direction: column
+//                 // .inputsBlock
+//                 //     flex-direction: column
 
                     
-@media screen and (min-width: 2550px)
-    .submitReview
+// @media screen and (min-width: 2550px)
+//     .submitReview
         
-        .container
-            max-width: 1800px
-            max-height: 1100px
+//         .container
+//             max-width: 1800px
+//             max-height: 1100px
 
-            .avatar
+//             .avatar
 
-                img
-                    width: 550px
+//                 img
+//                     width: 550px
 
-            .right
+//             .right
 
-                .rating
+//                 .rating
                     
-                    .stars
+//                     .stars
                         
-                        svg
-                            width: 60px
-                            height: 60px
+//                         svg
+//                             width: 60px
+//                             height: 60px
 
-                .reviewText
+//                 .reviewText
                     
-                    textarea
-                        font-size: .75rem
+//                     textarea
+//                         font-size: .75rem
 
                         
-@media screen and (max-width: 1439px)
-    .submitReview
+// @media screen and (max-width: 1439px)
+//     .submitReview
 
-        .container
-            width: 98vw
+//         .container
+//             width: 98vw

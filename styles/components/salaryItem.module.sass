@@ -1,3 +1,4 @@
+@use "styles/variables.sass"
 
 .outlineOne
     position: absolute  
@@ -15,7 +16,11 @@
     padding: 2.5rem 2rem
     margin: auto
     border-radius: 5px
-    text-align: left  
+    text-align: left
+
+    @include variables.Device($max: variables.$tablet)
+        padding: 2.5rem 0rem
+        width: 95%
 
     .left 
         display: flex
@@ -28,12 +33,16 @@
 
             img
                 border-radius: 10px
-                // border-radius: 1000px
                 min-width: 100px
+
+                @include variables.Device($max: variables.$tablet)
+                    min-width: 30px
 
     .center
         padding: 0 0 0 2.5rem
         
+        @include variables.Device($max: variables.$tablet)
+            padding: 0 0 0 1.5rem
 
         .bottom
 
@@ -57,9 +66,11 @@
     .right
         padding: 0 0 0 2rem
 
+        @include variables.Device($max: variables.$tablet)
+            padding: 0 0 0 .5rem
+
         .salary
             text-align: center
-            // color: white
             padding: 0px 0
             border-radius: 30px
             font-size: 1.2rem
@@ -82,6 +93,14 @@
     margin: 3rem auto
     border-radius: 22px
     text-align: left  
+    
+    @include variables.Device($min: variables.$fourK)
+        max-width: 1200px
+
+    @include variables.Device($max: variables.$tablet)
+        grid-template-columns: 1fr
+        padding: 3rem 2rem
+        width: 95%
 
     .left
         
@@ -107,58 +126,64 @@
             line-height: 2rem
             padding: 1rem 0
 
+            @include variables.Device($max: variables.$tablet)
+                padding: 0 0 1rem 0
+
     .right
         padding: 0 0 0 2rem
 
+        @include variables.Device($max: variables.$tablet)
+            padding: 1.5rem 0 0 .5rem
+
         .salary
             text-align: center
-            // color: white
             padding: 0px 0
             border-radius: 30px
             font-size: 1.2rem
             color: rgb(20, 20, 20)
+
+            @include variables.Device($max: variables.$tablet)
+                font-size: 1.3rem
 
         *
             padding: 0rem 0
 
 
 
-@media only screen and (max-width: 769px)
-    .salaryItem
-        padding: 2.5rem 0rem
-        width: 95%
+// @media only screen and (max-width: 769px)
+//     .salaryItem
+//         padding: 2.5rem 0rem
+//         width: 95%
 
-        .left 
+//         .left 
 
-            .companyImage
+//             .companyImage
 
-                img
-                    min-width: 30px
+//                 img
+//                     min-width: 30px
         
-        .center
-            padding: 0 0 0 1.5rem
+//         .center
+//             padding: 0 0 0 1.5rem
 
-        .right
-            padding: 0 0 0 .5rem
+//         .right
+//             padding: 0 0 0 .5rem
 
-    .salaryItemWithoutCompany
-        // grid-template-columns: 2fr 1fr
-        grid-template-columns: 1fr
-        padding: 3rem 2rem
-        width: 95%
+//     .salaryItemWithoutCompany
+//         grid-template-columns: 1fr
+//         padding: 3rem 2rem
+//         width: 95%
 
-        .left
-            // font-size: 1.5rem
-            // padding: 0 0 0 1.5rem
+//         .left
 
-            h2
-                padding: 0 0 1rem 0
-        .right
-            padding: 1.5rem 0 0 .5rem
 
-            .salary
-                font-size: 1.3rem
+//             h2
+//                 padding: 0 0 1rem 0
+//         .right
+//             padding: 1.5rem 0 0 .5rem
 
-@media only screen and ( min-width: 2550px )
-    .salaryItemWithoutCompany
-        max-width: 1200px
+//             .salary
+//                 font-size: 1.3rem
+
+// @media only screen and ( min-width: 2550px )
+//     .salaryItemWithoutCompany
+//         max-width: 1200px

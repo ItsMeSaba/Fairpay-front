@@ -1,7 +1,4 @@
-@mixin flexCenter()
-    display: flex
-    align-items: center
-    justify-content: center
+@use 'styles/variables.sass'
     
 // General input style
 @mixin input()
@@ -51,7 +48,7 @@
         @include input()
 
 .submitSalary
-    @include flexCenter()
+    @include variables.FlexCenter
     position: fixed
     overflow: hidden
     left: 0
@@ -74,6 +71,16 @@
         height: 500px
         padding: 0
 
+        @include variables.Device($min: variables.$fourK)
+            max-width: 2000px
+            height: 800px
+
+        @include variables.Device($max: variables.$tablet)
+            grid-template-columns: 1fr
+            height: auto
+            max-height: 100vh
+            overflow: auto
+
         .avatar
             background-color: rgb(48, 238, 143)
             display: flex
@@ -82,15 +89,38 @@
             border-radius: 5px 0 0 5px 
             padding: 0 1rem 0 0
 
+            @include variables.Device($min: variables.$fourK)
+                background-color: rgb(48, 238, 143)
+                display: flex
+                align-items: end
+                justify-content: center
+                border-radius: 5px 0 0 5px 
+                padding: 0 1rem
+
+            @include variables.Device($max: variables.$tablet)
+                display: none
+                padding: 1rem .5rem 0 .5rem
+
             img
                 min-width: 250px
                 width: 450px
+
+                @include variables.Device($min: variables.$fourK)
+                    min-width: 250px
+                    width: 650px
 
         // .inputs
         .inputsDiv
             overflow-y: scroll
             padding: 1rem 3rem
-            
+
+            @include variables.Device($max: variables.$tablet)
+                order: 1
+                padding: 2rem 1.5rem
+
+            @include variables.Device($min: variables.$laptop, $max: variables.$largeLaptop)
+                padding: 2rem 1rem
+
             &::-webkit-scrollbar
                 width: 10px
 
@@ -127,9 +157,15 @@
                 display: grid
                 grid-template-columns: 1fr 1fr
                 justify-content: space-around
-                // padding: 1rem 0 0 0
                 width: 100%
                 
+                @include variables.Device($max: variables.$tablet)
+                    grid-template-columns: 1fr
+
+                label
+
+                    @include variables.Device($max: variables.$tablet)
+                        display: block
 
                 .seniorityInputBlock         
                     @include inputBlock()
@@ -144,8 +180,6 @@
                     .salaryInputWithCurrency
                         display: flex
                         align-items: center
-                        // height: 100%
-                        // display: block-inline
 
                         input
                             border-radius: 5px 0 0 5px
@@ -156,59 +190,54 @@
 
 
 
-@media screen and (max-width: 768px)
-    .submitSalary
-        .container
-            grid-template-columns: 1fr
-            height: auto
-            max-height: 100vh
-            overflow: auto
-            // padding: 2rem 1rem
+// @media screen and (max-width: 768px)
+//     .submitSalary
+//         // .container
+//         //     grid-template-columns: 1fr
+//         //     height: auto
+//         //     max-height: 100vh
+//         //     overflow: auto
+//             // padding: 2rem 1rem
 
-            .avatar
-                display: none
-                // order: 2
-                // padding: 0 20%
-                padding: 1rem .5rem 0 .5rem
-               
-                // img
-                //     width: 200px
+//             .avatar
+//                 display: none
+//                 padding: 1rem .5rem 0 .5rem
 
 
-            .inputsDiv
-                order: 1
-                padding: 2rem 1.5rem
+//             .inputsDiv
+//                 order: 1
+//                 padding: 2rem 1.5rem
 
-                .fields
-                    grid-template-columns: 1fr
+//                 .fields
+//                     grid-template-columns: 1fr
 
-                    label
-                        display: block
+//                     label
+//                         display: block
 
-@media screen and (min-width: 2550px)
+// @media screen and (min-width: 2550px)
 
-    .submitSalary
+//     .submitSalary
     
-        .container
-            max-width: 2000px
-            height: 800px
+//         .container
+//             max-width: 2000px
+//             height: 800px
 
         
-            .avatar
-                background-color: rgb(48, 238, 143)
-                display: flex
-                align-items: end
-                justify-content: center
-                border-radius: 5px 0 0 5px 
-                padding: 0 1rem
+//             .avatar
+//                 background-color: rgb(48, 238, 143)
+//                 display: flex
+//                 align-items: end
+//                 justify-content: center
+//                 border-radius: 5px 0 0 5px 
+//                 padding: 0 1rem
 
-                img
-                    min-width: 250px
-                    width: 650px
+//                 img
+//                     min-width: 250px
+//                     width: 650px
 
-@media screen and (min-width: 1023px) and (max-width: 1439px)
-    .submitSalary
-        .container
+// @media screen and (min-width: 1023px) and (max-width: 1439px)
+//     .submitSalary
+//         .container
 
-            .inputsDiv
-                padding: 2rem 1rem
+//             .inputsDiv
+//                 padding: 2rem 1rem

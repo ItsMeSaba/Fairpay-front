@@ -1,9 +1,12 @@
+@use "styles/variables.sass"
+
 @import url("//cdn.web-fonts.ge/fonts/alk-rounded-mtav-med/css/alk-rounded-mtav-med.min.css")
 @import url("//cdn.web-fonts.ge/fonts/arial-geo/css/arial-geo.min.css")
 @import url("//cdn.web-fonts.ge/fonts/bpg-arial-caps/css/bpg-arial-caps.min.css")
 @import url("//cdn.web-fonts.ge/fonts/bpg-boxo/css/bpg-boxo.min.css")
 @import url("//cdn.web-fonts.ge/fonts/bpg-le-studio-02-caps/css/bpg-le-studio-02-caps.min.css")
 @import url("//cdn.web-fonts.ge/fonts/bpg-mrgvlovani-caps/css/bpg-mrgvlovani-caps.min.css")
+
 
 $manPosition: -200%
 // $secondContainerColor: #f1f2f6
@@ -49,7 +52,7 @@ $secondContainerColor: white
 			fill: $color
 
 
-@mixin blob($top: initial, $bottom: initial, $left: initial, $right: initial, $scale: 1)
+@mixin blob($top: initial, $bottom: initial, $left: initial, $right: initial, $scale: 1, $transformOrigin: top left)
 	width: 40rem
 	top: $top 
 	left: $left 
@@ -57,7 +60,7 @@ $secondContainerColor: white
 	bottom: $bottom 
 	position: absolute
 	opacity: .2
-	transform-origin: top left
+	transform-origin: $transformOrigin
 	scale: $scale
 
 
@@ -74,7 +77,15 @@ $secondContainerColor: white
 		rotate: 0deg
 	to
 		rotate: 10deg
-		transform: translate(-40%, -50%) 
+		transform: translate(-40%, -50%)
+
+@keyframes animateBlobOneMobile
+	from
+		transform: translate(-45%, -52%) 
+		rotate: 0deg
+	to
+		rotate: 10deg
+		transform: translate(-45%, -52%) 
 
 @keyframes animateBlobTwo
 	from
@@ -85,6 +96,15 @@ $secondContainerColor: white
 		rotate: 0deg
 		// rotate: -15deg
 		transform: translate(-10%, 0%) 
+
+@keyframes animateBlobTwoMobile
+	from
+		transform: translate(55%, 45%) 
+		rotate: -10deg
+
+	to
+		rotate: 0deg
+		transform: translate(45%, 45%) 
 
 @keyframes animateThirdAvatar
 	from
@@ -97,13 +117,22 @@ $secondContainerColor: white
 .indexPage
 	text-align: center
 
+	.containerOne, .containerTwo, .containerThree, .containerFour
+		@include variables.Device($max: variables.$tablet)
+			grid-template-columns: 1fr !important
+			grid-template-rows: 1fr 1.5fr !important
+
+			.waveOne
+				svg
+					width: calc(100% + 143.3px) !important
+					height: 87px !important
+
 	.containerOne
 		@include container(87vh)
 		color: white
 		background: #ED213A
 		background: -webkit-linear-gradient(to left, #93291E, #ED213A)
 		background: linear-gradient(to left, #FF324B, #ED213A)
-		// z-index: 1
 
 		.avatar
 			display: flex
@@ -113,23 +142,37 @@ $secondContainerColor: white
 			justify-content: center
 			margin: auto
 
+			@include variables.Device($max: variables.$tablet)
+				width: 100%
+				display: flex
+
 			img
 				width: 850px
-				// box-shadow: 0 0 50px black
 				filter: drop-shadow(10px 5px 1px rgb(0, 0, 0, .2))
 
+				@include variables.Device($min: variables.$fourK)
+					width: 1200px
+
+				@include variables.Device($min: variables.$largePhone, $max: variables.$tablet)
+					width: 550px
+
 		.blobOne
-			// @include blob($left: -5%, $top: -5%, $scale: 2.5)
 			@include blob($left: 0, $top: 0, $scale: 2)
-			// transform-origin: top left
-			// translate: 
-			// transform: translateX(-5%)
 			animation: animateBlobOne 7s infinite alternate ease-in-out
+			
+			@include variables.Device($max: variables.$largePhone)
+				@include blob($left: 0, $top: 0, $scale: 1.2)
+				
+				animation: animateBlobOneMobile 4s infinite alternate ease-in-out
+
 
 		.blobTwo
-			// @include blob($right: 0, $bottom: 0)
 			@include blob($right: 0, $bottom: 0, $scale: 2)
-			animation: animateBlobTwo 4s infinite alternate ease-in-out
+			
+			@include variables.Device($max: variables.$largePhone)
+				@include blob($right: 0, $bottom: 0, $scale: 1.2, $transformOrigin: bottom right)
+
+				animation: animateBlobTwoMobile 4s infinite alternate ease-in-out
 
 		.waveOne
 			@include wave()
@@ -151,10 +194,14 @@ $secondContainerColor: white
 			z-index: 10
 			text-shadow: 2px 2px 2px black
 			width: fit-content
-			// position: relative
-			// left: -300px
 			animation: animateText 2s forwards
 			font-weight: bold
+
+			@include variables.Device($min: variables.$largePhone, $max: variables.$tablet)
+				font-size: 3.7rem
+
+			@include variables.Device($max: variables.$largePhone)
+				font-size: 3rem
 
 			span
 				font-size: 9rem
@@ -162,12 +209,22 @@ $secondContainerColor: white
 				left: -350px
 				top: 2rem
 				animation: animateText 3s forwards
+				
+				@include variables.Device($min: variables.$largePhone, $max: variables.$tablet)
+					font-size: 9rem
 	
+				@include variables.Device($max: variables.$largePhone)
+					font-size: 8rem
+
 	.containerTwo
 		@include container
 		// background-color: #305acc
 		color: #2f3640
 		padding: 0 0 0 5rem
+		
+		@include variables.Device($max: variables.$tablet)
+			margin: 5rem 0 0 0
+			padding: 0
 
 		.avatar
 			padding: 0 0 3rem 0
@@ -177,16 +234,19 @@ $secondContainerColor: white
 			// align-items: end
 			align-items: center
 			justify-content: center
+
+			@include variables.Device($max: variables.$tablet)
+				display: flex
+				padding: 0rem 2rem
+				order: 1
 			
 			img
 				width: 35rem
 
+				@include variables.Device($min: variables.$fourK)
+					width: 1000px
+
 		.right
-			// font-family: "BPG Mrgvlovani Caps", sans-serif
-			// position: relative
-			// text-align: left
-			// display: flex
-			// flex-direction: column
 			position: relative
 			display: flex
 			flex-direction: column
@@ -194,6 +254,9 @@ $secondContainerColor: white
 			align-items: start
 			text-align: left
 			padding: 0 0 0 1rem
+
+			@include variables.Device($max: variables.$tablet)
+				padding: 4rem 2rem 2rem 2.5rem
 
 			.line2
 				position: absolute
@@ -203,6 +266,13 @@ $secondContainerColor: white
 				right: -20%
 				z-index: 1
 				opacity: .7
+
+				@include variables.Device($min: variables.$fourK)
+					left: 15% !important
+					scale: 2
+
+				@include variables.Device($max: variables.$tablet)
+					display: none
 
 			.miniHeader
 				font-size: 1.6rem
@@ -222,20 +292,15 @@ $secondContainerColor: white
 					width: 100%
 					left: .9rem
 					border-radius: .2rem
-					// background: #ED213A  /* fallback for old browsers */
 					background: linear-gradient(to right, #ED4C6744, #a55eea44) /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 
 			h1, h2, h3
 				padding: 0 2rem 0 0
 				position: relative
-				// font-size: 2.5rem
-				// font-weight: bold
 				z-index: 10
-				// text-shadow: 1px 1px 1px black
 
 			p
-				// text-align: justify
 				z-index: 5
 				position: relative
 				padding: 0 2rem 0 0
@@ -252,45 +317,47 @@ $secondContainerColor: white
 
 		.waveTwo 
 			@include wave()
-			// position: absolute
-			// bottom: -2px
-			// left: 0
-			// width: 100%
-			// overflow: hidden
-			// line-height: 0
-			// transform: rotate(180deg)
 
 			svg 
 				position: relative
 				display: block
 				width: calc(100% + 0px)
 				height: 105px
+
+				@include variables.Device($max: variables.$tablet)
+					width: calc(100% + 143.3px)
+					height: 87px
+
 				
 				.shapeFill 
 					// fill: rgb(48, 90, 204)
-	
 	
 	.containerThree
 		@include container
 		background-color: white
 		color: black
 
-		.right
+		@include variables.Device($max: variables.$tablet)
+			margin: 10rem 0 0 0
 
 		.avatar
-			// animation: animateThirdAvatar 4s infinite alternate ease-in-out
-			// width: 70%
 			margin: auto
 			padding: 1rem 0 0 0
-			// position: relative
-			// transform: scale(.7)
 			z-index: 5
+			
+			@include variables.Device($max: variables.$tablet)
+				order: 2
+
+				.avatar
+					width: 90%
 
 			img
 				width: 38rem
 
+				@include variables.Device($min: variables.$fourK)
+					width: 1000px
+
 		.left
-			// font-family: "BPG Mrgvlovani Caps", sans-serif
 			position: relative
 			display: flex
 			flex-direction: column
@@ -298,6 +365,10 @@ $secondContainerColor: white
 			align-items: start
 			text-align: left
 			padding: 5rem
+
+			@include variables.Device($max: variables.$tablet)
+				order: 1
+				padding: 2rem
 
 			.line1
 				position: absolute
@@ -307,6 +378,13 @@ $secondContainerColor: white
 				z-index: 1
 				opacity: .7
 
+				@include variables.Device($min: variables.$fourK)
+					scale: 2
+					right: 0
+
+				@include variables.Device($max: variables.$tablet)
+					display: none
+
 			.miniHeader
 				font-size: 1.4rem
 				margin: 0 0 1rem 0
@@ -314,7 +392,6 @@ $secondContainerColor: white
 				z-index: 3				
 
 				&::after
-					// border-radius: 50px
 					z-index: -1
 					position: absolute
 					left: 0
@@ -326,17 +403,16 @@ $secondContainerColor: white
 					width: 100%
 					left: .9rem
 					border-radius: .2rem
-					// background: #ED213A  /* fallback for old browsers */
 					background: linear-gradient(to right, #ED4C6744, #a55eea44) /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+					@include variables.Device($max: variables.$tablet)
+						top: 80%
+						width: 70%
 
 			p
 				font-size: 1.6rem
 				line-height: 3rem
 				z-index: 2
-
-
-				// p
-				// 	font-size: 1.5rem
 
 		h1
 			font-weight: bold
@@ -348,20 +424,23 @@ $secondContainerColor: white
 		background-color: white
 		color: black
 
+		@include variables.Device($max: variables.$tablet)
+			grid-template-columns: 1fr !important
+			grid-template-rows: 1fr !important
+
 		.left
 
+			@include variables.Device($max: variables.$tablet)
+				display: none
+			
 			.avatar
-				// animation: animateThirdAvatar 4s infinite alternate ease-in-out
 				width: 70%
 				margin: auto
 				padding: 1rem 0 0 0
-				// position: relative
-				// transform: scale(.7)
 				z-index: 5
 
 
 		.right
-			// font-family: "BPG Mrgvlovani Caps", sans-serif
 			position: relative
 			display: flex
 			flex-direction: column
@@ -369,6 +448,9 @@ $secondContainerColor: white
 			align-items: start
 			text-align: left
 			padding: 5rem
+
+			@include variables.Device($max: variables.$tablet)
+				padding: 2.5rem
 
 			.line1
 				position: absolute
@@ -384,7 +466,6 @@ $secondContainerColor: white
 				z-index: 3				
 
 				&::after
-					// border-radius: 50px
 					z-index: -1
 					position: absolute
 					left: 0
@@ -396,7 +477,6 @@ $secondContainerColor: white
 					width: 100%
 					left: .9rem
 					border-radius: .2rem
-					// background: #ED213A  /* fallback for old browsers */
 					background: linear-gradient(to right, #ED4C6744, #a55eea44) /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 			p
@@ -406,19 +486,12 @@ $secondContainerColor: white
 			
 			.avatar
 				margin: auto
-				// position: absolute
 				bottom: 0
 				left: 0
 				width: 100%
 				padding: 0 0 0 7rem
 				transform-origin: bottom 
 				transform: scale(1)
-
-				// img
-				// 	width: 300px
-
-				// p
-				// 	font-size: 1.5rem
 
 		h1
 			font-weight: bold
@@ -437,15 +510,15 @@ $secondContainerColor: white
 	to
 		left: 0px
 
-@media only screen and (max-width: 1500px)
-	.indexPage
+// @media only screen and (max-width: 1500px)
+// 	.indexPage
 
-		.containerOne
+// 		.containerOne
 
-			.avatar
+// 			.avatar
 
-				img
-					width: 680px
+// 				img
+// 					width: 680px
 
 @media only screen and (max-width: 769px)
 	@keyframes animateMan
@@ -458,247 +531,129 @@ $secondContainerColor: white
 
 	.indexPage
 
-		.containerOne, .containerTwo, .containerThree, .containerFour
-			grid-template-columns: 1fr
-			grid-template-rows: 1fr 1.5fr
+		// .containerOne, .containerTwo, .containerThree, .containerFour
+		// 	grid-template-columns: 1fr
+		// 	grid-template-rows: 1fr 1.5fr
 
-			.waveOne
-				// display: none
+		// 	.waveOne
+		// 		// display: none
 
-				svg
-					width: calc(100% + 143.3px)
-					height: 87px
+		// 		svg
+		// 			width: calc(100% + 143.3px)
+		// 			height: 87px
 
-		.containerOne
-			.avatar
-				width: 90%
+		// .containerOne
+		// 	.avatar
+		// 		width: 90%
 
-			h1
-				font-size: 2.5rem
+		// 	h1
+		// 		font-size: 2.5rem
 
-				span
-					font-size: 7rem
+		// 		span
+		// 			font-size: 7rem
 					
 
-			.avatar
-				display: flex
+		// 	.avatar
+		// 		display: flex
 
 
-		.containerTwo
-			margin: 5rem 0 0 0
-			padding: 0
+		// .containerTwo
+		// 	margin: 5rem 0 0 0
+		// 	padding: 0
 
-			.left
-				order: 2
+		// 	.left
+		// 		order: 2
 
-			.right
-				padding: 4rem 2rem 2rem 2.5rem
+		// 	.right
+		// 		padding: 4rem 2rem 2rem 2.5rem
 
-				.line2
-					display: none
+		// 		.line2
+		// 			display: none
 
-				p
-					// padding: 0 1rem
+		// 		p
+		// 			// padding: 0 1rem
 			
-			.avatar
-				display: flex
-				padding: 0rem 2rem
-				order: 1
+		// 	.avatar
+		// 		display: flex
+		// 		padding: 0rem 2rem
+		// 		order: 1
 
-			.waveTwo
-				// display: none
+		// 	.waveTwo
+		// 		// display: none
 
-				svg
-					width: calc(100% + 143.3px)
-					height: 87px
+		// 		svg
+		// 			width: calc(100% + 143.3px)
+		// 			height: 87px
 
-		.containerThree
-			margin: 10rem 0 0 0
+		// .containerThree
+		// 	margin: 10rem 0 0 0
 
-			.left
-				order: 1
-				padding: 2rem
+		// 	.left
+		// 		order: 1
+		// 		padding: 2rem
 
-				.line1
-					display: none
+		// 		.line1
+		// 			display: none
 
-				.miniHeader
-					// font-size: 1.4rem
+		// 		.miniHeader
+		// 			// font-size: 1.4rem
 
-					&::after
-						top: 80%
-						width: 70%
+		// 			&::after
+		// 				top: 80%
+		// 				width: 70%
 
-				p
-					// padding: 2rem
+		// 		p
+		// 			// padding: 2rem
 					
-			.avatar
-				order: 2
+		// 	.avatar
+		// 		order: 2
 
-				.avatar
-					width: 90%
+		// 		.avatar
+		// 			width: 90%
 		
-		.containerFour
-			grid-template-columns: 1fr
-			grid-template-rows: 1fr
+		// .containerFour
+		// 	grid-template-columns: 1fr
+		// 	grid-template-rows: 1fr
 
-			.left
-				display: none
+		// 	.left
+		// 		display: none
 
-			.right
-				padding: 2.5rem
+		// 	.right
+		// 		padding: 2.5rem
 
 
-@media only screen and (min-width: 2540px) 
-	//For 4K Displays (Ultra HD)
-	.indexPage
+// @media only screen and (min-width: 2540px) 
+// 	//For 4K Displays (Ultra HD)
+// 	.indexPage
 
-		.containerThree
+// 		.containerThree
 
-			// .right
-			.avatar
+// 			// .right
+// 			.avatar
 
-				img
-					width: 1000px
+// 				img
+// 					width: 1000px
 			
-			.left
+// 			.left
 
-				.line1
-					scale: 2
-					right: 0
+// 				.line1
+// 					scale: 2
+// 					right: 0
 	
-		.containerTwo
+// 		.containerTwo
 
-			.line2
-				left: 15% !important
-				scale: 2
+// 			.line2
+// 				left: 15% !important
+// 				scale: 2
 
-			.avatar
+// 			.avatar
 				
-				img
-					width: 1000px
+// 				img
+// 					width: 1000px
 
-		.containerOne
+// 		.containerOne
 
-			.avatar
+// 			.avatar
 				
-				img
-					width: 1200px
-
-
-
-
-// .containerTwo
-// 	@include container
-// 	background-color: $secondContainerColor
-// 	color: #2f3640
-
-// 	.avatar
-// 		display: flex
-// 		width: 100%
-// 		height: 100%
-// 		align-items: end
-// 		justify-content: center
-		
-// 		img
-// 			width: 600px
-
-// 	.right
-
-// 		h1, h2, h3
-// 			padding: 0 2rem 0 0
-// 			position: relative
-// 			// font-size: 2.5rem
-// 			// font-weight: bold
-// 			z-index: 10
-// 			// text-shadow: 1px 1px 1px black
-
-// 		p
-// 			padding: 0 2rem 0 0
-// 			font-size: 1.6rem
-// 			line-height: 3rem
-		
-		
-// 		.blob
-// 			position: absolute
-// 			right: 50%
-// 			bottom: -30%
-// 			transform: scale(1)
-// 			z-index: 0
-
-// 	.waveTwo 
-// 		@include wave()
-// 		// position: absolute
-// 		// bottom: -2px
-// 		// left: 0
-// 		// width: 100%
-// 		// overflow: hidden
-// 		// line-height: 0
-// 		// transform: rotate(180deg)
-
-// 		svg 
-// 			position: relative
-// 			display: block
-// 			width: calc(100% + 0px)
-// 			height: 105px
-			
-// 			.shapeFill 
-// 				fill: rgb(48, 90, 204)
-
-
-// .containerThree
-// 	@include container
-// 	background-color: rgb(48, 90, 204)
-// 	color: white
-
-// 	.right
-
-// 		.avatar
-// 			animation: animateThirdAvatar 4s infinite alternate ease-in-out
-// 			width: 70%
-// 			margin: auto
-// 			padding: 1rem 0 0 0
-// 			// transform: scale(.7)
-
-
-
-// 	.left	
-// 		position: relative
-// 		display: flex
-// 		justify-content: center
-// 		text-align: left
-// 		padding: 5rem
-
-
-// 		p
-// 			font-size: 1.6rem
-// 			line-height: 3rem
-		
-// 		.avatar
-// 			margin: auto
-// 			// position: absolute
-// 			bottom: 0
-// 			left: 0
-// 			width: 100%
-// 			padding: 0 0 0 7rem
-// 			transform-origin: bottom 
-// 			transform: scale(1)
-
-// 			// img
-// 			// 	width: 300px
-
-// 			// p
-// 			// 	font-size: 1.5rem
-
-// 	h1
-// 		font-weight: bold
-// 		font-size: 2.5rem
-
-
-// .latestSalaries 
-// 	position: relative
-// 	background-color: white
-// 	z-index: 10
-
-// 	.header
-// 		padding: 6rem 0 3rem 0
+// 				img
+// 					width: 1200px

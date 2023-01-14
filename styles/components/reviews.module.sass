@@ -1,28 +1,24 @@
+@use 'styles/variables.sass'
 
 .reviews
-    // background-color: rgb(160, 160, 160, .1)
+    @include variables.FlexCenter
     padding: 3rem 0
-    display: flex
-    justify-content: center
     flex-direction: column
-    align-items: center
     row-gap: 2rem
-    // text-align: ce
 
     .review
         box-shadow: 0 0 3px rgb(0, 0, 0, .5) inset
-        // box-shadow: 0 0 10px rgba(191, 212, 0, 0.867) inset
-        // box-shadow: 0 0 15px rgba(29, 65, 221, 0.867) inset
         background-color: white
         width: 70%
-        max-width: 1200px
+        max-width: 1100px
         padding: 2rem 3rem
         border-radius: 1rem
-        // box-shadow: 0 0 3px #e74c3c inset
-        // box-shadow: 0 0 5px rgb(0, 0, 0, .2) inset
-        // box-shadow: 0 0 5px rgb(0, 0, 0, .2)
-        // box-shadow: inset 0 0 3px rgb(0, 0, 0, .3)
         font-size: 1.1rem
+
+        @include variables.Device($max: variables.$tablet)
+            width: 95%
+            padding: 1rem 1.5rem
+
 
         & > *
             padding: 1rem 0
@@ -34,30 +30,29 @@
             .left
                 display: flex
                 align-items: center
-                // width: 4rem
                 padding: 0 .9rem 0 0
 
                 svg
-                    // color: rgb(150, 150, 150)
                     color: rgb(110, 110, 110)
-                    // padding: 0 0 .2rem 0
-                    width: 4.25rem
-                    height: 4.25rem
+                    width: 4rem
+                    height: 4rem
 
             .right
                 display: flex
-                // align-items: center
                 justify-content: center
                 flex-direction: column
 
                 .rating
-                    // padding: 0 0 1rem 0
                     display: flex
                     align-items: center
                     column-gap: .4rem
                     padding: .2rem 0 0 0
 
                     .stars
+                        svg
+                            @include variables.Device($max: variables.$tablet)
+                                width: 20px
+                                height: 20px
                         
 
                     .number
@@ -73,21 +68,21 @@
             color: rgb(201, 0, 0)
 
 
-@media only screen and (max-width: 769px)
-    .reviews
+// @media only screen and (max-width: 769px)
+//     .reviews
 
-        .review
-            width: 95%
-            padding: 1rem 1.5rem
+//         .review
+//             // width: 95%
+//             // padding: 1rem 1.5rem
 
-            .user
+//             .user
 
-                .right
+//                 .right
 
-                    .rating
+//                     .rating
 
-                        .stars
+//                         .stars
 
-                            svg
-                                width: 18px
-                                height: 18px
+//                             svg
+//                                 // width: 18px
+//                                 // height: 18px

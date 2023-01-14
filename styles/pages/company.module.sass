@@ -1,32 +1,49 @@
+@use 'styles/variables.sass'
 
 .page
     .company
         padding: 2rem 6%
 
+        @include variables.Device($max: variables.$tablet)
+            padding: 2rem 4%
+
         .info
             display: grid
             grid-template-columns: 1fr 4fr
+            
+            @include variables.Device($max: variables.$tablet)
+                padding: 2rem 4%
 
             .left
                 .image
                     width: 15rem
+
+                    @include variables.Device($max: variables.$tablet)
+                        width: 11rem
 
                     img
                         border-radius: 20px
 
             .center
                 display: flex 
-                // align-items: 
                 flex-direction: column
                 justify-content: space-between
                 padding: .5rem 3rem
 
+                @include variables.Device($max: variables.$tablet)
+                    padding: 0 0 0 1.5rem
+                
                 h1
-                    // font-family: 'Roboto', sans-serif
                     font-size: 2rem
+
+                    @include variables.Device($max: variables.$tablet)
+                        font-size: 1.7rem                
 
                 .buttons
                     display: flex
+
+                    @include variables.Device($max: variables.$tablet)
+                        flex-direction: column 
 
                     *
                         font-size: 1rem
@@ -35,13 +52,16 @@
                         cursor: pointer
                         text-shadow: 0 0 0 rgba(0, 0, 0, .3)
                     
+                        @include variables.Device($max: variables.$tablet)
+                            font-size: 1.1rem
+                            max-width: 70%
+                            padding: 1rem
+
                     .active
                         background-color: rgb(50, 50, 50, .1)
                         border-radius: 5px
-                        // border-bottom: solid 3px rgb(0, 0, 0, .4)
 
     .bottom
-        // width: 90%
         margin: auto
 
         .addDataButtonsPlaceHolder
@@ -50,17 +70,23 @@
             padding: 0 6%
             justify-items: flex-start
 
+            @include variables.Device($max: variables.$tablet)
+                grid-template-columns: 1fr
+
             .addDataButtons
-                // width: 90%
                 max-width: 1100px
                 padding: 2.5rem 3rem
-                // margin: auto
+
+                @include variables.Device($max: variables.$tablet)
+                    display: flex
+                    align-items: center
+                    justify-content: space-around
+                    padding: 0
+                    width: 100%
 
                 *
                     border-radius: 50px
 
-                // *:first-child
-                //     margin: 0 .5rem 0 0
 
         .wave1
             width: 100%
@@ -73,12 +99,19 @@
             line-height: 0
             position: relative,
 
+            @include variables.Device($max: variables.$tablet)
+                margin: 3rem 0 0 0
+
             svg
                 top: 0
                 position: relative,
                 display: block,
                 width: calc(120% + 1.3px),
                 height: 156px,
+
+                @include variables.Device($max: variables.$tablet)
+                    width: calc(150% + 1.3px),
+                    height: 70px,
 
         .bottomWave
             top: 0
@@ -92,63 +125,62 @@
                 display: block
                 width: calc(176% + 1.3px)
                 height: 156px
-    
-@media only screen and (max-width: 769px)
-    .page
 
-        .company
-            padding: 2rem 4%
-
-            .info
-                grid-template-columns: 1fr 4fr
-
-                .left
-
-                    .image
-                        width: 11rem
-
-                .center
-                    padding: 0 0 0 1.5rem
-                    // padding: 0.5rem 1.5rem
-
-                    h1
-                        font-size: 1.7rem
-
-                    .buttons
-                        flex-direction: column
-
-                        *
-                            font-size: 1.1rem
-                            // width: min-content
-                            max-width: 70%
-                            padding: 1rem
-
-        .bottom
-            .addDataButtonsPlaceHolder
-                grid-template-columns: 1fr
-
-                .addDataButtons
-                    display: flex
-                    align-items: center
-                    justify-content: space-around
-                    // text-align: center
-                    padding: 0
-                    width: 100%
-
-                    // *:first-child
-                    //     margin: 0
-            
-            .upperWave
-                margin: 3rem 0 0 0
-
-                svg
-                    width: calc(150% + 1.3px),
-                    height: 70px,
-
-                    path
-
-            .bottomWave
-
-                svg
+                @include variables.Device($max: variables.$tablet)
                     width: calc(196% + 1.3px)
                     height: 90px
+
+// @media only screen and (max-width: 769px)
+//     .page
+
+//         .company
+//             padding: 2rem 4%
+
+//             .info
+//                 grid-template-columns: 1fr 4fr
+
+//                 .left
+
+//                     .image
+//                         width: 11rem
+
+//                 .center
+//                     padding: 0 0 0 1.5rem
+
+//                     h1
+//                         font-size: 1.7rem
+
+//                     .buttons
+//                         flex-direction: column
+
+//                         *
+//                             font-size: 1.1rem
+//                             max-width: 70%
+//                             padding: 1rem
+
+//         .bottom
+//             .addDataButtonsPlaceHolder
+//                 grid-template-columns: 1fr
+
+//                 .addDataButtons
+//                     display: flex
+//                     align-items: center
+//                     justify-content: space-around
+//                     padding: 0
+//                     width: 100%
+
+            
+//             .upperWave
+//                 margin: 3rem 0 0 0
+
+//                 svg
+//                     width: calc(150% + 1.3px),
+//                     height: 70px,
+
+//                     path
+
+//             .bottomWave
+
+//                 svg
+//                     width: calc(196% + 1.3px)
+//                     height: 90px
