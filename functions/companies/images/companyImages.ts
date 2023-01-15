@@ -54,6 +54,12 @@ import payze from "public/images/companies/payze.png"
 import theneo from "public/images/companies/theneo.jpg"
 import lineate from "public/images/companies/lineate.png"
 import cactussoft from "public/images/companies/cactussoft.jpg"
+import arttteo from "public/images/companies/arttteo.jpg"
+import binance from "public/images/companies/binance.png"
+import crosscreators from "public/images/companies/crosscreators.png"
+import redmed from "public/images/companies/redmed.png"
+import upgaming from "public/images/companies/upgaming.png"
+import velistore from "public/images/companies/velistore.png"
 
 import { ValidCompanyNames } from "types"
 
@@ -126,6 +132,11 @@ export const companyImages2: Record<ValidCompanyNames, StaticImageData> = {
     "Theneo": theneo,
     "Lineate": lineate,
     "CactusSoft": cactussoft,
+    "Arttteo": arttteo,
+    "Binance": binance,
+    "Cross Creators": arttteo,
+    "UpGaming": upgaming,
+    "Veli.Store": velistore,
 }
 
 
