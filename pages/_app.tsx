@@ -53,7 +53,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 				}
 				`}
 			</Script>
-			{/* <Script async defer crossOrigin="anonymous" src="https://connect.facebook.net/ka_GE/sdk.js#xfbml=1&version=v15.0&appId=939924769961139&autoLogAppEvents=1" nonce="bIi4qPoX"></Script> */}
 
 			<Head>
 				<title>Fairpay</title>
