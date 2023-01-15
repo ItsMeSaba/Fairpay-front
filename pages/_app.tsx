@@ -72,7 +72,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 			}}>
 				<ToastContainer />
 				
-				<TestModeInfo />
+				{/* <TestModeInfo /> */}
 
 				<CookieDisclaimer />
 

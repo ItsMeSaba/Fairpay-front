@@ -57,7 +57,7 @@ export default function Search(args: Args) {
             
             <div className={style.inputContainer}>
                 {/* <input type="text" onChange={e => search(e.target.value)} onFocus={() => setIsFocused(true)} onBlur={() => setTimeout(() => setIsFocused(false), 100)}/> */}
-                <input type="text" onChange={e => search(e.target.value)} onFocus={() => setIsFocused(true)} />
+                <input type="text" placeholder="კომპანია" onChange={e => search(e.target.value)} onFocus={() => setIsFocused(true)} />
             </div>
 
             <datalist style={{ display: displayDatalist }}>

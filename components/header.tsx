@@ -31,6 +31,8 @@ export function Header(args: Args) {
                     </Link>
 
                     <h6>Tech</h6>
+
+                    <div className={style.pill}>BETA</div>
                 </div>
 
                 <div className={style.searchDiv}>

@@ -134,7 +134,7 @@ export const companyImages2: Record<ValidCompanyNames, StaticImageData> = {
     "CactusSoft": cactussoft,
     "Arttteo": arttteo,
     "Binance": binance,
-    "Cross Creators": arttteo,
+    "Cross Creators": crosscreators,
     "UpGaming": upgaming,
     "Veli.Store": velistore,
 }

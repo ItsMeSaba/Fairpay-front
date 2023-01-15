@@ -1,3 +1,5 @@
+@use "styles/variables.sass"
+    
 .header
     font-size: 1rem
     background-color: white    
@@ -10,6 +12,10 @@
     padding: 0rem 3rem
     // box-shadow: 1px 1px 5px rgb(0, 0, 0, .3)
     z-index: 99
+
+    @include variables.Device($max: variables.$tablet)
+        padding: 0rem 2rem
+        height: 9vh
 
     .websiteName
         padding: 0 0 0 0
@@ -33,6 +39,20 @@
 
     .links
         justify-content: right
+    
+        @include variables.Device($max: variables.$tablet)
+            display: none
+
+    .pill
+        font-size: .7rem
+        padding: .3rem .6rem
+        align-self: flex-start
+        font-weight: 300
+        letter-spacing: .05rem
+        color: white
+        border-radius: 1000px
+        margin: 0 0 0 .5rem
+        background-color: rgb(130, 130, 130)
 
     ul
         display: flex
@@ -45,25 +65,38 @@
             display: flex
             align-items: center
 
+            @include variables.Device($max: variables.$tablet)
+                padding: 0 0 0 2.5rem
+
     .burgerButton
         display: none
 
-@media only screen and (max-width: 769px)   
-    .header 
-        padding: 0rem 2rem
-        height: 9vh
-
-        ul
-            li
-                padding: 0 0 0 2.5rem
-
-        .links
-            display: none
-        
-        .searchDiv
-            display: none
-        
-        .burgerButton
+        @include variables.Device($max: variables.$tablet)
             display: flex
             justify-content: end
             grid-column: 3
+
+    .searchDiv
+
+        @include variables.Device($max: variables.$tablet)
+            display: none
+
+// @media only screen and (max-width: 769px)   
+//     .header 
+//         padding: 0rem 2rem
+//         height: 9vh
+
+//         ul
+//             li
+//                 padding: 0 0 0 2.5rem
+
+//         .links
+//             display: none
+        
+//         .searchDiv
+//             display: none
+        
+//         .burgerButton
+//             display: flex
+//             justify-content: end
+//             grid-column: 3
