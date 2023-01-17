@@ -34,7 +34,7 @@ export default function Index() {
 				</div>
 
 				<div className={style.avatar}>
-					<Image quality={100} src={bussinesMan} alt="https://icons8.com/illustrations/style--business-3d" />
+					<Image quality={80} src={bussinesMan} alt="https://icons8.com/illustrations/style--business-3d" />
 				</div>
 
 				<div className={style.waveOne}>
@@ -57,7 +57,7 @@ export default function Index() {
 
 			 	<div className={style.avatar}>
 			 		{/* Thanks To https://icons8.com/illustrations/style--business-3d */}
-			 		<Image quality={100} src={yellowMan} alt="https://icons8.com/illustrations/style--business-3d" />
+			 		<Image quality={75} src={yellowMan} alt="https://icons8.com/illustrations/style--business-3d" />
 			 	</div>
 			</div>
 
@@ -65,7 +65,7 @@ export default function Index() {
 			<div className={style.containerThree}>
 				<div className={style.avatar}>
 					{/* Thanks To https://icons8.com/illustrations/style--business-3d */}
-					<Image quality={100} src={yellowWoman} alt="https://icons8.com/illustrations/style--business-3d" />
+					<Image quality={60} src={yellowWoman} alt="https://icons8.com/illustrations/style--business-3d" />
 				</div>
 
 				
@@ -86,7 +86,7 @@ export default function Index() {
 				<div className={style.left}>
 					<div className={style.avatar}>
 						{/* Thanks To https://icons8.com/illustrations/style--3d-business */}
-						<Image quality={100} src={monitor} alt="https://icons8.com/illustrations/style--business-3d" />
+						<Image quality={70} src={monitor} alt="https://icons8.com/illustrations/style--business-3d" />
 					</div>
 				</div>
 
