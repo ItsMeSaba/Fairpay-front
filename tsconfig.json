@@ -20,7 +20,10 @@
       "components/*": ["./components/*"],
       "public/*": ["./public/*"],
       "pages/*": ["./pages/*"],
-    }
+    },
+    "sourceMap": true,
+    "sourceRoot": "/",
+    "inlineSources": true,
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
