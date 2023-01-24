@@ -10,9 +10,9 @@
 // }
 
 const positions = {
-    "Front End Developer": ["ფრონტ ენდ დეველოპერი"], 
-    "Back End Developer": ["ბექ ენდ დეველოპერი"], 
-    "Full Stack Developer ": ["ფულ სტაკ დეველოპერი"], 
+    "Frontend Developer": ["ფრონტ ენდ დეველოპერი"], 
+    "Backend Developer": ["ბექ ენდ დეველოპერი"], 
+    "Fullstack Developer ": ["ფულ სტაკ დეველოპერი"], 
     "Game Developer": ["გეიმ დეველოპერი"], 
     "Database Developer": ["დაათაბეის დეველოპერი"], 
     "Software Developer": ["სოფტვეარ დეველოპერი"],

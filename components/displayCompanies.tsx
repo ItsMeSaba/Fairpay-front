@@ -16,6 +16,19 @@ import AddSalaryButton from "./buttons/AddSalaryButton";
 import AddReviewButton from "./buttons/AddReviewButton";
 import { rememberCurrentPage } from "functions/sessionStorage/rememberCurrentPage";
 // import useMemo from "react";
+import bogCover from "public/images/companies/bogCover.png"
+import vendooCover from "public/images/companies/vendooCover.jpeg"
+import vabakoCover from "public/images/companies/vabakoCover.png"
+import qarvaCover from "public/images/companies/qarvaCover.jpg"
+import neolletCover from "public/images/companies/neolletCover.jpg"
+import azryCover from "public/images/companies/azryCover.jpg"
+import sweeftDfitialCover from "public/images/companies/sweeftDigitalCover.jpg"
+import dexfinityCover from "public/images/companies/dexfinityCover.jpg"
+import bits63Cover from "public/images/companies/bits63Cover.jpg"
+import omediaCover from "public/images/companies/omediaCover.png"
+import redberryCover from "public/images/companies/redberryCover.png"
+import publicRegistryCover from "public/images/companies/publicRegistryCover.jpg"
+import { getCompanyCoverImage } from "functions/getCompanyCoverImage/getCompanyCoverImage";
 
 interface DisplayCompanies {
     companies: Companies
@@ -54,6 +67,7 @@ function DisplayCompany(args: DisplayCompany) {
     const { name, urlName, _id, reviewCount, vacancyCount, sumOfRatings, color } = args.company;
     const { openSalaryPopup, openReviewPopup } = args;
     const image = getCompanyImage(name as ValidCompanyNames);
+    const coverImage = getCompanyCoverImage(name);
     const { openAuthPopup } = useContext(GlobalContext);
 
     function clickWithoutPropogation(e: MouseEvent, callback: ((...args: any[]) => any)) {
@@ -69,7 +83,21 @@ function DisplayCompany(args: DisplayCompany) {
     return (
         <div className="holder" onClick={rememberCurrentPage}>
             <Link href={`/companies/${urlName}`}>
-                <div className={style.company} style={{ borderTop: `solid 12px #${color ?? "a4b0be"}` }}>
+                {/* <div className={style.company} style={{ borderTop: `solid 12px #${color ?? "a4b0be"}` }}> */}
+                <div className={style.company}>
+
+
+                    { coverImage && 
+                        <div className={style.coverImage}>
+                            <Image src={coverImage} alt={name} />
+                        </div>
+                    }
+
+                    { !coverImage && 
+                        <div className={style.noImage} style={{ backgroundColor: `#${color}` }}></div> 
+                    }
+
+
                     <div className={style.top}>
                         <div className={style.companyImage}>
                             <Image quality={30} src={image} alt={name} />
@@ -98,11 +126,11 @@ function DisplayCompany(args: DisplayCompany) {
                         </div>
 
                         
-                        <div className={style.buttons}>
+                        {/* <div className={style.buttons}>
                             <AddSalaryButton companyId={_id} companyName={name} />
 
                             <AddReviewButton companyId={_id} companyName={name} />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </Link>

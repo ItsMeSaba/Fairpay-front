@@ -27,6 +27,8 @@
         transition: .2s transform ease-in-out
         cursor: pointer
         box-shadow: 0 0 2px rgb(0, 0, 0, .3)
+        position: relative
+        overflow: hidden
 
         @include variables.Device($min: variables.$fourK)
             border-top-width: 20px !important
@@ -39,19 +41,44 @@
         &:hover
             transform: translateY(-.15rem)
 
+        .coverImage
+            position: absolute
+            top: 0
+            left: 0
+            // width: 100%
+            // height: 10rem
+
+            img
+                display: block
+                width: 100%
+
+        .noImage
+            width: 100%
+            height: 175px
+            position: absolute
+            display: block
+            top: 0
+            left: 0
+
         .top
+            // transform: translateY(20%)
+            margin: 20% 0 0 0
+            // border: solid 5px white
 
             .companyImage
                 font-size: 1rem
                 max-width: 150px
                 margin: auto
+                position: relative
+                border: solid 10px white
+                border-radius: 20px
+                overflow: hidden
+                display: flex
+                background: white
 
                 @include variables.Device($min: variables.$fourK)
                     max-width: 200px
                 
-                img
-                    border-radius: 20px
-
 
         .bottom
 
