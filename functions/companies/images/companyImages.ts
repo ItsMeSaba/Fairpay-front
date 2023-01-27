@@ -60,6 +60,7 @@ import crosscreators from "public/images/companies/crosscreators.png"
 import redmed from "public/images/companies/redmed.png"
 import upgaming from "public/images/companies/upgaming.png"
 import velistore from "public/images/companies/velistore.png"
+import unisoft from "public/images/companies/unisoft.png"
 
 import { ValidCompanyNames } from "types"
 
@@ -137,6 +138,7 @@ export const companyImages2: Record<ValidCompanyNames, StaticImageData> = {
     "Cross Creators": crosscreators,
     "UpGaming": upgaming,
     "Veli.Store": velistore,
+    "Unisoft": unisoft,
 }
 
 

@@ -55,6 +55,7 @@ import helixnebulacapitalCover from "public/images/companies/helixnebulacapitalC
 import twinoCover from "public/images/companies/twinoCover.jpg"
 import lintonCover from "public/images/companies/lintonCover.jpg"
 import websenseCover from "public/images/companies/websenseCover.jpg"
+import unisoftCover from "public/images/companies/unisoftCover.jpg"
 
 const companyCoverImages: Record<string, StaticImageData> = {
     ვაბაკო: vabakoCover,
@@ -118,6 +119,7 @@ const companyCoverImages: Record<string, StaticImageData> = {
     "Cross Creators": crosscreatorsCover,
     "UpGaming": upgamingCover,
     "Veli.Store": velistoreCover,
+    "Unisoft": unisoftCover,
 };
 
 export default companyCoverImages;
