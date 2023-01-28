@@ -19,7 +19,7 @@ const moduleExports = {
     locales: ['ge'],
     defaultLocale: 'ge',
   },
-
+  productionBrowserSourceMaps: true,
   sentry: {
     // Use `hidden-source-map` rather than `source-map` as the Webpack `devtool`
     // for client-side builds. (This will be the default starting in

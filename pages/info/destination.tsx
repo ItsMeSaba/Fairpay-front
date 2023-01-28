@@ -9,7 +9,7 @@ export default function Destionation() {
             
             <p>გამოავლინოს საუკეთესო კომპანიები</p>
 
-            <p>გამოავლინოს პრობლემური კომპანიები და უბიძგოს გამოსწორებისკენ</p>
+            <p onClick={() => { throw new Error("custom error for sentry") }}>გამოავლინოს პრობლემური კომპანიები და უბიძგოს გამოსწორებისკენ</p>
 
             <style jsx>{`
                 .container * {
