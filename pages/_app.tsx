@@ -19,11 +19,16 @@ import { ToastContainer } from 'react-toastify';
 import Script from 'next/script';
 import 'react-toastify/dist/ReactToastify.css';
 import CookieDisclaimer from 'components/cookieDisclaimer';
+import SubmitInterview from 'components/popups/submitInterview';
+// import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
+
+// const queryClient = new QueryClient()
 
 function MyApp({ Component, pageProps }: AppProps) {
 	const [displayAuthPopup, setDisplayAuthPopup] = useState(false);
 	const [salaryPopup, setSalaryPopup] = useState(new PopupData());
 	const [reviewPopup, setReviewPopup] = useState(new PopupData());
+	const [interviewPopup, setInterviewPopup] = useState(new PopupData());
 	const [openSliderMenu, setOpenSliderMenu] = useState(false);
 	const authData = useCheckAuth();
 
@@ -67,34 +72,35 @@ function MyApp({ Component, pageProps }: AppProps) {
 				openAuthPopup: () => setDisplayAuthPopup(true),
 				openReviewPopup: (companyName: string, companyId: Types.ObjectId) => setReviewPopup(new PopupData(true, companyName, companyId)),
 				openSalaryPopup: (companyName: string, companyId: Types.ObjectId) => setSalaryPopup(new PopupData(true, companyName, companyId)),
+				openInterviewPopup: (companyName: string, companyId: Types.ObjectId) => setInterviewPopup(new PopupData(true, companyName, companyId)),
 				authData
 			}}>
-				<ToastContainer />
-				
-				{/* <TestModeInfo /> */}
-
-				<CookieDisclaimer />
-
-				<div className="fullHeightContainer">
-					<Header openAuth={() => setDisplayAuthPopup(true)} openSliderMenu={() => setOpenSliderMenu(true)} />
-
-					<SliderMenu openAuthPopup={() => setDisplayAuthPopup(true)} closeSlider={() => setOpenSliderMenu(false)} openSlider={openSliderMenu} />
-
-					{ displayAuthPopup && <AuthPopup closeAuth={() => setDisplayAuthPopup(false)} /> }
-
-					{ salaryPopup.display && <SubmitSalary companyId={salaryPopup.companyId} companyName={salaryPopup.companyName} close={() => setSalaryPopup(new PopupData())} /> }
-
-					{ reviewPopup.display && <SubmitReview companyId={reviewPopup.companyId} companyName={reviewPopup.companyName} close={() => setReviewPopup(new PopupData())} /> }
+				{/* <QueryClientProvider client={queryClient}> */}
+					<ToastContainer />
 					
-					{/* <div className="test" style={{ transform: `translateY(${reviewPopup.display ? "0" : "-100vh"})`, opacity: reviewPopup.display ? 1 : 0 }}>
-						<SubmitReview companyId={reviewPopup.companyId} companyName={reviewPopup.companyName} close={() => setReviewPopup(new PopupData())} />
-					</div> */}
-					
+					{/* <TestModeInfo /> */}
 
-					<Component {...pageProps} openAuthPopup={() => setDisplayAuthPopup(true)} />
+					<CookieDisclaimer />
 
-					<Footer />
-				</div>
+					<div className="fullHeightContainer">
+						<Header openAuth={() => setDisplayAuthPopup(true)} openSliderMenu={() => setOpenSliderMenu(true)} />
+
+						<SliderMenu openAuthPopup={() => setDisplayAuthPopup(true)} closeSlider={() => setOpenSliderMenu(false)} openSlider={openSliderMenu} />
+
+						{ displayAuthPopup && <AuthPopup closeAuth={() => setDisplayAuthPopup(false)} /> }
+
+						{ salaryPopup.display && <SubmitSalary companyId={salaryPopup.companyId} companyName={salaryPopup.companyName} close={() => setSalaryPopup(new PopupData())} /> }
+
+						{ reviewPopup.display && <SubmitReview companyId={reviewPopup.companyId} companyName={reviewPopup.companyName} close={() => setReviewPopup(new PopupData())} /> }
+						
+						{ interviewPopup.display && <SubmitInterview companyId={interviewPopup.companyId} companyName={interviewPopup.companyName} close={() => setInterviewPopup(new PopupData())} /> }
+						
+
+						<Component {...pageProps} openAuthPopup={() => setDisplayAuthPopup(true)} />
+
+						<Footer />
+					</div>
+				{/* </QueryClientProvider> */}
 			</GlobalContext.Provider>
 		</>
   	)	

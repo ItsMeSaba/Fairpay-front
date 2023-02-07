@@ -42,27 +42,21 @@ export default function AuthPopup(args: Args) {
                 <br />
                 <h4 className={style.important}>ანონიმურობა დაცულია.</h4>
                 <br />
-                {/* IMPORTANT */}
                 <h4 className={style.important}>პირადი ინფორმაცია, რომელიც შეიძლება პირის იდენტიფიცირებისთვის იქნას გამოყენებული, როგორიცაა: სახელი, გვარი, იმეილი, სოციალური ქსელის მისამართი არ გამოიყენება.</h4>
                 <br />
                 <br />
 
-                {/* { status === "authenticated" && <button className={style.logOut} onClick={() => signOut()}>გასვლა</button> } */}
                 { status === "authenticated" && <button className={style.logOut} onClick={logout}>გასვლა</button> }
 
                 { status === "unauthenticated" &&
                     <div className={style.buttons}>
-                        {/* <a href="http://localhost:7000/api/users/auth/facebook" onClick={rememberCurrentPage}> */}
                         <div className={style.facebookButton} onClick={login}>
                             <FacebookLoginButton
-                                // onClick={() => signIn("facebook")}
                                 style={{ maxWidth: "400px", width: "100%", padding: "0 50px", borderRadius: "30px" }} 
                             />
                         </div>
                     </div>
                 }
-
-                {/* <div className="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div> */}
 
                 { status === "loading" && 
                     <div className={style.buttons} style={{ maxWidth: "90px" }}>

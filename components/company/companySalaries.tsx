@@ -45,6 +45,38 @@ export default function CompanySalaries(args: Args) {
         setVacancies(currentVacancies => reset ? fetchedVacancies : [...currentVacancies, ...fetchedVacancies]);
     }
 
+    
+    // const fetch = async (reset = false) => {
+    //     if (!loadedFromCache.current) {
+    //         const cachedVacancies = getCachedVacancies(companyId);
+
+    //         loadedFromCache.current = true;
+    //         if (cachedVacancies) {
+    //             return setVacancies(reset ? cachedVacancies.vacancies : [...vacancies, ...cachedVacancies.vacancies]);
+    //         }
+    //     }
+
+    //     const fetchedVacancies = await fetchVanacies(companyId, { dateOfLastVacancy: reset ? null : vacancies[vacancies.length - 1]?.date });
+
+    //     if (fetchedVacancies.length === 0) {
+    //         areSalariesLeft.current = false;
+    //     } else {
+    //         skip.current += fetchedVacancies.length;
+    //         cacheVacancies(companyId, fetchedVacancies);
+    //     }
+
+    //     setVacancies(reset ? fetchedVacancies : [...vacancies, ...fetchedVacancies]);
+    // };
+
+    // useEffect(() => {
+    //     skip.current = 0;
+    //     areSalariesLeft.current = true;
+    //     loadedFromCache.current = false;
+
+    //     fetch(true);
+    // }, [companyId]);
+
+
     useEffect(() => {
         isFirstFetchDone.current = false;
         isFirstRun.current = true;
@@ -68,12 +100,6 @@ export default function CompanySalaries(args: Args) {
                         color:"white", 
                         textAlign: "center", 
                         padding: "15rem 0", 
-                        // textShadow: `
-                        //     0.04em 0 black,
-                        //     0 0.04em black,
-                        //     -0.04em 0 black,
-                        //     0 -0.04em black
-                        // `
                     }}
                 >
                     ანაზღაურებები არ მოიძებნა

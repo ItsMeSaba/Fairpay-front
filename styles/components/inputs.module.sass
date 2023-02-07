@@ -18,10 +18,15 @@
     width: $width
     background-color: #fafafa
     color: #535347
-    box-shadow: inset 0px 0 2px 0px rgb(0 0 0 / 30%)
+    // box-shadow: inset 0px 0 2px 0px rgb(0 0 0 / 30%)
     outline: none
     border-radius: $borderRadius
     letter-spacing: .5px
+    
+    background-color: rgb(244, 244 ,244)
+    border: solid 1px rgb(160, 160, 160, .1)
+    // box-shadow: 0 0 0 1px rgb(50, 50, 50, .1)
+
 
     @media screen and ( min-width: 1023px ) and ( max-width:  1440px )
         // width: calc(#{$width} - 1rem)
@@ -30,7 +35,7 @@
 @mixin selectTypeInput($borderRadius: 5px, $padding: 0, $width: 3rem) 
     background-color: #fafafa
     border: none
-    box-shadow: inset 0px 0px 2px 0px rgb(0 0 0 / 30%)
+    // box-shadow: inset 0px 0px 2px 0px rgb(0 0 0 / 30%)
     outline: none
     border-radius: $borderRadius
     font-size: .9rem
@@ -40,6 +45,11 @@
     // padding: $padding
     padding: 0rem .4rem
     width: $width
+    
+    border: solid 1px rgb(160, 160, 160, .1)
+    
+    background-color: rgb(244, 244 ,244)
+    // box-shadow: 0 0 0 1px rgb(50, 50, 50, .1)
 
     @media screen and (min-width: 2550px)
         option
@@ -81,10 +91,12 @@
         
     select
         @include selectTypeInput($borderRadius: 0 5px 5px 0, $width: 4rem)
-        // height: 2.54rem
+
+        border-left: none
 
     input
         @include input($width: 11rem, $borderRadius: 5px 0 0 5px)
+        border-right: none
         margin: 0
         
 .companyInputBlock
@@ -173,16 +185,20 @@
 .technologyInputContainer
     grid-column: 1 / -1
     margin: 0 0 0 0
-    font-size: 1rem
+    font-size: 1rem 
 
     .technologyList
-        box-shadow: inset 0px 0 3px 0px rgb(0 0 0 / 30%)
+        // box-shadow: inset 0px 0 3px 0px rgb(0 0 0 / 30%)
         border-radius: 5px
         line-height: 1.5rem
         display: flex
         padding: .75rem .5rem
         margin: .5rem 0 0 0
         flex-wrap: wrap
+
+        background-color: rgb(244, 244 ,244)
+        border: solid 1px rgb(160, 160, 160, .1)
+        // box-shadow: 0 0 0 1px rgb(50, 50, 50, .1)
 
         .technologyPill
             font-size: .8rem
@@ -204,6 +220,9 @@
                 border: none
                 margin: 0 .3rem
                 font-size: 1rem
+        
+                background-color: rgb(244, 244 ,244)
+                // box-shadow: 0 0 0 1px rgb(50, 50, 50, .1)
 
             datalist
                 background-color: white

@@ -18,6 +18,8 @@ import isTimestampValid from "functions/utils/isTimestampValid";
 import companiesArrayToOject from "functions/companies/companiesArrayToObject";
 import deleteCachedCompanies from "functions/localStorage/deleteCachedCompanies";
 import Head from "next/head"
+import { useQuery } from "react-query";
+
 interface PopupData {
 	presetCompany: string | null;
 	display: boolean;

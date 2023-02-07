@@ -6,6 +6,7 @@ const GlobalContext = createContext({
     openAuthPopup: () => {},
     openSalaryPopup: (companyName: string, companyId: Types.ObjectId) => {},
     openReviewPopup: (companyName: string, companyId: Types.ObjectId) => {},
+    openInterviewPopup: (companyName: string, companyId: Types.ObjectId) => {},
     authData: {
         user: null,
         status: "loading"

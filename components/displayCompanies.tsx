@@ -88,8 +88,8 @@ function DisplayCompany(args: DisplayCompany) {
 
 
                     { coverImage && 
-                        <div className={style.coverImage}>
-                            <Image src={coverImage} alt={name} />
+                        <div className={style.coverImage} style={{ backgroundImage: `url(${coverImage.src})` }}>
+                            {/* <Image src={coverImage} alt={name} /> */}
                         </div>
                     }
 
@@ -124,13 +124,6 @@ function DisplayCompany(args: DisplayCompany) {
                                 <p>{ calculatedReview.toFixed(1) }/5 ({ reviewCount })</p>
                             </span>
                         </div>
-
-                        
-                        {/* <div className={style.buttons}>
-                            <AddSalaryButton companyId={_id} companyName={name} />
-
-                            <AddReviewButton companyId={_id} companyName={name} />
-                        </div> */}
                     </div>
                 </div>
             </Link>

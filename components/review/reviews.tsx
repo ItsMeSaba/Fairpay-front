@@ -6,6 +6,9 @@ import mongoose from "mongoose";
 import { IReview } from "types";
 import LoadMoreButton from "components/buttons/loadMore";
 import AccountCircleRoundedIcon from '@mui/icons-material/PersonOutline'
+import { BiUser } from 'react-icons/bi';
+import { FaRegUser } from 'react-icons/fa';
+
 interface ReviewsArgs {
     reviews: IReview[]
 }
@@ -39,8 +42,8 @@ function Review(args: ReviewArgs) {
         <div className={style.review}>
             <div className={style.user}>
                 <div className={style.left}>
-                    {/* <UserIcon fontSize="large" /> */}
-                    <AccountCircleRoundedIcon fontSize="medium" />
+                    {/* <BiUser /> */}
+                    <FaRegUser  />
                     
                 </div>
 
@@ -48,7 +51,7 @@ function Review(args: ReviewArgs) {
                     <div className={style.position}>{ position }</div>
                     
                     <div className={style.rating}>
-                        <div className={style.number}>{ rating/20 }</div>
+                        {/* <div className={style.number}>{ rating/20 }</div> */}
                         
                         <div className={style.stars}> 
                             <Rating

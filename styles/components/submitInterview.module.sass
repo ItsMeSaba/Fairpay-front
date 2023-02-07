@@ -21,7 +21,7 @@
         background-color: white
         box-shadow: 0 0 25px black
         display: grid
-        grid-template-columns: 1fr 1.5fr
+        grid-template-columns: 1fr 1.5fr 
         max-height: 850px
         height: 95vh
 
@@ -60,6 +60,19 @@
             @include variables.Device($max: variables.$tablet)
                 padding: 1rem 1.5rem
 
+            p.header
+                font-size: 1.35rem
+                margin: 2rem 0 1rem 0
+
+            .didntContact
+                display: flex
+                align-items: center
+                margin: 0 0 .7rem 0
+                // justify-content: space-around
+
+                input
+                    margin: 0 .5rem 0 0
+
             .stars
                 svg
 
@@ -84,18 +97,23 @@
                 background: rgb(150, 150, 150)  
                 border-radius: 1000px  
 
-            input
-                // padding: .2rem .6rem
+            input[type="text"], input[type="number"]
+                padding: 0rem .6rem 0 1rem
+                width: 8rem
                 margin: .5rem 0
-                // height: 2.5rem
-                // font-size: 1rem
-                // border: none
-                // background-color: #fafafa
-                // color: #535347
-                // box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 30%)
-                // outline: none
-                // border-radius: 5px
-                // letter-spacing: .5px
+                height: 2.5rem
+                font-size: 1rem
+                border: none
+                background-color: #fafafa
+                font-family: 'Noto Sans Georgian', sans-serif 
+                color: #535347
+                box-shadow: inset 0px 0px 3px 0px rgb(0 0 0 / 30%)
+                outline: none
+                border-radius: 5px
+                letter-spacing: .5px
+
+                background-color: rgb(246, 246 ,246)
+                box-shadow: 0 0 0 1px rgb(50, 50, 50, .2)
 
             .inputsBlock
                 display: flex
@@ -114,8 +132,8 @@
                     @include variables.Device($max: variables.$tablet)
                         padding: 0 0 1px 1rem
 
-            .reviewText
-                margin: 1rem 0
+            .comment
+                margin: 4rem 0
                 
                 textarea
                     font-size: 1rem
@@ -125,12 +143,13 @@
                     font-family: 'Noto Sans Georgian', sans-serif 
                     letter-spacing: 1px
                     border-radius: .5rem
-                    border: solid 1px rgb(0, 0, 0, .2)
+                    // border: solid 1px rgb(0, 0, 0, .2)
+                    border: none
                     width: 100%
                     // box-shadow: 0px 0px 2px 0 rgb(0 0 0 / 20%) inset
-                    border: solid 1px rgb(160, 160, 160, .1)
-    
-                    background-color: rgb(242, 242 ,242)
+                    
+                    background-color: rgb(246, 246 ,246)
+                    box-shadow: 0 0 0 1px rgb(50, 50, 50, .2)
 
                     @include variables.Device($min: variables.$fourK)
                         font-size: .9rem
@@ -145,10 +164,14 @@
                         background: rgb(230, 230, 230)
             
             .submit
+                position: absolute
+                right: 2rem
+                bottom: 1rem
                 display: block
                 padding: .8rem 4rem
                 margin: 2rem auto 1rem auto
                 // background-color: #4272d7
+                // background-color: #99EC58
                 background-color: #d1c026
                 color: white
                 border: none
@@ -156,71 +179,5 @@
                 letter-spacing: .5px
                 font-size: 1rem
                 cursor: pointer
-                position: absolute
-                right: 2rem
-                bottom: 1rem
                         
-                    
-
-// @media screen and (max-width: 768px)
-//     .submitReview
-//         .container
-//             // grid-template-columns: 1fr
-//             // height: auto
-//             // max-height: 100vh
-//             // overflow: auto
-
-//             // textarea
-//             //     width: 100%
-
-//             // .avatar
-//             //     display: none
-
-//             // .right
-//             //     padding: 1rem 1.5rem 
-
-//                 // .stars
-//                 //     svg
-//                 //         width: 30px
-
-//                 // .rating
-//                 //     .ratingNumber
-//                 //         padding: 0 0 1px 1rem
                 
-//                 // .inputsBlock
-//                 //     flex-direction: column
-
-                    
-// @media screen and (min-width: 2550px)
-//     .submitReview
-        
-//         .container
-//             max-width: 1800px
-//             max-height: 1100px
-
-//             .avatar
-
-//                 img
-//                     width: 550px
-
-//             .right
-
-//                 .rating
-                    
-//                     .stars
-                        
-//                         svg
-//                             width: 60px
-//                             height: 60px
-
-//                 .reviewText
-                    
-//                     textarea
-//                         font-size: .75rem
-
-                        
-// @media screen and (max-width: 1439px)
-//     .submitReview
-
-//         .container
-//             width: 98vw

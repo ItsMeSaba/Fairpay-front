@@ -1,4 +1,4 @@
-import style from "styles/components/submitReview.module.sass"
+import style from "styles/components/submitInterview.module.sass"
 import reviewLady3 from "images/coffeWoman.png"
 import Image from "next/image"
 // import StarRatings from 'react-star-ratings';
@@ -8,12 +8,12 @@ import PositionInput from "../inputs/positionInput"
 import axios from "axios"
 import TechnologyInput from "components/inputs/technologyInput"
 import CompanyInput from "components/inputs/companyInput"
-import { SubmitReviewSchema } from "joiSchemas"
+import { SubmitInterviewSchema, SubmitReviewSchema } from "joiSchemas"
 import to from "await-to-js"
 import { Types } from "mongoose"
 import useCheckAuth from "hooks/useCheckAuth"
 import { GlobalContext } from "context"
-import { useContext } from 'react'
+import { useContext, useRef, LegacyRef } from 'react'
 import getRatingText from "functions/reviews/getRatingText"
 import { toast } from "react-toastify"
 import successToast from "functions/toasts/successToast"
@@ -24,15 +24,11 @@ interface Args {
     companyId: Types.ObjectId,
 }
 
-export default function SubmitReview(args: Args) {
+export default function SubmitInterview(args: Args) {
     const { close, companyName, companyId } = args; 
     const [rating, setRating] = useState(0);
-    const [positiveReview, setPositiveReview] = useState("");
-    const [negativeReview, setNegativeReview] = useState("");
-    const [position, setPosition] = useState("");
-    const [company, setCompany] = useState(companyName ?? "");
+    const [comment, setComment] = useState("");
     const [error, setError] = useState("");
-    // const { user } = useCheckAuth();
     const { user } = useContext(GlobalContext).authData;
     const ratingData = useMemo(() => getRatingText(rating), [rating]);
 
@@ -46,24 +42,24 @@ export default function SubmitReview(args: Args) {
         if (!user?.id) return setError("ავტორიზაციის გავლა არ დაფიქსირებულა");
 
         const dataToUpload = {
-            rating,
-            positiveReview,
-            negativeReview,
-            position,
             userId: user.id,
-            companyId
+            companyId,
+            rating,
+            comment,
         }
+
+        console.log("dataToUpload", dataToUpload)
     
-        const { error: validationError, value: validatedData } = SubmitReviewSchema.validate(dataToUpload);
+        const { error: validationError, value: validatedData } = SubmitInterviewSchema.validate(dataToUpload);
 
         if (validationError) return setError(validationError.message);
-        
 
-        const [error, response] = await to(axios.post(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/reviews`, validatedData));
+        const [error, response] = await to(axios.post(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/interviews`, validatedData, { withCredentials: true }));
 
         if (error) return setError((error as any).response.data.message);
 
         successToast("რევიუ დამატებულია");
+        
         close();
     }
 
@@ -76,6 +72,24 @@ export default function SubmitReview(args: Args) {
                 </div>
 
                 <div className={style.right}>
+                    {/* <p className={style.header}>რამდენი დღის განმავლობაში მიიღეთ უკუკავშირი?</p> */}
+
+                    {/* <div className={style.didntContact}>
+                        <input type="checkbox" name="" id="" onChange={(e) => setCompanyDidntAnswer(e.target.checked)} />
+
+                        <p>არ დამიკავშირდნენ</p>
+                    </div> */}
+
+
+                    {/* { !companyDidntAnswer &&
+                        <>
+                            <input type="number" placeholder="დღე" />
+
+                        </>
+                        
+                    } */}
+                    <p className={style.header}>როგორ შეაფასებდით კომუნიკაციას/გასაუბრებას?</p>
+
                     <div className={style.rating}>
                         <Rating
                             onClick={setRating}
@@ -86,26 +100,15 @@ export default function SubmitReview(args: Args) {
 
                         <span className={style.ratingNumber}>{rating/20}/5 (სავალდებულო)</span>
                     </div>
-
+                    
                     { ratingData &&
                         <div>
                             <p style={{ padding: "0 0 0 .5rem", color: ratingData.color }}>{ ratingData.text }</p>
                         </div>
                     }
-
-                    {/* <input type="text" placeholder="პოზიცია" /> */}
-                    <div className={style.inputsBlock}>
-                        <CompanyInput setState={setCompany} state={company} />
-
-                        <PositionInput setState={setPosition} state={position} className={style.positionInput} customStyle={{ marginLeft: window?.innerWidth < 769 ? "0" : "1.5rem" }} />
-                    </div>
-
-                    <div className={style.reviewText}>
-                        <textarea value={positiveReview} onChange={e => setPositiveReview(e.target.value)} name="" id="" cols={70} rows={9} placeholder="დადებითი შთაბეჭდილებები (არასავალდებულო)"></textarea>
-                    </div>
-
-                    <div className={style.reviewText}>
-                        <textarea value={negativeReview} onChange={e => setNegativeReview(e.target.value)} name="" id="" cols={70} rows={9} placeholder="უარყოფითი შთაბეჭდილებები (არასავალდებულო)"></textarea>
+            
+                    <div className={style.comment}>
+                        <textarea value={comment} onChange={e => setComment(e.target.value)} name="" id="" cols={70} rows={9} placeholder="კომენტარი (არასავალდებულო)"></textarea>
                     </div>
 
                     { error && <h5 className={style.error}>{ error }</h5> }

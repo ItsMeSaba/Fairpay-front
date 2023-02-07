@@ -277,3 +277,54 @@ export const SubmitCompanyRequestSchema = Joi.object({
         .required()
         .allow(""),
 })
+
+export const SubmitInterviewSchema = Joi.object({
+    companyId: Joi
+        .string()
+        .trim()
+        .required()
+        .pattern(new RegExp(/^[a-z0-9]{10,90}$/i))
+        .messages({
+            "string.pattern.base": "დაფიქსირდა ხარვეზი. სცადეთ მოგვიანებით.",
+            "string.base": "დაფიქსირდა ხარვეზი. სცადეთ მოგვიანებით",
+            "string.empty": "დაფიქსირდა ხარვეზი. სცადეთ მოგვიანებით",
+            "any.required": "დაფიქსირდა ხარვეზი. სცადეთ მოგვიანებით",
+        }),
+
+    userId: Joi
+        .string()
+        .trim()
+        .required()
+        .pattern(new RegExp(/^[a-z0-9]{10,90}$/i))
+        .messages({
+            "string.pattern.base": "დაფიქსირდა ხარვეზი. სცადეთ მოგვიანებით.",
+            "string.base": "დაფიქსირდა ხარვეზი. სცადეთ მოგვიანებით",
+            "string.empty": "დაფიქსირდა ხარვეზი. სცადეთ მოგვიანებით",
+          	"any.required": "დაფიქსირდა ხარვეზი. სცადეთ მოგვიანებით",
+        }),
+
+    comment: Joi
+        .string()
+        .required()
+        .trim()
+        .min(0)
+        .max(2500)
+        .allow("")
+        .messages({
+            "any.required": "შეფასების ველი სავალდებულოა",
+            "string.base": "შეფასება უნდა იყოს ტექსტი (შეცდომა სერვერზე)",
+            "string.max": "კომენტარი არ უნდა აღემატებოდეს 2500 სიმბოლოს",
+        }),
+    
+    rating: Joi
+        .number()
+        .required()
+        .min(10)
+        .max(100)
+        .messages({
+            "any.required": "შეფასება სავალდებულოა",
+            "number.base": "პოზიცია სავალდებულოა",
+            "number.min": "მინიმალური რეიტინგი 1-ია",
+            "number.max": "შეფასება 5ზე მეტი ვერ იქნება",
+        }),
+})

@@ -16,10 +16,13 @@ import AddSalaryButton from "components/buttons/AddSalaryButton";
 import AddReviewButton from "components/buttons/AddReviewButton";
 import wave1 from "public/images/wave1.svg"
 import wave2 from "public/images/wake2.svg"
+import AddInterviewButton from "components/buttons/AddInterviewButton";
+import { useQuery } from "react-query";
+import CompanyInterviews from "components/company/companyInterviews";
 
 export default function Company() {
     const [companyData, setCompanyData] = useState<any>(null);
-    const [display, setDsiplay] = useState<"salaries" | "reviews">("salaries");
+    const [display, setDsiplay] = useState<"salaries" | "reviews" | "interviews">("salaries");
     const router = useRouter();
     const image = companyData
         ? getCompanyImage(companyData.name as ValidCompanyNames)
@@ -28,6 +31,7 @@ export default function Company() {
     useEffect(() => {
         // Getting company name from url
         const { company: companyUrlName } = router.query;
+        console.log("COMPANYDATA", companyData);
 
         (async () => {
 
@@ -53,6 +57,10 @@ export default function Company() {
 
                     <div className={style.center}>
                         <h1>{companyData?.name}</h1>
+
+                        <div className={style.companyResults}>
+
+                        </div>
         
                         <div className={style.buttons}>
                             <div
@@ -67,6 +75,12 @@ export default function Company() {
                             >
                                 { companyData.reviewCount } შეფასება
                             </div>
+                            {/* <div
+                                className={`${style.ratingsCount} ${display === "interviews" ? style.active : ""}`}
+                                onClick={() => setDsiplay("interviews")}
+                            >
+                                { companyData?.reviewCount ?? 0 } გასაუბრება
+                            </div> */}
                         </div>
                     </div>
 
@@ -82,6 +96,7 @@ export default function Company() {
                     <div className={style.addDataButtons}>
                         <AddSalaryButton customStyle={{ backgroundColor: `#${companyData?.color}FF` }} companyName={companyData.name} companyId={companyData._id} displayLongName={true} />
                         <AddReviewButton customStyle={{ backgroundColor: `#${companyData?.color}FF` }} companyName={companyData.name} companyId={companyData._id} displayLongName={true} />
+                        {/* <AddInterviewButton customStyle={{ backgroundColor: `#${companyData?.color}FF` }} companyName={companyData.name} companyId={companyData._id} displayLongName={true} /> */}
                     </div>
                 </div>
 
@@ -99,13 +114,21 @@ export default function Company() {
                 {/* } */}
 
                 <div style={{ backgroundColor: companyData?.color ? `#${companyData.color}BB` : "#b2bec3" }}>
-                    {display === "salaries" && (
-                        <CompanySalaries companyId={companyData._id} />
-                    )}
+                    { companyData._id &&
+                        <>
+                            { display === "salaries" && (
+                                <CompanySalaries companyId={companyData._id} />
+                            )}
 
-                    {display === "reviews" && (
-                        <CompanyReviews companyId={companyData._id} />
-                    )}
+                            { display === "reviews" && (
+                                <CompanyReviews companyId={companyData._id} />
+                            )}
+
+                            { display === "interviews" && (
+                                <CompanyInterviews companyId={companyData._id} />
+                            )}
+                        </>  
+                    }
                 </div>
 
                 {/* {companyData?.color && */}

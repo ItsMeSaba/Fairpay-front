@@ -1,4 +1,4 @@
-import mongoose, { ObjectId, Types } from "mongoose";
+import mongoose, { Document, ObjectId, Types } from "mongoose";
 
 export interface Vacancy {
     salary: string,
@@ -10,6 +10,13 @@ export interface Vacancy {
     source: string,
     technologies: string[],
     seniority: string
+}
+
+export interface InterviewType {
+    rating: number,
+    comment: string,
+    date: Date,
+    _id: string,
 }
 
 export type Vacancies = Vacancy[];
