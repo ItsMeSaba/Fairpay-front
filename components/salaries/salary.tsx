@@ -7,17 +7,18 @@ import bog from "../../public/images/companies/bog.png"
 import fourk from "../public/images/4k.jpg";
 import company1 from "../../public/images/companies/fortunejack.png";
 import company2 from "../../public/images/companies/company2.png";
-import { Currency, Vacancy, ValidCompanyNames } from "types";
-import getCompanyImagePath, { getCompanyImage } from "functions/companies/images/getCompanyImage";
+import { Currency, Vacancy, VacancyWithCompany, ValidCompanyNames } from "types";
+import getCompanyImagePath, { getCompanyImage } from "functions/companies/getCompanyImage/getCompanyImage";
 
 interface Args {
-    vacancy: Vacancy
+    vacancy: VacancyWithCompany
 }
 
-export function SalaryItem(args: Args) {
-    const { company, salary, position, date, currency, technologies, seniority } = args.vacancy;
+export function Salary(args: Args) {
+    const { companyId, salary, position, date, currency, technologies, seniority } = args.vacancy;
+    const { name } = companyId;
     // const companyImage = getCompanyImagePath(company);
-    const companyImage = getCompanyImage(company as ValidCompanyNames);
+    const companyImage = getCompanyImage(name as ValidCompanyNames);
     // const companyImage = require(`${imagePath}`).default;
     // const companyImage = require("public/images/companies/noimage.jpg").default;
 
@@ -32,7 +33,7 @@ export function SalaryItem(args: Args) {
 
             <div className={style.center}>
                 <div className="upper">
-                    <p>{ company }</p>
+                    <p>{ name }</p>
                     <h2>{ position } { seniority ? `(${seniority})` : "" }</h2>
                     <h5>{ (new Date(date)).toLocaleDateString() }</h5>
                     {/* <h5>{ date?.toLocaleDateString() }</h5> */}
@@ -52,7 +53,7 @@ export function SalaryItem(args: Args) {
     )
 }   
 
-export function SalaryItemWithoutCompany(args: Args) {
+export function SalaryWithoutCompany(args: Args) {
     const { company, salary, position, date, currency, technologies, seniority } = args.vacancy;
 
     return (

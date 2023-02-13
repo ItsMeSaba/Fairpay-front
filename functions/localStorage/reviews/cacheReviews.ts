@@ -1,7 +1,7 @@
-import { IReview } from "types";
+import { ReviewType } from "types";
 import getCachedReviews from "./getCachedReviews";
 
-export default function cacheReviews(companyId: string, reviews: { [key: string]: IReview }) {
+export default function cacheReviews(companyId: string, reviews: { [key: string]: ReviewType }) {
     const cachedReviews = getCachedReviews(companyId);
     
     localStorage.setItem(`cr-${companyId}`, JSON.stringify({

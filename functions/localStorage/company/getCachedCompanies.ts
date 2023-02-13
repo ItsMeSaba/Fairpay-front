@@ -3,11 +3,11 @@
 //     companies: any[],
 // }
 
-import { Company } from "types";
+import { CompanyType } from "types";
 
 type getCachedCompaniesReturns = null | {
     timestamp: number,
-    companies: { [key: string]: Company },
+    companies: { [key: string]: CompanyType },
 }
 
 export default function getCachedCompanies(): getCachedCompaniesReturns {

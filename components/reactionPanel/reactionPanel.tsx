@@ -3,7 +3,7 @@ import ThumbDownRoundedIcon from '@mui/icons-material/ThumbDownRounded';
 import style from "styles/components/reactionPanel.module.sass"
 import { useContext, useState } from 'react';
 import { GlobalContext } from 'context';
-import recordReaction from "../../database/functions/reviews/recordReaction"
+import recordReaction from "database/reviews/recordReaction"
 import useCheckAuth from 'hooks/useCheckAuth';
 
 interface Args {

@@ -4,9 +4,9 @@ import { AuthData } from "types";
 
 const GlobalContext = createContext({
     openAuthPopup: () => {},
-    openSalaryPopup: (companyName: string, companyId: Types.ObjectId) => {},
-    openReviewPopup: (companyName: string, companyId: Types.ObjectId) => {},
-    openInterviewPopup: (companyName: string, companyId: Types.ObjectId) => {},
+    openSalaryPopup: (companyName: string, companyId: string) => {},
+    openReviewPopup: (companyName: string, companyId: string) => {},
+    openInterviewPopup: (companyName: string, companyId: string) => {},
     authData: {
         user: null,
         status: "loading"

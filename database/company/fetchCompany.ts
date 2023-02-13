@@ -1,13 +1,6 @@
 import axios from "axios";
 import mongoose from "mongoose";
-
-interface CompanyInfo {
-    _id?: mongoose.Types.ObjectId;
-    name?: string;
-    urlName?: string;
-    // vacancyCount: number
-    // reviewCount: number
-}
+import { CompanySearchResultType } from "types";
 
 export async function fetchCompany(companyId: number) {
     // const response = await axios.post("${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/company", {
@@ -40,7 +33,7 @@ export async function fetchCompanies(documentsToSkip = 0, documentsToFetch = 10)
 }
 
 export async function suggestCompanyBySearch(search: string) {
-    const response = await axios.get<CompanyInfo[]>(
+    const response = await axios.get<CompanySearchResultType[]>(
         `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/companies/suggestCompanyBySearch`,
         { params: { search } }
     );

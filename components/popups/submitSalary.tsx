@@ -42,6 +42,7 @@ export default function SubmitSalary(args: Args) {
         if (!user?.id) return setError("ავტორიზაციის გავლა არ დაფიქსირებულა");
 
         const dataToUpload = {
+            companyName: presetCompany,
             technologies,
             companyId,
             position,

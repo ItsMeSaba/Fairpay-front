@@ -1,9 +1,9 @@
 import isTimestampValid from "functions/utils/isTimestampValid";
-import { IReview } from "types";
+import { ReviewType } from "types";
 
 interface CachedReviews {
     timestamp: number,
-    reviews: { [key: string]: IReview },
+    reviews: { [key: string]: ReviewType },
 }
 
 type GetCachedVacanciesReturns = null | CachedReviews;

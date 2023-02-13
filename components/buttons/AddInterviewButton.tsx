@@ -8,7 +8,7 @@ import { CSSProperties } from "react";
 
 interface Props {
     companyName: string,
-    companyId: Types.ObjectId,
+    companyId: string,
     displayLongName?: boolean,
     customStyle?: CSSProperties,
 }

@@ -1,24 +1,25 @@
 // import { companies } from "data/companies";
 import style from "styles/pages/companies.module.sass";
-import { DisplayCompanies } from "components/displayCompanies";
+// import { DisplayCompanies } from "components/company/displayCompanies";
 import axios from "axios";
-import { Companies } from "types";
+import { CompanyType } from "types";
 import SubmitSalary from "components/popups/submitSalary";
 import SubmitReview from "components/popups/submitReview";
 import { useContext, useEffect, useRef, useState } from "react";
-import { fetchCompanies } from "database/functions/company/fetchCompany";
+import { fetchCompanies } from "database/company/fetchCompany";
 import LoadMoreButton from "components/buttons/loadMore";
 import AddCompanyPopup from "components/popups/addCompany";
 import { GlobalContext } from "context";
 import { Types } from "mongoose";
 import scrollIfNeededAndRemovePreviousPage from "functions/sessionStorage/checkForScroll";
 import getCompanies from "functions/companies/getCompanies";
-import getCachedCompanies from "functions/localStorage/getCachedCompanies";
+import getCachedCompanies from "functions/localStorage/company/getCachedCompanies";
 import isTimestampValid from "functions/utils/isTimestampValid";
 import companiesArrayToOject from "functions/companies/companiesArrayToObject";
-import deleteCachedCompanies from "functions/localStorage/deleteCachedCompanies";
+import deleteCachedCompanies from "functions/localStorage/company/deleteCachedCompanies";
 import Head from "next/head"
 import { useQuery } from "react-query";
+import { Companies } from "components/company/Companies";
 
 interface PopupData {
 	presetCompany: string | null;
@@ -36,7 +37,7 @@ const popupData = (
 
 
 interface Args {
-  companies: Companies;
+  companies: CompanyType[];
   openAuthPopup: (...args: any) => any;
 }
 
@@ -104,12 +105,12 @@ export default function CompaniesPage(args: Args) {
 
 			<button className={style.addCompanyButton} onClick={() => setAddCompanyPopup(true)}>კომპანიის დამატება</button>
 
-			<DisplayCompanies
+			<Companies
 				companies={Object.values(companies)}
-				openSalaryPopup={(companyName: string, companyId: Types.ObjectId) =>
+				openSalaryPopup={(companyName: string, companyId: string) =>
 					openSalaryPopup(companyName, companyId)
 				}
-				openReviewPopup={(companyName: string, companyId: Types.ObjectId) =>
+				openReviewPopup={(companyName: string, companyId: string) =>
 					openReviewPopup(companyName, companyId)
 				}
 			/>
@@ -120,7 +121,7 @@ export default function CompaniesPage(args: Args) {
 }
 
 export async function getStaticProps() {
-	const response = await axios.get<Companies>(
+	const response = await axios.get<CompanyType[]>(
 		`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/companies`
 	);
 

@@ -6,10 +6,11 @@ import Link from 'next/link'
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import MenuIcon from '@mui/icons-material/Menu';
-import Search from "./search";
+// import Search from "./search";
 import useCheckAuth from "hooks/useCheckAuth";
 import { GlobalContext } from "context";
 import { useContext} from "react";
+import Search from "components/search";
 interface Args {
     openAuth: (...args: any) => any
     openSliderMenu: (...args: any) => any

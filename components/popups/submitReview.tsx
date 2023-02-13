@@ -21,7 +21,7 @@ import successToast from "functions/toasts/successToast"
 interface Args {
     close: () => void,
     companyName: string | null,
-    companyId: Types.ObjectId,
+    companyId: string,
 }
 
 export default function SubmitReview(args: Args) {

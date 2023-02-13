@@ -7,7 +7,7 @@ import style from "styles/components/buttons/buttons.module.sass"
 
 interface Props {
     companyName: string,
-    companyId: Types.ObjectId,
+    companyId: string,
     customStyle?: CSSProperties,
     displayLongName?: boolean,
     buttonColor?: string,

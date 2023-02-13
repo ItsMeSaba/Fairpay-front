@@ -1,5 +1,5 @@
 import mongoDocsArrayToObject from "functions/utils/mongoDocArrayToObject";
-import { Interview } from "types";
+import { InterviewType } from "types";
 import getCachedInterviews from "./getCachedInterviews";
 
 
@@ -12,7 +12,7 @@ import getCachedInterviews from "./getCachedInterviews";
 //     }));
 // }
 
-export default function cacheInterviews(companyId: string, interviews: Interview[]) {
+export default function cacheInterviews(companyId: string, interviews: InterviewType[]) {
     const cachedVacancies = getCachedInterviews(companyId);
 
     localStorage.setItem(`ci-${companyId}`, JSON.stringify({

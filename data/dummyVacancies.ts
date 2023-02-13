@@ -1,6 +1,6 @@
 import { Vacancies } from "types";
 
-export const dummyVacanies: Vacancies = [
+export const dummyVacanies: any = [
     {
         salary: "5000",
         company: "Vendoo",

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import CloseIcon from '@mui/icons-material/Close';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
-import Search from './search';
+import Search from '../components/search';
 import clickWithoutPropogation from 'functions/utils/clickWithoutPropogation';
 import useCheckAuth from 'hooks/useCheckAuth';
 import { useContext } from "react"

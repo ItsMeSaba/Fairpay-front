@@ -1,7 +1,7 @@
-import { fetchCompanies } from "database/functions/company/fetchCompany";
-import cacheCompanies from "functions/localStorage/cacheCompanies";
-import deleteCachedCompanies from "functions/localStorage/deleteCachedCompanies";
-import getCachedCompanies from "functions/localStorage/getCachedCompanies"
+import { fetchCompanies } from "database/company/fetchCompany";
+import cacheCompanies from "functions/localStorage/company/cacheCompanies";
+import deleteCachedCompanies from "functions/localStorage/company/deleteCachedCompanies";
+import getCachedCompanies from "functions/localStorage/company/getCachedCompanies"
 import isTimestampValid from "functions/utils/isTimestampValid";
 import companiesArrayToOject from "./companiesArrayToObject";
 

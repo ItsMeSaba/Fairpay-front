@@ -1,8 +1,8 @@
 import axios from "axios";
-import { IReview } from "types";
+import { ReviewType } from "types";
 
 
-export default async function fetchReviews(companyId: string, skip = 0): Promise<IReview[]> {
+export default async function fetchReviews(companyId: string, skip = 0): Promise<ReviewType[]> {
     // const cachedData = localStorage.getItem(companyId);
     // const url
     const response = await axios.get(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/reviews/${companyId}`, {

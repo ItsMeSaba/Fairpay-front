@@ -2,18 +2,18 @@ import style from "styles/components/search.module.sass"
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 // import technologies from "data/technologies";
 import { SetStateAction, useEffect, useRef, useState } from "react";
-import { suggestCompanyBySearch } from "database/functions/company/fetchCompany";
+import { suggestCompanyBySearch } from "database/company/fetchCompany";
 import Link from "next/link";
 import Image from "next/image";
-import { getCompanyImage } from "functions/companies/images/getCompanyImage";
-import { ValidCompanyNames } from "types";
+import { getCompanyImage } from "functions/companies/getCompanyImage/getCompanyImage";
+import { CompanySearchResultType, ValidCompanyNames } from "types";
 
 interface Args {
     width?: string
 }
 
 export default function Search(args: Args) {
-    const [results, setResults] = useState<string[]>([]);
+    const [results, setResults] = useState<CompanySearchResultType[]>([]);
     const [isFocused, setIsFocused] = useState(false);
     const { width } = args;
     const divRef = useRef<any>();
@@ -26,7 +26,7 @@ export default function Search(args: Args) {
         // const tehnologies = technologies.filter(technology => technology.name.toLowerCase().startsWith(input.toLowerCase()));
 
         // setResults([...companies?.map(company => company.name)]);
-        setResults(companies);
+        setResults(companies as any);
     }
 
     useEffect(() => {

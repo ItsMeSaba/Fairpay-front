@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "ts-lint": "tsc --noEmit --incremental",
     "start": "next start",
     "lint": "next lint",
     "cypress:open": "cypress open",

@@ -12,7 +12,7 @@ export function FiltrationItem(args: PillButtonArgs) {
     const { text, toggleFilter } = args;
 
     function handleClick() {
-        toggleFilter(text.toLowerCase(), isActive ? "remove" : "add");
+        toggleFilter(text, isActive ? "remove" : "add");
 
         setActive(active => !active)
     }

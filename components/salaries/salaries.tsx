@@ -1,15 +1,14 @@
-import { SalaryItem, SalaryItemWithoutCompany } from "./salaryItem";
+import { SalaryWithoutCompany } from "./salary";
 import style from "styles/components/salaryItem.module.sass";
-import dummyData from "components/salaryItems/dummyData";
 import outline1 from "../../public/images/outline1.svg"
 import Image from "next/image"
-import { Vacancies } from "types";
+import { Vacancies, VacancyWithCompany } from "types";
 
 interface Args {
-    vacancies: Vacancies
+    vacancies: VacancyWithCompany[]
 }
 
-export function SalaryItems(args: Args) {
+export function Salaries(args: Args) {
     const { vacancies } = args;
 
     return (
@@ -26,7 +25,7 @@ export function SalaryItems(args: Args) {
             {
                 vacancies.map((vacancy, index: number) => 
                 // dummyData.map((vacancy, index: number) => 
-                    <SalaryItemWithoutCompany vacancy={vacancy} key={index} />
+                    <SalaryWithoutCompany vacancy={vacancy} key={index} />
                     // <SalaryItem vacancy={vacancy} key={index} />
                 )
             }

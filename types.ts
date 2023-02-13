@@ -1,6 +1,7 @@
 import mongoose, { Document, ObjectId, Types } from "mongoose";
 
-export interface Vacancy {
+interface VacancyBase {
+    _id: string,
     salary: string,
     position: string,
     company: string,
@@ -9,7 +10,16 @@ export interface Vacancy {
     url: string,
     source: string,
     technologies: string[],
-    seniority: string
+    seniority: string,
+    // companyId: string,
+}
+
+export interface Vacancy extends VacancyBase {
+    companyId: string
+}
+
+export interface VacancyWithCompany extends VacancyBase {
+    companyId: CompanyType
 }
 
 export interface InterviewType {
@@ -21,7 +31,7 @@ export interface InterviewType {
 
 export type Vacancies = Vacancy[];
 
-export interface IReview {
+export interface ReviewType {
     _id: string,
     rating: number,
     positiveReview: string,
@@ -31,8 +41,8 @@ export interface IReview {
     likeDislikeDifference: number,
 }
 
-export interface Company {
-    _id: mongoose.Types.ObjectId
+export interface CompanyType {
+    _id: string
     name: string,
     urlName: string,
     vacancyCount: number,
@@ -42,7 +52,11 @@ export interface Company {
     color?: string,
 }
 
-export type Companies = Company[];
+export interface CompanySearchResultType {
+    _id: string;
+    name: string;
+    urlName: string;
+}
 
 export type Currency = "gel" | "usd" | "eur"
 
@@ -90,9 +104,9 @@ export type ValidCompanyNames =
 export class PopupData {
     display: boolean;
     companyName: string;
-    companyId: Types.ObjectId;
+    companyId: string;
 
-    constructor(display = false, companyName = "", companyId = new Types.ObjectId()) {
+    constructor(display = false, companyName = "", companyId = "") {
         this.display = display; 
         this.companyName = companyName; 
         this.companyId = companyId; 

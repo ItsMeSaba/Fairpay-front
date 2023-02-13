@@ -3,36 +3,26 @@ import { Rating } from 'react-simple-star-rating'
 import UserIcon from '@mui/icons-material/AccountCircleRounded';
 import ReactionPanel from "components/reactionPanel/reactionPanel";
 import mongoose from "mongoose";
-import { IReview } from "types";
+import { ReviewType } from "types";
 import LoadMoreButton from "components/buttons/loadMore";
 import AccountCircleRoundedIcon from '@mui/icons-material/PersonOutline'
 import { BiUser } from 'react-icons/bi';
 import { FaRegUser } from 'react-icons/fa';
 
-interface ReviewsArgs {
-    reviews: IReview[]
+interface Args {
+    reviews: ReviewType[]
 }
 
-export default function Reviews(args: ReviewsArgs) {
-    const { reviews } = args;
-    
-
-
+export default function Reviews({ reviews }: Args) {
     return (
         <div className={style.reviews}>
-            {
-                reviews.map((review, index) => {
-                    return (
-                        <Review review={review} key={index} />
-                    )
-                })
-            }
+            { reviews.map((review, index) => <Review review={review} key={index} />) }
         </div>
     )
 }
 
 interface ReviewArgs {
-    review: IReview
+    review: ReviewType
 }
 
 function Review(args: ReviewArgs) {

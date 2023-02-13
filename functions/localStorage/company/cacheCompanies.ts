@@ -1,4 +1,4 @@
-import { Company } from "types";
+import { CompanyType } from "types";
 import getCachedCompanies from "./getCachedCompanies"
 
 // export default function cacheCompanies(companies: any[]) {
@@ -17,7 +17,7 @@ import getCachedCompanies from "./getCachedCompanies"
 //     }))
 // }
 
-export default function cacheCompanies(companies: { [key: string]: Company }) {
+export default function cacheCompanies(companies: { [key: string]: CompanyType }) {
     const alreadyCachedCompanies = getCachedCompanies();
 
     // alert("SETTING CACHED COMPANIES IN LOCALST")

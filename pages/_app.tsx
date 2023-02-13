@@ -1,15 +1,15 @@
 import '../styles/globals.sass'
 import type { AppProps } from 'next/app'
 import { SessionProvider } from 'next-auth/react'
-import { Header } from 'components/header'
+import { Header } from 'layouts/header'
 import { useEffect, useState } from 'react';
 import AuthPopup from 'components/popups/authPopup';
-import { SliderMenu } from 'components/sliderMenu';
+import { SliderMenu } from 'layouts/sliderMenu';
 import { GlobalContext } from 'context';
-import cacheUserData from 'database/functions/user/getUserCachableData';
+import cacheUserData from 'database/user/getUserCachableData';
 import TestModeInfo from 'components/testModeInfo';
 import Head from "next/head"
-import Footer from 'components/footer';
+import Footer from 'layouts/footer';
 import SubmitSalary from 'components/popups/submitSalary';
 import SubmitReview from 'components/popups/submitReview';
 import { PopupData } from 'types';
@@ -18,8 +18,9 @@ import useCheckAuth from 'hooks/useCheckAuth';
 import { ToastContainer } from 'react-toastify';
 import Script from 'next/script';
 import 'react-toastify/dist/ReactToastify.css';
-import CookieDisclaimer from 'components/cookieDisclaimer';
+// import CookieDisclaimer from 'components/cookieDisclaimer';
 import SubmitInterview from 'components/popups/submitInterview';
+import CookieDisclaimer from 'layouts/cookieDisclaimer';
 // import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 
 // const queryClient = new QueryClient()
@@ -70,9 +71,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 			
 			<GlobalContext.Provider value={{
 				openAuthPopup: () => setDisplayAuthPopup(true),
-				openReviewPopup: (companyName: string, companyId: Types.ObjectId) => setReviewPopup(new PopupData(true, companyName, companyId)),
-				openSalaryPopup: (companyName: string, companyId: Types.ObjectId) => setSalaryPopup(new PopupData(true, companyName, companyId)),
-				openInterviewPopup: (companyName: string, companyId: Types.ObjectId) => setInterviewPopup(new PopupData(true, companyName, companyId)),
+				openReviewPopup: (companyName: string, companyId: string) => setReviewPopup(new PopupData(true, companyName, companyId)),
+				openSalaryPopup: (companyName: string, companyId: string) => setSalaryPopup(new PopupData(true, companyName, companyId)),
+				openInterviewPopup: (companyName: string, companyId: string) => setInterviewPopup(new PopupData(true, companyName, companyId)),
 				authData
 			}}>
 				{/* <QueryClientProvider client={queryClient}> */}

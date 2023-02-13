@@ -1,18 +1,16 @@
 import LoadMoreButton from "components/buttons/loadMore";
 import Reviews from "components/review/reviews";
-import dummyData from "components/salaryItems/dummyData";
-import { SalaryItems } from "components/salaryItems/salaryItems";
 import { GlobalContext } from "context";
-import addUserReactionField from "database/functions/reviews/addUserReactionField";
-import fetchReviews from "database/functions/reviews/fetchReviews";
-import fetchUserLikesAndDislikes from "database/functions/user/getUserLikesAndDislikes";
-import fetchVanacies from "database/functions/vacancies/fetchVacanciesByCompanyId";
+import addUserReactionField from "database/reviews/addUserReactionField";
+import fetchReviews from "database/reviews/fetchReviews";
+import fetchUserLikesAndDislikes from "database/user/getUserLikesAndDislikes";
+import fetchVanacies from "database/vacancies/fetchVacanciesByCompanyId";
 import cacheReviews from "functions/localStorage/reviews/cacheReviews";
 import getCachedReviews from "functions/localStorage/reviews/getCachedReviews";
 import reviewsArrayToObject from "functions/reviews/reviewsArrayToObject";
 import useCheckAuth from "hooks/useCheckAuth";
 import { useEffect, useRef, useState, useContext } from "react";
-import { IReview } from "types";
+import { ReviewType } from "types";
 
 interface Args {
     companyId: string
@@ -20,9 +18,7 @@ interface Args {
 
 export default function CompanyReviews(args: Args) {
     const { companyId } = args;
-    // const [reviews, setReviews] = useState<any[]>([]);
-    const [reviews, setReviews] = useState<{ [key: string]: IReview }>({});
-    // const { user } = useCheckAuth();
+    const [reviews, setReviews] = useState<{ [key: string]: ReviewType }>({});
     const skip = useRef(0);
     const isFirstRun = useRef(true);
     const areReviewsLeft = useRef(true);
@@ -73,9 +69,7 @@ export default function CompanyReviews(args: Args) {
     }, [companyId]);
 
     return (
-        // <SalaryItems vacancies={vacancies} />
         <div style={{ padding: "1rem 0" }}>
-            {/* <Reviews reviews={reviews as IReview[]} /> */}
             { Object.values(reviews).length > 0 && <Reviews reviews={Object.values(reviews) as any} /> }
 
             { areReviewsLeft.current && <LoadMoreButton cb={() => fetch(false)} /> }
@@ -86,12 +80,6 @@ export default function CompanyReviews(args: Args) {
                         color:"white", 
                         textAlign: "center", 
                         padding: "15rem 0", 
-                        // textShadow: `
-                        //     0.04em 0 black,
-                        //     0 0.04em black,
-                        //     -0.04em 0 black,
-                        //     0 -0.04em black
-                        // `
                     }}>
                     შეფასებები არ მოიძებნა
                 </h1> 

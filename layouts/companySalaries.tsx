@@ -1,7 +1,6 @@
 import LoadMoreButton from "components/buttons/loadMore";
-import dummyData from "components/salaryItems/dummyData";
-import { SalaryItems } from "components/salaryItems/salaryItems";
-import fetchVanacies from "database/functions/vacancies/fetchVacanciesByCompanyId";
+import { Salaries } from "components/salaries/salaries";
+import fetchVanacies from "database/vacancies/fetchVacanciesByCompanyId";
 import cacheVacancies from "functions/localStorage/vacancies/cacheVacancies";
 import getCachedVacancies from "functions/localStorage/vacancies/getCachedVacancies";
 import mongoose from "mongoose";
@@ -90,7 +89,7 @@ export default function CompanySalaries(args: Args) {
 
     return (
         <div style={{ padding: "1rem 0" }}>
-            { vacancies.length > 0 && <SalaryItems vacancies={vacancies} />}
+            { vacancies.length > 0 && <Salaries vacancies={vacancies} />}
 
             { areSalariesLeft.current && <LoadMoreButton cb={() => fetch(false)} /> }
 

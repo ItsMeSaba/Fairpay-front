@@ -1,6 +1,6 @@
 import LoadMoreButton from "components/buttons/loadMore";
 import Interviews from "components/Interviews/Interviews";
-import fetchInterviews from "database/functions/interviews/fetchInterviews";
+import fetchInterviews from "database/interviews/fetchInterviews";
 import cacheInterviews from "functions/localStorage/interviews/cacheInterviews";
 import getCachedInterviews from "functions/localStorage/interviews/getCachedInterviews";
 import { useEffect, useRef, useState } from "react";

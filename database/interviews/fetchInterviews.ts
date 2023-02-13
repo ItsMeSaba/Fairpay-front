@@ -1,5 +1,5 @@
 import axios from "axios";
-import { InterviewType, IReview } from "types";
+import { InterviewType } from "types";
 
 interface Options {
     dateOfLastInterview: Date | string | null

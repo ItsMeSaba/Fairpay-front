@@ -1,8 +1,8 @@
 import isTimestampValid from "functions/utils/isTimestampValid";
-import { Interview } from "types";
+import { InterviewType } from "types";
 
 interface CachedInterviews {
-    interviews: Interview[],
+    interviews: InterviewType[],
     timestamp: number,
 }
 

@@ -76,7 +76,7 @@ class CompanyImageData {
 
 
 
-export const companyImages2: Record<ValidCompanyNames, StaticImageData> = {
+export const companyImages2: Record<string, StaticImageData> = {
     ვაბაკო: vabako,
     Scandiweb: scandiweb,
     Neollet: neollet,

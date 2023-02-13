@@ -1,4 +1,4 @@
-import addCompanyRequest from "database/functions/company/addCompanyRequest";
+import addCompanyRequest from "database/company/addCompanyRequest";
 import successToast from "functions/toasts/successToast";
 import { SubmitCompanyRequestSchema } from "joiSchemas";
 import { Dispatch, SetStateAction, useState } from "react";

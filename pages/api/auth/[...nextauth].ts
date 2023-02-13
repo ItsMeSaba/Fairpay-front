@@ -25,7 +25,7 @@ export default NextAuth({
 
     	async session({ session, token, user }) {
            
-			  if (session) session.user = { userId: token.profileId };
+			  if (session) (session.user as any) = { userId: token.profileId };
 			
 			return Promise.resolve(session);
     	},

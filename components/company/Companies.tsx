@@ -5,47 +5,33 @@ import style from "styles/components/displayCompanies.module.sass"
 import StarRoundedIcon from '@mui/icons-material/StarBorderRounded';
 // import WorkRoundedIcon from '@mui/icons-material/WorkRounded';
 import WorkRoundedIcon from '@mui/icons-material/WorkOutlineRounded';
-import Button from "./buttons/button";
-import { Companies, Company, ValidCompanyNames } from "types";
-import { getCompanyImage } from "functions/companies/images/getCompanyImage";
+import Button from "../buttons/button";
+import { CompanyType, ValidCompanyNames } from "types";
+import { getCompanyImage } from "functions/companies/getCompanyImage/getCompanyImage";
 import Link from 'next/link'
 import { MouseEvent, useContext, useMemo } from "react";
 import { GlobalContext } from "context";
 import { Types } from "mongoose";
-import AddSalaryButton from "./buttons/AddSalaryButton";
-import AddReviewButton from "./buttons/AddReviewButton";
+import AddSalaryButton from "../buttons/AddSalaryButton";
+import AddReviewButton from "../buttons/AddReviewButton";
 import { rememberCurrentPage } from "functions/sessionStorage/rememberCurrentPage";
-// import useMemo from "react";
-import bogCover from "public/images/companies/bogCover.png"
-import vendooCover from "public/images/companies/vendooCover.jpeg"
-import vabakoCover from "public/images/companies/vabakoCover.png"
-import qarvaCover from "public/images/companies/qarvaCover.jpg"
-import neolletCover from "public/images/companies/neolletCover.jpg"
-import azryCover from "public/images/companies/azryCover.jpg"
-import sweeftDfitialCover from "public/images/companies/sweeftDigitalCover.jpg"
-import dexfinityCover from "public/images/companies/dexfinityCover.jpg"
-import bits63Cover from "public/images/companies/bits63Cover.jpg"
-import omediaCover from "public/images/companies/omediaCover.png"
-import redberryCover from "public/images/companies/redberryCover.png"
-import publicRegistryCover from "public/images/companies/publicRegistryCover.jpg"
-import { getCompanyCoverImage } from "functions/getCompanyCoverImage/getCompanyCoverImage";
+import { getCompanyCoverImage } from "functions/companies/getCompanyCoverImage/getCompanyCoverImage";
 
-interface DisplayCompanies {
-    companies: Companies
-    openSalaryPopup: (company: string, companyId: Types.ObjectId) => void
-    openReviewPopup: (company: string, companyId: Types.ObjectId) => void
+interface Args {
+    companies: CompanyType[]
+    openSalaryPopup: (company: string, companyId: string) => void
+    openReviewPopup: (company: string, companyId: string) => void
 }
 
-export function DisplayCompanies(args: DisplayCompanies) {
+export function Companies(args: Args) {
     const { companies, openReviewPopup, openSalaryPopup } = args;
     const sortedCompanies = useMemo(() => companies.sort((a, b) => b.documentsCount - a.documentsCount), [companies.length]);
 
     return (
         <div className={style.companies}>
             {
-                // companies.map((company, index) => {
                 sortedCompanies.map((company, index) => {
-                    return <DisplayCompany 
+                    return <Company 
                             company={company} 
                             key={String(company._id)} 
                             openReviewPopup={() => openReviewPopup(company.name, company._id)} 
@@ -57,13 +43,13 @@ export function DisplayCompanies(args: DisplayCompanies) {
     )
 }
 
-interface DisplayCompany {
-    company: Company
+interface CompanyArgs {
+    company: CompanyType
     openSalaryPopup: () => void
     openReviewPopup: () => void
 }
 
-function DisplayCompany(args: DisplayCompany) {
+function Company(args: CompanyArgs) {
     const { name, urlName, _id, reviewCount, vacancyCount, sumOfRatings, color } = args.company;
     const { openSalaryPopup, openReviewPopup } = args;
     const image = getCompanyImage(name as ValidCompanyNames);

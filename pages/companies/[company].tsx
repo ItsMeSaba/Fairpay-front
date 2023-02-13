@@ -1,16 +1,16 @@
-import { Header } from "components/header";
+import { Header } from "layouts/header";
 import { useRouter } from "next/dist/client/router";
 import style from "styles/pages/company.module.sass";
 import bog from "public/images/companies/bog.png";
 import Image from "next/image";
-import CompanySalaries from "components/company/companySalaries";
-import CompanyReviews from "components/company/companyReview";
+import CompanySalaries from "layouts/companySalaries";
+import CompanyReviews from "layouts/companyReviews";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import fetchVanacies from "database/functions/vacancies/fetchVacanciesByCompanyId";
+import fetchVanacies from "database/vacancies/fetchVacanciesByCompanyId";
 import mongoose from "mongoose";
-import { fetchCompany, fetchCompanyByUrlName } from "database/functions/company/fetchCompany";
-import { getCompanyImage } from "functions/companies/images/getCompanyImage";
+import { fetchCompany, fetchCompanyByUrlName } from "database/company/fetchCompany";
+import { getCompanyImage } from "functions/companies/getCompanyImage/getCompanyImage";
 import { ValidCompanyNames } from "types";
 import AddSalaryButton from "components/buttons/AddSalaryButton";
 import AddReviewButton from "components/buttons/AddReviewButton";
@@ -18,7 +18,7 @@ import wave1 from "public/images/wave1.svg"
 import wave2 from "public/images/wake2.svg"
 import AddInterviewButton from "components/buttons/AddInterviewButton";
 import { useQuery } from "react-query";
-import CompanyInterviews from "components/company/companyInterviews";
+import CompanyInterviews from "layouts/companyInterviews";
 
 export default function Company() {
     const [companyData, setCompanyData] = useState<any>(null);

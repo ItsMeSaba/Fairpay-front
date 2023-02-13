@@ -59,6 +59,20 @@ import Joi from "joi";
 // })
 
 export const SubmitSalarySchema = Joi.object({
+    companyName: Joi
+        .string()
+        .trim()
+        .min(3)
+        .max(30)
+        .required()
+        .messages({
+            "string.base": "კომპანიის სახელი ვერ მოიძებნა (შეცდომა სერვერზე)",
+            "string.empty": "კომპანიის სახელი ვერ მოიძებნა (შეცდომა სერვერზე)",
+            "string.min": "კომპანიის სახელი ვერ მოიძებნა (შეცდომა სერვერზე)",
+            "string.max": "კომპანიის სახელი ვერ მოიძებნა (შეცდომა სერვერზე)",
+            "any.required": "კომპანიის სახელი ვერ მოიძებნა (შეცდომა სერვერზე)",
+        }),
+
     companyId: Joi
         .string()
         .trim()
