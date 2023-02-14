@@ -31,7 +31,6 @@ export default function Company() {
     useEffect(() => {
         // Getting company name from url
         const { company: companyUrlName } = router.query;
-        console.log("COMPANYDATA", companyData);
 
         (async () => {
 

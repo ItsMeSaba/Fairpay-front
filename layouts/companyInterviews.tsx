@@ -25,15 +25,11 @@ export default function CompanyInterviews(args: Args) {
             const cachedInterviews = getCachedInterviews(companyId);
 
             if (cachedInterviews) {
-                console.log("LOADED FROM CACHE BRO")
                 return setInterviews(cachedInterviews.interviews) 
             }
         }
         
-        console.log("LOADED FROM SERVER LOSER")
         const fetchedInterviews = await fetchInterviews(companyId, { dateOfLastInterview: isFirstFetch ? null : interviews[interviews.length-1]?.date });
-        
-        console.log("fetchInterviews", fetchedInterviews);
 
         if (fetchedInterviews.length === 0) areInterviewsLeft.current = false;
         else {

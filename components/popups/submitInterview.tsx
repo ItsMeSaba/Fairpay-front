@@ -48,8 +48,6 @@ export default function SubmitInterview(args: Args) {
             comment,
         }
 
-        console.log("dataToUpload", dataToUpload)
-    
         const { error: validationError, value: validatedData } = SubmitInterviewSchema.validate(dataToUpload);
 
         if (validationError) return setError(validationError.message);

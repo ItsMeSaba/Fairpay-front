@@ -7,7 +7,7 @@ import AuthPopup from 'components/popups/authPopup';
 import { SliderMenu } from 'layouts/sliderMenu';
 import { GlobalContext } from 'context';
 import cacheUserData from 'database/user/getUserCachableData';
-import TestModeInfo from 'components/testModeInfo';
+import TestModeInfo from 'layouts/testModeInfo';
 import Head from "next/head"
 import Footer from 'layouts/footer';
 import SubmitSalary from 'components/popups/submitSalary';

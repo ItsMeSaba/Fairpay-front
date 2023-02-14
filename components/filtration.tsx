@@ -33,7 +33,7 @@ export default function Filtration(args: FiltrationArgs) {
             else filterObject[field] = filterObject[field].filter(item => item !== filter);
 
             const res = await fetchVacanciesByTechnologies({ technologies: toggledFilters.current.technologies });
-            console.log("res", res);
+
             setSalaries(res as any);
         }
     }
