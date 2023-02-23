@@ -21,9 +21,9 @@ import 'react-toastify/dist/ReactToastify.css';
 // import CookieDisclaimer from 'components/cookieDisclaimer';
 import SubmitInterview from 'components/popups/submitInterview';
 import CookieDisclaimer from 'layouts/cookieDisclaimer';
-// import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 
-// const queryClient = new QueryClient()
+const queryClient = new QueryClient()
 
 function MyApp({ Component, pageProps }: AppProps) {
 	const [displayAuthPopup, setDisplayAuthPopup] = useState(false);
@@ -76,7 +76,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 				openInterviewPopup: (companyName: string, companyId: string) => setInterviewPopup(new PopupData(true, companyName, companyId)),
 				authData
 			}}>
-				{/* <QueryClientProvider client={queryClient}> */}
+				<QueryClientProvider client={queryClient}>
 					<ToastContainer />
 					
 					{/* <TestModeInfo /> */}
@@ -101,7 +101,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 						<Footer />
 					</div>
-				{/* </QueryClientProvider> */}
+				</QueryClientProvider>
 			</GlobalContext.Provider>
 		</>
   	)	

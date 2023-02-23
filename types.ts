@@ -50,6 +50,7 @@ export interface CompanyType {
     sumOfRatings: number,
     documentsCount: number,
     color?: string,
+    technologies?: string[]
 }
 
 export interface CompanySearchResultType {
@@ -74,7 +75,7 @@ export type AuthData = {
     status: "authenticated"
 }
 
-export type ValidCompanyNames = 
+export type ValidCompanyNames =
     "ვაბაკო" |
     "Scandiweb" |
     "Neollet" |
@@ -107,8 +108,8 @@ export class PopupData {
     companyId: string;
 
     constructor(display = false, companyName = "", companyId = "") {
-        this.display = display; 
-        this.companyName = companyName; 
-        this.companyId = companyId; 
+        this.display = display;
+        this.companyName = companyName;
+        this.companyId = companyId;
     }
 }

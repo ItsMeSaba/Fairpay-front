@@ -3,8 +3,8 @@ import { useRouter } from "next/dist/client/router";
 import style from "styles/pages/company.module.sass";
 import bog from "public/images/companies/bog.png";
 import Image from "next/image";
-import CompanySalaries from "layouts/companySalaries";
-import CompanyReviews from "layouts/companyReviews";
+import CompanySalaries from "layouts/company/companySalaries";
+import CompanyReviews from "layouts/company/companyReviews";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import fetchVanacies from "database/vacancies/fetchVacanciesByCompanyId";
@@ -18,9 +18,9 @@ import wave1 from "public/images/wave1.svg"
 import wave2 from "public/images/wake2.svg"
 import AddInterviewButton from "components/buttons/AddInterviewButton";
 import { useQuery } from "react-query";
-import CompanyInterviews from "layouts/companyInterviews";
+import CompanyInterviews from "layouts/company/companyInterviews";
 
-export default function Company() {
+export default function CompanyPage() {
     const [companyData, setCompanyData] = useState<any>(null);
     const [display, setDsiplay] = useState<"salaries" | "reviews" | "interviews">("salaries");
     const router = useRouter();
@@ -33,7 +33,6 @@ export default function Company() {
         const { company: companyUrlName } = router.query;
 
         (async () => {
-
             const company = await getCompanyData(companyUrlName as string);
 
             setCompanyData(company);

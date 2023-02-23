@@ -54,7 +54,8 @@ export default function ReactionPanel(args: Args) {
                 <ThumbUpRoundedIcon 
                     color={currentUserReaction === "like" ? "primary" : "disabled"}
                     onClick={() => handleClick(currentUserReaction === "like" ? "unlike" : "like")}
-                />
+                    titleAccess="ვეთანმხები"
+                    />
 
                 <div className={style.count}>{ currentLikeDislikeDifference }</div>
 
@@ -62,6 +63,7 @@ export default function ReactionPanel(args: Args) {
                 <ThumbDownRoundedIcon 
                     color={currentUserReaction === "dislike" ? "error" : "disabled"}
                     onClick={() => handleClick(currentUserReaction === "dislike" ? "undislike" : "dislike")}
+                    titleAccess="არ ვეთანმხები"
                 />
             </div>
         </div>

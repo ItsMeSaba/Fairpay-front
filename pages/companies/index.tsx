@@ -18,7 +18,7 @@ import isTimestampValid from "functions/utils/isTimestampValid";
 import companiesArrayToOject from "functions/companies/companiesArrayToObject";
 import deleteCachedCompanies from "functions/localStorage/company/deleteCachedCompanies";
 import Head from "next/head"
-import { useQuery } from "react-query";
+import { useInfiniteQuery, useQuery } from "react-query";
 import { Companies } from "components/company/Companies";
 
 interface PopupData {
@@ -43,7 +43,8 @@ interface Args {
 
 export default function CompaniesPage(args: Args) {
 	const { companies: fetchedCompanies } = args;
-	const [companies, setCompanies] = useState(companiesArrayToOject(fetchedCompanies));
+	// const [companies, setCompanies] = useState(companiesArrayToOject(fetchedCompanies));
+	const [companies, setCompanies] = useState([]);
 	const [salaryPopup, setSalaryPopup] = useState(popupData());
 	const [reviewPopup, setReviewPopup] = useState(popupData());
 	const [addCompanyPopup, setAddCompanyPopup] = useState(false);
@@ -51,45 +52,72 @@ export default function CompaniesPage(args: Args) {
 	// const documentsToSkip = useRef(companies.length);
 	const documentsToSkip = useRef(Object.values(companies).length);
 	const isAlreadyLoadedFromCache = useRef(false);
-
 	const { openReviewPopup, openSalaryPopup } = useContext(GlobalContext);
 
-	const companiesCount = Object.values(companies).length;
+	async function fetch(page: number): Promise<{ documents: CompanyType[], page: number | undefined }> {
+		// console.log("eeeeeeeeeeee", e);
+		// const companies = await fetchCompanies(data?.pages.flat().length)
+		const companies = await fetchCompanies(page)
 
-	async function loadCompanies() {
-		// const newCompanies = await fetchCompanies(documentsToSkip.current);
-		// const newCompanies = await getCompanies(documentsToSkip.current);
-		const newCompanies = await getCompanies(documentsToSkip.current);
+		const newPage = companies.length === 10 ? page + 1 : undefined;
 
-		if (Object.values(newCompanies).length === 0) {
-			setDisplayLoadMore(false);
-			return false;
-		}
-
-		// documentsToSkip.current += newCompanies.length;
-		documentsToSkip.current += Object.values(newCompanies).length;
-		// setCompanies(companies => [...companies, ...newCompanies]);
-		setCompanies(companies => ({ ...companies, ...newCompanies }) );
+		return { documents: companies, page: newPage }
 	}
 
-	useEffect(() => {
-		if (!isAlreadyLoadedFromCache.current) {
-			const cachedCompanies = getCachedCompanies();
+	const {
+		data,
+		isLoading,
+		isError,
+		hasNextPage,
+		fetchNextPage,
+	} = useInfiniteQuery('companies', ({ pageParam = 0 }) => fetch(pageParam), {
+		// getNextPageParam: (lastPage, allPages) => lastPage.page+1,
+		refetchOnWindowFocus: false,
+		staleTime: Infinity,
+		getNextPageParam: (lastPage, allPages) => lastPage.page,
+	});
 
-			if (cachedCompanies) {
-				if (isTimestampValid(cachedCompanies.timestamp, "3h")) {
-					setCompanies(companies => ({ ...cachedCompanies.companies, ...companies }));
+	// console.log("_=->", data, isLoading, isError, hasNextPage, fetchNextPage);
+	console.log("data.pages", data);
+	const companiesCount = Object.values(companies).length;
+
+	// async function loadCompanies() {
+	// 	// const newCompanies = await fetchCompanies(documentsToSkip.current);
+	// 	// const newCompanies = await getCompanies(documentsToSkip.current);
+	// 	const newCompanies = await getCompanies(documentsToSkip.current);
+
+	// 	if (Object.values(newCompanies).length === 0) {
+	// 		setDisplayLoadMore(false);
+	// 		return false;
+	// 	}
+
+	// 	// documentsToSkip.current += newCompanies.length;
+	// 	documentsToSkip.current += Object.values(newCompanies).length;
+	// 	// setCompanies(companies => [...companies, ...newCompanies]);
+	// 	setCompanies(companies => ({ ...companies, ...newCompanies }) );
+	// }
+
+	// useEffect(() => {
+	// 	if (!isAlreadyLoadedFromCache.current) {
+	// 		const cachedCompanies = getCachedCompanies();
+
+	// 		if (cachedCompanies) {
+	// 			if (isTimestampValid(cachedCompanies.timestamp, "3h")) {
+	// 				setCompanies(companies => ({ ...cachedCompanies.companies, ...companies }));
 					
-					documentsToSkip.current +=  Object.values(cachedCompanies.companies).length;
+	// 				documentsToSkip.current +=  Object.values(cachedCompanies.companies).length;
 					
-					isAlreadyLoadedFromCache.current = true;
-				} else deleteCachedCompanies();
-			}
-		}
+	// 				isAlreadyLoadedFromCache.current = true;
+	// 			} else deleteCachedCompanies();
+	// 		}
+	// 	}
 		
-		setTimeout(() => scrollIfNeededAndRemovePreviousPage(), 100)
-	}, [companiesCount]);
+	// 	setTimeout(() => scrollIfNeededAndRemovePreviousPage(), 100)
+	// }, [companiesCount]);
 
+	const companiesArray = data?.pages.reduce((acc, cur) => [...acc, ...cur.documents], [])
+	// console.log("companiesArray", companiesArray, data?.pages);
+	console.log("companiesArray", companiesArray);
 
 	return (
 		<div className={style.page}>
@@ -106,7 +134,8 @@ export default function CompaniesPage(args: Args) {
 			<button className={style.addCompanyButton} onClick={() => setAddCompanyPopup(true)}>კომპანიის დამატება</button>
 
 			<Companies
-				companies={Object.values(companies)}
+				// companies={Object.values(companies)}
+				companies={companiesArray as any}
 				openSalaryPopup={(companyName: string, companyId: string) =>
 					openSalaryPopup(companyName, companyId)
 				}
@@ -115,19 +144,21 @@ export default function CompaniesPage(args: Args) {
 				}
 			/>
 
-			{ displayLoadMore && <LoadMoreButton cb={loadCompanies} buttonColor={"rgb(255,255,255)"} /> }
+			{/* { displayLoadMore && <LoadMoreButton cb={loadCompanies} buttonColor={"rgb(255,255,255)"} /> } */}
+			{/* { displayLoadMore && <LoadMoreButton cb={fetchNextPage} buttonColor={"rgb(255,255,255)"} /> } */}
+			{ hasNextPage && <LoadMoreButton cb={fetchNextPage} buttonColor={"rgb(255,255,255)"} /> }
 		</div>
   	);
 }
 
-export async function getStaticProps() {
-	const response = await axios.get<CompanyType[]>(
-		`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/companies`
-	);
+// export async function getStaticProps() {
+// 	const response = await axios.get<CompanyType[]>(
+// 		`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/companies`
+// 	);
 
-	return {
-		props: {
-			companies: response.data,
-		}, // will be passed to the page component as props
-	};
-}
+// 	return {
+// 		props: {
+// 			companies: response.data,
+// 		}, // will be passed to the page component as props
+// 	};
+// }

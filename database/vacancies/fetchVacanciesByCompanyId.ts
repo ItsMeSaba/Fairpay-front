@@ -1,24 +1,23 @@
 import axios from "axios";
 import { fetchVanacyDto } from "dtos";
 import mongoose from "mongoose";
+import { Vacancy } from "types";
 
 
 interface Options {
-    companyId: string,
-    option: {
-        limit?: number, 
-        skip?: number, 
-        dateOfLastVacancy: Date | null,
-    }
+    page: number
 }
 
-export default async function fetchVanaciesByCompanyId(companyId: string, options: { limit?: number, skip?: number, dateOfLastVacancy: Date | null }) {
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/vacancies/companyId/${companyId}`, {
-    // const response = await axios.get(`http://localhost:7000/api/vacancies/companyId/${companyId}`, {
+export default async function fetchVanaciesByCompanyId(companyId: string, options: Options) {
+    const { page } = options;
+
+    const response = await axios.get<Vacancy[]>(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/vacancies/companyId/${companyId}`, {
+        // const response = await axios.get(`http://localhost:7000/api/vacancies/companyId/${companyId}`, {
         params: {
-            limit: options?.limit ?? null,
-            skip: options?.skip ?? null,
-            dateOfLastVacancy: options.dateOfLastVacancy,
+            // limit: options?.limit ?? null,
+            // skip: options?.skip ?? null,
+            // dateOfLastVacancy: options?.dateOfLastVacancy,
+            page
         }
     });
 
