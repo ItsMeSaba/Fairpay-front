@@ -8,8 +8,35 @@ $primaryColor: rgb(0, 21, 212, .85)
     white-space: nowrap
     position: relative
 
+    .technologiesBlock
+        // width: 100%
+        // overflow-x: scroll
+        margin: 0 0 1rem 0
+        display: flex
+        align-items: center
+        overflow: hidden
+        width: 93vw
+
+        input
+            border-radius: .7rem
+            outline: transparent
+            padding: .8rem 1.2rem
+            // border: solid 1px rgb(170, 170, 170)
+            border: solid 1px rgb(210, 210, 210)
+            background-color: rgb(243, 243, 243)
+            // color: $primaryColor
+            margin: 0 1rem 0 0
+            font-size: 1rem
+            width: 10rem
+            font-family: 'Noto Sans Georgian', sans-serif
+
+            &::placeholder
+                font-size: .95rem
+                // color: $primaryColor
+
     .filtrationRow
-        overflow-x: scroll
+        // overflow-x: scroll
+        // width: 100%
 
         &::-webkit-scrollbar
             display: none
@@ -41,7 +68,8 @@ $primaryColor: rgb(0, 21, 212, .85)
         font-family: 'Roboto', sans-serif
         font-size: .9rem 
         padding: .5rem 1rem
-        margin: .5rem .7rem .5rem 0
+        // margin: .5rem .7rem .5rem 0
+        margin: 0 .7rem 0 0
         border-radius: 1000px
         border: solid 2px $primaryColor
         background-color: white

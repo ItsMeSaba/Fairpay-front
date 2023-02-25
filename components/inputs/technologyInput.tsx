@@ -1,50 +1,35 @@
-import autoCompleteTechnology from "functions/autocomplete/autoCompleteTechnology";
-import { ChangeEvent, Dispatch, SetStateAction, useRef, useState } from "react"
-import style from "styles/components/inputs.module.sass"
+import { useRef, useState } from "react";
+import InputWithAutocomplete from "./autocompletePopup/AutocompletePopup";
+import { FaBeer } from 'react-icons/fa';
 
 interface Args {
-    state: string[],
-    setState: Dispatch<SetStateAction<string[]>>
+    
 }
 
-export default function TechnologyInput(args: Args) {
-    const { state, setState } = args;
-    const [technologies, setTechnologies] = useState<string[]>([]);
-    const [isFocused, setFocused] = useState(false);
-    const [inputValue, setInputValue] = useState("");
-    const inputRef = useRef<HTMLInputElement | null>(null);
+export default function TechnologyInput() {
+    const [options, setOptions] = useState<string[]>([]);
+    const [isInputFocused, setInputFocused] = useState(false);
+    const inputRef = useRef<HTMLInputElement>(null);
 
-    function handleInput(event: ChangeEvent<HTMLInputElement>) {
-        setInputValue(event.target.value)
-
-        if (event.target.value.length === 0) return setTechnologies([]);
-
-        setTechnologies(autoCompleteTechnology(event.target.value));
-    }
-
-    function handleAddingTechnology(newTechnology: string) {
-        setState(technologies => [...technologies, newTechnology]);
-
-        setInputValue("");
-    }
-
-    const displayList = inputValue.length > 0 && isFocused  ? "block" : "none";
+    const displayOptions = options.length > 0 && isInputFocused
 
     return (
-        <div className={style.technologyInputContainer}>
-            <label htmlFor="companyInput">ტექნოლოგიები</label>
-
-            <div id="companyInput" className={style.technologyList} onClick={() => inputRef.current?.focus()}>
-                { state.map(technology => <span className={style.technologyPill} key={technology} onClick={() => setState(technologies => technologies.filter(tech => tech !== technology))}>{technology}</span>) }
-
-                <div className={style.inputBlock}>
-                    <input ref={inputRef} autoComplete="off" value={inputValue} id="companyInput" list="companyInput" onChange={handleInput} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} />
-
-                    <datalist id="companyInput" style={{ display: displayList }}>
-                        { technologies.map(technology => !state.includes(technology) ? <option onMouseDownCapture={() => handleAddingTechnology(technology)} data-title={technology} key={technology} style={{ padding: ".5rem 1rem" }}>{ technology }</option> : null) }
-                    </datalist>
-                </div>
-            </div>
-        </div>
+        <InputWithAutocomplete options={options} displayOptions={displayOptions} onOptionClick={() => null}>
+            <input 
+                type="text"
+                placeholder="ტექნოლოგია"
+                ref={inputRef}
+                onFocus={() => setInputFocused(true)} 
+                onBlur={() => setInputFocused(false)}
+                style={{ 
+                    padding: ".8rem 1.4rem",
+                    outline: "transparent", 
+                    borderRadius: ".6rem", 
+                    border: "solid 1px rgb(150, 150, 150)", 
+                    fontSize: "1rem", 
+                    fontFamily: "'Noto Sans Georgian', sans-serif",
+                }}
+            />
+        </InputWithAutocomplete>
     )
 }

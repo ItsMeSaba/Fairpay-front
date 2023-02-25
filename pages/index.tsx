@@ -48,7 +48,7 @@ export default function Index() {
 			 	<div className={style.right}>
 					<h3 className={style.miniHeader}>რა არის Fairpay?</h3>
 
-			 		<p>Fairpay არის პლატფორმა რომლის დახმარებითაც Tech სფეროში დასაქმებული ადამიანები ერთმანეთს უზიარებენ კომპანიასთან თანამშრომლობის გამოცდილებას</p>
+			 		<p>Fairpay არის პლატფორმა რომელიც სწორი კარიერული არჩევნის გაკეთებაში დაგეხმარება</p>
 
 					<div className={style.line2}>
 						<Image quality={100} src={line2} alt="https://icons8.com/illustrations/style--business-3d" />
@@ -71,9 +71,9 @@ export default function Index() {
 				
 				<div className={style.left}>
 					{/* <p>Fairpay საშუალებას აძლევს დეველოპერებს დააფიქსირონ საკუთარი აზრი კომპანიის შესახებ</p> */}
-					<h3 className={style.miniHeader}>რისი გაზიარება შემიძლია სხვებისთვის?</h3>
+					<h3 className={style.miniHeader}>რას მთავაზობს Fairpay?</h3>
 
-					<p>როგორც პოზიტიური და ნეგატიური შთაბეჭდილებების, ასევე ანაზღაურების.</p>
+					<p>Fairpay-ის საშუალებით კომპანიებში არსებული სამუშაო პირობების გაგება არის შესაძლებელი</p>
 					
 					<div className={style.line1}>
 						<Image quality={100} src={line1} alt="https://icons8.com/illustrations/style--business-3d" />

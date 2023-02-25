@@ -6,7 +6,7 @@ import { useEffect, useMemo, useState } from "react"
 import { Rating } from 'react-simple-star-rating'
 import PositionInput from "../inputs/positionInput"
 import axios from "axios"
-import TechnologyInput from "components/inputs/technologyInput"
+import TechnologyInput from "components/inputs/technologiesListInput"
 import CompanyInput from "components/inputs/companyInput"
 import { SubmitInterviewSchema, SubmitReviewSchema } from "joiSchemas"
 import to from "await-to-js"
