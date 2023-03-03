@@ -8,6 +8,10 @@ import nestjs from "images/technologies/nestjs.svg"
 import typescript from "images/technologies/typescript.svg"
 import python from "images/technologies/python.svg"
 import php from "images/technologies/php.svg"
+import swift from "images/technologies/swift.svg"
+import kotlin from "images/technologies/kotlin.svg"
+import mssql from "images/technologies/mssql.svg"
+import wordpress from "images/technologies/wordpress.svg"
 
 const technologyImages: { [key: string]: any } = {
     angular,
@@ -19,7 +23,11 @@ const technologyImages: { [key: string]: any } = {
     nestjs,
     typescript,
     python,
-    php
+    php,
+    swift,
+    kotlin,
+    mssql,
+    wordpress
 };
 
 
