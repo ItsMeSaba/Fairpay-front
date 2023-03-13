@@ -73,7 +73,7 @@ export default function Index() {
 					{/* <p>Fairpay საშუალებას აძლევს დეველოპერებს დააფიქსირონ საკუთარი აზრი კომპანიის შესახებ</p> */}
 					<h3 className={style.miniHeader}>რას მთავაზობს Fairpay?</h3>
 
-					<p>Fairpay-ის საშუალებით კომპანიებში არსებული სამუშაო პირობების გაგება არის შესაძლებელი</p>
+					<p>Fairpay საშუალებას გაძლევთ გასაუბრებაზე დროის ხარჯვის გარეშე გაიგოთ კომპანიაში არსებული პირობები</p>
 					
 					<div className={style.line1}>
 						<Image quality={100} src={line1} alt="https://icons8.com/illustrations/style--business-3d" />

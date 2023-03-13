@@ -12,20 +12,32 @@
     grid-template-columns: 1fr 3fr 1fr
     align-items: center
     width: 90%
-    max-width: 900px
+    max-width: 1000px
     padding: 2.5rem 2rem
     margin: auto
     border-radius: 5px
     text-align: left
 
+    @include variables.Device($min: variables.$fourK)
+        max-width: 1500px
+
     @include variables.Device($max: variables.$tablet)
         padding: 2.5rem 0rem
         width: 95%
+
+    @include variables.Device($max: variables.$largePhone)
+        padding-left: .5rem
+        padding-right: .1rem
+        grid-template-columns: 1fr .75fr
+        width: 99%
 
     .left 
         display: flex
         align-items: center
         justify-content: center
+        
+        @include variables.Device($max: variables.$largePhone)
+            display: none    
 
         .companyImage
             display: flex
@@ -40,9 +52,14 @@
 
     .center
         padding: 0 0 0 2.5rem
-        
+        font-size: 1rem
+
         @include variables.Device($max: variables.$tablet)
+            font-size: 1rem
             padding: 0 0 0 1.5rem
+
+        @include variables.Device($max: variables.$largePhone)
+            padding: 0 0 0 .5rem
 
         .bottom
 
@@ -63,8 +80,14 @@
             line-height: 2rem
             padding: 1rem 0
 
+            @include variables.Device($max: variables.$tablet)
+                // font-size: 1.3rem
+
     .right
         padding: 0 0 0 2rem
+
+        @include variables.Device($max: variables.$tablet)
+            text-align: center
 
         @include variables.Device($max: variables.$tablet)
             padding: 0 0 0 .5rem

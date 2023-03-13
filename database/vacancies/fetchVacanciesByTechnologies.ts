@@ -6,7 +6,8 @@ import { VacancyWithCompany } from 'types';
 
 interface QueryParams {
     technologies?: string[];
-    seniority?: string;
+    seniorities?: string[];
+    page?: number;
 }
 
 async function fetchVacanciesByTechnologies(queryParams: QueryParams) {

@@ -1,27 +1,4 @@
-import Image from "next/image"
+const technologies = ["C#", "Javascript", "Kotlin", "Java", "Python", "Swift", "Go", "Laravel", "NodeJS", "React", "Angular", "Vue", "HTML/CSS", "C", "C++", "Rust", "Typescript", "MySQL", "MongoDB", "PostgreSQL", "PHP", "CouchDB", "Firebase", "Ruby", "Ruby on Rails", "Symfony", "Django", "Express", "Spring", "Flask", "jQuery", "Bootstrap", "Tailwind CSS", "Dart", "R", "Objective-C", "Perl", "NextJS", "NestJS", "Assembly", "Redis", "VBA", "MATLAB", "Bash", "SQLite", "MariaDB", "MSSQL", "DynamoDB", "AWS", "Google Cloud", "Microsoft Azure", "Heroku", "DigitalOcean", "Svelte", "Blazor", "NuxtJS", "Drupal", ".NET", "Flutter", "React Native", "Xamarin", "Docker", "Kubernetes", "Unity"];
 
-import javascript from '../public/images/technologies/javascript.png';
-import typescript from '../public/images/technologies/typescript.png';
-import react from '../public/images/technologies/react.png';
-import node from '../public/images/technologies/node.png';
 
-// const technologies = [
-//     {
-//         name: "JavaScript",
-//         image: <Image src={javascript} alt="javascript" />,
-//     },
-//     {
-//         name: "Typescript",
-//         image: <Image src={typescript} alt="typescript" />,
-//     },
-//     {
-//         name: "React",
-//         image: <Image src={react} alt="react" />,
-//     },
-//     {
-//         name: "node",
-//         image: <Image src={node} alt="node" />,
-//     },
-// ]
-
-// export default technologies;
+export default technologies;

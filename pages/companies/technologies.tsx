@@ -12,7 +12,7 @@ export default function TechnologiesPage() {
 		isError,
 		hasNextPage,
 		fetchNextPage,
-	} = useInfiniteQuery('companies', ({ pageParam = 0 }) => fetch(pageParam), {
+	} = useInfiniteQuery('companiesTechnologies', ({ pageParam = 0 }) => fetch(pageParam), {
 		// getNextPageParam: (lastPage, allPages) => lastPage.page+1,
 		refetchOnWindowFocus: false,
 		staleTime: Infinity,

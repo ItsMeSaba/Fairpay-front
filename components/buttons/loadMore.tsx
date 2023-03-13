@@ -1,16 +1,18 @@
+import { CSSProperties } from "react";
 import style from "styles/components/buttons/loadMore.module.sass";
 
 interface Args {
     cb: (...args: any[]) => any,
-    buttonColor?: string
+    buttonColor?: string,
+    style: CSSProperties
 }
 
 export default function LoadMoreButton(args: Args) {
-    const { cb, buttonColor } = args;
+    const { cb, buttonColor, style: customStyle } = args;
 
     return (
         <div className={style.container}>
-            <button onClick={cb} style={{ backgroundColor: buttonColor }}>მეტის ჩატვირთვა</button>
+            <button onClick={cb} style={{ backgroundColor: buttonColor, ...customStyle }}>მეტის ჩატვირთვა</button>
         </div>
     )
 }

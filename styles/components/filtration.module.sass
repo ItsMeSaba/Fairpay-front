@@ -1,3 +1,4 @@
+@use "styles/variables.sass"
 $primaryColor: rgb(0, 21, 212, .85)
 
 .filtration::-webkit-scrollbar
@@ -7,6 +8,13 @@ $primaryColor: rgb(0, 21, 212, .85)
     padding: 1rem 3rem
     white-space: nowrap
     position: relative
+
+    @include variables.Device($max: variables.$tablet)
+        padding: 1rem 3rem
+
+    @include variables.Device($max: variables.$largePhone)
+        padding: 1rem 1rem
+        // width: 95%
 
     .technologiesBlock
         // width: 100%

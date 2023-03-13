@@ -20,6 +20,7 @@ import deleteCachedCompanies from "functions/localStorage/company/deleteCachedCo
 import Head from "next/head"
 import { useInfiniteQuery, useQuery } from "react-query";
 import { Companies } from "components/company/Companies";
+import flattenPagesArray from "functions/utils/flattenPagesArray";
 
 interface PopupData {
 	presetCompany: string | null;
@@ -54,16 +55,6 @@ export default function CompaniesPage(args: Args) {
 	const isAlreadyLoadedFromCache = useRef(false);
 	const { openReviewPopup, openSalaryPopup } = useContext(GlobalContext);
 
-	async function fetch(page: number): Promise<{ documents: CompanyType[], page: number | undefined }> {
-		// console.log("eeeeeeeeeeee", e);
-		// const companies = await fetchCompanies(data?.pages.flat().length)
-		const companies = await fetchCompanies(page)
-
-		const newPage = companies.length === 10 ? page + 1 : undefined;
-
-		return { documents: companies, page: newPage }
-	}
-
 	const {
 		data,
 		isLoading,
@@ -76,10 +67,16 @@ export default function CompaniesPage(args: Args) {
 		staleTime: Infinity,
 		getNextPageParam: (lastPage, allPages) => lastPage.page,
 	});
+	
+	async function fetch(page: number): Promise<{ documents: CompanyType[], page: number | undefined }> {
+		// console.log("eeeeeeeeeeee", e);
+		// const companies = await fetchCompanies(data?.pages.flat().length)
+		const companies = await fetchCompanies(page)
 
-	// console.log("_=->", data, isLoading, isError, hasNextPage, fetchNextPage);
-	console.log("data.pages", data);
-	const companiesCount = Object.values(companies).length;
+		const newPage = companies.length === 10 ? page + 1 : undefined;
+
+		return { documents: companies, page: newPage }
+	}
 
 	// async function loadCompanies() {
 	// 	// const newCompanies = await fetchCompanies(documentsToSkip.current);
@@ -115,8 +112,8 @@ export default function CompaniesPage(args: Args) {
 	// 	setTimeout(() => scrollIfNeededAndRemovePreviousPage(), 100)
 	// }, [companiesCount]);
 
-	const companiesArray = data?.pages.reduce((acc, cur) => [...acc, ...cur.documents], [])
-	// console.log("companiesArray", companiesArray, data?.pages);
+	const companiesArray = flattenPagesArray(data);
+
 	console.log("companiesArray", companiesArray);
 
 	return (
