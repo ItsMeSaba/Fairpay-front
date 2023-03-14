@@ -62,6 +62,8 @@ import upgaming from "public/images/companies/upgaming.png"
 import velistore from "public/images/companies/velistore.png"
 import unisoft from "public/images/companies/unisoft.png"
 
+import dataart from "images/companies/dataart.jpg"
+
 import { ValidCompanyNames } from "types"
 
 class CompanyImageData {
@@ -78,6 +80,7 @@ class CompanyImageData {
 
 export const companyImages2: Record<string, StaticImageData> = {
     ვაბაკო: vabako,
+    DataArt: dataart,
     Scandiweb: scandiweb,
     Neollet: neollet,
     "აწარმოე საქართველოში": awarmoesakartveloshi,

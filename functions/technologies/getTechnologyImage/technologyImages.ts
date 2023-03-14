@@ -12,9 +12,13 @@ import swift from "images/technologies/swift.svg"
 import kotlin from "images/technologies/kotlin.svg"
 import mssql from "images/technologies/mssql.svg"
 import wordpress from "images/technologies/wordpress.svg"
+import javascript from "images/technologies/javascript.svg"
+import laravel from "images/technologies/laravel.svg"
 
 const technologyImages: { [key: string]: any } = {
     angular,
+    laravel,
+    javascript,
     dotnet,
     csharp,
     java,

@@ -43,6 +43,10 @@ export function Header(args: Args) {
 
                 <ul className={style.links}> 
                     <li>       
+                        <Link href="/salaries">
+                            ანაზღაურებები
+                        </Link>
+
                         <Link href="/companies">
                             კომპანიები
                         </Link>

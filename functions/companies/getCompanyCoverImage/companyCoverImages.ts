@@ -57,7 +57,10 @@ import lintonCover from "public/images/companies/lintonCover.jpg"
 import websenseCover from "public/images/companies/websenseCover.jpg"
 import unisoftCover from "public/images/companies/unisoftCover.jpg"
 
+import dataartCover from "images/companyCovers/dataartCover.jpg"
+
 const companyCoverImages: Record<string, StaticImageData> = {
+    DataArt: dataartCover,
     ვაბაკო: vabakoCover,
     Scandiweb: scandiwebCover,
     Neollet: neolletCover,
