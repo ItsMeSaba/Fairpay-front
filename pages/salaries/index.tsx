@@ -29,14 +29,10 @@ export default function SalariesPage() {
     async function fetch(page: number) {
         const newSalaries = await fetchVacanciesByTechnologies({ technologies: toggledTechnologies, seniorities: toggledSeniorities, page }); 
 
-        console.log("newSalaries.length", newSalaries.length);
-    
         return { documents: newSalaries, page: newSalaries.length === 10 ? page + 1 : undefined }
     }
 
     const newSalaries = flattenPagesArray<VacancyWithCompany[]>(data);
-
-    console.log("hasNextPage", hasNextPage);
 
     return (
         <div className={style.salariesPage}>
@@ -45,6 +41,11 @@ export default function SalariesPage() {
                 technologiesState={[toggledTechnologies, setToggledTechnologies]} 
                 senioritiesState={[toggledSeniorities, setToggledSeniorities]}
             />
+
+            {/* <p className={style.queryHeader}>
+                პოზიციები სადაც { toggledTechnologies.slice(0, toggledTechnologies.length-1).join(", ") } გამოიყენება:
+            </p> */}
+            <QueryHeader toggledSeniorities={toggledSeniorities} toggledTechnologies={toggledTechnologies} />
 
             {
                 newSalaries.length === 0 && !isLoading &&
@@ -72,5 +73,55 @@ export default function SalariesPage() {
                 /> 
             }
         </div>
+    )
+}
+
+
+interface QueryHeaderArgs {
+    toggledTechnologies: string[],
+    toggledSeniorities: string[]
+}
+
+function QueryHeader(args: QueryHeaderArgs) {
+    const { toggledSeniorities, toggledTechnologies } = args;
+
+    if (toggledSeniorities.length === 0 && toggledTechnologies.length === 0) return <></>
+
+    let finalString = "";
+
+    switch (toggledSeniorities.length) {
+        case 0:
+            finalString += "პოზიციები";
+            
+            break;
+            
+        case 1: 
+            finalString += toggledSeniorities.join() + " პოზიციები ";
+            
+            break;
+            
+        default:
+            finalString += toggledSeniorities.slice(0, toggledSeniorities.length-1).join(", ") + " და " + toggledSeniorities.at(-1) + " პოზიციები ";
+
+    }
+
+    switch (toggledTechnologies.length) {
+        case 0:
+            break;
+        
+        case 1:
+            finalString += " სადაც " + toggledTechnologies.join() + " გამოიყენება";
+
+            break;
+
+        default:
+            finalString += " სადაც " + toggledTechnologies.slice(0, toggledTechnologies.length-1).join(", ") + " და " + toggledTechnologies.at(-1) + " გამოიყენება";
+    }
+    
+
+    return (
+        <p className={style.queryHeader}>
+            { finalString }
+        </p>
     )
 }
