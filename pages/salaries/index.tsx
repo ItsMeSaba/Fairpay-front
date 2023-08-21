@@ -42,9 +42,6 @@ export default function SalariesPage() {
                 senioritiesState={[toggledSeniorities, setToggledSeniorities]}
             />
 
-            {/* <p className={style.queryHeader}>
-                პოზიციები სადაც { toggledTechnologies.slice(0, toggledTechnologies.length-1).join(", ") } გამოიყენება:
-            </p> */}
             <QueryHeader toggledSeniorities={toggledSeniorities} toggledTechnologies={toggledTechnologies} />
 
             {

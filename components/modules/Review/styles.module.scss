@@ -1,0 +1,32 @@
+.review {
+  box-shadow: 0 0 3px rgb(0, 0, 0, .5) inset;
+  background-color: white;
+  width: 90%;
+  max-width: 800px;
+  padding: 2rem 3rem;
+  margin: 1rem auto;
+  border-radius: 1rem;
+  font-size: 1.1rem;
+
+  .user {
+    padding: 0 0 1rem 0;
+    display: flex;
+    align-items: center;
+
+    .userIcon {
+      margin: 0 .75rem 0 0;
+    }
+  }
+
+  .positiveReview {
+    color: rgb(0, 170, 0);
+    word-break: break-all;
+    margin: 1rem 0;
+  }
+
+  .negativeReview {
+    word-break: break-all;
+    margin: 1rem 0 2rem 0;
+    color: rgb(201, 0, 0);
+  }
+}

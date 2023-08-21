@@ -1,0 +1,63 @@
+@import "../../../styles/variables.scss";
+
+.textWithImage {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  padding: 2rem 1rem;
+  
+  @include Media(sm) {
+    min-height: 100vh;
+    padding: 0 3rem;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .content {
+    padding: 0 1rem;
+    margin: 0 0 2rem 0;
+
+    .title {
+      font-size: 1.6rem;
+      margin: 0 0 1rem 0;
+      position: relative;
+      width: fit-content;
+
+      &::after {
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        display: block;
+        content: "";
+        height: 1rem;
+        top: 60%;
+        width: 100%;
+        left: .9rem;
+        border-radius: .2rem;
+        background: linear-gradient(to right, #ED4C6744, #a55eea44);
+      }
+    }
+
+    .description {
+      padding: 0 1rem 0 0;
+      font-size: 1.2rem;
+      line-height: 2rem;
+    }
+  }
+
+  .imageContainer {
+    .image {
+      height: min-content;
+      width: 100%;
+      max-width: 600px;
+      object-fit: contain;
+      
+      @include Media(sm) {
+        max-width: 1200px;
+      }
+    }
+  }
+}

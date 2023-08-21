@@ -89,7 +89,7 @@ export function CompaniesWithTechnologies(args: Args) {
 //                     <div className={style.top}>
 //                         { coverImage && 
 //                             <div className={style.coverImage} style={{ backgroundImage: `url(${coverImage.src})` }}>
-//                                 {/* <Image src={coverImage} alt={name} /> */}
+//                                 {/* <img src={coverImage} alt={name} /> */}
 //                             </div>
 //                         }
 
@@ -98,7 +98,7 @@ export function CompaniesWithTechnologies(args: Args) {
 //                         }
 
 //                         <div className={style.companyImage}>
-//                             <Image quality={30} src={image} alt={name} />
+//                             <img quality={30} src={image} alt={name} />
 //                         </div>
 
 //                         <h2 className={style.companyName} title={name}>{ name }</h2>

@@ -1,4 +1,4 @@
-@use "styles/variables.sass"
+@use "styles/variables.scss"
 
 @import url("//cdn.web-fonts.ge/fonts/alk-rounded-mtav-med/css/alk-rounded-mtav-med.min.css")
 @import url("//cdn.web-fonts.ge/fonts/arial-geo/css/arial-geo.min.css")
@@ -53,7 +53,6 @@ $secondContainerColor: white
 
 
 @mixin blob($top: initial, $bottom: initial, $left: initial, $right: initial, $scale: 1, $transformOrigin: top left)
-	width: 40rem
 	top: $top 
 	left: $left 
 	right: $right 
@@ -133,20 +132,25 @@ $secondContainerColor: white
 		background: linear-gradient(to left, #FF324B, #ED213A)
 
 		.avatar
-			display: flex
 			width: 100%
 			height: 100%
+			display: flex
 			align-items: end
 			justify-content: center
 			margin: auto
+			width: 30rem
+			height: 100%
+			position: relative
+			// transform: translateY(-.5%)
 
 			@include variables.Device($max: variables.$tablet)
 				width: 100%
 				display: flex
 
 			img
-				width: 850px
-				filter: drop-shadow(10px 5px 1px rgb(0, 0, 0, .2))
+				width: 50rem
+				object-fit: contain
+				filter: drop-shadow(10px 0px 1px rgb(0, 0, 0, .2))
 
 				@include variables.Device($min: variables.$fourK)
 					width: 1200px
@@ -227,8 +231,8 @@ $secondContainerColor: white
 		.avatar
 			padding: 0 0 3rem 0
 			display: flex
-			width: 100%
-			height: 100%
+			// width: 100%
+			// height: 100%
 			// align-items: end
 			align-items: center
 			justify-content: center
@@ -239,7 +243,7 @@ $secondContainerColor: white
 				order: 1
 			
 			img
-				width: 35rem
+				// width: 35rem
 
 				@include variables.Device($min: variables.$fourK)
 					width: 1000px

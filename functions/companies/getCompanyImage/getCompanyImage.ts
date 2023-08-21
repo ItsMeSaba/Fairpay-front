@@ -22,5 +22,6 @@ export default function getCompanyImagePath(companyName: string) {
  * Returns src of company image or default image for not found
  */
 export function getCompanyImage(companyName: ValidCompanyNames) {
+    console.log("companyImages2[companyName]", companyImages2[companyName])
     return companyImages2[companyName] ?? noImage;
 }

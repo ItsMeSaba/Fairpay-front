@@ -32,7 +32,7 @@ export default function Footer() {
             <div className={style.Ukraine}>
                 <p>Fairpay stands with Ukraine</p>
 
-                <Image width="40px" height="40px" src={UA} />
+                <img width="40px" height="40px" src={UA} />
             </div>
         </div>
         </>

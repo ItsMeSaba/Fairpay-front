@@ -103,13 +103,28 @@ export type ValidCompanyNames =
     "საგანმანათლებლო ტექნოლოგიები საქართველო"
 
 export class PopupData {
-    display: boolean;
-    companyName: string;
-    companyId: string;
+  display: boolean;
+  companyName: string;
+  companyId: string;
 
-    constructor(display = false, companyName = "", companyId = "") {
-        this.display = display;
-        this.companyName = companyName;
-        this.companyId = companyId;
-    }
+  constructor(display = false, companyName = "", companyId = "") {
+    this.display = display;
+    this.companyName = companyName;
+    this.companyId = companyId;
+  }
+}
+
+// New
+export interface SalaryType {
+  _id?: string,
+  salary: string,
+  position: string,
+  currency: string,
+  date: string,
+  url?: string,
+  source?: string,
+  technologies?: string[],
+  seniority: string,
+  company?: CompanyType,
+  companyId?: string,
 }

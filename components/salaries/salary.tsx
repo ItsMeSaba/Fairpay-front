@@ -26,8 +26,8 @@ export function Salary(args: Args) {
         <div className={style.salaryItem}>
             <div className={style.left}>
                 <div className={style.companyImage}>
-                    {/* <Image quality="100" src={Math.random() > .5 ? company1 : company2} alt="" /> */}
-                    <Image quality="100" src={companyImage} alt="" />
+                    {/* <img quality="100" src={Math.random() > .5 ? company1 : company2} alt="" /> */}
+                    <img quality="100" src={companyImage} alt="" />
                 </div>
             </div>
 

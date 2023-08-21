@@ -25,7 +25,7 @@ function Technology({ technology }: TechnologyArgs) {
 
     return (
         <div className={style.technology}>
-            <Image src={image} alt={technology} title={technology} />
+            <img src={image} alt={technology} title={technology} />
         </div>
     )
 }

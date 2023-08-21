@@ -48,8 +48,8 @@ export default function CompanyPage() {
                 <div className={style.info}>
                     <div className={style.left}>
                         <div className={style.image}>
-                            {/* <Image src={bog} alt="bog" /> */}
-                            {image && <Image src={image} alt="bog" />}
+                            {/* <img src={bog} alt="bog" /> */}
+                            {image && <img src={image} alt="bog" />}
                         </div>
                     </div>
 

@@ -16,25 +16,25 @@ interface Args {
 }
 
 export default function Index() {
-
 	return (
 		<div className={style.indexPage}>
-
 			<div className={style.containerOne}>
 				<div className={style.left}>
 					<div className={style.blobOne}>
-						<Image quality={50} src={blobOne} alt="blob" />
+						<Image src={blobOne} alt="blob" width={500} height={500} />
 					</div>
 
 					<div className={style.blobTwo}>
-						<Image quality={50} src={blobTwo} alt="blob" />
+						<Image src={blobTwo} width={500} height={500} alt="blob" />
 					</div>
 
 					<h1>იცოდე შენი<br /><span>ფასი</span></h1>
 				</div>
 
 				<div className={style.avatar}>
-					<Image quality={80} src={bussinesMan} alt="https://icons8.com/illustrations/style--business-3d" />
+					{/* <img quality={80} src={bussinesMan} width={40} height={600} alt="https://icons8.com/illustrations/style--business-3d" /> */}
+					<img src={bussinesMan.src} />
+					{/* <Image src={bussinesMan} fill={true} objectFit="contain" /> */}
 				</div>
 
 				<div className={style.waveOne}>
@@ -51,21 +51,23 @@ export default function Index() {
 			 		<p>Fairpay არის პლატფორმა რომელიც სწორი კარიერული არჩევნის გაკეთებაში დაგეხმარება</p>
 
 					<div className={style.line2}>
-						<Image quality={100} src={line2} alt="https://icons8.com/illustrations/style--business-3d" />
+						<img src={line2.src} alt="https://icons8.com/illustrations/style--business-3d" />
 					</div>
 			 	</div>
 
 			 	<div className={style.avatar}>
 			 		{/* Thanks To https://icons8.com/illustrations/style--business-3d */}
-			 		<Image quality={75} src={yellowMan} alt="https://icons8.com/illustrations/style--business-3d" />
-			 	</div>
+			 		{/* <img quality={100} src={yellowMan} width={700} alt="https://icons8.com/illustrations/style--business-3d" /> */}
+			 		<img src={yellowMan.src} />
+				</div>
 			</div>
 
 
 			<div className={style.containerThree}>
 				<div className={style.avatar}>
 					{/* Thanks To https://icons8.com/illustrations/style--business-3d */}
-					<Image quality={60} src={yellowWoman} alt="https://icons8.com/illustrations/style--business-3d" />
+					{/* <img quality={60} src={yellowWoman} alt="https://icons8.com/illustrations/style--business-3d" /> */}
+					<img src={yellowWoman.src} />
 				</div>
 
 				
@@ -76,7 +78,8 @@ export default function Index() {
 					<p>Fairpay საშუალებას გაძლევთ გასაუბრებაზე დროის ხარჯვის გარეშე გაიგოთ კომპანიაში არსებული პირობები</p>
 					
 					<div className={style.line1}>
-						<Image quality={100} src={line1} alt="https://icons8.com/illustrations/style--business-3d" />
+						{/* <img quality={100} src={line1} alt="https://icons8.com/illustrations/style--business-3d" /> */}
+						<img src={line1.src} />
 					</div>
 				</div>
 			</div>
@@ -86,7 +89,8 @@ export default function Index() {
 				<div className={style.left}>
 					<div className={style.avatar}>
 						{/* Thanks To https://icons8.com/illustrations/style--3d-business */}
-						<Image quality={70} src={monitor} alt="https://icons8.com/illustrations/style--business-3d" />
+						{/* <img quality={70} src={monitor} alt="https://icons8.com/illustrations/style--business-3d" /> */}
+						<Image width={monitor.width/1.2} height={monitor.height/1.2} src={monitor.src} />
 					</div>
 				</div>
 
@@ -96,13 +100,12 @@ export default function Index() {
 					<p>ამ ეტპაზე Fairpay განკუთვნილია მხოლოდ დეველოპერებისთვის/პროგრამისტებისთვის. წარმატების შემთხვევაში პრიორიტეტებში რჩება სხვა დარგების ინტეგრირება</p>
 				</div>
 			</div>
-
 		</div>
   	)
 }
 
 export async function getStaticProps() {
 	return {
-	  	props: {}, // will be passed to the page component as props
+    props: {}, // will be passed to the page component as props
 	}
-  }
+}

@@ -1,4 +1,4 @@
-@use 'styles/variables.sass'
+@use 'styles/variables.scss'
 
 .companies
     padding: 0rem 1.5rem
@@ -9,7 +9,7 @@
     @include variables.Device($min: variables.$fourK)
         padding: 0
 
-    @include variables.Device($min: variables.$laptop, $max: variables.$largeLaptop)
+    @include variables.Device($min: variables.$tablet, $max: variables.$largeLaptop)
         grid-template-columns: repeat(3, 1fr)
     
     @include variables.Device($min: variables.$largePhone, $max: variables.$laptop)
@@ -19,123 +19,123 @@
         grid-template-columns: repeat(1, 1fr)
         padding: 0rem 1rem
 
-    .company
-        background-color: white
-        margin: 2rem 1.5rem
-        padding: 3rem 1rem
-        border-radius: 15px
-        transition: .2s transform ease-in-out
-        cursor: pointer
-        box-shadow: 0 0 2px rgb(0, 0, 0, .3)
-        position: relative
-        overflow: hidden
+        .company
+            background-color: white
+            margin: 2rem 1.5rem
+            padding: 3rem 1rem
+            border-radius: 15px
+            transition: .2s transform ease-in-out
+            cursor: pointer
+            box-shadow: 0 0 2px rgb(0, 0, 0, .3)
+            position: relative
+            overflow: hidden
 
-        @include variables.Device($min: variables.$fourK)
-            border-top-width: 20px !important
-            border-radius: 25px
+            @include variables.Device($min: variables.$fourK)
+                border-top-width: 20px !important
+                border-radius: 25px
 
-        @include variables.Device($max: variables.$largePhone)
-            margin: 2rem 1rem
+            @include variables.Device($max: variables.$largePhone)
+                margin: 2rem 1rem
 
-        
-        &:hover
-            transform: translateY(-.15rem)
-
-        .coverImage
-            position: absolute
-            top: 0
-            left: 0
-            width: 100%
-            height: 10rem
-            background-position: center
-            background-repeat: no-repeat
-            background-size: cover
-
-
-            img
-                // width: 100%
-                // height: 10rem
-                // display: block
-                // object-fit: cover
-
-        .noImage
-            width: 100%
-            height: 175px
-            position: absolute
-            display: block
-            top: 0
-            left: 0
-
-        .top
-            // transform: translateY(20%)
-            margin: 20% 0 0 0
-            // border: solid 5px white
-
-            .companyImage
-                font-size: 1rem
-                max-width: 150px
-                margin: auto
-                position: relative
-                border: solid 10px white
-                border-radius: 20px
-                overflow: hidden
-                display: flex
-                background: white
-
-                @include variables.Device($min: variables.$fourK)
-                    max-width: 200px
-
-            .companyName
-                padding: 1.5rem 0 2rem 0
-                font-size: 1.2rem
-                max-width: 300px
-                text-overflow: ellipsis
-                overflow: hidden
-                white-space: nowrap
-                margin: auto
-
-                @include variables.Device($max: variables.$largePhone)
-                    font-size: 1.5rem
-                    max-width: 250px
-                
-
-        .bottom
-          
-            .companyData
-                display: grid
-                grid-template-columns: 1fr 1fr
-
-
-                .startIcon
-                    @include variables.FlexCenter
-                    color: #e6b000
-                    padding: 0 .4rem 0 0
-
-                .vacancyIcon
-                    @include variables.FlexCenter
-                    color: rgb(80, 80, 80)
-                    padding: 0 .4rem 0 0
-
-                span
-                    display: flex
-                    align-items: center
-                    justify-content: center
-
-                p
-                    font-size: 1rem
-
-                    @include variables.Device($max: variables.$largePhone)
-                        font-size: 1.3rem
             
-            .buttons 
-                @include variables.FlexCenter
-                padding: 2rem 0 0 0
-                z-index: 100
+            &:hover
+                transform: translateY(-.15rem)
 
-                button
+            .coverImage
+                position: absolute
+                top: 0
+                left: 0
+                width: 100%
+                height: 10rem
+                background-position: center
+                background-repeat: no-repeat
+                background-size: cover
+
+
+                img
+                    // width: 100%
+                    // height: 10rem
+                    // display: block
+                    // object-fit: cover
+
+            .noImage
+                width: 100%
+                height: 175px
+                position: absolute
+                display: block
+                top: 0
+                left: 0
+
+            .top
+                // transform: translateY(20%)
+                margin: 20% 0 0 0
+                // border: solid 5px white
+
+                .companyImage
+                    font-size: 1rem
+                    max-width: 150px
+                    margin: auto
+                    position: relative
+                    border: solid 10px white
+                    border-radius: 20px
+                    overflow: hidden
+                    display: flex
+                    background: white
 
                     @include variables.Device($min: variables.$fourK)
-                        border-radius: 15px
+                        max-width: 200px
+
+                .companyName
+                    padding: 1.5rem 0 2rem 0
+                    font-size: 1.2rem
+                    max-width: 300px
+                    text-overflow: ellipsis
+                    overflow: hidden
+                    white-space: nowrap
+                    margin: auto
+
+                    @include variables.Device($max: variables.$largePhone)
+                        font-size: 1.5rem
+                        max-width: 250px
+                    
+
+            .bottom
+            
+                .companyData
+                    display: grid
+                    grid-template-columns: 1fr 1fr
+
+
+                    .startIcon
+                        @include variables.FlexCenter
+                        color: #e6b000
+                        padding: 0 .4rem 0 0
+
+                    .vacancyIcon
+                        @include variables.FlexCenter
+                        color: rgb(80, 80, 80)
+                        padding: 0 .4rem 0 0
+
+                    span
+                        display: flex
+                        align-items: center
+                        justify-content: center
+
+                    p
+                        font-size: 1rem
+
+                        @include variables.Device($max: variables.$largePhone)
+                            font-size: 1.3rem
+                
+                .buttons 
+                    @include variables.FlexCenter
+                    padding: 2rem 0 0 0
+                    z-index: 100
+
+                    button
+
+                        @include variables.Device($min: variables.$fourK)
+                            border-radius: 15px
 
 
 // @media only screen and (max-width: 1500px)

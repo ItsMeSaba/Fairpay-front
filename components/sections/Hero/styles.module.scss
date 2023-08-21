@@ -1,0 +1,107 @@
+@import "../../../styles/variables.scss";
+
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  min-height: 700px;
+  padding: 0 1rem;
+  background: #ED213A;
+  background: -webkit-linear-gradient(to left, #93291E, #ED213A);
+  background: linear-gradient(to left, #FF324B, #ED213A);
+  overflow: hidden;
+  
+  @include Media(md) {
+    min-height: 800px;
+    grid-template-columns: 1fr 1.2fr;
+  }
+
+  .content {
+    font-family: 'Noto Sans Georgian', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 2rem 0 4rem 0;
+
+    .title {
+      font-size: 2.5rem;
+			text-align: left;
+			line-height: 5.5rem;
+			margin: auto;
+			z-index: 10;
+			text-shadow: 2px 2px 2px black;
+			width: fit-content;
+			animation: animateText 2s forwards;
+			font-weight: bold;
+      
+      @include Media(xs) {
+        font-size: 3rem;
+      }
+
+      @include Media(sm) {
+        font-size: 4rem;
+      }
+
+      .biggerTitle {
+        font-size: 5.5rem;
+        line-height: 3rem;
+        animation: animateText 3s forwards;
+        
+        @include Media(xs) {
+          line-height: 5rem;
+          font-size: 7rem;
+        }
+
+        @include Media(sm) {
+          line-height: 9rem;
+          font-size: 9rem;
+        }
+      }
+    }
+  }
+
+  .avatar {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    .image {
+      height: min-content;
+      object-fit: contain;
+      width: 115%;
+      
+      @include Media(sm) {
+        width: 800px;
+      }
+    }
+  }
+
+  .wave {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+    border-bottom: 1px white;
+
+    svg {
+      position: relative;
+      display: block;
+      width: calc(140% + 1.3px);
+      height: 100px;
+      
+      @include Media(sm) {
+        width: calc(100% + 1.3px);
+        height: 140px;
+      }
+
+      .path {
+        fill: white;
+      }
+    }
+  }
+}

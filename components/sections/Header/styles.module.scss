@@ -1,0 +1,93 @@
+@import "../../../styles/variables.scss";
+
+.header {
+  font-size: 1rem;
+  background-color: white;   
+  height: 12vh;
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  align-items: center;
+  justify-content: space-between;
+  justify-items: center;
+  padding: 0rem 3rem;
+  // box-shadow: 1px 1px 5px rgb(0, 0, 0, .3);
+  z-index: 99;
+
+  .websiteInfo {
+    display: flex;
+    justify-content: left;
+    align-items: end;
+    font-size: 1.8rem;
+    font-family: 'Comfortaa', cursive;
+    font-weight: 700;
+    letter-spacing: -2px;
+    cursor: pointer;
+    color: rgb(10, 10, 10, 1);
+
+    .name {
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    .category {
+      padding: 0 0 0 5px;
+      font-size: 1rem;
+    }
+
+    .pill {
+      font-size: .7rem;
+      padding: .3rem .6rem;
+      align-self: flex-start;
+      font-weight: 300;
+      letter-spacing: .05rem;
+      color: white;
+      border-radius: 1000px;
+      margin: 0 0 0 .5rem;
+      background-color: rgb(130, 130, 130);
+    }
+  }
+
+  .searchDiv {
+    display: none;
+
+    @include Media(sm) {
+      display: initial;
+    }
+  }
+
+  .links {
+    display: none;
+    justify-content: right;
+    align-items: center;
+
+    .pageLinks {
+      font-size: .92rem;
+      display: flex;
+
+      .link {
+        margin: 0 1rem 0 0;
+      }
+    }
+
+    .authLink {
+      margin: 0 0 0 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+
+    @include Media(md) {
+      display: flex;
+    }
+  }
+
+  .burgerButton {
+    display: flex;
+    justify-content: end;
+    grid-column: 3;
+    
+    @include Media(md) {
+      display: none;
+    }
+  }
+}

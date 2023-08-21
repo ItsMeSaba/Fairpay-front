@@ -69,7 +69,7 @@ export default function SubmitSalary(args: Args) {
             <div className={style.container}>
                     <div className={style.avatar}>
                         {/* Illustration is taken from https://icons8.com/illustrations/style--business-3d */}
-                        <Image src={moneyMan3} quality={70} alt="https://icons8.com/illustrations/style--business-3d" />
+                        <img src={moneyMan3} quality={70} alt="https://icons8.com/illustrations/style--business-3d" />
                     </div> 
 
 

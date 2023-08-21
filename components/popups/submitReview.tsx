@@ -72,7 +72,7 @@ export default function SubmitReview(args: Args) {
             <div className={style.container}>
                 <div className={style.avatar}>
                     {/* Illustration is taken from https://icons8.com/illustrations/style--business-3d */}
-                    <Image src={reviewLady3} alt="https://icons8.com/illustrations/style--business-3d" quality={70} /> 
+                    <img src={reviewLady3} alt="https://icons8.com/illustrations/style--business-3d" quality={70} /> 
                 </div>
 
                 <div className={style.right}>

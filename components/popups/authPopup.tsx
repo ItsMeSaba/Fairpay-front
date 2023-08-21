@@ -60,7 +60,7 @@ export default function AuthPopup(args: Args) {
 
                 { status === "loading" && 
                     <div className={style.buttons} style={{ maxWidth: "90px" }}>
-                        <Image src={loadingGif} alt="Gif" />
+                        <img src={loadingGif} alt="Gif" />
                     </div>
                 }
             </div>

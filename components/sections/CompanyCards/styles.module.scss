@@ -1,0 +1,34 @@
+@import "../../../styles/variables.scss";
+
+.companies {
+  padding: 0rem 1.5rem;
+  display: grid;
+  column-gap: .5rem;
+  grid-template-columns: repeat(1, 1fr);
+  text-align: center;
+  
+  @include Media(xs) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include Media(sm) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include Media(md) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  // @include variables.Device($min: variables.$fourK)
+  //   padding: 0
+
+  // @include variables.Device($min: variables.$tablet, $max: variables.$largeLaptop)
+  //   grid-template-columns: repeat(3, 1fr)
+
+  // @include variables.Device($min: variables.$largePhone, $max: variables.$laptop)
+  //   grid-template-columns: repeat(2, 1fr)
+
+  // @include variables.Device($max: variables.$largePhone)
+  //   grid-template-columns: repeat(1, 1fr)
+  //   padding: 0rem 1rem
+}

@@ -1,0 +1,13 @@
+.technologyNames {
+  margin: .7rem 0 0 0;
+
+  .technologyName {
+    display: inline-block;
+    word-break: break-all;
+    font-size: .9rem;
+    margin: .3rem .4rem 0 0;
+    border: solid 1.5px rgba(40, 40, 40, 1);
+    border-radius: 1000px;
+    padding: .2rem .75rem;
+  }
+}

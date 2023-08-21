@@ -85,7 +85,7 @@ function SearchResultItem(args: SearchResultItemArgs) {
         <Link href={`/companies/${companyUrlName}`}>
             <div className={style.searchItem} onClick={hideAutocomplete}>
                 <div className={style.companyImage}>
-                    <Image quality={10} src={companyImage} />
+                    <img quality={10} src={companyImage} />
                 </div>
 
                 {/* <p><Link href={companyUrlName}>{companyName}</Link></p> */}

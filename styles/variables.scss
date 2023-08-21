@@ -1,0 +1,34 @@
+$smallPhone: 320px;
+$mediumPhone: 375px;
+$largePhone: 425px;
+$tablet: 768px;
+$laptop: 1024px;
+$largeLaptop: 1440px;
+$fourK: 2560px;
+
+@mixin Device($min: 0px, $max: 999999px) {
+  @media only screen and (min-width: $min) and (max-width: $max) {
+    @content
+  } 
+}
+   
+
+@mixin FlexCenter() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+$breakpoints: (
+  xs: 580px,
+  sm: 834px,
+  md: 1280px,
+  lg: 1440px,
+  xl: 1920px,
+);
+
+@mixin Media($device) {
+  @media only screen and (min-width: #{map-get($breakpoints, $device)}) {
+    @content;
+  }
+}
